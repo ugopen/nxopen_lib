@@ -1,0 +1,23 @@
+!
+!  This menu file is used in conjunction with the menuscript_ufsta.c
+!  example program contained in the UGOPEN kit.  This example 
+!  illustrates migrating the mult_ufsta.c example (also contained
+!  in the UGOPEN kit) from UF_UI_append_menubar_menu to the
+!  use of MenuScript.  See ufx_menuscript_ufsta.c for complete 
+!  instructions on the use of this example.
+!
+! 
+!
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MODIFY
+
+APPLICATION_BUTTON UG_APP_MODELING
+LIBRARIES ufx_menuscript_ufsta.sl
+MENU_FILES/APPEND ufx_menuscript_modeling.men
+
+END_OF_MODIFY
+
+

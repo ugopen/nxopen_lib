@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: SelectionSubscriberExample.jar
+
+SelectionSubscriberExample.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) SelectionSubscriberExample.java
+	
+SelectionSubscriberExample.jar: SelectionSubscriberExample.class
+	echo Main-Class: SelectionSubscriberExample> manifest.txt
+	jar cmf manifest.txt SelectionSubscriberExample.jar SelectionSubscriberExample.class
+
+run: SelectionSubscriberExample.jar
+    	java -classpath $(CLASSPATH)  SelectionSubscriberExample
+
+clean_all: clean
+	- del SelectionSubscriberExample.class
+	- del SelectionSubscriberExample.jar

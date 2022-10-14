@@ -1,0 +1,16 @@
+Log Entry : 
+--Log entry goes here--
+ Feature 0  = 11030 is of type BLOCK
+  Parent array for 11030 contains 0 members:
+  children array for feature 11030 contains 0  members:
+ Feature 1  = 8432 is of type BLOCK
+  Parent array for 8432 contains 0 members:
+  children array for feature 8432 contains 1  members:
+  child is 0 = 11032 is of feature type DATUM_PLANE
+ Feature 2  = 11032 is of type DATUM_PLANE
+  Parent array for 11032 contains 1 members:
+  Parent id 0 = 8432 is of feature type BLOCK
+  children array for feature 11032 contains 0  members:
+Successful
+End of Log File
+

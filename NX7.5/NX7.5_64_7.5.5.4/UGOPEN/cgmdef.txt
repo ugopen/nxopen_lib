@@ -1,0 +1,47 @@
+#
+#  The cgmdef.txt file specifies the defaults used to create CGM files
+#  for File->Export CGM and File->Export PDF and NX Open functionality.
+#
+# A # starting a line signifies a comment.  The following keywords are 
+# supported:
+# OUTPUT_VDC_TYPE can be set to either real or integer
+# OUTPUT_VDC_TYPE   real 
+# 
+# Font Mapping.  
+#
+# NO_TEXT_FONT_MAPPING 
+# If specified the NX fonts will be output directly to the CGM file.
+# This is the default.
+NO_TEXT_FONT_MAPPING
+#
+# Individual fonts can be mapped specifically by specifying the
+# TEXT_FONT_MAPPING keyword.  The first font will be the NX font, 
+# and the second font the corresponding font that will be used in 
+# the CGM file.  The CGM file can use a standard TrueType font, or
+# you can specify a traditional CGM font like Hershey:Simplex_Roman.
+# If a font contains an embedded space, replace the space with a #, since
+# the space is used as a delimiter.  So to specify Times New Roman use:
+#
+# TEXT_FONT_MAPPING BLOCKFONT Times#New#Roman
+#
+# The # will be replaced prior to the font being used in the CGM file.
+#
+# A special font name of "ALL_UG_FONTS" can be used to map all NX fonts
+# to a single CGM font, e.g:
+#
+# TEXT_FONT_MAPPING ALL_UG_FONTS            HERSHEY:SIMPLEX_ROMAN
+#
+# TEXT_FONT_MAPPING MDCFONT                 HERSHEY:SIMPLEX_ROMAN
+# TEXT_FONT_MAPPING BLACKFONT               HERSHEY:DUPLEX_ROMAN
+# TEXT_FONT_MAPPING SCRIPT                  HERSHEY:SIMPLEX_SCRIPT
+# TEXT_FONT_MAPPING BLOCKFONT               Times#New#Roman
+# TEXT_FONT_MAPPING BLACKFONT               Courier#New
+# TEXT_FONT_MAPPING LEROY                   Arial
+#
+# The following can be used to map specific fonts in a CGM file back to
+# an NX font when a CGM file is imported.  If the CGM file was exported
+# with NX fonts, then no mapping is required.
+#
+# TEXT_FONT_MAPPING HERSHEY:SIMPLEX_ROMAN   BLOCKFONT 
+# TEXT_FONT_MAPPING HERSHEY:SIMPLEX_SCRIPT  SCRIPT 
+# TEXT_FONT_MAPPING HERSHEY:DUPLEX_ROMAN    BLOCKFONT

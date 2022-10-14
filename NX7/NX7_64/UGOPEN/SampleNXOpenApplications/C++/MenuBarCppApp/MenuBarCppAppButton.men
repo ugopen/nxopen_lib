@@ -1,0 +1,57 @@
+!*=======================================================================
+!
+!        Copyright (c) 2007 Siemens
+!        Unpublished - All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding a C++ application to NX.  
+!   This example uses the following files included in the UGOPEN kit:
+!        MenuBarCppApp.cpp
+!        MenuBarCppApp.h
+!        MenuBarCppApp.men
+!        MenuBarCppAppButton.men
+!
+!   Please see the "Adding Custom Applications to NX" chapter of the
+!   NX Open Programmer's Guide or search the documentation for
+!   "MenuBarCppApp" for a detailed description of this example.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   to allow you create your own application.
+!
+!   Additional information on MenuScript can be found in:
+!   Additional information on MenuScript can be found in:
+!     - the MenuScript User's Guide
+!     - the NXOpen Programmer's Guide
+!     - the NX Open C++ Reference Guide (see MenuBar)
+!     - the Open C Programmer's Guide
+!     - any other place in the NX documentation that comes up when
+!       you search for "MenuScript" or "MenuBar"
+!
+!    This menu file must be placed in the "startup" directory under a 
+!    directory listed in the file pointed to by the environment variable
+!    in UGII_CUSTOM_DIRECTORY_FILE (i.e. the menu file must not be in
+!    the "application" directory).
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MENU UG_APPLICATION
+
+! ***NOTE button name must match the name you registered for
+! your application in the MenuBarManager()->RegisterApplication call 
+
+    APPLICATION_BUTTON SAMPLE_CPP_APP
+
+    LABEL Sample CPP Application
+
+    LIBRARIES MenuBarCppApp
+
+    MENU_FILES MenuBarCppApp.men 
+
+END_OF_MENU 

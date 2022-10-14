@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>ConfigureContextMenu</title>
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	</head>
+	<body>
+		<DIV class="Section1">
+			<H3>ConfigureContextMenu
+			</H3>
+			<P>This example demonstrates how to customize context menus in NX. 
+			It defines basic functionality for making changes to context menu 
+			options for both the C Sharp and VB.Net languages.</P>
+			<H4>How to run the example</H4>
+			<P>Unless noted otherwise, the commands in these instructions must be run from an
+				NX command prompt.&nbsp; See the general notes of the examples for <A href="../README.htm#How_to_start_an_NX_command_prompt">
+					instructions on how to start an NX command prompt</A>.</P>
+			<P>Instructions for Windows: All commands are the same as in Unix except substitute
+				"make" with "nmake -f Makefile_win".</P>
+			<H5>Batch mode</H5>
+			<P>Not Applicable - the Context Menu is part of the UI</P>
+			<H5>Interactive mode</H5>
+			<OL style="MARGIN-TOP: 0in" type="1">
+				<LI class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+					Compile the example
+			        <PRE style="MARGIN-LEFT: 0.5in">make </PRE>
+				</LI>
+				<LI>
+				    Copy the output ConfigureContextMenu.class file into the "startup" directory in one of the following :
+                        <OL style="MARGIN-TOP: 0in" type="1">
+			      <LI> $UGII_USER_DIR/startup</LI>
+			      <LI> For released applications, using UGII_CUSTOM_DIRECTORY_FILE is highly recommended. This variable is set to a full directory path to a file containing a list of root directories for all custom applications.  e.g., UGII_CUSTOM_DIRECTORY_FILE=<NX install directory>\ugii\menus\custom_dirs.dat</LI>
+                        </OL>
+
+				</LI>
+				<LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					Start NX.
+				</LI>
+				<LI>
+				    Create a new part
+				</LI>
+				<LI>
+				    Change the Role to Advanced if not set.
+				</LI>
+				<LI>
+				    Insert a Block, go to Insert->Design Feature->Block. 
+				</LI>
+				<LI>
+				    Right Click on the Block in the Part Navigator.  Notice that Properties has moved to the top of the context menu and is the default option.
+				</LI>
+				<LI>
+				    Right Click on the Block in the Graphics Window.  Notice that here the Delete option has been removed.
+				</LI>
+				<LI>
+				    Insert a Cylinder, go to Insert->Design Feature->Cylinder.
+				</LI>
+				<LI>
+				    Right Click on the Cylinder in the Graphics Window.  Notice that the submenu "Custom" has been added that includes a Visualization Preferences entry.
+				</LI>
+			</OL>
+		</DIV>
+	</body>
+</html>

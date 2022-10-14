@@ -1,0 +1,73 @@
+!*=======================================================================
+!
+!        Copyright (c) 2007 Siemens
+!        Unpublished - All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding a C++ application to NX.  
+!   This example uses the following files included in the UGOPEN kit:
+!        MenuBarCppApp.cpp
+!        MenuBarCppApp.h
+!        MenuBarCppApp.men
+!        MenuBarCppAppButton.men
+!
+!   Please see the "Adding Custom Applications to NX" chapter of the
+!   NX Open Programmer's Guide or search the documentation for
+!   "MenuBarCppApp" for a detailed description of this example.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   to allow you create your own application.
+!
+!   Additional information on MenuScript can be found in:
+!     - the MenuScript User's Guide
+!     - the NXOpen Programmer's Guide
+!     - the NX Open C++ Reference Guide (see MenuBar)
+!     - the Open C Programmer's Guide
+!     - any other place in the NX documentation that comes up when
+!       you search for "MenuScript" or "MenuBar"
+!
+!    This menu file must be placed in the "application" directory under a 
+!    directory listed in the file pointed to by the environment variable
+!    in UGII_CUSTOM_DIRECTORY_FILE (i.e. the menu file must not be in
+!    the "startup" directory).
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+TOP_MENU
+
+CASCADE_BUTTON SAMPLE_CPP_APP_MENU
+LABEL Sample CPP
+
+END_OF_TOP_MENU
+
+MENU SAMPLE_CPP_APP_MENU
+
+BUTTON SAMPLE_CPP_APP_BUTTON1
+LABEL Print Button ID
+ACTIONS SAMPLE_CPP_APP__action1
+
+BUTTON SAMPLE_CPP_APP_BUTTON2
+LABEL Test Callback Returns
+ACTIONS SAMPLE_CPP_APP__action2
+
+BUTTON SAMPLE_CPP_APP_BUTTON3
+LABEL Print Application ID
+ACTIONS SAMPLE_CPP_APP__action3
+
+BUTTON SAMPLE_CPP_APP_BUTTON4
+LABEL Print This Button Data
+ACTIONS SAMPLE_CPP_APP__action4
+
+TOGGLE_BUTTON SAMPLE_CPP_APP_BUTTON5
+LABEL Print Toggle Status
+ACTIONS SAMPLE_CPP_APP__action5
+
+
+END_OF_MENU

@@ -1,0 +1,33 @@
+--Log entry goes here--
+New part : 
+Successful:Assem.SetWorkPart
+Successful:Modl.CreateBlock1
+Successful:AskFeatBody
+Successful:Modl.AskBodyEdges
+Successful:Modl.AskListCount
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.AskListItem
+Successful:Modl.AskEdgeVerts
+Successful:Modl.CreateBlend
+End of Log File

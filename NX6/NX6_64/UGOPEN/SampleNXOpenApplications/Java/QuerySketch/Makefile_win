@@ -1,0 +1,10 @@
+NXOPENJARDIR = $(UGII_ROOT_DIR)
+CLASSPATH = .;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUI.jar;$(NXOPENJARDIR)/NXOpenUF.jar
+
+SketchQueryExample.class:
+	javac -classpath $(CLASSPATH) SketchQueryExample.java
+
+run: SketchQueryExample.class
+	java -classpath $(CLASSPATH) SketchQueryExample -b
+
+	

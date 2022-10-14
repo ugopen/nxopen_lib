@@ -1,0 +1,13 @@
+# Sample Criteria file for tet. meshing
+
+# Criterion    ON/OFF  --    Ideal    
+
+1 warp              1   1    5.0
+2 taper             1   1    0.5
+3 aspect ratio      1   1    1.00  
+4 2D min angle      1   1   45.00      
+5 2D max angle      1   1   135.00    
+6 skew              1   1   30.00   
+7 jacobian ratio    1   1    5.0 
+8 jacobian          1   1    1.00     
+9 tet collapse      1   1   100.00    

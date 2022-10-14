@@ -1,0 +1,15 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;"
+JAVAC_FLAGS = 
+
+compile: AssemblyListing.jar
+
+nxopen\examples\assemblies\AssemblyListing.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) nxopen\examples\assemblies\AssemblyListing.java
+	
+AssemblyListing.jar: nxopen\examples\assemblies\AssemblyListing.class
+	echo Main-Class: nxopen.examples.assemblies.AssemblyListing> manifest.txt
+	jar cmf manifest.txt AssemblyListing.jar nxopen utils
+
+run: compile
+	java -classpath $(CLASSPATH);AssemblyListing.jar nxopen.examples.assemblies.AssemblyListing -p ..\parts\toycar_assy.prt

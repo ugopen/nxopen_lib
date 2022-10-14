@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  -->
+
+<CustomFeatureLib
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="CustomFeatureConfiguration_schema.xsd">
+    <CustomFeature 
+    FeatureClass="NXOpen::CustomFeature::TelescopeMirrorReflectorCurveGenerator" 
+    FeatureName="Telescope Mirror Reflector Curve" 
+    FeatureIcon="TelescopeMirrorReflectorCurveGenerator" 
+    FeatureLibrary="TelescopeMirrorReflectorCurveGeneratorCore"
+    IsWithoutBody="true"/>
+</CustomFeatureLib>

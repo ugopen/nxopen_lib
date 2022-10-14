@@ -1,0 +1,16 @@
+NXOPENJARDIR=$(UGII_BASE_DIR)\nxbin
+CLASSPATH=.;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUI.jar;$(NXOPENJARDIR)/NXOpenUF.jar
+JAVAC_FLAGS = 
+
+compile: UIStylerSelectionExample.jar
+
+UIStylerSelectionExample.jar: UIStylerSelectionExample.class
+    echo Main-Class: UIStylerSelectionExample> manifest.txt
+    jar cmf manifest.txt UIStylerSelectionExample.jar UIStylerSelectionExample.class
+
+UIStylerSelectionExample.class:
+    javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) UIStylerSelectionExample.java
+
+clean:
+    - del UIStylerSelectionExample.class
+    - del UIStylerSelectionExample.jar

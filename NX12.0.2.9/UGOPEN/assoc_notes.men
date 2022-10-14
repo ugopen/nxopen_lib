@@ -1,0 +1,15 @@
+!  NX UDO customized menu file for Associate Notes demo 
+!  See ufx_udo.h for documentation and use of this file.
+!
+! 
+!
+VERSION 120
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MENU UG_VIEW
+
+BUTTON UG_ASSOC_NOTES
+LABEL Associate Notes...
+ACTIONS ug_demo_assoc_notes
+
+END_OF_MENU

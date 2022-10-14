@@ -1,0 +1,100 @@
+<!--  -->
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Complie Link Readme</title>
+</head>
+
+<body>
+
+<h3>Compile Link Readme</h3>
+<p>==========================================================================================================================<br>
+-------------------------------<br>
+<b>How to Build C++ examples<br></b>
+-------------------------------<br></p>
+
+   <b>Windows</b>
+   <ol>
+	  <li> Using Visual Studio - create a new project using the NX Open AppWizard.
+		   This is described in the Automation -> NXOpen -> Open for C/C++ -> 
+		   Open C Reference Guide -> Overview -> Setting up your system. 
+		   When setting the Application Settings,
+		   select "Create an Internal application" and select C++ as the language.</li>
+
+	  <li> Remove all the existing files from project.</li>
+
+	  <li> Add the cpp_part_callbacks.cpp, cpp_part_callbacks.h to Source Files and Header Files respectively 
+		   by selecting the Project pulldown and select "Add Existing Item...". Select the file 
+		   using the popup window.</li>
+
+	  <li> Build the internal image by going to the Build menu and selecting either 
+		  "Build Solution" or "Rebuild Solution".</li>
+	</ol>
+   <br>This will create an executable called cpp_part_callbacks.dll in the Debug directory.<br>
+
+   <p>The uflink tool can also be used to create the executable by following these steps:
+   <ol>
+	   <li> Open an NX command prompt window.</li>
+	   <li> Change directories to the directory containing the source code.</li>
+	   <li> Compile and link using uflink:</li><br>
+	   &nbsp &nbsp &nbsp &nbsp ufcomp cpp_part_callbacks.cpp<br>
+	   &nbsp &nbsp &nbsp &nbsp uflink UFDLL=cpp_part_callbacks.dll<br>
+   </ol>
+
+   This will create cpp_part_callbacks.dll in the current directory. </p>
+
+   <b>Unix</b>
+   <ol>
+	   <li> Start up an NX command prompt window then start up ufmenu ($UGII_BASE_DIR/ugopen/ufmenu).</li>
+	   <li> Compile the program accepting the defaults.</li>
+	   <li> Link an internal user function program.</li>
+	   <li> Answer the first question for linking with an "i" (Link internal/external user function (i/e):)</li><br> 
+		  &nbsp &nbsp &nbsp  Select "y" for the next input to create an application with user interface code<br>
+		  &nbsp &nbsp &nbsp  Select “y” for the next input to Link a UG/Open++ Image (y/n).<br>
+	   <li> Take the default linking options.</li>
+	   <li> Provide the name of the program to link => cpp_part_callbacks</li>
+	   <li> Do not add any subroutines or libraries.</li>
+   </ol>    
+   This will create cpp_part_callbacks.so in the current directory.<br>
+
+   Exit out of ufmenu.<br><br>
+
+==========================================================================================================================<br>
+----------------------------------<br>
+<b>How to Build VB/C# examples<br></b>
+----------------------------------<br>
+<ol>
+	<li> Open Microsoft Visual Studio .Net.</li>
+
+	<li> Create a new VB/C# project using the NX Open AppWizard. This is described in the 
+	   NX Open Programmers Guide -> Wizard Setup.<br>
+	   Also information under Creating NX Open Automation -> Applications will be helpful.
+	   When setting the Application Settings, select "Create an Internal application"
+	   and select NXOpen.UI API. <br>
+	   Select to activate the application Explicitly and to unload when NX terminates.
+	   Then pick Finish.</li>
+
+	<li>  Add the vb_part_callbacks.vb to the project by selecting the Project pulldown and select 
+		"Add Existing Item...". Select the file using the popup window.</li>
+
+	<li> Build the internal image by going to the Build menu and selecting either "Build" or "Rebuild".</li>
+</ol>
+This will create an executable called vb_part_callbacks.dll in the Release directory.<br>
+==========================================================================================================================<br>
+----------------------------------<br>
+<b>How to Build JAVA examples<br></b>
+----------------------------------<br>
+
+<br>Use following commands to compile the example</br>
+<b>Windows</b>
+<br>&nbsp;&nbsp;nmake -f Makefile_win</br>
+
+<b>Unix</b>
+<br>&nbsp;&nbsp;make</br>
+==========================================================================================================================<br>
+</body>
+
+</html>

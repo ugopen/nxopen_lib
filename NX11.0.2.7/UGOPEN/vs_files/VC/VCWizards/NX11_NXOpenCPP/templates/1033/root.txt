@@ -1,0 +1,326 @@
+//[!output PROJECT_NAME]
+
+// Mandatory UF Includes
+#include <uf.h>
+#include <uf_object_types.h>
+
+[!if DLL_APPLICATION]
+// Internal Includes
+#include <NXOpen/ListingWindow.hxx>
+#include <NXOpen/NXMessageBox.hxx>
+[!if USE_SELECTION_BY_MASK || USE_SELECTION_BY_TYPE || USE_SELECTION_ANY]
+#include <NXOpen/Selection.hxx>
+[!endif]
+#include <NXOpen/UI.hxx>
+[!endif]
+
+// Internal+External Includes
+#include <NXOpen/Annotations.hxx>
+#include <NXOpen/Assemblies_Component.hxx>
+#include <NXOpen/Assemblies_ComponentAssembly.hxx>
+#include <NXOpen/Body.hxx>
+#include <NXOpen/BodyCollection.hxx>
+#include <NXOpen/Face.hxx>
+#include <NXOpen/Line.hxx>
+#include <NXOpen/NXException.hxx>
+#include <NXOpen/NXObject.hxx>
+#include <NXOpen/Part.hxx>
+#include <NXOpen/PartCollection.hxx>
+#include <NXOpen/Session.hxx>
+
+// Std C++ Includes
+#include <iostream>
+#include <sstream>
+
+using namespace NXOpen;
+using std::string;
+using std::exception;
+using std::stringstream;
+using std::endl;
+using std::cout;
+using std::cerr;
+
+[!if USE_INTEROP]
+//------------------------------------------------------------------------------
+// Open C error handling
+//------------------------------------------------------------------------------
+#define UF_CALL(X) (report_error( __FILE__, __LINE__, #X, (X)))
+int report_error( char *file, int line, char *call, int code)
+{
+    if (code) 
+	{
+
+		stringstream errmsg;
+		errmsg << "Error " << code << " in " << file << " at line " << line << endl;
+		errmsg << call << endl;
+[!if DLL_APPLICATION]
+		UI::GetUI()->NXMessageBox()->Show("Open C Error", NXOpen::NXMessageBox::DialogTypeError, errmsg.str().c_str());
+[!else]
+		cerr << errmsg.str();
+[!endif]	
+		throw NXOpen::NXException::Create(code);
+	}
+    return(code);
+}
+[!endif]
+
+//------------------------------------------------------------------------------
+// NXOpen c++ test class 
+//------------------------------------------------------------------------------
+class [!output MAIN_CLASS_NAME]
+{
+    // class members
+public:
+    static Session *theSession;
+[!if DLL_APPLICATION]
+    static UI *theUI;
+[!endif]
+
+    [!output MAIN_CLASS_NAME]();
+    ~[!output MAIN_CLASS_NAME]();
+
+	void do_it();
+	void print(const NXString &);
+	void print(const string &);
+	void print(const char*);
+[!if USE_SELECTION_BY_MASK]
+	TaggedObject* select_by_mask();
+[!endif]
+[!if USE_SELECTION_BY_TYPE]
+	TaggedObject* select_by_type();
+[!endif]
+[!if USE_SELECTION_ANY]
+	std::vector< NXOpen::TaggedObject * > select_any_objects();
+[!endif]
+
+private:
+	Part *workPart, *displayPart;
+[!if DLL_APPLICATION]
+[!if USE_SELECTION_BY_MASK || USE_SELECTION_BY_TYPE || USE_SELECTION_ANY]
+	Selection *selmgr;
+[!endif]
+	NXMessageBox *mb;
+	ListingWindow *lw;
+	LogFile *lf;
+[!endif]
+};
+
+//------------------------------------------------------------------------------
+// Initialize static variables
+//------------------------------------------------------------------------------
+Session *([!output MAIN_CLASS_NAME]::theSession) = NULL;
+[!if DLL_APPLICATION]
+UI *([!output MAIN_CLASS_NAME]::theUI) = NULL;
+[!endif]
+
+//------------------------------------------------------------------------------
+// Constructor 
+//------------------------------------------------------------------------------
+[!output MAIN_CLASS_NAME]::[!output MAIN_CLASS_NAME]()
+{
+[!if USE_INTEROP]	
+	// Initialize the Open C API environment */
+	UF_CALL( UF_initialize() );
+[!endif]
+
+	// Initialize the NX Open C++ API environment
+	[!output MAIN_CLASS_NAME]::theSession = NXOpen::Session::GetSession();
+[!if DLL_APPLICATION]
+	[!output MAIN_CLASS_NAME]::theUI = UI::GetUI();
+[!if USE_SELECTION_BY_MASK || USE_SELECTION_BY_TYPE || USE_SELECTION_ANY]
+	selmgr = theUI->SelectionManager();
+[!endif]
+	mb = theUI->NXMessageBox();
+	lw = theSession->ListingWindow();
+	lf = theSession->LogFile();
+[!endif]
+
+    workPart = theSession->Parts()->Work();
+	displayPart = theSession->Parts()->Display();
+	
+}
+
+//------------------------------------------------------------------------------
+// Destructor
+//------------------------------------------------------------------------------
+[!output MAIN_CLASS_NAME]::~[!output MAIN_CLASS_NAME]()
+{
+[!if USE_INTEROP]
+	UF_CALL( UF_terminate() );
+[!endif]
+}
+
+//------------------------------------------------------------------------------
+// Print string to listing window or stdout
+//------------------------------------------------------------------------------
+void [!output MAIN_CLASS_NAME]::print(const NXString &msg)
+{
+[!if DLL_APPLICATION]
+	if(! lw->IsOpen() ) lw->Open();
+	lw->WriteLine(msg);
+[!else]
+	cout << msg.GetText() << endl;
+[!endif]
+}
+void [!output MAIN_CLASS_NAME]::print(const string &msg)
+{
+[!if DLL_APPLICATION]
+	if(! lw->IsOpen() ) lw->Open();
+	lw->WriteLine(msg);
+[!else]
+	cout << msg << endl;
+[!endif]
+}
+void [!output MAIN_CLASS_NAME]::print(const char * msg)
+{
+[!if DLL_APPLICATION]
+	if(! lw->IsOpen() ) lw->Open();
+	lw->WriteLine(msg);
+[!else]
+	cout << msg << endl;
+[!endif]
+}
+
+[!if USE_SELECTION_BY_MASK]
+//------------------------------------------------------------------------------
+// Selection with mask
+//------------------------------------------------------------------------------
+TaggedObject* [!output MAIN_CLASS_NAME]::select_by_mask()
+{
+	NXString message("Select an object by mask:");
+	NXString title("Select object");
+	Selection::SelectionScope scope = Selection::SelectionScopeUseDefault;
+	Selection::SelectionAction action = Selection::SelectionActionClearAndEnableSpecific;
+	bool include_features = 0;
+	bool keep_highlighted = 0;
+
+	// Define the mask triple(s), see also uf_object_types.h.
+	// Uncomment or combine the desired mask triples
+	std::vector<Selection::MaskTriple> maskArray(1);
+	maskArray[0] = Selection::MaskTriple( UF_solid_type, UF_solid_body_subtype, 0 ); // Bodies
+	/*
+	maskArray[0] = Selection::MaskTriple( UF_solid_type, UF_all_subtype, UF_UI_SEL_FEATURE_ANY_FACE); // Faces
+	maskArray[0] = Selection::MaskTriple( UF_solid_type, UF_all_subtype, UF_UI_SEL_FEATURE_ANY_EDGE); // Edges
+	maskArray[0] = Selection::MaskTriple( UF_component_type, 0, 0 ); // Components
+	maskArray[0] = Selection::MaskTriple( UF_line_type, 0, 0 ); // Lines
+	maskArray[0] = Selection::MaskTriple( UF_drafting_entity_type, 0, 0 ); // Drafting objects
+	*/
+	Point3d cursor;
+	TaggedObject *object;
+
+	// Select objects using filter defined by maskArray triples
+	Selection::Response res = selmgr->SelectTaggedObject(
+			message, title, scope, action, include_features,
+            keep_highlighted, maskArray, &object, &cursor );
+
+	if( res == Selection::ResponseObjectSelected )
+	{
+		return object;
+	}
+	return 0;
+}
+[!endif]
+
+[!if USE_SELECTION_BY_TYPE]
+//------------------------------------------------------------------------------
+// Selection with type array
+//------------------------------------------------------------------------------
+TaggedObject* [!output MAIN_CLASS_NAME]::select_by_type()
+{
+	NXString message("Select an object by type:");
+	NXString title("Select object");
+	Selection::SelectionScope scope = Selection::SelectionScopeUseDefault;
+	bool keep_highlighted = 0;
+
+	// Define type array, see Selection::SelectionType Enumeration
+	// Uncomment or combine the desired types
+	std::vector<Selection::SelectionType> typeArray(1);
+	typeArray[0] = Selection::SelectionTypeAll;
+	/*
+	typeArray[0] = Selection::SelectionTypeFeatures;
+	typeArray[0] = Selection::SelectionTypeCurves;
+	typeArray[0] = Selection::SelectionTypeFaces;
+	typeArray[0] = Selection::SelectionTypeEdges;
+	typeArray[0] = Selection::SelectionTypeCurvesAndEdges;
+	*/
+	Point3d cursor;
+	TaggedObject *object;
+
+	// Select objects using filter defined by type array
+	Selection::Response res = selmgr->SelectTaggedObject(
+			message, title, scope, keep_highlighted, 
+			typeArray, &object, &cursor );
+
+	if( res == Selection::ResponseObjectSelected )
+	{
+		return object;
+	}
+	return 0;
+}
+[!endif]
+
+[!if USE_SELECTION_ANY]
+//------------------------------------------------------------------------------
+// Selection any objects
+//------------------------------------------------------------------------------
+std::vector< NXOpen::TaggedObject * > [!output MAIN_CLASS_NAME]::select_any_objects()
+{
+	NXString message("Select any objects:");
+	NXString title("Select objects");
+	Selection::SelectionScope scope = Selection::SelectionScopeUseDefault;
+	bool include_features = 0;	
+	bool keep_highlighted = 0;
+	std::vector< NXOpen::TaggedObject * > objectArray;
+
+	// Select any object array
+	Selection::Response res = selmgr->SelectTaggedObjects(
+			message, title, scope, include_features, 
+			keep_highlighted, objectArray );
+
+	return objectArray;
+}
+[!endif]
+
+//------------------------------------------------------------------------------
+// Do something
+//------------------------------------------------------------------------------
+void [!output MAIN_CLASS_NAME]::do_it()
+{
+[!if USE_SELECTION_BY_MASK]
+	TaggedObject* masked_obj = select_by_mask();
+[!endif]
+[!if USE_SELECTION_BY_TYPE]
+	TaggedObject* typed_obj = select_by_type();
+[!endif]
+[!if USE_SELECTION_ANY]
+	std::vector< NXOpen::TaggedObject * > any_objs = select_any_objects();
+[!endif]
+
+	// TODO: add your code here
+	
+}
+
+[!if EXE_APPLICATION]
+//------------------------------------------------------------------------------
+// Entry point for unmanaged external NXOpen C/C++ programs
+//------------------------------------------------------------------------------
+int main(int argc, char* argv[])
+[!output BODY_TEMPLATE]
+[!else]
+//------------------------------------------------------------------------------
+// Entry point(s) for unmanaged internal NXOpen C/C++ programs
+//------------------------------------------------------------------------------
+[!output ENTRY_POINTS_TEMPLATE]
+[!endif]
+
+[!if DLL_APPLICATION]
+//------------------------------------------------------------------------------
+// Unload Handler
+//------------------------------------------------------------------------------
+extern "C" DllExport int ufusr_ask_unload()
+{
+	return (int)NXOpen::Session::LibraryUnloadOptionImmediately;
+}
+[!endif]
+
+

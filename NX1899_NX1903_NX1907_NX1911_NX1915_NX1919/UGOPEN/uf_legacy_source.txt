@@ -1,0 +1,5104 @@
+/*==============================================================================
+
+             Copyright (c) 1998-2000 Unigraphics Solutions Inc.
+                     Unpublished - All rights reserved
+================================================================================
+
+
+    File for Implementations for Legacy UG/Open Routines.
+
+==============================================================================*/
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include <uf_defs.h>
+#include <uf_legacy.h>
+#include <uf.h>
+#include <uf_obj.h>
+#include <uf_object_types.h>
+#include <uf_disp.h>
+#include <uf_group.h>
+#include <uf_error_bases.h>
+#include <uf_assem.h>
+#include <uf_std.h>
+#include <uf_vec.h>
+#include <uf_cfi.h>
+#include <uf_obj.h>
+#include <uf_mtx.h>
+#include <uf_curve.h>
+#include <uf_modl.h>
+#include <uf_csys.h>
+#include <uf_attr.h>
+#include <uf_udobj.h>
+#include <uf_layer.h>
+#include <uf_layout.h>
+#include <uf_ui.h>
+#include <uf_object_types.h>
+#include <uf_gent.h>
+#include <uf_patt.h>
+#include <uf_view.h>
+#include <uf_drf_types.h>
+#include <uf_part.h>
+#include <uf_draw.h>
+#include <uf_drf_errors.h>
+#include <uf_drf.h>
+#include <uf_bound.h>
+#include <uf_modl_error.h>
+#include <uf_sket.h>
+#include <uf_ugmgr.h>
+#include <uf_clone.h>
+#include <uf_text.h>
+#include <uf_sf_retiring.h>
+
+/* Error num as def in assy.h */
+#define ASSY_err_clone_init_error            720092
+#define ASSY_err_clone_invalid_action        720097
+
+
+static void uf5429_vector(double *rp1, double *rp2, double *rp3, int *ir4, double *rr5);
+
+static int UF_OBJ__generic_display_props ( tag_t object_id , int flavor );
+
+static int CONVERT_char_to_cstring(char *cr3, char **string1, short cr3_len);
+static int CONVERT_char_to_cstring_with_blanks(char *cr3, char **string1, short cr3_len);
+
+static int CONVERT_cstring_to_char(char *string1, char *cr3, short cr3_len);
+
+static void CONVERT_char_to_f77array(int *string1, int *ir2, char *cr5, short cr5_len);
+
+static int CONVERT_char_to_cstring(char *cr3, char **string1, short cr3_len)
+{
+    char *string;
+    int err=0, n;
+
+    if (cr3 == NULL) 
+      return (-1);
+
+    n = (int )cr3_len;
+    /* Remove trailing blanks. */
+    while (n && cr3[n-1] == ' ')
+         --n;
+
+    string = (char *)malloc(sizeof(char)*cr3_len + 1);
+    strncpy(string, cr3, n);
+    string[n] = '\0';
+    *string1 = string;
+    return (err);
+
+}
+
+/* Same as CONVERT_char_to_cstring, but trailing blanks are not stripped */
+static int CONVERT_char_to_cstring_with_blanks
+                      (char *cr3, char **string1, short cr3_len)
+{
+    char *string;
+    int err=0, n;
+
+    if (cr3 == NULL) 
+      return (-1);
+
+    n = (int )cr3_len;
+
+    string = (char *)malloc(sizeof(char)*cr3_len + 1);
+    strncpy(string, cr3, n);
+    string[n] = '\0';
+    *string1 = string;
+    return (err);
+
+}
+static int CONVERT_cstring_to_char(char *string1, char *cr3, short cr3_len)
+{
+    int err=0, len;
+
+    if(string1 == NULL) 
+      return (-1);
+
+    if(cr3 == NULL) 
+      return (-1);
+
+    /* Blank the destination string. */
+    memset(cr3, ' ', cr3_len);
+    if ( string1 == NULL)
+       return err;
+
+    len = strlen(string1);
+    if(len > cr3_len)
+       len = cr3_len;
+    strncpy(cr3, string1, len);
+    return (err);
+
+}
+
+
+static void CONVERT_char_to_f77array(int *string1, int *ir2, char *cr5, short cr5_len)
+{
+    char *ptr1, *ptr2, *ptr3;
+    int no_of_strings, indx, count;
+
+    no_of_strings = *ir2;
+    ptr1 = (char *)&string1[1];
+    ptr2 = ptr1;
+
+    for(indx=0; indx<no_of_strings; indx++)
+    {
+       if(indx <= string1[0])
+       {
+          while(*ptr2 != '*')
+             ptr2++;
+
+          count = ptr2 - ptr1;
+          if(count > 150)
+             count = 150;
+          ptr3 = (char *)malloc(sizeof(char)*count + 1);
+          strncpy(ptr3, ptr1, count);
+          ptr3[count] = '\0';
+          CONVERT_cstring_to_char(ptr3, &cr5[cr5_len*indx], cr5_len);
+          free(ptr3);
+          ptr1 = ptr2 + 1;
+       }
+       else
+       {
+          memset(&cr5[cr5_len*indx], ' ', cr5_len);
+       }
+    }
+}
+
+#define WORDLEN (sizeof(int)*8)
+static int mbtts( const int ip1[], const int *ip2)
+/*     INTEGER FUNCTION MBTTS (IP1, IP2)
+ *
+ *      TEST A SPECIFIED BIT IN A WORDLEN BIT WORD ARRAY.
+ *      THIS FUNCTION RETURNS A VALUE OF '0' IF THE BIT IS CLEARED
+ *      OR '1' IF THE BIT IS SET.
+ *
+ *      INPUT:
+ *              IP1     WORDLEN BIT ARRAY, A SPECIFIED BIT OF WHICH IS TO BE TESTED
+.
+ *              IP2     POSITION OF BIT [0 - 32767] TO BE TESTED
+ *      OUTPUT:
+ *              MBTTS   RESULTS OF TEST:
+ *                              0       BIT WAS CLEARED
+ *                              1       BIT WAS SET
+ *
+ */
+{
+       return ((((ip1[(*ip2 / WORDLEN)] & (1 << (*ip2 % WORDLEN))) == 0) ? 0 : 1));
+}
+
+
+
+
+extern void FTN(uf_assem_ftn_count_ref_sets_in)( tag_t *object, int *count)
+{
+        *count = UF_ASSEM_count_ref_sets_in(*object);
+}
+
+extern void FTN(uf_assem_ftn_get_ref_set_inst)( tag_t *object, int *number, tag_t *ref_set)
+{
+        *ref_set = UF_ASSEM_get_ref_set_inst(*object, *number);
+}
+
+extern int UF_ATTR_count( tag_t object, int type )
+{
+        int count = 0;
+
+        if ( UF_ATTR_count_attributes( object, type, &count ) != 0 )
+            count = -1;
+
+        return (count);
+} 
+
+extern int UF_ATTR_find( tag_t object, int type, char *title )
+{
+        int title_type = 0;
+ 
+        if ( UF_ATTR_find_attribute( object, type, title, &title_type ) != 0 )
+            title_type = -1;
+
+        return (title_type);
+} 
+
+extern int FTN(uf_attr_ftn_count)( tag_t *object, int *type )
+{
+        int count = 0;
+       
+        if ( UF_ATTR_count_attributes( *object, *type, &count ) != 0 )
+            count = -1;
+      
+        return (count);           
+}  
+
+extern void FTN(uf_attr_ftn_delete_all)( tag_t *object, int *type )
+{
+        UF_ATTR_delete_all( (tag_t) *object, (int) *type );
+} 
+
+extern int FTN(uf_ftn_initialize) ( void )
+{
+	return ( UF_initialize ( ) );
+}
+
+extern int FTN(uf_ftn_terminate) ( void )
+{
+	return ( UF_terminate ( ) );
+}
+
+extern void FTN(uf5005)(const int *ip1, int *ir2)
+{
+	UF_LAYER_ask_status(*ip1, ir2);
+}
+
+extern void FTN(uf5006)(const int *ip1, const int *ip2)
+{
+   	UF_LAYER_set_status(*ip1,*ip2);
+}
+
+extern int FTN(uf5011) ( const tag_t *object_id )
+{
+	int type , subtype , return_code;
+
+	if ( ( return_code = UF_OBJ_ask_type_and_subtype ( *object_id , &type ,
+	    &subtype ) ) == 0 )
+		return_code = subtype;
+	return ( return_code );
+}
+
+extern int FTN(uf5013) ( const tag_t *object_id )
+{
+	return ( UF_OBJ__generic_display_props ( *object_id , 1 ) );
+}
+
+extern void FTN(uf5014) ( const tag_t *object_id , const int *layer )
+{
+	UF_OBJ_set_layer ( *object_id , *layer );
+}
+
+extern int FTN(uf5015) ( const tag_t *object_id )
+{
+	return ( UF_OBJ__generic_display_props ( *object_id , 2 ) );
+}
+
+extern void FTN(uf5016) ( const tag_t *object_id , const int *color )
+{
+	UF_OBJ_set_color ( *object_id , *color );
+}
+
+extern int FTN(uf5017) ( const tag_t *object_id )
+{
+	return ( UF_OBJ__generic_display_props ( *object_id , 3 ) );
+}
+
+extern void FTN(uf5018) ( const tag_t *object_id , const int *status )
+{
+	UF_OBJ_set_blank_status ( *object_id , *status );
+}
+
+extern int FTN(uf5019) ( const tag_t *object_id )
+{
+	return ( UF_OBJ__generic_display_props ( *object_id , 4 ) );
+}
+
+extern void FTN(uf5020) ( const tag_t *object_id , const int *width )
+{
+	UF_OBJ_set_line_width ( *object_id , *width );
+}
+
+extern int FTN(uf5021) ( const tag_t *object_id )
+{
+	return ( UF_OBJ__generic_display_props ( *object_id , 5 ) );
+}
+
+extern void FTN(uf5022) ( const tag_t *object_id , const int *font )
+{
+	UF_OBJ_set_font ( *object_id , *font );
+}
+
+extern void FTN(uf5023) ( int *ip1 )
+{
+        tag_t   work_part = UF_ASSEM_ask_work_part ( );
+
+	if (work_part != NULL_TAG)
+	{
+		UF_PART_ask_units(work_part, ip1);
+	}
+	else
+	{
+		*ip1 = UF_err_part_not_loaded;
+	}
+}
+
+extern void FTN(uf5030) ( const double rp1 [ 6 ] , tag_t *nr2 )
+{
+        double   matrix [ 9 ];
+
+        UF_MTX3_initialize ( rp1 , &rp1 [ 3 ] , matrix );
+        UF_CSYS_create_matrix( matrix , nr2);
+}
+
+extern void FTN(uf5031)(const tag_t *np1, double rar2 [ 9 ] )
+{
+        UF_CSYS_ask_matrix_values(*np1,rar2);
+}
+
+extern void FTN(uf5032)(const tag_t *np1, tag_t *nr2)
+{
+        UF_CSYS_ask_matrix_of_object (*np1,nr2);
+}
+
+extern void FTN(uf5033) ( const tag_t *np1 , double rar2 [ 9 ] )
+{
+        tag_t	 matrix_id;
+
+        UF_CSYS_ask_matrix_of_object ( *np1 , &matrix_id );
+        UF_CSYS_ask_matrix_values( matrix_id , rar2 );
+}
+
+extern void FTN(uf5034)(const tag_t *np1, const tag_t *np2)
+{
+	UF_CSYS_edit_matrix_of_object (*np1,*np2);
+        UF_MODL_update();
+}
+
+extern void FTN(uf5034x)(const tag_t *np1, const tag_t *np2)
+{
+	UF_CSYS_edit_matrix_of_object (*np1,*np2);
+}
+
+extern void FTN(uf5035) ( const double rp1 [ 3 ] , const double rp2 [ 6 ] , tag_t *nr3 )
+{
+        tag_t	 matrix_id;
+        double	 matrix [ 9 ];
+
+        UF_MTX3_initialize ( rp2 , &rp2[ 3 ] , matrix );
+        UF_CSYS_create_matrix ( matrix , &matrix_id );
+        UF_CSYS_create_csys ( rp1 , matrix_id , nr3 );
+}
+
+extern void FTN(uf5036)(const tag_t *np1)
+{
+	UF_CSYS_set_wcs(*np1);
+}
+	
+extern void FTN(uf5037)(tag_t *nr1)
+{
+	UF_CSYS_ask_wcs(nr1);
+}
+
+extern void FTN(uf5038)(const tag_t *np1, double rr2 [ 3 ] )
+{
+	tag_t	matrix_id;
+
+	UF_CSYS_ask_csys_info ( *np1 , &matrix_id , rr2 );
+}
+
+extern void FTN(uf5040) ( double coords [ 3 ] , tag_t *point )
+{
+	UF_CURVE_create_point ( coords , point );
+}
+
+extern void FTN(uf5041) ( const tag_t *point , double point_coords [ 3 ] )
+{
+	UF_CURVE_ask_point_data ( *point , point_coords );
+}
+
+extern void FTN(uf5042) ( const tag_t *point , double  point_coords [ 3 ] )
+{
+	UF_CURVE_edit_point_data ( *point , point_coords );
+	UF_MODL_update();
+}
+
+extern void FTN(uf5042x) ( const tag_t *point , double point_coords [ 3 ] )
+{
+        UF_CURVE_edit_point_data ( *point , point_coords );
+}
+
+extern void FTN(uf5050) ( double line_end1 [ 3 ] , double line_end2 [ 3 ] ,
+			  tag_t *line )
+{
+        int             i;
+        UF_CURVE_line_t	line_coords;
+
+    
+        for ( i = 0 ; i < 3 ; i++ )
+	{
+	    line_coords.start_point [ i ] = line_end1 [ i ];
+	    line_coords.end_point [ i ] = line_end2 [ i ];
+	}
+        UF_CURVE_create_line ( &line_coords , line );
+}
+
+extern void FTN(uf5051) ( const tag_t *line , double line_end1 [ 3 ] ,
+                          double line_end2 [ 3 ] )
+{
+    int		i;
+    UF_CURVE_line_t	line_coords;
+
+    UF_CURVE_ask_line_data ( *line , &line_coords );
+    for ( i = 0 ; i < 3 ; i++ )
+	{
+	line_end1 [ i ] = line_coords.start_point [ i ];
+	line_end2 [ i ] = line_coords.end_point [ i ];
+	}
+}
+
+extern void FTN(uf5052) ( const tag_t *line , double line_end1 [ 3 ] ,
+                          double line_end2 [ 3 ] )
+{
+    int			i;
+    UF_CURVE_line_t	line_coords;
+
+    for ( i = 0 ; i < 3 ; i++ )
+	{
+	line_coords.start_point [ i ] = line_end1 [ i ];
+	line_coords.end_point [ i ] = line_end2 [ i ];
+	}
+    UF_CURVE_edit_line_data ( *line , &line_coords );
+    UF_MODL_update();
+}
+
+extern void FTN(uf5052x) ( const tag_t *line , double line_end1 [ 3 ] ,
+			   double line_end2 [ 3 ] )
+{
+        int		i;
+        UF_CURVE_line_t	line_coords;
+
+        for ( i = 0 ; i < 3 ; i++ )
+	{
+	    line_coords.start_point [ i ] = line_end1 [ i ];
+	    line_coords.end_point [ i ] = line_end2 [ i ];
+	}
+        UF_CURVE_edit_line_data ( *line , &line_coords );
+}
+
+extern void FTN(uf5060) ( const double *start_angle , const double
+			  *end_angle , double arc_center [ 3 ] , const
+			  double *radius , tag_t *arc )
+{
+    tag_t		wcs;
+    UF_CURVE_arc_t	arc_coords;
+
+    
+    UF_CSYS_ask_wcs ( &wcs );
+    UF_CSYS_ask_matrix_of_object ( wcs , &arc_coords.matrix_tag );
+    arc_coords.start_angle = *start_angle;
+    arc_coords.end_angle = ( *start_angle < *end_angle ) ? *end_angle :
+			   *end_angle + TWOPI;
+    arc_coords.arc_center [ 0 ] = arc_center [ 0 ];
+    arc_coords.arc_center [ 1 ] = arc_center [ 1 ];
+    arc_coords.arc_center [ 2 ] = arc_center [ 2 ];
+    arc_coords.radius = *radius;
+    UF_CURVE_create_arc ( &arc_coords , arc );
+}
+
+extern void FTN(uf5061) ( const tag_t *arc , double *start_angle ,
+                          double *end_angle , double arc_center [ 3 ] ,
+			  double *radius )
+{
+        UF_CURVE_arc_t	arc_coords;
+
+        UF_CURVE_ask_arc_data ( *arc , &arc_coords );
+        *start_angle = arc_coords.start_angle;
+        *end_angle = arc_coords.end_angle;
+        arc_center [ 0 ] = arc_coords.arc_center [ 0 ];
+        arc_center [ 1 ] = arc_coords.arc_center [ 1 ];
+        arc_center [ 2 ] = arc_coords.arc_center [ 2 ];
+        *radius = arc_coords.radius;
+}
+
+extern void FTN(uf5062) ( const tag_t *arc , const double *start_angle ,
+                          const double *end_angle ,
+			  double arc_center [ 3 ] , const double *radius )
+{
+        UF_CURVE_arc_t	arc_coords;
+
+        UF_CSYS_ask_matrix_of_object ( *arc , &arc_coords.matrix_tag );
+        arc_coords.start_angle = *start_angle;
+        arc_coords.end_angle = *end_angle;
+        arc_coords.arc_center [ 0 ] = arc_center [ 0 ];
+        arc_coords.arc_center [ 1 ] = arc_center [ 1 ];
+        arc_coords.arc_center [ 2 ] = arc_center [ 2 ];
+        arc_coords.radius = *radius;
+        UF_CURVE_edit_arc_data ( *arc , &arc_coords );
+        UF_MODL_update();
+}
+
+extern void FTN(uf5062x) ( const tag_t *arc , const double *start_angle ,
+                           const double *end_angle ,
+			   const double arc_center [ 3 ] , const double
+			   *radius )
+{
+        UF_CURVE_arc_t	arc_coords;
+
+        UF_CSYS_ask_matrix_of_object ( *arc , &arc_coords.matrix_tag );
+        arc_coords.start_angle = *start_angle;
+        arc_coords.end_angle = *end_angle;
+        arc_coords.arc_center [ 0 ] = arc_center [ 0 ];
+        arc_coords.arc_center [ 1 ] = arc_center [ 1 ];
+        arc_coords.arc_center [ 2 ] = arc_center [ 2 ];
+        arc_coords.radius = *radius;
+        UF_CURVE_edit_arc_data ( *arc , &arc_coords );
+}
+
+
+extern void FTN(uf5103)(const tag_t *object)
+{
+	UF_ATTR_delete_all(*object, UF_ATTR_any);
+}
+
+extern int FTN(uf5108)(const tag_t *object)
+{
+        int  count;
+
+        UF_ATTR_count_attributes(*object, UF_ATTR_string, &count);
+        return (count);
+}
+
+extern void FTN(uf5110)(tag_t *nr1)
+{
+	UF_ATTR_ask_part_attribute(nr1);
+}
+
+extern int FTN(uf5112)(const tag_t *object)
+{
+        int  count;
+
+        UF_ATTR_count_attributes(*object, UF_ATTR_integer, &count);
+        return (count);
+}
+
+extern int FTN(uf5116)(const tag_t *object)
+{
+        int  count;
+
+        UF_ATTR_count_attributes(*object, UF_ATTR_real, &count);
+        return (count);
+}
+
+extern int FTN(uf5120)(const tag_t *object)
+{
+        int  count;
+
+	UF_ATTR_count_attributes(*object, UF_ATTR_null, &count);
+	return (count);
+}
+
+extern int FTN(uf5124)(const tag_t *object)
+{
+        int  count;
+
+  	UF_ATTR_count_attributes(*object, UF_ATTR_time, &count);
+	return (count);
+}
+
+extern void FTN(uf5200)(tag_t *nr1)
+{
+	UF_LAYER_cycle_by_layer(0,nr1);
+}
+
+extern void FTN(uf5202)(tag_t *nr1, const int *ip2)
+{
+	UF_LAYER_cycle_by_layer(*ip2, nr1);
+}
+
+extern void FTN(uf5205) ( const tag_t *object_id )
+{
+	UF_OBJ_delete_object ( *object_id );
+}
+
+extern void FTN(uf5510)(tag_t *na1, const int *ip2, tag_t *nr3)
+{
+	UF_GROUP_create_group(na1, *ip2, nr3);
+}
+
+extern void FTN(uf5511)(const tag_t *np1, int *ir2)
+{
+	tag_t *group_members;
+
+	if(UF_GROUP_ask_group_data(*np1,&group_members,ir2)==0)
+		UF_free(group_members);
+	else
+		*ir2 = -1;
+}
+
+extern void FTN(uf5512)(const tag_t *np1, const int *ip2, tag_t *nr3)
+{
+	tag_t *group_members;
+	int count_of_group;
+
+	if(UF_GROUP_ask_group_data(*np1,&group_members,&count_of_group)==0)
+	{
+		*nr3 = group_members[*ip2-1];
+		UF_free(group_members);
+	}
+}
+
+extern void FTN(uf5513) ( const tag_t *tag_of_interest , tag_t *group_tag )
+{
+	UF_GROUP_ask_group_of_tag ( *tag_of_interest , group_tag );
+}
+
+extern void FTN(uf5514)(const tag_t *np1, const tag_t *np2, int *ir3)
+{
+	int error;
+	error = UF_GROUP_add_member_to_group( *np2, *np1);
+
+	if(error==0)
+	{
+		*ir3 = 0;
+	}
+	else if(error == UF_err_bad_parameter_number_1)
+	{
+		*ir3 = -2;
+	}
+	else if(error == UF_err_bad_parameter_number_2)
+	{
+		*ir3 = -1;
+	}
+
+	return;
+}
+
+extern void FTN(uf5515)(tag_t *np1)
+{
+	tag_t group_tag;
+
+	UF_GROUP_ask_group_of_tag ( *np1 , &group_tag );
+	if ( group_tag != NULL_TAG )
+		{
+		UF_GROUP_del_member_from_group ( *np1, group_tag );
+		}
+	return;
+}
+
+extern void FTN(uf5516)(const int *ip1, const tag_t *np2, int *ir3)
+{
+	int error;
+
+	if(*ip1 == 1)
+	{
+		error = UF_GROUP_ungroup_top(*np2);
+	}
+	else if(*ip1 == 2)
+	{
+		error = UF_GROUP_ungroup_all(*np2);
+	}
+	else
+	{
+		*ir3 = -1;
+		return;
+	}
+
+	if( error == UF_err_bad_parameter_number_1)
+	{
+		*ir3 = -2;
+	}
+	else
+	{
+		*ir3 = 0;
+	}
+
+	return;
+
+}
+
+extern void FTN(uf5817)(tag_t *np1, int *ip2, int *ir3, tag_t *nr4)
+{
+        int count = 0;
+        *nr4 = 0;
+        *ir3 = 0;
+
+        count = UF_ASSEM_count_ref_sets_in(*np1);
+        if (count != 0) 
+        {
+	    if (*ip2 <= count) 
+            {
+                *nr4 = UF_ASSEM_get_ref_set_inst(*np1, *ip2);
+	    }
+	    *ir3 = 1;
+        }
+        return;
+} 
+
+
+extern void FTN(uf5920) ( const double vectors [ 6 ] , double matrix [ 9 ] ,
+int *status )
+{
+	*status = UF_MTX3_initialize ( vectors , &vectors [ 3 ] , matrix );
+}
+
+static int UF_OBJ__generic_display_props ( tag_t object_id , int flavor )
+{
+	int			return_code;
+	UF_OBJ_disp_props_t	local_disp_props;
+
+	if ( ( return_code = UF_OBJ_ask_display_properties ( object_id ,
+	    &local_disp_props ) ) == 0 )
+		switch ( flavor )
+		{
+		case 1  : 
+			return_code = local_disp_props.layer;
+			break;
+		case 2  : 
+			return_code = local_disp_props.color;
+			break;
+		case 3  : 
+			return_code = local_disp_props.blank_status;
+			break;
+		case 4  : 
+			return_code = local_disp_props.line_width;
+			break;
+		case 5  : 
+			return_code = local_disp_props.font;
+			break;
+		default : 
+			break;
+		}
+	return ( return_code );
+}
+
+
+/************ The following Functions were removed in V16.0 ******************/
+extern void FTN(uf4400)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp2, &string1, cp2_len);
+
+    *ir4 = uc4400(*ip1, string1, *ip3);
+
+    free(string1);
+}
+
+extern void FTN(uf4403)(char *cp1, int *ir2, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+
+    if (strlen(string1) > 131)
+        string1[131] = '\0';
+
+    *ir2 = uc4403(string1);
+
+    free(string1);
+
+}
+
+extern void FTN(uf4404)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+
+    if (strlen(string1) > 121)
+        string1[121] = '\0';
+
+    *ir3 = uc4404(string1, *ip2);
+
+    free(string1);
+}
+
+extern void FTN(uf4406)(char *cp1, double *rp2, int *ir3, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+
+    if (strlen(string1) > 121)
+        string1[121] = '\0';
+
+    *ir3 = uc4406(string1, *rp2);
+
+    free(string1);
+
+}
+
+extern void FTN(uf4409)(int *ir1, char *cr2, int *ir3, short cr2_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc(cr2_len*sizeof(char)+1);
+
+    *ir1 = uc4409(string1, ir3);
+
+    CONVERT_cstring_to_char(string1, cr2, cr2_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4500)(char *cp1, int *ip2, int *ip3, int *ir4, 
+                  int *ir5, short cp1_len)
+{
+    int ier;
+    char *strng1; 
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);        
+    ier = uc4500( strng1, *ip2, *ip3);
+    if (ier < 0)
+    {
+       *ir5 = ier;
+       *ir4 = 0;
+    }
+    else
+    {
+       *ir4 = ier;
+       *ir5 = 0;
+    }
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4504)(char *cp1, int *ip2, int *ip3, int *ir4, 
+                  int *ir5, short cp1_len)
+{
+    int ier;
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    ier = uc4504( strng1, *ip2, *ip3);
+    if (ier < 0)
+    {
+       *ir5 = ier;
+       *ir4 = 0;
+    }
+    else
+    {
+       *ir4 = ier;
+       *ir5 = 0;
+    }
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4506)(char *cp1, int *ip2, int *ip3, int *ir4, 
+                  int *ir5, short cp1_len)
+{
+    int ier;
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    ier = uc4506( strng1, *ip2, *ip3);
+    if (ier < 0)
+    {
+       *ir5 = ier;
+       *ir4 = 0;
+    }
+    else
+    {
+       *ir4 = ier;
+       *ir5 = 0;
+    }
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4507)(char *cp1, int *ip2, int *ip3, int *ip4, 
+                  int *ir5, int *ir6, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir5 = uc4507( strng1, *ip2, *ip3, *ip4);
+
+    if(*ir5 >=  0)
+       *ir6 = 0;
+    else /* No Channel number returned. So error */
+    {
+       *ir6 = *ir5;
+       *ir5 = 0;
+    }
+      
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4508)(char *cp1, int *ip2, int *ip3, char *cp4,
+         int *ir5, short cp1_len, short cp4_len)
+{
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    CONVERT_char_to_cstring(cp4, &strng2, cp4_len);
+
+    *ir5 = uc4508( strng1, *ip2, *ip3, strng2);
+
+    if ( *ir5 > 0 ) /* uc4508 returned a channel number. So the call is 
+                       successful and the channel number is stored in 
+                       ufcom1_1.dirstk[0]. Set ir5 to 0 to say that the 
+                       call is successful. */
+         *ir5 = 0;
+
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4509)(int *ir1)
+{
+    *ir1 = uc4509();
+    return;
+}
+
+extern void FTN(uf4510)(int *ip1, int *ip2, int *ir3, 
+        int *ir4)
+{
+    *ir4 = uc4510( *ip1, *ip2, (char *)ir3);
+    return;
+}
+
+extern void FTN(uf4511)(int *ip1, int *ip2, int *ir3, 
+        int *ir4)
+{
+    *ir4 = uc4511( *ip1, *ip2, ir3);
+    return;
+}
+
+extern void FTN(uf4512)(int *ip1, int *ip2, double *ra3, 
+        int *ir4)
+{
+    *ir4 = uc4512( *ip1, *ip2, ra3);
+    return;
+}
+
+extern void FTN(uf4513)(int *ip1, int *ip2, int *ir3, 
+        int *ir4)
+{
+    *ir4 = uc4513( *ip1, *ip2, (char *)ir3);
+    return;
+}
+
+extern void FTN(uf4514)(int *ip1, char *cr2, int *ir3, short cr2_len)
+{
+    int ier;
+    char *strng1;
+
+    strng1 = (char *)malloc(sizeof(char)*cr2_len+1);
+    ier = uc4514( *ip1, strng1);
+    if(ier >= 0)
+    {
+       CONVERT_cstring_to_char(strng1, cr2, cr2_len);
+    }
+    *ir3 = ier;
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4516)(int *ip1, int *ip2, int *ip3, 
+        int *ir4, int *ir5)
+{
+    int ier;
+
+    ier = uc4516( *ip1, *ip2, *ip3, (char *)ir4);
+    *ir5 = ier;
+    return;
+}
+
+extern void FTN(uf4517)(int *ip1, int *ir2, int *ir3, int *ir4)
+{
+    int ier;
+
+    ier = uc4517(*ip1, ir2, (char *)ir3);
+    if(ier < 0)
+        *ir4 = ier;
+    else
+        *ir4 = 0;
+
+    return;
+}
+
+extern void FTN(uf4518)(int *ir1)
+{
+    *ir1 = uc4518();
+    return;
+}
+
+extern void FTN(uf4519)(char *cr1, int *ir2, short cr1_len)
+{
+    char *fspec;
+
+    fspec = (char *)malloc(sizeof(char)*cr1_len + 1);
+    *ir2 = uc4519(fspec);
+    CONVERT_cstring_to_char(fspec, cr1, cr1_len);
+    free(fspec);
+    return;
+}
+
+extern void FTN(uf4520)(int *ip1, int *ip2, int *ip3, int *ir4)
+{
+    long len = *ip2;
+    *ir4 = uc4520( *ip1, len, (char *)ip3);
+    return;
+}
+
+extern void FTN(uf4521)(int *ip1, int *ip2, int *ip3, int *ir4)
+{
+    long len = *ip2;
+    *ir4 = uc4521( *ip1, len, ip3);
+    return;
+}
+
+extern void FTN(uf4522)(int *ip1, int *ip2, double *ra3, int *ir4)
+{
+    long len = *ip2;
+    *ir4 = uc4522( *ip1, len, ra3);
+    return;
+}
+
+extern void FTN(uf4523)(int *ip1, int *ip2, int *ip3, int *ir4)
+{
+    long len = *ip2;
+    *ir4 = uc4523( *ip1, len, (char *)ip3);
+    return;
+}
+
+extern void FTN(uf4524)(int *ip1, char *cp2, int *ir3, short cp2_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);
+    *ir3 = uc4524( *ip1, strng1);
+    if(*ir3 > 0)
+        *ir3 = 0;
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4525)(int *ip1, int *ir2)
+{
+    *ir2 = uc4525(*ip1);
+    return;
+}
+
+extern void FTN(uf4526)(int *ip1, int *ip2, int *ip3, 
+        int *ip4, int *ir5)
+{
+    *ir5 = uc4526( *ip1, *ip2, *ip3, (char *)ip4);
+    if (*ir5 > 0)
+        *ir5 = 0;
+    return;
+}
+
+extern void FTN(uf4527)(int *ip1, int *ip2, int *ip3, int *ir4)
+{
+    *ir4 = uc4527( *ip1, *ip2, (char *)ip3);    
+    if (*ir4 > 0)
+        *ir4 = 0;
+    return;
+}
+
+extern void FTN(uf4530)(int *ip1, int *ip2, int *ir3)
+{
+    long len=*ip2;
+    *ir3 = uc4530( *ip1, len);
+    return;
+}
+
+extern void FTN(uf4531)(int *ip1, int *ip2, int *ir3)
+{
+    long len=*ip2;
+    *ir3 = uc4531( *ip1, len);
+    return;
+}
+
+extern void FTN(uf4532)(int *ip1, int *ip2, int *ir3)
+{
+    long len=*ip2;
+    *ir3 = uc4532( *ip1, len);
+    return;
+}
+
+extern void FTN(uf4533)(int *ip1, int *ip2, int *ir3)
+{
+    long len=*ip2;
+    *ir3 = uc4533( *ip1, len);
+    return;
+}
+
+extern void FTN(uf4534)(int *ip1, int *ir2, int *ir3)
+{
+    long int ret = uc4534(*ip1);
+    if( ret > 0 )
+    {
+       ir2[0] = (unsigned)ret >> 9;
+       ir2[1] = ret & 0x1ff;
+    }
+    else
+       *ir3 = ret;
+
+    return;
+}
+
+extern void FTN(uf4535)(int *ip1, int *ip2, int *ir3)
+{
+    long n;
+    n = ((unsigned int)ip2[0] << 9) + (unsigned int)ip2[1];
+    *ir3 = uc4535(*ip1, n);
+    return;
+}
+
+extern void FTN(uf4536)(int *ip1, int *ir2)
+{
+    *ir2 = uc4536( *ip1);
+    return;
+}
+
+extern void FTN(uf4540)(int *ip1, int *ip2, int *ir3)
+{
+    *ir3 = uc4540( *ip1, *ip2);
+    return;
+}
+
+extern void FTN(uf4544)(int *ip1, int *ip2, int *ir3, int *ir4)
+{
+    *ir4 = uc4544( *ip1, *ip2, ir3);
+    return;
+}
+
+extern void FTN(uf4547)(int *ip1, int *ip2, int *jr3, int *ir4)
+{
+    *ir4 = uc4547( *ip1, *ip2, jr3);
+    return;
+}
+
+extern void FTN(uf4548)(int *ir1)
+{
+    *ir1 = uc4548();
+    return;
+}
+
+extern void FTN(uf4549)(int *ir1)
+{
+    *ir1 = uc4549();
+    return;
+}
+
+extern void FTN(uf4560)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4560( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4561)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4561( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4562)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len)
+{
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    CONVERT_char_to_cstring(cp3, &strng2, cp3_len);
+    *ir4 = uc4562( strng1, *ip2, strng2);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4563)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4563( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4564)(char *cp1, int *ip2, int *ip3, int *ir4, 
+                  short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir4 = uc4564(strng1, *ip2, *ip3);    
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4565)(int *ip1, char *cr2, int *ir3, short cr2_len)
+{
+    char *strng1;
+
+    strng1 = (char *)malloc(sizeof(char) * cr2_len + 1);
+    *ir3 = uc4565( *ip1, strng1);
+    if(*ir3 >= 0)
+        CONVERT_cstring_to_char(strng1, cr2, cr2_len);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4566)(int *ip1, char *cp2, int *ir3, short cp2_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);
+    *ir3 = uc4566( *ip1, strng1);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4567)(char *cp1, char *cp2, int *ip3, int *ip4,
+         int *ip5, int *ir6, short cp1_len, short cp2_len)
+{
+    int fmask, j, i_;
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);  
+    CONVERT_char_to_cstring(cp2, &strng2, cp2_len);  
+    
+    fmask = ip3[0];
+    j = 16;
+    for (i_ = 1; i_ <= 3; ++i_) 
+    {
+        if (ip3[i_] != 0) 
+        {
+            fmask += j;
+        }
+        j *= 2;
+    }
+
+    *ir6 = uc4567( strng1, strng2, fmask, *ip4, *ip5);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4570)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4570( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4571)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4571( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4572)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng1;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir3 = uc4572( strng1, *ip2);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4573)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len)
+{
+    char *strng1, *strng2;
+
+    strng2 = (char *)malloc(sizeof(char) * cr3_len + 1);
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir4 = uc4573( strng1, *ip2, strng2);
+    CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4574)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len)
+{
+    char *strng1, *strng2;
+
+    strng2 = (char *)malloc(sizeof(char) * cr3_len + 1);
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    *ir4 = uc4574 ( strng1, *ip2, strng2);
+    CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4575)(char *cp1, int *ip2, char *cp3, char *cr4, 
+        int *ir5, short cp1_len, short cp3_len, short cr4_len)
+{
+    char *strng1, *strng2, *strng3;
+
+    strng3 = (char *)malloc(sizeof(char) * cr4_len + 1);
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);  
+    CONVERT_char_to_cstring(cp3, &strng2, cp3_len);  
+    *ir5 = uc4575 ( strng1, *ip2, strng2, strng3);
+    CONVERT_cstring_to_char(strng3, cr4, cr4_len);
+    free(strng1);
+    free(strng2);
+    free(strng3);
+    return;
+}
+
+extern void FTN(uf4576)(char *cp1, int *ip2, char *cr3, char *cr4, 
+        int *ir5, short cp1_len, short cr3_len, short cr4_len)
+{
+    char *strng1, *strng2, *strng3;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    strng2 = (char *)malloc(sizeof(char) * cr3_len + 1);
+    strng3 = (char *)malloc(sizeof(char) * cr4_len + 1);
+    *ir5 =  uc4576( strng1, *ip2, strng2, strng3);
+    CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+    CONVERT_cstring_to_char(strng3, cr4, cr4_len);
+    free(strng1);
+    free(strng2);
+    free(strng3);
+    return;
+}
+
+extern void FTN(uf4577)(char *cr1, int *ir2, short cr1_len)
+{
+    char *strng1;
+
+    strng1 = (char *)malloc(sizeof(char) * cr1_len + 1);
+    *ir2 = uc4577(strng1); 
+    CONVERT_cstring_to_char(strng1, cr1, cr1_len);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf4578)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len)
+{
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    strng2 = (char *)malloc(sizeof(char) * cr3_len + 1);
+    *ir4 = uc4578 ( strng1, *ip2, strng2);
+    CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+    free(strng1);
+    free(strng2);
+    return;
+}
+   
+extern void FTN(uf4579)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len)
+{
+    char *strng1, *strng2;
+    
+    CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+    strng2 = (char *)malloc(sizeof(char) * cr3_len + 1);
+    *ir4 = uc4579( strng1, *ip2, strng2);
+    CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf4580)(int *ip1, char *cr2, int *ir3, short cr2_len)
+{
+   char *string1;
+
+   string1 = (char *)malloc(sizeof(char) * cr2_len + 1);
+   *ir3 = uc4580 (*ip1,string1);
+   CONVERT_cstring_to_char(string1, cr2, cr2_len);
+   free(string1);
+}
+
+extern void FTN(uf4581)(char *cp1, int *ir2, short cp1_len)
+{
+   char *string1;
+   
+   CONVERT_char_to_cstring_with_blanks(cp1,&string1,cp1_len);
+   *ir2 = uc4581(string1);
+   free(string1);
+}
+
+extern void FTN(uf4582)(int *ip1, int *ip2, char *cr3, char *cr4,
+     short cr3_len, short cr4_len)
+{
+    char *string1,*string2;
+
+    string1 = (char *)malloc(sizeof(char) * (cr3_len + 1));
+    string2 = (char *)malloc(sizeof(char) * (cr4_len + 1));
+
+    uc4582(ip1,*ip2,string1,string2);
+
+    CONVERT_cstring_to_char(string1,cr3,cr3_len);
+    CONVERT_cstring_to_char(string2,cr4,cr4_len);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4583)(char *cp1, char *cp2, int *ir3, int *ir4,
+     short cp1_len, short cp2_len)
+{
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir4 = uc4583(string1,string2,ir3);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4595)(int *ip1, char *cr2, int *ir3, short cr2_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr2_len + 1));
+
+    *ir3 = uc4595(*ip1,string1);
+    CONVERT_cstring_to_char(string1,cr2,cr2_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4596)(int *ip1, int *ir2, int *ir3)
+{
+   int i;
+   int mask;  
+
+    *ir3 = uc4596(*ip1, &mask);
+    for (i = 0; i <= 15; ++i) 
+    {
+        ir2[i] = mbtts(&mask, &i);
+    }
+
+}
+
+extern void FTN(uf4599)(int *ip1, char *cr2, short cr2_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr2_len + 1));
+
+    uc4599(*ip1,string1);
+    CONVERT_cstring_to_char(string1,cr2,cr2_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4600)(char *cr1, int *ir2, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+
+    *ir2 = uc4600(string1);
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4601)(int *ir1, int *ir2)
+{
+    *ir1 = uc4601();
+    *ir2 = 0;
+}
+
+extern void FTN(uf4602)(int *ir1, int *ir2)
+{
+    *ir2 = uc4602(ir1);
+}
+    
+extern void FTN(uf4603)(char *cr1, int *ir2, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+
+    *ir2 = uc4603(string1);
+
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4605)(int *jr1, int *ir2)
+{
+    long length;
+   
+    length = uc4605();
+
+    *jr1 = (int)length;
+    *ir2 = 0;
+}
+
+extern void FTN(uf4606)(int *ir1, int *ir2, int *ir3, int *ir4)
+{
+    *ir4 = uc4606(ir1,ir2,ir3);
+}
+
+extern void FTN(uf4607)(char *cr1, int *ir2, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+    *ir2 = uc4607(string1);
+
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4608)(char *cr1, int *ir2, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+    *ir2 = uc4608(string1);
+
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+} 
+     
+extern void FTN(uf4609)(int *ir1, int *ir2)
+{
+    *ir1 = uc4609();
+    *ir2 = 0;
+}
+
+extern void FTN(uf4612)(char *cp1, int *ip2, int *ip3, int *
+        ir4, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir4 = uc4612(string1,*ip2,*ip3);
+
+    free(string1);
+}
+
+extern void FTN(uf4617)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len)
+{
+ 
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp3,&string2,cp3_len);
+
+    *ir4 = uc4617(string1,*ip2,string2);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4618)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len)
+{
+ 
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp3,&string2,cp3_len);
+
+    *ir4 = uc4618(string1,*ip2,string2);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4650)(char *cp1, int *ip2, int *ip3, int *
+        ip4, int *ip5, char *cp6, int *ir7, short cp1_len, short 
+        cp6_len)
+{
+    char *string1, *string6;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp6,&string6,cp6_len);
+
+    *ir7 = uc4650( string1,*ip2,*ip3,ip4,ip5,string6);
+
+    free(string1);
+    free(string6);
+}
+
+extern void FTN(uf4901)(char *cr1, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+    uc4901(string1);
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+}
+
+extern void FTN(uf5000)(int *ir1, char *cr2, short cr2_len)
+{
+    char strng[133];
+
+    *ir1 = uc5000(strng);
+
+    if (*ir1 != 0) 
+       CONVERT_cstring_to_char (strng, cr2, cr2_len);
+
+} /* uf5000_ */
+
+extern void FTN(uf5001)(char *cp1, int *ir2, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring(cp1, &strng, cp1_len);
+    *ir2 = uc5001(strng);
+    free (strng);
+
+} /* uf5001_ */
+
+extern void FTN(uf5003)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc5003(strng, *ip2);
+    return;
+} /* uf5003_ */
+
+extern void FTN(uf5007)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len)
+{
+    int i;
+    tag_t tag;
+    UF_LAYER_category_info_t cat;
+    char *string1;
+
+    if(cp2_len > *ip3)
+       cp2_len = *ip3;
+    if(cp2_len > 30)
+       cp2_len = 30;
+
+    CONVERT_char_to_cstring(cp2, &string1, cp2_len);
+
+    for (i=0; i<256; i++)
+    {
+       if (ip1[i])
+          cat.layer_mask[i] = TRUE;
+       else
+          cat.layer_mask[i] = FALSE;
+    }
+
+
+    /* Set up name */
+    strcpy( cat.name, string1);
+
+    /* Set up description */
+    cat.descr[0] = '\0';
+
+    *ir4 = UF_LAYER_create_category(&cat, &tag);
+
+    free(string1);
+}
+
+extern void FTN(uf5008)(char *cp1, int *ip2, int *ir3, int *ir4, short cp1_len)
+{
+    char *string1;
+    int i;
+    tag_t tag;
+    UF_LAYER_category_info_t cat;
+
+    if (cp1_len > *ip2) 
+        cp1_len = *ip2;
+    if (cp1_len > 30) 
+        cp1_len = 30;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+    /* Get the tag */
+    tag = NULL_TAG;
+    UF_OBJ_cycle_by_name(string1, &tag);
+
+    /* Get the category information */
+    *ir4 = UF_LAYER_ask_category_info(tag, &cat);
+
+    if (!*ir4)
+    {
+       for (i=0; i<256; i++)
+       {
+           if (cat.layer_mask[i])
+              ir3[i] = 1;
+           else
+              ir3[i] = 0;
+       }
+    }
+    free(string1);
+}
+
+extern void FTN(uf5009)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len)
+{
+    char *string1;
+    int i;
+    tag_t tag;
+    logical layers[256];
+
+    if (cp2_len > *ip3) 
+        cp2_len = *ip3;
+    if (cp2_len > 30) 
+        cp2_len = 30;
+
+    CONVERT_char_to_cstring(cp2, &string1, cp2_len);
+    /* Get the tag */
+    tag = NULL_TAG;
+    UF_OBJ_cycle_by_name(string1, &tag);
+
+    /* Set up layers */
+    for (i=0; i<256; i++)
+    {
+        if (ip1[i])
+           layers[i] = TRUE;
+        else
+           layers[i] = FALSE;
+    }
+
+    *ir4 = UF_LAYER_edit_category_layer(tag, layers);
+
+    free(string1);
+
+}
+
+extern int FTN(uf5010) ( const tag_t *object_id )
+{
+    int type , subtype , return_code;
+
+    if ( ( return_code = UF_OBJ_ask_type_and_subtype ( *object_id , &type ,
+      &subtype ) ) == 0 )
+	{
+	if ( type == UF_solid_type )
+	    {
+	    if ( subtype == UF_solid_face_subtype )
+		{
+	        return_code = ( UF_MODL_ask_face_type ( *object_id
+		  , &type ) == 0 ) ? type : -1;
+		}
+	    else if ( subtype == UF_solid_body_subtype )
+		{
+		uf_list_p_t	face_list;
+
+		if ( ( return_code = UF_MODL_ask_body_faces ( *object_id ,
+		  &face_list ) ) == 0 )
+		    {
+		    int	count;
+
+		    UF_MODL_ask_list_count ( face_list , &count );
+		    if ( count == 1 )
+	                return_code = ( UF_MODL_ask_face_type ( face_list->eid
+			  , &type ) == 0 ) ? type : -1;
+		    else
+			return_code = type;
+                    UF_MODL_delete_list(&face_list);
+		    }
+		else
+		    return_code = -1;
+		}
+	    else
+		return_code = type;
+	    }
+	else
+	    return_code = type;
+	}
+    else
+	return_code = -1;
+    return ( return_code );
+}
+
+extern void FTN(uf5027)(int *np1, char *sr2, int *ir3, short sr2_len)
+{
+    char name[256];
+
+    uc5027(*np1, name, ir3);
+    CONVERT_cstring_to_char (name, sr2, sr2_len);
+    return;
+
+} /* uf5027_ */
+
+extern void FTN(uf5028)(char *sp1, int *ip2, int *nr3, short sp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (sp1, &strng, sp1_len);
+    uc5028(sp1, *ip2, (tag_t *) nr3);
+  
+    free (strng);
+
+} /* uf5028_ */
+
+extern void FTN(uf5029)(int *np1, char *cp2, int *ip3, short cp2_len)
+{
+    char *strng;
+    
+    CONVERT_char_to_cstring ( cp2, &strng, cp2_len);
+
+    UF_OBJ_set_name(*np1, strng);
+ 
+    free (strng);
+
+} /* uf5029_ */
+
+extern void FTN(uf5101)(int *np1, char *cp2, int *ip3, char *cp4,
+         int *ip5, short cp2_len, short cp4_len)
+{
+    UF_ATTR_value_t value;
+    char *strng1, *strng2;
+    int count;
+    logical ignore1;
+    logical ignore;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);
+    CONVERT_char_to_cstring(cp4, &strng2, cp4_len);
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    UF_TEXT_truncate(strng2, UF_ATTR_MAX_STRING_BUFSIZE, UF_ATTR_MAX_STRING_NCHARS, &ignore);
+
+    value.type = UF_ATTR_string;
+    value.value.string = strng2;
+
+    UF_ATTR_assign( (tag_t) *np1, strng1, value);
+    free(strng1);
+    free(strng2);
+    return;
+}
+
+extern void FTN(uf5102)(int *np1, char *cp2, int *ip3, short cp2_len)
+{
+    char *strng1;
+    int count = *ip3;
+    logical ignore1;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    UF_ATTR_delete( (tag_t) *np1, UF_ATTR_any, strng1);
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf5111)(int *np1, char *cp2, int *ip3, short cp2_len)
+{
+    short len;
+    char *strng1;
+    UF_ATTR_value_t uf_value;
+    int i;
+
+    len = (cp2_len < UF_ATTR_MAX_TITLE_BUFSIZE) ? cp2_len : UF_ATTR_MAX_TITLE_BUFSIZE-1;
+
+    for( i=0; i<len;i++)
+    {
+         if( *cp2 == '\0')
+         {
+              len = i;
+              break;
+         }
+    }
+
+    CONVERT_char_to_cstring(cp2, &strng1, len); 
+
+    uf_value.type = UF_ATTR_integer;
+    uf_value.value.integer = *ip3;
+
+    UF_ATTR_assign((tag_t)*np1, strng1, uf_value);
+
+    free(strng1);
+    return;
+}
+
+extern int FTN(uf5113)(int *np1, char *cp2, short cp2_len)
+{
+    int seqno = 0;
+    char *strng1;
+    logical ignore1;
+    int indx = 0;
+    UF_ATTR_value_t value;
+    char title[ UF_ATTR_MAX_STRING_BUFSIZE ] = "";
+    logical found = false;
+    
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    while (!found)
+    {
+        seqno++;
+        UF_ATTR_cycle((tag_t)*np1, &indx, UF_ATTR_any, title, &value);
+        if ((indx == 1) &&
+            (value.type == UF_ATTR_integer) &&
+            (strcmp(title, strng1) == 0))
+        {
+            found = true;
+        }
+    }
+        
+    free(strng1);
+    return found ? seqno : 0;
+}
+
+extern void FTN(uf5115)(int *np1, char *cp2, double *rp3, short cp2_len)
+{
+    short len;
+    char *strng1;
+    UF_ATTR_value_t uf_value;
+    int i;
+    logical ignore1;
+
+    len = (cp2_len < UF_ATTR_MAX_TITLE_BUFSIZE) ? cp2_len : UF_ATTR_MAX_TITLE_BUFSIZE-1;
+
+    for( i=0; i<len;i++)
+    {
+         if( cp2[i] == '\0')
+         {
+              len = i;
+              break;
+         }
+    }
+
+    CONVERT_char_to_cstring(cp2, &strng1, len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    uf_value.type = UF_ATTR_real;
+    uf_value.value.real = *rp3;
+
+    UF_ATTR_assign((tag_t)*np1, strng1, uf_value);
+
+    return;
+}
+
+extern int FTN(uf5117)(int *np1, char *cp2, short cp2_len)
+{
+    int ret_val;
+    char *strng1;
+    logical ignore1;
+    int indx = 0;
+    int seqno = 0;
+    UF_ATTR_value_t value;
+    char title[ UF_ATTR_MAX_STRING_BUFSIZE ] = "";
+    logical found = false;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    while (!found)
+    {
+        seqno++;
+        UF_ATTR_cycle((tag_t)*np1, &indx, UF_ATTR_any, title, &value);
+        if ((indx == 1) &&
+            (value.type == UF_ATTR_real) &&
+            (strcmp(title, strng1) == 0))
+        {
+            found = true;
+        }
+    }
+
+    free(strng1);
+    return found ? seqno : 0;
+}
+    
+extern void FTN(uf5119)(int *np1, char *cp2, short cp2_len)
+{
+    char *strng1;
+    UF_ATTR_value_t uf_value;
+    logical ignore1;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    uf_value.type = UF_ATTR_null;
+    UF_ATTR_assign((tag_t)*np1, strng1, uf_value);
+   
+    free(strng1);    
+    return;
+}
+
+extern int FTN(uf5121)(int *np1, char *cp2, short cp2_len)
+{
+    int ret_val;
+    char *strng1;
+    logical ignore1;
+    int indx = 0;
+    int seqno = 0;
+    UF_ATTR_value_t value;
+    char title[ UF_ATTR_MAX_STRING_BUFSIZE ] = "";
+    logical found = false;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    while (!found)
+    {
+        seqno++;
+        UF_ATTR_cycle((tag_t)*np1, &indx, UF_ATTR_any, title, &value);
+        if ((indx == 1) &&
+            (value.type == UF_ATTR_null) &&
+            (strcmp(title, strng1) == 0))
+        {
+            found = true;
+        }
+    }
+
+    free(strng1);
+    return found ? seqno : 0;
+}
+
+extern void FTN(uf5123)(int *np1, char *cp2, int *ip3, short cp2_len)
+{
+    UF_ATTR_value_t uf_value;
+    char *strng1;
+    logical ignore1;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);;
+
+    uf_value.type = UF_ATTR_time;
+    uf_value.value.time[0] = ip3[0]; 
+    uf_value.value.time[1] = ip3[1];
+
+    UF_ATTR_assign((tag_t)*np1, strng1, uf_value);
+
+    return;
+}
+
+extern int FTN(uf5125)(int *np1, char *cp2, short cp2_len)
+{
+    int ret_val;
+    char *strng1;
+    logical ignore1;
+    int indx = 0;
+    int seqno = 0;
+    UF_ATTR_value_t value;
+    char title[ UF_ATTR_MAX_STRING_BUFSIZE ] = "";
+    logical found = false;
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);        
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    while (!found)
+    {
+        seqno++;
+        UF_ATTR_cycle((tag_t)*np1, &indx, UF_ATTR_any, title, &value);
+        if ((indx == 1) &&
+            (value.type == UF_ATTR_time) &&
+            (strcmp(title, strng1) == 0))
+        {
+            found = true;
+        }
+    }
+
+    free(strng1);
+    return found ? seqno : 0;
+}
+
+extern void FTN(uf5186)
+(
+    tag_t *object_tag,       /* <I> drafting object tag             */
+    int   *num_symbol_fonts, /* <O> number of symbol fonts used     */
+    tag_t *symbol_font_tags, /* <O> tags of the symbol font objects */
+    int   *return_code       /* <O> return code                     */
+                             /*     0 = success                     */
+                             /*     1 = invalid object tag          */
+                             /*     2 = not drafting object         */
+)
+{
+    *return_code = UF_DRF_ask_symbols_used(*object_tag, num_symbol_fonts, symbol_font_tags);
+
+    if (*return_code == UF_DRF_invalid_object)
+       *return_code = 1;
+    if (*return_code == UF_DRF_NOT_DRAFTING_OBJECT)
+       *return_code = 2;
+}
+
+extern void FTN(uf5201)(tag_t *object, const int *type)
+{
+    tag_t work_part = UF_ASSEM_ask_work_part();
+    int tmp_type = 0, tmp_subtype = 0;
+    int generic_type=99;
+    int surface_type;
+
+    switch( *type )
+    {
+       case UF_offset_surface_type:
+       case UF_foreign_surface_type:
+           generic_type = 2; /* Surface */
+           break;
+       default:
+           break;
+    }
+
+    switch(generic_type)
+    {
+        case 2:
+           /* Special case code for surfaces */
+           do
+           {
+              do
+              {
+                 UF_OBJ_cycle_objs_in_part (work_part, UF_solid_type, object);
+                 if( *object != NULL_TAG )
+                      UF_OBJ_ask_type_and_subtype(*object, &tmp_type, &tmp_subtype);
+              } while ((*object != NULL_TAG) && (tmp_subtype!=2));
+              if( *object != NULL_TAG)
+              {
+                 UF_MODL_ask_face_type(*object, &surface_type);
+                 if( surface_type == *type )
+                     break;     /* Object is found */
+              }
+           }
+           while( *object != NULL_TAG);
+           break;
+         default:     /* other types */
+           UF_OBJ_cycle_objs_in_part(work_part,*type,object);
+    }
+
+}
+
+extern void FTN(uf5203)(int *na1, char *cp2, int *ip3, short cp2_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring(cp2, &strng, cp2_len);
+
+    if (cp2_len < *ip3) *ip3 = cp2_len;
+
+    uc5203( (tag_t *) na1, strng, *ip3);
+
+    free (strng);
+
+} /* uf5203_ */
+
+extern void FTN(uf5426)(const tag_t *np1, int *ir2)
+{
+    UF_BOUND_all_data_t boundary_data;
+
+    UF_BOUND_ask_boundary_data( *np1, &boundary_data);
+    *ir2 = boundary_data.num_members;
+    UF_free(boundary_data.members_data);
+}
+
+extern void FTN(uf5427)(const tag_t *np1, const int *ip2, tag_t *nr3)
+{
+    UF_BOUND_all_data_t boundary_data;
+
+    UF_BOUND_ask_boundary_data( *np1, &boundary_data);
+    *nr3 = boundary_data.members_data[*ip2-1].member_tag;
+    UF_free(boundary_data.members_data);
+}
+
+extern void FTN(uf5428)(tag_t *np1, int *ir2)
+{
+    UF_BOUND_ask_number_of_boundaries(*np1, ir2);
+}
+
+extern void FTN(uf5429)(const tag_t *np1, int *ir2, double *rr3, double *rr4,
+                        double *rr5)
+{
+
+
+    UF_BOUND_all_data_t boundary_data;
+    double              matrix[9], plane[4], plane_origin[3], origin[3];
+    double              min_distance, *matrix_z_component;
+    int                 i, flag;
+
+    UF_BOUND_ask_boundary_data( *np1, &boundary_data);
+    *ir2 = boundary_data.open_closed_flag;
+    for ( i=0; i<4; i++)
+    {
+        rr4[i] = boundary_data.maxmin_box[i];
+    }
+    for ( i=0; i<2; i++)
+    {
+        rr5[i] = boundary_data.tolerance[i];
+    }
+    min_distance = boundary_data.minimum_distance;
+
+    /* get matrix */
+    UF_CSYS_ask_matrix_values(boundary_data.plane_matrix, matrix);
+
+    /* get origin of definition plane */
+    for ( i=0; i<3; i++ )
+    {
+        plane[i] = matrix[i+6];
+        origin[i] = 0.0;;
+    }
+    plane[3] = min_distance;
+    matrix_z_component = &matrix[6];
+    uf5429_vector(origin, matrix_z_component, plane, &flag, plane_origin);
+    if ( flag!=2 )
+    {
+        for ( i=0; i<3; i++ )
+        {
+            plane_origin[i] = -939.0;
+        }
+    }
+
+    for ( i=0; i<9; i++ )
+    {
+        rr3[i] = matrix[i];
+    }
+    for ( i=0; i<3; i++ )
+    {
+        rr3[i+9] = plane_origin[i];
+    }
+
+    UF_free(boundary_data.members_data);
+}
+
+static void uf5429_vector(double *rp1, double *rp2, double *rp3,
+        int *ir4, double *rr5)
+{
+
+    double t, temp;
+    double dir, num;
+    int flag_;
+    double dapp;
+
+    rr5[0] = rp1[0];
+    rr5[1] = rp1[1];
+    rr5[2] = rp1[2];
+
+    /*  COMPUTE DOT PRODUCT OF POINT AND PLANE NORMAL */
+    UF_VEC3_dot(rp1, rp3, &dapp);
+    num = rp3[3] - dapp;
+
+    /*  TEST IF LINE AND PLANE ARE PARALLEL */
+    UF_VEC3_dot(rp2, rp3, &dir);
+    temp = fabs(dir);
+    if (temp <= 1E-10)
+       flag_ = 1;
+    else
+       flag_ = 0;
+
+    if (flag_ == 0) 
+    {
+       *ir4 = 2;
+
+       /*  FIND LINE PARAMETER T AT INTERSECTION POINT */
+       t = num / dir;
+   
+       /*  PLUG IN T IN PARAMETRIC EQUATIONS */
+       rr5[0] = rp2[0] * t + rp1[0];
+       rr5[1] = rp2[1] * t + rp1[1];
+       rr5[2] = rp2[2] * t + rp1[2];
+    }
+    else
+    {
+       /*  TEST IF LINE LIES ON PLANE BY PLUGGING IN POINT 
+           ON LINE IN PLANAR EQUATION */
+       *ir4 = 1;
+       temp = fabs(num);
+
+       if (temp <= 1E-10)
+           *ir4 = 3;
+    }
+} 
+
+extern void FTN(uf5430)(const tag_t *np1, const int *ip2, tag_t *nr3, int *ir4,
+                        int *ir5, double *rr6, double *rr7)
+{
+    UF_BOUND_all_data_t boundary_data;
+    int                 i;
+
+    UF_BOUND_ask_boundary_data( *np1, &boundary_data);
+    *nr3 = boundary_data.members_data[*ip2-1].member_tag;
+    *ir4 = boundary_data.members_data[*ip2-1].on_tangent_to_flag;
+    *ir5 = boundary_data.members_data[*ip2-1].contiguity_flag;
+
+    for ( i=0; i<2; i++ )
+    {
+        rr6[i] = boundary_data.members_data[*ip2-1].parameter_range[i];
+    }
+
+    for ( i=0; i<2; i++ )
+    {
+        rr7[i]   = boundary_data.members_data[*ip2-1].midpoint[i];
+        rr7[i+2] = boundary_data.members_data[*ip2-1].direction_vec[i];
+    }
+        
+    UF_free(boundary_data.members_data);
+}
+
+extern void FTN(uf5570)(tag_t *np1, int *ip2, int *ia3,
+        int *ia4, int *ir5, int *ir6, int *ir7, double * rr8, 
+        double *rr9)
+{
+    UF_DRF_ask_ann_data(np1, ip2, ia3, ia4, ir5, ir6, ir7, rr8, rr9);
+}
+
+extern void FTN(uf5571)(int *ip1, int *ia2, double *rr3)
+{
+    UF_DRF_ask_ann_line_seg_ends(ip1, ia2, rr3);
+}
+
+extern void FTN(uf5572)(int *ip1, int *ia2, double *rr3)
+{
+    UF_DRF_ask_ann_arc_seg_angles(ip1, ia2, rr3);
+}
+
+extern void FTN(uf5574)(int *ip1, int *ia2, char *cr3, int *ir4, int *ir5, short cr3_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc(cr3_len * sizeof(char) + 1);
+
+    uc5574(*ip1, ia2, string1, ir4, ir5);
+
+    CONVERT_cstring_to_char(string1, cr3, cr3_len);
+    free(string1);
+}
+
+extern void FTN(uf5595)(char *cp1, double *rp2, int *nr3, char *cr4, 
+                        int *ir5, short cp1_len, short cr4_len)
+{
+    char *sspec, strng[140];
+
+    CONVERT_char_to_cstring (cp1, &sspec, cp1_len);
+
+    *ir5 = uc5595 (sspec, rp2, (unsigned int *)nr3, strng);
+    CONVERT_cstring_to_char (strng, cr4, cr4_len);
+
+    free (sspec);
+} /* uf5595_ */
+
+extern void FTN(uf5596)(char *cp1, int *np2, int *ip3, char *cr4,
+                        int *ir5, short cp1_len, short cr4_len)
+{
+    char *sspec, strng[140];
+    int  status = 0;
+
+    CONVERT_char_to_cstring (cp1, &sspec, cp1_len);
+
+    status = UF_STD_export_icad_geometry(sspec, (unsigned int *)np2, *ip3);
+
+    if ( status < 0)
+       uc4599(status, strng);
+
+    *ir5 = status;
+    
+    CONVERT_cstring_to_char (strng, cr4, cr4_len);
+    free (sspec);
+
+} /* uf5596_ */
+
+extern void FTN(uf5800)(char *cp1, char *cp2, char *cp3, double *ra4,
+         int *ip5, int *nr6, int *ir7, short cp1_len, short 
+        cp2_len, short cp3_len)
+{
+     char *strng1, *strng2, *strng3;
+
+     CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+     CONVERT_char_to_cstring(cp2, &strng2, cp2_len);
+     CONVERT_char_to_cstring(cp3, &strng3, cp3_len);
+  
+     *ir7 = uc5800(strng1, strng2, strng3, ra4, *ip5, (tag_t *)nr6 );
+
+     free(strng1);
+     free(strng2);
+     free(strng3);
+ 
+     return;
+
+}
+
+extern void FTN(uf5801)(int *np1, char *cr2, char *cr3, char *cr4,
+        double *rr5, int *ir6, short cr2_len, short cr3_len, short
+        cr4_len)
+{
+     char *strng1, *strng2, *strng3;
+
+     strng1 = (char *)malloc(sizeof(char)*MAX_FSPEC_BUFSIZE);
+     strng2 = (char *)malloc(sizeof(char)*UF_OBJ_NAME_BUFSIZE);
+     strng3 = (char *)malloc(sizeof(char)*UF_OBJ_NAME_BUFSIZE);
+
+     uc5801( (tag_t) *np1, strng1, strng2, strng3, rr5, ir6);
+
+     CONVERT_cstring_to_char(strng1, cr2, cr2_len);
+     CONVERT_cstring_to_char(strng2, cr3, cr3_len);
+     CONVERT_cstring_to_char(strng3, cr4, cr4_len);
+
+     free(strng1);
+     free(strng2);
+     free(strng3);
+
+     return;
+}
+
+extern void FTN(uf5802)(int *np1, char *cp2, char *cp3, double *ra4, 
+        short cp2_len, short cp3_len)
+{
+     char *strng1, *strng2;
+
+     CONVERT_char_to_cstring(cp2, &strng1, cp2_len);  
+     CONVERT_char_to_cstring(cp3, &strng2, cp3_len);  
+     
+     uc5802( (tag_t) *np1, strng1, strng2, ra4 );
+     free(strng1);
+     free(strng2);
+     return;
+
+}
+
+extern int FTN(uf5803)(tag_t *np1)
+{
+    int ret_val;
+    /* READ COUNT OF MEMBERS */
+    ret_val = UF_ASSEM_count_ents_in_part_occ(*np1);
+    return ret_val;
+}
+
+extern void FTN(uf5806)(tag_t *np1, int *ir2, tag_t *nr3)
+{
+    int ifail = 0; 
+    *nr3 = 0;
+    *ir2 = 0;
+
+    ifail = UF_ASSEM_ask_parent_component( *np1, nr3);
+
+    if ( ifail == 0)
+       *ir2 = 1;
+    return;
+} 
+
+extern void FTN(uf5810)(char *cp1, double *ra2, int *na3,
+        int *ip4, int *nr5, int *ir6, short cp1_len)
+{
+   char *strng1;
+   CONVERT_char_to_cstring(cp1, &strng1, cp1_len);
+
+   *ir6 = uc5810(strng1, ra2, (tag_t *) na3, *ip4, (tag_t *) nr5);
+   free(strng1);
+
+   return;
+}
+
+extern void FTN(uf5811)(int *np1, char *cr2, double *rr3, short cr2_len)
+{
+    char *strng1;
+    
+    strng1 = (char *)malloc(sizeof(char)*UF_OBJ_NAME_BUFSIZE);
+
+    uc5811((tag_t) *np1, strng1, rr3);
+    CONVERT_cstring_to_char(strng1, cr2, cr2_len);
+    free(strng1);
+    return;
+
+}
+
+extern void FTN(uf5812)(int *np1, char *cp2, double *ra3, short cp2_len)
+{
+   char *strng1;
+   CONVERT_char_to_cstring(cp2, &strng1, cp2_len);
+
+   uc5812((tag_t) *np1, strng1, ra3);
+   free(strng1);
+   return;
+}
+
+extern int FTN(uf5813)( tag_t *ref_set )
+{
+   int ret_count;
+   tag_t *members;
+
+   UF_ASSEM_ask_ref_set_members( (tag_t) *ref_set, &ret_count, &members);
+   UF_free(members);
+   return(ret_count);
+}
+
+extern void FTN(uf5814)( tag_t *ref_set, int *indx, tag_t *member )
+{
+   int ret_count;
+   tag_p_t temp_tag;
+
+   UF_ASSEM_ask_ref_set_members(*ref_set, &ret_count, &temp_tag);
+   if(*indx <= ret_count)
+      *member = temp_tag[*indx-1];
+   else
+      *member = NULL_TAG;
+
+   UF_free(temp_tag);
+   return;
+}
+
+extern void FTN(uf5815)(tag_t *np1, tag_t *na2, int *ip3, int *ip4)
+{
+   if (*ip4 == 1) 
+   {
+       UF_ASSEM_add_ref_set_members( *np1,  *ip3, na2 );
+   }
+   else
+   {
+      UF_ASSEM_remove_ref_set_members( *np1, *ip3, na2 );
+   }
+   return;
+}
+
+extern void FTN(uf5816)(char *cp1, char *cp2, char *cp3, double *rp4,
+         int *np5, int *ip6, int *na7, int *ir8, short 
+        cp1_len, short cp2_len, short cp3_len)
+{
+    char *strng1, *strng2, *strng3;
+
+     CONVERT_char_to_cstring(cp1, &strng1, cp1_len);  
+     CONVERT_char_to_cstring(cp2, &strng2, cp2_len);  
+     CONVERT_char_to_cstring(cp3, &strng3, cp3_len);  
+
+    *ir8 = uc5816(strng1, strng2, strng3, rp4, (tag_t *) np5, *ip6, (tag_t *) na7);
+    free(strng1);
+    free(strng2);
+    free(strng3);
+    return;
+}     
+
+extern void FTN(uf_attr_ftn_assign)(int *np1, int *ip2, char * cp3, char *cp4, 
+                int *ip5, double *rp6, short cp3_len, short cp4_len)
+{     
+    UF_ATTR_value_t value;
+    char *strng1 = NULL, *strng2 = NULL;
+
+    logical ignore1;
+    logical ignore;
+   
+    value.type = *ip2;
+
+    CONVERT_char_to_cstring(cp3, &strng1, cp3_len);
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    switch(*ip2 )
+    {
+    case UF_ATTR_integer:
+                   value.value.integer = *ip5;
+                   break;
+    case UF_ATTR_real:
+                   value.value.real = *rp6;
+                   break;
+    case UF_ATTR_time:
+                   value.value.time[0] = ip5[0];
+                   value.value.time[1] = ip5[1];
+                   break;
+    case UF_ATTR_null: break;
+    case UF_ATTR_string:
+                   CONVERT_char_to_cstring(cp4, &strng2, cp4_len);
+
+                   UF_TEXT_truncate(strng2, UF_ATTR_MAX_STRING_BUFSIZE, UF_ATTR_MAX_STRING_NCHARS, &ignore);
+
+                   value.value.string = strng2;
+                   break;
+    default : 
+                   value.value.reference = NULL;
+                   break;
+    } 
+
+    UF_ATTR_assign( (tag_t) *np1, strng1, value);
+    free(strng1);
+    if (*ip2 == UF_ATTR_string)
+       free(strng2);
+    return;
+}
+
+extern void FTN(uf_attr_ftn_cycle)(int *np1, int *ia2, int * ia3, char *cr4, 
+             char *cr5, int *ir6, double *rr7, short cr4_len, short cr5_len)
+{
+    int status =0;
+    UF_ATTR_value_t value;
+    char *strng1;
+
+    /* Bump sizes of the buffers by five fold just to support any old
+       parts with huge attribute titles or values. Such parts should be 
+       considered corrupt by the user function, but....
+    */
+    strng1 = (char *) malloc(5*UF_ATTR_MAX_TITLE_BUFSIZE);
+   
+    if(*ia3 == UF_ATTR_string)
+        value.value.string = (char *)malloc(5*UF_ATTR_MAX_STRING_BUFSIZE);
+
+    UF_ATTR_cycle( (tag_t) *np1, ia2, *ia3, strng1, &value); 
+    status = CONVERT_cstring_to_char(strng1, cr4, cr4_len);
+
+    if (*ia2 != 0)
+    {
+        switch(value.type)
+        {
+        case UF_ATTR_integer:
+                       *ir6 = value.value.integer;
+                       break;
+        case UF_ATTR_real:
+                       *rr7 = value.value.real;
+                       break;
+        case UF_ATTR_time:
+                       ir6[0] = value.value.time[0];
+                       ir6[1] = value.value.time[1];
+                       break;
+        case UF_ATTR_null:
+                       break;
+        case UF_ATTR_string:
+                       CONVERT_cstring_to_char(value.value.string, cr5, cr5_len);
+                       if (*ia3 == UF_ATTR_any )
+                           UF_free( value.value.string );
+                       else
+                           free(value.value.string);
+                       break;
+        default : 
+                       value.value.reference = NULL;
+                       break;
+        } 
+    }
+
+    *ia3 = value.type;
+
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf_attr_ftn_delete)(int *np1, int *ip2, char *cp3, 
+                     short cp3_len)
+{
+    char *strng1;
+    logical ignore1;
+
+    CONVERT_char_to_cstring(cp3, &strng1, cp3_len);
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+
+    UF_ATTR_delete( (tag_t) *np1, *ip2, strng1);
+    free(strng1);
+    return;
+}
+
+extern int FTN(uf_attr_ftn_find)(int *np1, int *ip2, char *cp3, short 
+        cp3_len)
+{
+    char *strng1;
+    int title_type;
+    logical ignore1;
+
+    CONVERT_char_to_cstring(cp3, &strng1, cp3_len);
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    UF_ATTR_find_attribute( (tag_t) *np1, *ip2, strng1, &title_type);
+    free(strng1);
+    return(title_type);
+}
+
+extern void FTN(uf_attr_ftn_read_value)(int *np1, char *cp2, int *ia3, 
+        char *cr4, int *ir5, double *rr6, short cp2_len, short cr4_len)
+{
+    int status = 0;
+    char *strng1;
+    UF_ATTR_value_t value;
+    logical ignore1;
+
+    if(*ia3 == UF_ATTR_string)
+        value.value.string = (char *)malloc(5*UF_ATTR_MAX_STRING_BUFSIZE);
+
+    CONVERT_char_to_cstring(cp2, &strng1, cp2_len);    
+
+    UF_TEXT_truncate(strng1, UF_ATTR_MAX_TITLE_BUFSIZE, UF_ATTR_MAX_TITLE_NCHARS, &ignore1);
+
+    status = UF_ATTR_read_value( (tag_t) *np1, strng1, *ia3, &value );
+
+    if (status == 0)
+    {
+         switch(value.type )
+         {
+         case UF_ATTR_integer:
+                        *ir5 = value.value.integer;
+                        break;
+         case UF_ATTR_real:
+                        *rr6 = value.value.real;
+                        break;
+         case UF_ATTR_time:
+                        ir5[0] = value.value.time[0];
+                        ir5[1] = value.value.time[1];
+                        break;
+         case UF_ATTR_null:
+                        break;
+         case UF_ATTR_string:
+                        CONVERT_cstring_to_char(value.value.string, cr4, cr4_len);
+                        if(*ia3 == UF_ATTR_any)
+                           UF_free(value.value.string);
+                        else
+                           free(value.value.string);
+                        break;
+         default : value.value.reference = NULL;
+                   break;
+         } 
+    }
+
+    free(strng1);
+    return;
+}
+
+extern void FTN(uf5820)(int *ir1)
+{
+    logical is_on;
+
+    *ir1 = 2;  /* Initialize for negative */
+
+    UF_PATT_is_archiving_on (&is_on);
+
+    if (is_on)
+       *ir1 = 1;
+
+} /* uf5820_ */
+
+extern void FTN(uf5822)(int *np1, char *cr2, char *cr3, int *ir4, int *ir5,
+                        int *ir6, double *rr7, int *ir8, short cr2_len, 
+                        short cr3_len)
+{
+    char strng[133], sspec[133];
+
+    *ir8 = uc5822(*np1, strng, sspec, ir4, ir5, ir6, rr7 );
+    if (*ir8 == 0)
+    {
+        CONVERT_cstring_to_char (strng, cr2, cr2_len);
+        CONVERT_cstring_to_char (sspec, cr3, cr3_len);
+    }
+} /* uf5822_ */
+
+extern void FTN(uf5823)(char *cp1, char *cp2, int *ip3, double *rp4, 
+                        int *np5, int *ir6, short cp1_len, short cp2_len)
+{
+    char *strng, *sspec;
+
+    CONVERT_char_to_cstring (cp1, &sspec, cp1_len);
+    CONVERT_char_to_cstring (cp2, &strng, cp2_len);
+    *ir6 = uc5823(sspec, strng, *ip3, rp4, (tag_t *) np5);
+    free (sspec);
+    free (strng);
+
+} /* uf5823_ */
+
+extern void FTN(uf5824)(int *ia1, char *cr2, short cr2_len)
+{
+    char strng[133];
+
+    uc5824(ia1, strng);
+    CONVERT_cstring_to_char (strng, cr2, cr2_len);
+
+} /* uf5824_ */
+
+extern void FTN(uf5826)(int *ir1)
+{
+    logical on;
+
+    *ir1 = 2; 
+
+    UF_PATT_is_shading_on (&on);
+
+    if (on) *ir1 = 1;
+   
+    return;
+} /* uf5826_ */
+
+extern void FTN(uf5890)(double *ra1, tag_t *nr2)
+{
+
+   UF_PATT_create_point (ra1, nr2);
+
+} /* uf5890_ */
+
+
+extern void FTN(uf5902) ( tag_t   *np1,
+                          double     *start_param,
+                          double     *end_param,
+                          int  *units_sw,
+                          double     *arc_length,
+                          int  *rc )
+{
+    double          l_start_param;
+    double          l_end_param;
+    UF_MODL_units_t l_units_sw;
+
+
+    l_start_param = *start_param;
+    l_end_param   = *end_param;
+    l_units_sw    = (UF_MODL_units_t) *units_sw;
+
+    *rc = UF_CURVE_ask_arc_length( *np1,
+                                   l_start_param,
+                                   l_end_param,
+                                   l_units_sw,
+                                   arc_length);
+}
+
+extern void FTN(uf6001)(char *cp1, int *nr2, short cp1_len)
+{
+
+    char *string1;
+    short len1;
+
+    if (cp1_len > 30)
+        len1 = 30;
+    else
+        len1 = cp1_len;
+
+    CONVERT_char_to_cstring(cp1, &string1, len1);
+
+    uc6001(string1, (tag_t *)nr2);
+
+    free(string1);
+}
+/*  This function is no longer available.  Please use UF_MOTION_create_link instead
+extern void FTN(uf6031)(char *cp1, int *ip2, int *np3, int *
+        nr4, int *ir5, short cp1_len)
+*/
+
+extern void FTN(uf6400)(char *cp1, int *np2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+
+    *ir3 = uc6400 (strng, *np2);
+
+    free (strng);
+
+} /* uf6400_ */
+
+extern void FTN(uf6401)(char *cp1, int *np2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6401(strng, *np2);
+    free (strng);
+
+} /* uf6401_ */
+
+extern void FTN(uf6402)(char *cp1, int *np2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6402(strng, *np2);
+    free (strng);
+} /* uf6402_ */
+
+extern void FTN(uf6403)(char *cp1, int *np2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6403 (strng, *np2);
+    free (strng);
+
+} /* uf6403_ */
+
+extern void FTN(uf6404)(char *cp1, int *ir2, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir2 = uc6404(strng);
+    free (strng);
+
+} /* uf6404_ */
+
+extern void FTN(uf6405)(char *cp1, int *ir2, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir2 = uc6405(strng);
+    free (strng);
+
+} /* uf6405_ */
+
+extern void FTN(uf6406)(char *cp1, int *np2, double *rp3, int *ip4, 
+                        int *ip5, int *ip6, int *ir7, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir7 = uc6406(strng, *np2, rp3, *ip4, *ip5, *ip6);
+    free (strng);
+
+} /* uf6406_ */
+
+extern void FTN(uf6407) (const tag_t *np1, int *ir2)
+{
+    UF_VIEW_vde_data_p_t vde_data;
+   
+    UF_VIEW_ask_vde_data( *np1, ir2, &vde_data );
+    UF_free(vde_data);
+}
+
+extern void FTN(uf6408)(int *np1, int *ip2, char *cr3, double *rr4, 
+                        int *ir5, int *ir6, int *ir7, short cr3_len)
+{
+    char strng[40];
+
+    strng[0]='\0';
+    uc6408 (*np1, *ip2, strng, rr4, ir5, ir6, ir7);
+    CONVERT_cstring_to_char (strng, cr3, cr3_len);
+
+} /* uf6408_ */
+
+extern void FTN(uf6409)(int *np1, int *ir2, char *cr3, int *ir4, short cr3_len)
+{
+    char strng[140];
+
+    *ir4 = uc6409 (*np1, ir2, strng);
+    if( *ir4 == 0 )
+        CONVERT_cstring_to_char (strng, cr3, cr3_len);
+
+} /* uf6409_ */
+
+extern void FTN(uf6410)(char *cp1, char *cp2, int *ip3, int *ip4,
+	 int *ip5, int *ir6, short cp1_len, short cp2_len)
+{
+    char *sspec, *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    CONVERT_char_to_cstring (cp2, &sspec, cp2_len);
+
+    *ir6 = uc6410 (strng, sspec, *ip3, *ip4, ip5);
+
+    free (strng);
+    free (sspec);
+
+} /* uf6410_ */
+
+extern void FTN(uf6411)(char *cp1, char *cr2, int *ir3, short cp1_len,
+                        short cr2_len)
+{
+    char *sspec, strng[133];
+
+    CONVERT_char_to_cstring (cp1, &sspec, cp1_len);
+    *ir3 = uc6411(sspec, strng);
+    CONVERT_cstring_to_char (strng, cr2, cr2_len);
+  
+    free (sspec);
+
+} /* uf6411_ */
+
+extern void FTN(uf6421)(const int *ir1, const double *rr2, int *ir3)
+{
+    UF_DISP_system_params_t system_parameters;
+    UF_DISP_system_params_t temp_system_parameters;
+
+    system_parameters.color = ir1[0];
+    system_parameters.font  = ir1[1];
+    system_parameters.view_display = ir1[6];
+    system_parameters.line_width_display = ir1[9];
+    system_parameters.tolerance = rr2[0];
+    system_parameters.dash_size = rr2[2];
+    system_parameters.space_size= rr2[3];
+    system_parameters.symbol_size = rr2[4];
+
+    /*  The show_shaded_face_edges and hidden_shaded_face_edges
+        fields of the UF_DISP_system_params_t structure are not
+        modified by this function.  Therefore, set the fields to
+        the values already stored in the database.  */
+
+    UF_DISP_ask_system_parameters(&temp_system_parameters);
+
+    system_parameters.show_shaded_face_edges   =
+        temp_system_parameters.show_shaded_face_edges;
+    system_parameters.hidden_shaded_face_edges =
+        temp_system_parameters.hidden_shaded_face_edges;
+
+    /*  The shaded tolerance fields of the UF_DISP_system_params_t
+        structure are not modified by this function.
+        Therefore, set the fields to
+        the values already stored in the database.  */
+
+    system_parameters.facet_edge_tol =
+                  temp_system_parameters.facet_edge_tol;
+    system_parameters.facet_chord_tol =
+                  temp_system_parameters.facet_chord_tol;
+    system_parameters.facet_angle_tol =
+                  temp_system_parameters.facet_angle_tol;
+
+    *ir3 = UF_DISP_set_system_parameters(&system_parameters);
+}
+
+extern void FTN(uf6430)(char *cp1, double *rr2, double *rr3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6430 (strng, rr2, rr3);
+    free (strng);
+
+} /* uf6430_ */
+
+extern void FTN(uf6431)(char *cp1, double *rp2, double *rp3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6431 (strng, rp2, *rp3);
+    free (strng);
+
+} /* uf6431_ */
+
+extern void FTN(uf6432)(char *cp1, int *ip2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6432 (strng, *ip2);
+    free (strng);
+
+} /* uf6432_ */
+
+extern void FTN(uf6433)(char *cp1, double *rr2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6433 (strng, rr2);
+    free (strng);
+
+} /* uf6433_ */
+
+extern void FTN(uf6434)(char *cp1, int *ip2, int *np3, double *rp4, 
+                        int *ir5, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir5 = uc6434 (strng, *ip2, *np3, rp4);
+    free (strng);
+
+} /* uf6434_ */
+
+extern void FTN(uf6435)(char *cp1, double *rp2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6435 (strng, rp2);
+    free (strng);
+
+} /* uf6435_ */
+
+extern void FTN(uf6436)(char *cp1, int *ir2, double *rr3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6436 (strng, ir2, rr3);
+    free (strng);
+
+} /* uf6436_ */
+
+extern void FTN(uf6437)(char *cp1, int *ip2, double *rp3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6437 (strng, ip2, rp3);
+    free (strng);
+
+} /* uf6437_ */
+
+extern void FTN(uf6438)(char *cp1, int *ir2, double *rr3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6438 (strng, ir2, rr3);
+    free (strng);
+
+} /* uf6438_ */
+
+extern void FTN(uf6439)(char *cp1, int *ip2, double *rp3, double *rp4, 
+                        int *ir5, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir5 = uc6439 (strng, *ip2, *rp3, rp4);
+    free (strng);
+
+} /* uf6439_ */
+
+extern void FTN(uf6440)(char *cp1, int *ir2, int *ir3, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc6440 (strng, ir2);
+    free (strng);
+
+} /* uf6440_ */
+
+extern void FTN(uf6442)(char *cp1, double *rr2, double *rr3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6442 (strng, rr2, rr3);
+    free (strng);
+
+} /* uf6442_ */
+
+extern void FTN(uf6443)(char *cp1, double *rp2, double *rp3, int *ir4, 
+                        short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6443 (strng, rp2, *rp3);
+    free (strng);
+
+} /* uf6443_ */
+
+extern void FTN(uf6444)(char *cp1, int *ir2, int *ir3, int *ir4, int *ir5, 
+                        int *ir6, int *ir7, int *ir8, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir8 = uc6444 (strng, ir2, ir3, ir4, ir5, ir6, ir7);
+    free (strng);
+
+} /* uf6444_ */
+
+extern void FTN(uf6445)(char *cp1, int *ip2, int *ip3, int *ip4, int *ip5, 
+                        int *ip6, int *ip7, int *ir8, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir8 = uc6445 (strng, *ip2, *ip3, *ip4, *ip5, *ip6, *ip7);
+    free (strng);
+
+} /* uf6445_ */
+
+extern void FTN(uf6446)(char *cp1, int *ir2, int *ir3, int *ir4, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6446 (strng, ir2, ir3);
+    free (strng);
+
+} /* uf6446_ */
+
+extern void FTN(uf6447)(char *cp1, int *ip2, int *ip3, int *ir4, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6447 (strng, *ip2, ip3);
+    free (strng);
+
+} /* uf6447_ */
+
+extern void FTN(uf6448)(char *cr1, short cr1_len)
+{
+    char strng[40];
+
+    uc6448 (strng);
+    CONVERT_cstring_to_char (strng, cr1, cr1_len);
+
+} /* uf6448_ */
+
+extern void FTN(uf6449)(char *cp1, int *ir2, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir2 = uc6449 (strng);
+    free (strng);
+
+} /* uf6449_ */
+
+extern void FTN(uf6450)(char *cp1, char *cp2, int *ip3, int *ip4, int *ir5, 
+                        short cp1_len, short cp2_len)
+{
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring (cp1, &strng1, cp1_len);
+    CONVERT_char_to_cstring (cp2, &strng2, cp2_len);
+
+    *ir5 = uc6450 (strng1, strng2, *ip3, *ip4);
+
+    free (strng1);
+    free (strng2);
+
+} /* uf6450_ */
+
+extern void FTN(uf6453)(void)
+{
+    UF_VIEW_save_all_active_views();
+}
+
+extern void FTN(uf6454)(char *cp1, int *ir2, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir2 = uc6454 (strng);
+    free (strng);
+
+} /* uf6454_ */
+
+extern void FTN(uf6455)(char *cp1, char *cp2, int *ir3, short cp1_len, 
+                        short cp2_len)
+{
+    char *strng1, *strng2;
+
+    CONVERT_char_to_cstring (cp1, &strng1, cp1_len);
+    CONVERT_char_to_cstring (cp2, &strng2, cp2_len);
+
+    *ir3 = uc6455 (strng1, strng2);
+
+    free (strng1);
+    free (strng2);
+
+} /* uf6455_ */
+
+extern void FTN(uf6456)(char *ca1, int *ir2, int *ir3, short ca1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (ca1, &strng, ca1_len);
+    *ir3 = uc6456 (strng, ir2);
+
+    /* <05> 13oct95 ja test error condition */
+    if (*ir3 == 0) 
+        CONVERT_cstring_to_char (strng, ca1, ca1_len);
+
+    free (strng);
+
+} /* uf6456_ */
+
+extern void FTN(uf6457)(char *cp1, int *ip2, int *na3, int *ir4, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir4 = uc6457 (strng, *ip2, (tag_t *) na3);
+    free (strng);
+
+} /* uf6457_ */
+
+extern void FTN(uf6460)(char *cp1, int *ip2, char *cp3, int *ip4,
+         double *rp5, int *ir6, short cp1_len, short cp3_len)
+{
+    typedef char mychar [UF_OBJ_NAME_BUFSIZE];
+    static int numvws[5] = { 1,2,2,4,6 };
+
+    char *string1;
+    char cp3_array[7][UF_OBJ_NAME_BUFSIZE];
+    int  num, inx, len;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+
+    if(*ip2 < 0 || *ip2 > 5)
+    {
+       *ir6 = 33;
+       return;
+    }
+    num= numvws[*ip2 - 1];
+    if(cp3_len < UF_OBJ_NAME_BUFSIZE)
+      len = cp3_len;
+    else
+      len = UF_OBJ_NAME_BUFSIZE;
+
+    for( inx=0; inx<num; inx++)
+    {
+       char *string2;
+
+       CONVERT_char_to_cstring(&cp3[len*inx], &string2, (short)len);
+       strcpy((char *)cp3_array[inx], string2);
+       free(string2);
+    }
+
+    *ir6 = uc6460(string1, *ip2, (const mychar *)cp3_array, *ip4, *rp5);
+
+}
+
+extern void FTN(uf6462)(char *cp1, char *cp2, double *rr3, 
+                        int *ir4, short cp1_len, short cp2_len)
+{
+
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+    CONVERT_char_to_cstring(cp2, &string2, cp2_len);
+
+    *ir4 = uc6462(string1, string2, rr3);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf6463)(char *cp1, char *cp2, int *ip3, double *
+        rp4, int *ir5, short cp1_len, short cp2_len)
+{
+
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+    CONVERT_char_to_cstring(cp2, &string2, cp2_len);
+
+    *ir5 = uc6463(string1, string2, *ip3, rp4);
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf6464)(char *cp1, char *cp2, char *cp3, int *ir4, 
+        short cp1_len, short cp2_len, short cp3_len)
+{
+    char *string1, *string2, *string3;
+
+    CONVERT_char_to_cstring(cp1, &string1, cp1_len);
+    CONVERT_char_to_cstring(cp2, &string2, cp2_len);
+    CONVERT_char_to_cstring(cp3, &string3, cp3_len);
+
+    *ir4 = uc6464(string1, string2, string3);
+
+    free(string1);
+    free(string2);
+    free(string3);
+}
+
+extern void FTN(uf6466)(char *cr1, char *cr2, short cr1_len, short cr2_len)
+{
+    char *string1, *string2;
+
+    string1 = (char *)malloc(cr1_len * sizeof(char) + 1);
+    string2 = (char *)malloc(cr2_len * sizeof(char) + 1);
+
+    uc6466(string1, string2);
+
+    CONVERT_cstring_to_char(string1, cr1, cr1_len);
+    CONVERT_cstring_to_char(string2, cr2, cr2_len);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf6467)(char *cp1, int *ir2, short cp1_len)
+{
+    char *string1;
+    short len;
+
+    if (cp1_len > 30)
+       len = 30;
+    else
+       len = cp1_len;
+
+    CONVERT_char_to_cstring(cp1, &string1, len);
+
+    *ir2 = uc6467(string1);
+
+    free(string1);
+}
+
+extern void FTN(uf6468)(char *cp1, int *ip2, double *rp3, 
+        int *ir4, short cp1_len)
+{
+    char *string1;
+    short len;
+
+    if (cp1_len > 30)
+       len = 30;
+    else
+       len = cp1_len;
+
+    CONVERT_char_to_cstring(cp1, &string1, len);
+
+    *ir4 = uc6468(string1, *ip2, *rp3);
+
+    free(string1);
+}
+
+extern void FTN(uf6469)(char *cp1, int *ir2, short cp1_len)
+{
+    char *string1;
+    short len;
+
+    if (cp1_len > 30)
+       len = 30;
+    else
+       len = cp1_len;
+
+    CONVERT_char_to_cstring(cp1, &string1, len);
+
+    *ir2 = uc6469(string1);
+
+    free(string1);
+}
+
+extern void FTN(uf6470)(char *cp1, char *cp2, int *ir3, short 
+        cp1_len, short cp2_len)
+{
+    char *string1, *string2;
+
+    short len1, len2;
+
+    if (cp1_len > 30)
+        len1 = 30;
+    else
+        len1 = cp1_len;
+
+    if (cp2_len > 30)
+        len2 = 30;
+    else
+        len2 = cp2_len;
+
+    CONVERT_char_to_cstring(cp1, &string1, len1);
+    CONVERT_char_to_cstring(cp2, &string2, len2);
+
+    *ir3 = uc6470(string1, string2);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf6471)(char *ca1, int *ir2, short ca1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(ca1, &string1, ca1_len);
+
+    *ir2 = uc6471(string1);
+    if (*ir2 == 0)
+       CONVERT_cstring_to_char(string1, ca1, ca1_len);
+    
+    free(string1);
+}
+
+extern void FTN(uf6472)(char *cp1, int *ir2, int *ir3, short cp1_len)
+{
+    char *string1;
+    short len;
+
+    if (cp1_len > 30)
+       len = 30;
+    else
+       len = cp1_len;
+    CONVERT_char_to_cstring(cp1, &string1, len);
+
+    *ir3 = uc6472(string1, ir2);
+
+    free(string1);
+}
+
+extern void FTN(uf6473)(char *cp1, char *ca2, int *ir3, short cp1_len, short ca2_len)
+{
+    char *string1, *string2;
+    short len1, len2;
+
+    if (cp1_len > 30)
+        len1 = 30;
+    else
+        len1 = cp1_len;
+
+    len2 = 30;
+
+    CONVERT_char_to_cstring(cp1, &string1, len1);
+    CONVERT_char_to_cstring(ca2, &string2, len2);
+
+    *ir3 = uc6473(string1, string2);
+    CONVERT_cstring_to_char(string2, ca2, len2);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf6476)(int *ip1, int *ir2)
+{
+    *ir2 = uc6476(*ip1);
+}
+
+extern void FTN(uf6477)(int *ir1)
+{
+    *ir1 = uc6477();
+}
+ 
+extern void FTN(uf6478)(char *cp1, int *ip2, int *ip3,
+    double *rp4, int *ir5, short cp1_len)
+{
+    char *string1;
+   
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir5 = uc6478( string1, *ip2, *ip3, rp4);
+
+    free(string1);
+}
+
+extern void FTN(uf6479)(char *cp1, int *ir2, int *ir3,
+    double *rr4, int *ir5, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir5 = uc6479( string1, ir2, ir3, rr4 );
+
+    free(string1);
+}  
+
+extern void FTN(uf6480)(char *cp1, int *ip2, int *ip3,
+    double *rp4, int *ir5, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir5 = uc6480( string1, *ip2, *ip3, rp4);
+
+    free( string1 );
+}
+
+extern void FTN(uf6481)(char *cp1, char *cp2, double *rp3, int *
+    ip4, int *ir5, short cp1_len, short cp2_len)
+{
+     
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir5 = uc6481( string1, string2, rp3, *ip4 ) ;
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6482)(char *cp1, char *cp2, int *ir3, short
+    cp1_len, short cp2_len)
+{
+    char *string1;
+    char *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir3 = uc6482(string1, string2 ) ;
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6483)(char *cp1, char *cp2, double *rr3, int *
+    ir4, short cp1_len, short cp2_len)
+{
+    char *string1, *string2 ;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir4 = uc6483(string1, string2, rr3 ) ;
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6484)(char *cp1, char *cp2, double *rp3, int *
+    ir4, short cp1_len, short cp2_len)
+{
+    char *string1, *string2 ;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir4 = uc6484(string1, string2, rp3 ) ;
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6485)(char *cp1, double *rr2, int *ir3, short
+    cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir3 = uc6485( string1, rr2 ) ; 
+
+    free(string1) ;
+}
+
+extern void FTN(uf6488)(char *cp1, char *cp2, int *ir3, int *ir4,
+         short cp1_len, short cp2_len)
+{
+
+    char *string1;
+    char *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir4 = uc6488( string1,string2, ir3);
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6489)(char *cp1, char *cp2, int *ip3, int *ir4,
+         short cp1_len, short cp2_len)
+{
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+   
+    *ir4 = uc6489(string1,string2, *ip3); 
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6492)(char *cr1, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof( char ) * (cr1_len + 1));
+    uc6492(string1);
+    CONVERT_cstring_to_char(string1, cr1, cr1_len);
+
+    free(string1);
+}
+   
+extern void FTN(uf6494)(char *cp1, int *ir2, short cp1_len)
+{
+
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir2 = uc6494( string1);
+
+    free(string1);
+}
+
+extern void FTN(uf6496)(char *cp1, char *cp2, int *ir3, short
+       cp1_len, short cp2_len)
+{
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp2,&string2,cp2_len);
+
+    *ir3 = uc6496(string1, string2);
+
+    free( string1 ) ;
+    free( string2 ) ;
+ }
+
+extern void FTN(uf6498)(char *cp1, int *ir2, int *ir3, short 
+        cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+
+    *ir3 = uc6498(string1, ir2);
+    free(string1);
+}
+
+extern void FTN(uf6499)(char *cp1, char *ca2, int *ir3, short
+         cp1_len, short ca2_len)
+ {
+
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(ca2,&string2,ca2_len);
+
+    *ir3 = uc6499(string1, string2);
+
+    CONVERT_cstring_to_char( string2, ca2, ca2_len);
+
+    free( string1 ) ;
+    free( string2 ) ;
+}
+
+extern void FTN(uf6560)(char *cr1, short cr1_len)
+{
+    char ufmenu[135];
+
+    uc6560(ufmenu);
+    CONVERT_cstring_to_char(ufmenu, cr1, cr1_len);
+
+} /* uf6560_ */
+
+extern void FTN(uf6570)(int *ip1, double *rp2, int *ip3,
+        int *ip4, int *ip5, double *rp6, int *ip7, char *cp8,
+        int *ip9, tag_t *np10, tag_t *nr11, short cp8_len)
+{
+    char *string1;
+    int i__1, indx, data[35];
+
+    FTN(uf6570x)(ip1, &rp2[0], ip3, &ip4[0], ip5, &rp6[0], ip9, &np10[0], nr11);
+
+    if( *ip7 > 0)
+    {
+        i__1 = *ip7;
+        for(indx=0; indx < i__1; indx++)
+        {
+            CONVERT_char_to_cstring(&cp8[indx*cp8_len], &string1, cp8_len);
+            data[0] = strlen(string1);
+            strcpy((char *)&data[1], string1);
+            FTN(uf6573x)(nr11, (int *)data);
+            free(string1);
+        }
+    }
+
+}
+
+extern void FTN(uf6570x)(int *ip1, double *rp2, int *ip3, int *ip4, int *ip5, double *rp6, 
+                        int *ip7, tag_t *np8, tag_t *nr9)
+{
+    int      n_strings=0;
+
+    uc6570(*ip1, rp2, *ip3, ip4, *ip5, rp6, n_strings, NULL, *ip7, np8, nr9);
+}
+
+extern void FTN(uf6573x)(tag_t *np1, int *data)
+{
+      char *string1;
+
+      string1 = (char *)malloc(data[0] * sizeof(char)+1);
+      strncpy(string1, (char *)&data[1], data[0]);
+      string1[data[0]] = '\0';
+      UF_UDOBJ_add_strings(*np1, 1, &string1);
+      free(string1);
+
+}
+
+extern void FTN(uf6571)(const tag_t *np1, const int *jp2, const int *jp3, int *ir4)
+{
+    int error=0;
+    if( 0 != (*jp2))
+       error = UF_UDOBJ_add_integers ( *np1, *jp2, (int *)jp3);
+    if( 0 == error)
+    {
+        *ir4 = 0;
+    }
+    else
+    {
+        *ir4 = 1;
+    }
+}
+
+extern void FTN(uf6572)(const tag_t *np1, const int *jp2, const double *rp3, int *ir4)
+{  
+    int error=0;
+    if( 0 != (*jp2))
+        error = UF_UDOBJ_add_doubles ( *np1, *jp2, (double *)rp3);
+    if( 0 == error)
+    {
+        *ir4 = 0;
+    }
+    else
+    {
+        *ir4 = 1;
+    }
+}
+
+extern void FTN(uf6573)(tag_t *np1, int *ip2, char *cp3, int *ir4, short cp3_len)
+{
+   int indx, i__1, type, sub_type;
+   int str_data[35];
+   *ir4 = 0;
+
+   /* *** CHECK ENTITY TYPE */
+   UF_OBJ_ask_type_and_subtype(*np1, &type, &sub_type);
+   if (type != UF_user_defined_object_type) 
+   {
+       *ir4 = 1;
+   } 
+   else 
+   {
+       /* ***    ADD DATA */
+       if (*ip2 > 0) 
+       {
+           i__1 = *ip2;
+           for (indx = 0; indx < i__1; ++indx) 
+           {
+               char *string1;
+
+               CONVERT_char_to_cstring(&cp3[indx*cp3_len], &string1, cp3_len);
+               str_data[0] = strlen(string1);
+               strncpy((char *)&str_data[1], string1, str_data[0]);
+               FTN(uf6573x)(np1, (int *)str_data);
+               free(string1);
+           }
+       }
+   }
+}
+
+extern void FTN(uf6574)(const tag_t *np1, const int *ip2, const tag_t *np3, int *ir4)
+{
+    int error=0,indx;
+    UF_UDOBJ_link_t *link_defs;
+
+    /* If the add 0 data, return */
+    if( 0 == (*ip2)) 
+       return;
+
+    /* Allocate memory and assign link_defs */
+    link_defs = (UF_UDOBJ_link_t *)malloc(sizeof(UF_UDOBJ_link_t)*(*ip2));
+    for ( indx=0; indx<(*ip2); indx++)
+    {
+        link_defs[indx].assoc_ug_tag = np3[indx];
+        link_defs[indx].object_status = 0;
+        link_defs[indx].link_type = 3;
+    }
+
+    /* Use new link_defs */
+    error = UF_UDOBJ_add_links ( *np1, *ip2, link_defs );
+    if(0==error)
+    {
+        *ir4 = 0;
+    }
+    else
+    {
+        *ir4 = 1;
+    }
+
+    /* Free memory */
+    free(link_defs);
+}
+
+extern void FTN(uf6575)(const tag_t *np1, const int *ip2, int *ir3, int *ir4)
+{
+    UF_UDOBJ_all_data_t  udo_data;
+
+    /* get all udo data */
+    *ir4 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+    if( 0 != *ir4 )
+    {
+        if( *ir4 != UF_err_program_not_initialized && 
+            *ir4 != UF_err_bad_parameter_number_2    ) 
+            *ir4 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* assign output */
+    switch(*ip2)
+    {
+    case 1:
+        *ir3 = udo_data.num_ints;
+        break;
+    case 2:
+        *ir3 = udo_data.num_doubles;
+        break;
+    case 3:
+        *ir3 = udo_data.num_strings;
+        break;
+    case 4:
+        *ir3 = udo_data.num_links;
+        break;
+    default:
+        *ir4 = 2;
+        break;
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6576)(const tag_t *np1, const int *ip2, const int *ip3, int *ir4, int *ir5)
+{
+    int                 indx,itmp;
+    UF_UDOBJ_all_data_t udo_data;
+
+    if ( 0 == *ip3 )                    /* if read 0 data, return */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized && 
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+    if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_ints )    /* no enough data */
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* assign output */
+    for ( indx = *ip2-1; indx < *ip2+*ip3-1; indx++)
+    {
+        itmp = indx - (*ip2-1);
+        ir4[itmp] = udo_data.ints[indx];
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6577)(const tag_t *np1, const int *ip2, const int *ip3, double *rr4, int *ir5)
+{
+    int                  indx,itmp;
+    UF_UDOBJ_all_data_t  udo_data;
+
+    if ( 0 == *ip3 )                    /* if read 0 data, return */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized && 
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_doubles )   /* not enough data */
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* assign output */
+    for ( indx = *ip2-1; indx < *ip2+*ip3-1; indx++)
+    {
+        itmp = indx - (*ip2-1);
+        rr4[itmp] = udo_data.doubles[indx];
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6578)(tag_t *np1, int *ip2, int *ip3, char *cr4, int *ir5, short cr4_len)
+{
+    int c__3 = 3, count, type, sub_type;
+    int str_data[35], i__1, indx, i__2;
+
+    *ir5 = 0;
+
+    /* *** CHECK ENTITY TYPE */
+    UF_OBJ_ask_type_and_subtype(*np1, &type, &sub_type);
+    if (type != UF_user_defined_object_type) 
+    {
+        *ir5 = 1;
+    } 
+    else 
+    {
+        /* ***    GET CURRENT COUNT OF DATA ELEMENTS AND CHECK REQUEST */
+        FTN(uf6575)(np1, &c__3, &count, ir5);
+        if (*ir5 == 0) 
+        {
+            if (*ip2 + *ip3 - 1 > count) 
+            {
+                *ir5 = 2;
+            } 
+            else 
+            {
+                i__1 = *ip3;
+                for (indx = 0; indx < i__1; ++indx) 
+                {
+                    char *string1;
+
+                    i__2 = *ip2 + indx;
+                    FTN(uf6578x)(np1, &i__2, (int *)str_data);
+                    string1 = (char *)malloc(str_data[0]*sizeof(char) + 1);
+                    strncpy(string1, (char *)&str_data[1], str_data[0]);
+                    string1[str_data[0]] = '\0';
+                    CONVERT_cstring_to_char(string1, &cr4[indx*cr4_len], cr4_len);
+                    free(string1);
+                }
+            }
+        }
+    }
+
+}
+
+extern void FTN(uf6578x)(const tag_t *np1, const int *ip2, int *c_msg)
+{
+    UF_UDOBJ_all_data_t   udo_data;
+
+    /* get all udo data */
+    UF_UDOBJ_ask_udo_data(*np1, &udo_data);
+
+    /* Convert the required string to c/msg */
+    strcpy((char *)&c_msg[1], udo_data.strings[*ip2-1]);
+    c_msg[0] = strlen(udo_data.strings[*ip2-1]);
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6579)(const tag_t *np1, const int *ip2,
+const int *ip3, tag_t *nr4, int *ir5)
+{
+    int                 indx,itmp;
+    UF_UDOBJ_all_data_t udo_data;
+
+    if ( 0 == (*ip3) )                          /* 0 data requested */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized &&
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_links )   /* not enough data */
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* assign output */
+    for ( indx = *ip2-1; indx < *ip2+*ip3-1; indx++)
+    {
+        itmp = indx - (*ip2-1);
+        nr4[itmp] = udo_data.link_defs[indx].assoc_ug_tag;
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6580)(const tag_t *np1, const int *ip2,
+const int *ip3, const int *ip4, int *ir5)
+{
+    int                 indx,itmp;
+    UF_UDOBJ_all_data_t udo_data;
+
+    if ( 0 == (*ip3) )                         /* 0 data modified */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized && 
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_ints )   /* not enough data */
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+
+    /* modify the data */
+    for ( indx = *ip2-1; indx < *ip2+*ip3-1; indx++)
+    {
+        itmp = indx - (*ip2-1);
+        udo_data.ints[indx] = ip4[itmp];
+    }
+    *ir5 = UF_UDOBJ_edit_integers(*np1, udo_data.ints);
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6581)(const tag_t *np1, const int *ip2,
+const int *ip3, const double *rp4, int *ir5)
+{
+    int                  indx,itmp;
+    UF_UDOBJ_all_data_t  udo_data;
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data);
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized && 
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+    if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_doubles )
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* modify the data */
+    for ( indx = *ip2-1; indx < *ip2+*ip3-1; indx++)
+    {
+        itmp = indx - (*ip2-1);
+        udo_data.doubles[indx] = rp4[itmp];
+    }
+    *ir5 = UF_UDOBJ_edit_doubles(*np1, udo_data.doubles);
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6582)(tag_t *np1, int *ip2, int *ip3, char *cp4, int *ir5, short cp4_len)
+{
+    int c__3 = 3, count, type, sub_type;
+    int str_data[35], indx, i__1, i__2;
+
+    cp4 -= cp4_len;
+    *ir5 = 0;
+
+    /* *** CHECK ENTITY TYPE */
+    UF_OBJ_ask_type_and_subtype(*np1, &type, &sub_type);
+    if (type != UF_user_defined_object_type) 
+    {
+        *ir5 = 1;
+    } 
+    else 
+    {
+        /* *** GET CURRENT COUNT OF DATA ELEMENTS AND CHECK REQUEST */
+        FTN(uf6575)(np1, &c__3, &count, ir5);
+        if (*ir5 == 0) 
+        {
+            if (*ip2 + *ip3 - 1 > count) 
+            {
+                *ir5 = 2;
+            } 
+            else 
+            {
+                /* *** MODIFY CHARACTER DATA ELEMENTS */
+                i__1 = *ip3;
+                for (indx = 1; indx <= i__1; ++indx) 
+                {
+                    char *string1;
+
+                    CONVERT_char_to_cstring(&cp4[indx*cp4_len], &string1, cp4_len);
+                    strncpy((char *)&str_data[1], string1, strlen(string1));
+                    str_data[0] = strlen(string1);
+
+                    i__2 = *ip2 + indx - 1;
+
+                    FTN(uf6582x)(np1, &i__2, (int *)str_data, ir5);
+                    free(string1);
+                }
+            }
+        }
+    }
+
+}
+
+extern void FTN(uf6582x)(const tag_t *np1, const int *ip2, const int *c_msg, int *ir4)
+{
+    UF_UDOBJ_all_data_t udo_data;
+    char *strings, *save_ptr;
+
+    /* get all udo data */
+    *ir4 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data );
+
+    /* Check errors */
+    if( 0 != *ir4 ) 
+    {
+        if( *ir4 != UF_err_program_not_initialized &&
+            *ir4 != UF_err_bad_parameter_number_2  )   /* invalid input tag */
+            *ir4 = 1;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+    
+    /* assign the data and modify the data */
+    strings = (char *)malloc(c_msg[0]*sizeof(char) + 1);
+    strncpy(strings, (char *)&c_msg[1], c_msg[0]);
+    strings[c_msg[0]] = '\0';
+
+    save_ptr = udo_data.strings[*ip2-1];
+    udo_data.strings[*ip2-1] = strings;
+    *ir4 = UF_UDOBJ_edit_strings(*np1,udo_data.strings);
+    free(strings);
+    udo_data.strings[*ip2-1] = save_ptr;
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6583)(const tag_t *np1, const int *ip2,
+const int *ip3, const tag_t *np4, int *ir5)
+{
+    UF_UDOBJ_all_data_t udo_data;
+    int                 i,itmp;
+
+    if( 0 == *ip3 )                     /* modify 0 data */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+    /*  get all udo data */
+    *ir5 =  UF_UDOBJ_ask_udo_data ( *np1, &udo_data );
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        if( *ir5 != UF_err_program_not_initialized && 
+            *ir5 != UF_err_bad_parameter_number_2    ) 
+            *ir5 = 1;
+        return;
+    }
+    if( (unsigned int)(*ip2+*ip3-1) > udo_data.num_links )
+    {
+        *ir5 = 2;
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* delete all entity data */
+    for ( i = 0; (unsigned int)i < udo_data.num_links; i++)
+        UF_UDOBJ_delete_link(*np1,&udo_data.link_defs[i]);
+
+    /* modify links */
+    for ( i = *ip2-1; i < (*ip2+*ip3-1); i++)
+    {
+        itmp = i - (*ip2-1);
+        udo_data.link_defs[i].assoc_ug_tag = np4[itmp];
+        udo_data.link_defs[i].object_status = 0;
+        udo_data.link_defs[i].link_type = 3;
+    }
+
+    /* add new link list */
+    *ir5 = UF_UDOBJ_add_links(*np1, udo_data.num_links, udo_data.link_defs);
+
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+
+}
+
+extern void FTN(uf6584)(const tag_t *np1, const int *ip2,
+const int *ip3, const int *ip4, int *ir5)
+{
+    UF_UDOBJ_all_data_t udo_data;
+    int                 i;
+
+    if( 0 == *ip3 )                     /* delete 0 data */
+    {
+        *ir5 = 0;
+        return;
+    }
+
+    if( (0>*ip4) || (4<*ip4) )          /* bad input ip4 */
+    {
+        *ir5 = 3;
+        return;
+    }
+
+    /* get all udo data */
+    *ir5 = UF_UDOBJ_ask_udo_data ( *np1, &udo_data );
+
+    /* Check errors */
+    if( 0 != *ir5 )
+    {
+        *ir5 = 1;
+        return;
+    }
+
+    switch(*ip4)
+    {
+    case 1:
+        if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_ints )   *ir5 = 2;
+        break;
+    case 2:
+       if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_doubles ) *ir5 = 2;
+        break;
+    case 3:
+        if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_strings ) *ir5 = 2;
+        break;
+    case 4:
+        if ( (unsigned int)(*ip2+*ip3-1) > udo_data.num_links )   *ir5 = 2;
+        break;
+    default:
+        break;
+    }
+    if ( 2 == *ir5 )
+    {
+        UF_UDOBJ_free_udo_data(&udo_data);
+        return;
+    }
+
+    /* delete the data */
+    switch(*ip4)
+    {
+    case 1:
+        *ir5 = UF_UDOBJ_delete_integers ( *np1, *ip2, *ip3 );
+        break;
+    case 2:
+        *ir5 = UF_UDOBJ_delete_doubles ( *np1, *ip2, *ip3 );
+        break;
+    case 3:
+        *ir5 = UF_UDOBJ_delete_strings ( *np1, *ip2, *ip3 );
+        break;
+    case 4:
+        for (i = *ip2-1; i< *ip2+*ip3-1; i++)
+        {
+            UF_UDOBJ_delete_link ( *np1, &udo_data.link_defs[i] );
+        }
+        break;
+    default:
+        break;
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6585)(const tag_t *np1, int *ir2, int *ir3)
+{
+    int error = 0;
+    UF_UDOBJ_all_data_t udo_data;
+
+    /* get all udo data */
+    error = UF_UDOBJ_ask_udo_data ( *np1, &udo_data );
+
+    *ir2 = udo_data.udo_status;
+    if( 0 == error)
+        *ir3 = 0;
+    else
+        *ir3 = 1;
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data(&udo_data);
+}
+
+extern void FTN(uf6587)(const tag_t *np1, int *ir2)
+{
+     UF_UDOBJ_link_p_t udo_links;
+     int num_of_links;
+
+     UF_UDOBJ_ask_udo_links_to_obj(*np1, &num_of_links, &udo_links);
+     *ir2 = num_of_links;
+     UF_free(udo_links);
+}
+
+extern void FTN(uf6588)(const tag_t *np1, const int *ip2, tag_t *nr3, int *ir4)
+{
+    int num_of_links;
+    UF_UDOBJ_link_p_t udo_links;
+
+    if (*ip2 <= 0)
+    {
+       *ir4 = 1;
+       return;
+    }
+
+    UF_UDOBJ_ask_udo_links_to_obj(*np1, &num_of_links, &udo_links);
+
+    if (*ip2 > num_of_links)
+    {
+       *ir4 = 1;
+       return;
+    }
+
+    *nr3 = udo_links[*ip2-1].assoc_ug_tag;
+    UF_free(udo_links);
+}
+
+extern void FTN(uf6589)(const tag_t *np1, const tag_t *np2, int *ia3)
+{
+    int                 indx,error,found;
+    UF_UDOBJ_all_data_t udo_data;
+
+    /* get all udo data */
+    error = UF_UDOBJ_ask_udo_data ( *np1, &udo_data );
+    if ( 0 != error )
+    {
+        *ia3 = 0;
+        return;
+    }
+
+    /* get the output */
+    found = 0;
+    for (indx = *ia3; (unsigned int)indx < udo_data.num_links; indx++)
+    {
+        if (*np2 == udo_data.link_defs[indx].assoc_ug_tag)
+        {
+            found = 1;
+            break;
+        }
+    }
+    if (found)
+    {
+        *ia3 = indx + 1;
+    }
+    else
+    {
+        *ia3 = 0;
+    }
+
+    /* free memory */
+    UF_UDOBJ_free_udo_data( &udo_data );
+}
+
+extern void FTN(uf4613)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len)
+{
+    char *string1, *string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    CONVERT_char_to_cstring(cp3,&string2,cp3_len);
+
+    *ir4 = uc4613(string1,*ip2,string2);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4620)(char *cp1, char *cr2, int *ir3, short
+        cp1_len, short cr2_len)
+{
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    string2 = (char *)malloc( sizeof(char) * (cr2_len + 1));
+
+    *ir3 = uc4620( string1,string2);
+    CONVERT_cstring_to_char(string2,cr2,cr2_len);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf4621)(char *cr1, int *ir2, short cr1_len)
+{
+    char *string1;
+
+    string1 = (char *)malloc( sizeof(char) * (cr1_len + 1));
+    *ir2 = uc4621(string1);
+    CONVERT_cstring_to_char(string1,cr1,cr1_len);
+
+    free(string1);
+}
+
+extern void FTN(uf4623)(char *cp1, char *cr2, int *ir3, short
+        cp1_len, short cr2_len)
+{
+    char *string1,*string2;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    string2 = (char *)malloc( sizeof(char) * (cr2_len + 1));
+
+    *ir3 = uc4623(string1,string2);
+    CONVERT_cstring_to_char(string2,cr2,cr2_len);
+
+    free(string1);
+    free(string2);
+}
+
+extern void FTN(uf5560)( int *annotation_type )
+{
+    tag_t  assorted_parts_tag;
+    UF_DRF_assortpart_arc_t assortpart_arc;
+    UF_DRF_assortpart_arrow_t assortpart_arrow;
+    UF_DRF_assortpart_line_t assortpart_line;
+    UF_DRF_assortpart_text_t assortpart_text;
+
+    UF_DRF_init_assortpart_arc( &assortpart_arc );
+    UF_DRF_init_assortpart_arrow( &assortpart_arrow);
+    UF_DRF_init_assortpart_line( &assortpart_line );
+    UF_DRF_init_assortpart_text( &assortpart_text );
+  
+    if ( *annotation_type == 1 )
+    {
+        UF_DRF_create_assortpart_dim( &assortpart_arc,
+                                      &assortpart_arrow,
+                                      &assortpart_line,
+                                      &assortpart_text,
+                                      &assorted_parts_tag );
+    }
+    else if ( *annotation_type == 2 )
+    {
+        UF_DRF_create_assortpart_aid( &assortpart_arc,
+                                      &assortpart_arrow,
+                                      &assortpart_line,
+                                      &assortpart_text,
+                                      &assorted_parts_tag );
+    }
+}
+
+extern void FTN(uf2703)(char *cp1, int *ir2, short cp1_len)
+{
+    char *string1;
+    tag_t view_tag;
+    int error ;
+    char view_name[31];
+  
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+
+    if (strcmp(string1,"") == 0)
+    {
+         uc6448(view_name);
+    }
+    else
+    {
+        strcpy(view_name,string1);
+    }
+
+    error =UF_VIEW_ask_tag_of_view_name(view_name,&view_tag);
+    if ( error == UF_VIEW_ERR_NO_SUCH_VIEW_NAME)
+        *ir2 = 2;
+   
+    if( error == 0)
+    {
+        if (view_tag != NULL_TAG)
+        {
+            error = UF_DISP_regenerate_view(view_tag);
+            if ( error == UF_err_bad_parameter_number_1 )
+               *ir2 = 9;
+            else if ( error == 0 )
+               *ir2 = 0;
+        }
+    }
+    free(string1);
+}
+
+extern void FTN(uf2720)(char *cp1, int *ip2, double *rp3,
+    int *ip4, int *ip5, int *ir6, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir6 = uc2720(string1, *ip2, rp3, *ip4, *ip5);
+    free(string1);
+}
+
+extern void FTN(uf2721)(char *cp1, int *ip2, double *rp3,
+        int *ip4, int *ip5, int *ip6, int *ir7, short cp1_len)
+{
+    char *string1;
+
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir7 = uc2721(string1, *ip2, rp3, *ip4, *ip5, *ip6);
+    free(string1);
+}
+
+extern void FTN(uf2722)(char *cp1, int *ip2, double *rp3,
+    int *ip4, int *ip5, int *ip6, int *ir7, short
+    cp1_len)
+{
+    char *string1;
+    CONVERT_char_to_cstring(cp1,&string1,cp1_len);
+    *ir7 = uc2722(string1, *ip2, rp3, *ip4, *ip5, *ip6);
+
+    free(string1);
+}
+
+extern void FTN(uf6420)(int *ir1, double *rr2)
+{
+    UF_DISP_system_params_t system_parameters;
+    tag_t drawing_tag;
+
+    UF_DISP_ask_system_parameters(&system_parameters);
+    ir1[0] = system_parameters.color;
+    ir1[1] = system_parameters.font;
+
+    UF_DRAW_ask_current_drawing(&drawing_tag);
+    if (drawing_tag == NULL_TAG)
+        /* Dash Forshortening is OFF */
+        ir1[2] = 1;
+    else
+        /* Dash Forshortening is ON */
+        ir1[2] = 2;
+	    
+    ir1[3] = 2;
+    ir1[4] = 1;
+    ir1[5] = 2;
+    ir1[6] = system_parameters.view_display;
+    ir1[7] = system_parameters.view_display;
+    ir1[8] = 2;
+    ir1[9] = system_parameters.line_width_display;
+    ir1[10]= 1;
+    rr2[0] = system_parameters.tolerance;
+    rr2[1] = system_parameters.tolerance;
+    rr2[2] = system_parameters.dash_size;
+    rr2[3] = system_parameters.space_size;
+    rr2[4] = system_parameters.symbol_size;
+}
+
+
+/*******************************************************************************
+*  DESCRIPTION -
+*
+*    Delete the given sketch dimension. This routine is obsoleted in V17.0.
+*
+*  INPUT PARAMETERS -
+*
+*       dim_tags        The list of object tags of the dimensions to delete.
+*
+*  OUTPUT PARAMETERS -
+*
+*  RETURN VALUE -
+*
+*           int              Error Return Flag
+*                             0 - Success
+*                             Others - See error message through UF_get_fail_message()
+*
+*******************************************************************************/
+extern int UF_SKET_delete_dimension( uf_list_p_t  dim_tags)           
+{
+   int i, status = 0;
+   int tag_count;
+
+
+   
+   status = UF_MODL_ask_list_count( dim_tags, &tag_count);
+
+   if (status == 0 )
+   {
+       tag_t  *dim_array = NULL;
+
+       dim_array = (tag_t *) UF_allocate_memory( tag_count * sizeof(tag_t), &status );
+
+       for ( i=0; (i < tag_count) && (!status); i++ )
+       {
+           status = UF_MODL_ask_list_item( dim_tags, i, &(dim_array[i]) );
+
+       }
+
+       UF_SKET_delete_dimensions(tag_count, dim_array);
+
+       if (dim_array) UF_free(dim_array);
+   }
+
+   return (status);
+
+}  /* end of UF_SKETCH_delete_dimension */
+
+
+/*******************************************************************************
+   This routine provides the ability to interrogate a sketch.
+   This routine is obsoleted in V17.0.
+
+  INPUT PARAMETERS -
+
+    tag_t          sketch_id        Sketch identifier
+    int            option           Option
+                                     1 : Sketch CSYS
+                                     2 : Sketch datum(pre-v13 sketches only)
+                                     3 : Sketch geometry
+                                     4 : Sketch dimension
+                                     5 : Sketch view(pre-v13 sketches only)
+
+  OUTPUT PARAMETERS -
+
+    char           view_name[16]    Name of sketch view (for option = 5)
+    uf_list_p_t    *object_list     List of features 
+                                     NULL: if not found
+
+*******************************************************************************/
+extern int UF_SKET_ask_info( tag_t        sketch_id,
+                             int          option,
+                             char         view_name[16],
+                             uf_list_p_t  *object_list)
+{
+    int     error = 0, object_count;
+
+
+    if (option < 1 && option > 5) return(INVALID_OPTION);
+
+    *object_list  = NULL;
+  
+    /* Create a list for the sketch items to be put into */
+    UF_MODL_create_list(object_list);
+    object_count = 0;
+    
+    switch (option)
+    {
+    case  1:                                     /* Sketch CSYS     */
+    case  2:                                     /* Sketch datum    */
+    case  5:                                     /* Sketch view     */
+        {
+            UF_SKET_info_t sket_info;
+        
+            error = UF_SKET_ask_sketch_info(sketch_id, &sket_info);
+
+            if ( error != 0 ) break;
+
+            if ( option == 1 && sket_info.csys_tag != NULL_TAG )
+            {
+                object_count = 1;
+                UF_MODL_put_list_item(*object_list, sket_info.csys_tag);
+            }
+            else if ( option == 2 || option == 5 )
+            {
+                if ( sket_info.subtype == UF_v9_sketch_subtype )
+                {
+                    if ( option == 2 && sket_info.datum_tag != NULL_TAG )
+                    {
+                        object_count = 1;
+                        UF_MODL_put_list_item(*object_list, sket_info.datum_tag);
+                    }
+                    else if ( option == 5)
+                    {
+                        strcpy(view_name, sket_info.view_name);
+                    }
+                }
+                else
+                    error = INVALID_SKETCH_TYPE;
+            }
+        }
+        break;  
+
+
+    case  3:                                     /* Sketch geometry */
+    case  4:                                     /* Sketch dimensions  */
+        {
+            int     i, num;
+            tag_t   *tag_list = NULL;
+
+            if ( option == 3) 
+                error = UF_SKET_ask_geoms_of_sketch(sketch_id, &num, &tag_list);
+            else 
+                error = UF_SKET_ask_dimensions_of_sketch(sketch_id, &num, &tag_list);
+
+            if (error != 0 ) break;
+
+            for (i = 0; i < num; i++)
+            {
+                object_count++;
+                UF_MODL_put_list_item(*object_list, tag_list[i]);
+            }
+
+            if (tag_list)   UF_free(tag_list);
+        }
+        break;
+        
+        
+    default:
+        break;  
+    }
+    
+    if (!object_count) 
+    {
+        UF_MODL_delete_list(object_list);
+        *object_list = NULL;
+    }
+    
+    return(error);
+}
+
+/********************   CLONE CHANGES ***********************************/
+static logical CONVERT_clone_is_hookup_full_name ( const char *fname )
+{
+
+    return ( fname!=NULL && strncmp ( fname, "%UGMGR",strlen("%UGMGR") )== 0 ||
+             strncmp ( fname, "@DB", strlen("@DB")) == 0 
+           );
+
+}
+static int CONVERT_clone_get_operation_from_fnames
+( 
+    const char *input_fname,
+    const char *output_fname,
+    UF_CLONE_operation_class_t *operation
+) 
+{
+
+    int    error_code      = 0;
+    char   *encoded_input  = NULL;
+    char   *encoded_output = NULL;
+
+    error_code = UF_UGMGR_convert_name_from_cli ( input_fname, &encoded_input );
+    if ( error_code == 0 && output_fname != NULL )
+    {
+         error_code = UF_UGMGR_convert_name_from_cli ( output_fname, 
+                                                       &encoded_output );
+    }
+    if ( error_code == 0 )
+    {
+        if ( output_fname == NULL )
+            *operation = UF_CLONE_edit_operation;
+        else if ( CONVERT_clone_is_hookup_full_name(encoded_input) == 
+                  CONVERT_clone_is_hookup_full_name(encoded_output)
+                )
+            *operation = UF_CLONE_clone_operation;
+        else if (CONVERT_clone_is_hookup_full_name(encoded_input))
+            *operation = UF_CLONE_export_operation;
+        else if (CONVERT_clone_is_hookup_full_name(encoded_output))
+            *operation = UF_CLONE_import_operation;  
+        else 
+            error_code = ASSY_err_clone_init_error; 
+    }
+    return error_code;
+}
+
+static int CONVERT_clone_nm_options 
+( 
+    UF_CLONE_copy_nm_opt_p_t *clone_nm,
+    UF_ASSEM_clone_copy_nm_opt_p_t assem_nm 
+)
+{
+    UF_CLONE_copy_nm_opt_p_t  curr = NULL;
+    UF_CLONE_copy_nm_opt_p_t  hold = NULL;
+    int  error_code = 0;
+
+    *clone_nm = NULL;
+    
+    while ( assem_nm != NULL && error_code == 0 )
+    {
+         
+        if ( *clone_nm == NULL )
+        {
+            *clone_nm = curr = (UF_CLONE_copy_nm_opt_t  *)UF_allocate_memory 
+                                             ( sizeof(UF_CLONE_copy_nm_opt_t ),
+                                               &error_code 
+                                             );
+            memset ( (UF_CLONE_copy_nm_opt_t *)curr, 0, sizeof(UF_CLONE_copy_nm_opt_t) );
+
+        }
+        else
+        {
+            curr = (UF_CLONE_copy_nm_opt_t  *)UF_allocate_memory 
+                                             ( sizeof(UF_CLONE_copy_nm_opt_t ),
+                                               &error_code 
+                                             );
+            memset ( (UF_CLONE_copy_nm_opt_t *)curr, 0, sizeof(UF_CLONE_copy_nm_opt_t) );
+            hold->next = curr;
+        }
+      
+        if ( error_code == 0 )
+        {
+            if ( assem_nm->nonmaster_type )
+            {
+                curr->nonmaster_type = ( char *)UF_allocate_memory 
+                          ( sizeof(char) * (strlen(assem_nm->nonmaster_type)+1),
+                            &error_code 
+                          );
+                if ( error_code == 0 )
+                    strcpy ( curr->nonmaster_type, assem_nm->nonmaster_type );
+            }
+            curr->copy = assem_nm->copy;
+            assem_nm = assem_nm->next;
+            hold = curr;
+        }
+    }
+    return error_code;
+}
+
+static int CONVERT_clone_cleanup ( UF_CLONE_copy_nm_opt_p_t clone_nm )
+{
+    UF_CLONE_copy_nm_opt_p_t curr = clone_nm != NULL ? clone_nm : NULL; 
+
+    while ( curr != NULL )
+    {
+        UF_free ( curr->nonmaster_type );
+        curr = clone_nm->next;
+        UF_free ( clone_nm );
+        clone_nm = curr;
+    }
+    return 0;
+} 
+
+static int CONVERT_clone_default_action 
+( 
+    UF_ASSEM_clone_action_t assem_clone_action, 
+    UF_CLONE_action_t *clone_action 
+)   
+{
+    int    error_code = 0;
+    switch ( assem_clone_action )
+    {
+        case UF_ASSEM_retain:
+            *clone_action = UF_CLONE_retain;
+            break;
+        case UF_ASSEM_clone:
+            *clone_action = UF_CLONE_clone;
+            break;
+        case UF_ASSEM_replace:
+            *clone_action = UF_CLONE_replace;
+            break;
+        case UF_ASSEM_overwrite:
+            *clone_action = UF_CLONE_overwrite;
+            break; 
+        case UF_ASSEM_use_existing:
+            *clone_action = UF_CLONE_use_existing;
+            break;
+        default:
+            error_code = ASSY_err_clone_invalid_action;
+    }
+    return error_code;
+
+}
+        
+
+/*----------------------------------------------------------------------------
+    This function becomes obsolete from v19
+
+This function applies a Clone log file that has previously been saved
+from the Clone, Import or Export Interactive interface, or which has
+been written externally to Unigraphics.
+
+If the input_name and output_name are both UG/Manager CLI
+names or both Native file specifications, then a clone is performed.
+
+If the input name is a UG/Manager CLI name and the output name is
+a Native File System name an export is performed.
+
+If the input name is a Native file specification and the output name is
+a UG/Manager CLI name an import is performed.
+
+In all cases the log file must be valid for the operation being
+performed. See the UG/Manager UG/Open manual for a description
+of UG/Manager CLI names.
+
+Environment: Internal  and  External
+See Also:  UF_UGMGR_set_clone_auto_trans
+           UF_
+ASSEM_clone_ex_log_opts_t
+          
+ UF_ASSEM_clone_create_log_file
+
+History:
+
+----------------------------------------------------------------------------*/
+
+extern int UF_ASSEM_clone_execute_log_file
+(
+    const char                     *input_name,       /* I */
+    const char                     *output_name,      /* I */
+    const char                     *logfile_name,     /* I */
+    UF_ASSEM_clone_ex_log_opts_t   options            /* I */
+)
+{
+    int                         error_code      = 0;
+    UF_CLONE_ex_log_opts_t      clone_options   = { false, false};
+    UF_CLONE_operation_class_t  clone_operation;
+
+    clone_options.allow_missing_components = options.allow_missing_components;
+    clone_options.allow_out_of_sync_bvrs   = options.allow_out_of_sync_bvrs;
+    error_code = CONVERT_clone_get_operation_from_fnames ( input_name, 
+                                                          output_name, 
+                                                          &clone_operation ); 
+    if ( error_code == 0 )
+        error_code = UF_CLONE_execute_log_file ( clone_operation, logfile_name,
+                                                 &clone_options );
+
+    return error_code;
+}  
+
+
+/*----------------------------------------------------------------------------
+    This function becomes obsolete from v19
+
+This function performs a dry run clone operation with the logging
+output written to the given log file. This is suitable for generating a
+basic log file for subsequent editing external to Unigraphics before
+being used as input to UF_ASSEM_clone_execute_log_file. If one of
+the input or output file names is in UG/Manager CLI form, then the
+log file generated is for an import or an export as appropriate. If the
+input_name and output_name are both UG/Manager CLI names or
+both Native file specifications, then a log file for a clone is generated.
+
+If the input name is a UG/Manager CLI name and the output name is
+a Native File System name an export logfile is generated. If the input
+name is a Native file specification and the output name is a
+UG/Manager CLI name an import logfile is generated See the
+UG/Manager UG/Open manual for a description of UG/Manager CLI names.
+
+Environment: Internal  and  External
+
+See Also:  UF_UGMGR_set_clone_auto_trans
+           UF_UGMGR_clone_gen_log_opts_t
+           UF_ASSEM_clone_execute_log_file
+          
+History:
+----------------------------------------------------------------------------*/
+
+extern int UF_ASSEM_clone_create_log_file 
+(
+    const char  *input_name,  /* <I>
+                              Input part name, either a UG/Manager CLI name or
+                              a Native file specification
+                              */
+    const char  *output_name, /* <I>
+                              Ouput part name, either a UG/Manager CLI name or
+                              a Native file specification
+                              */
+    const char  *logfile_name,/* <I>
+                              Native File specification of Logfile to generate.
+                              */
+    UF_ASSEM_clone_gen_log_opts_t   options /* <I>
+                                            Options to apply
+                                            */
+)
+{
+    int                         error_code    = 0;
+    UF_CLONE_operation_class_t  clone_operation;
+    UF_CLONE_gen_log_opts_t     clone_gen_opts;
+    
+    clone_gen_opts.copy_nonmaster_opts = NULL;
+    error_code = CONVERT_clone_get_operation_from_fnames ( input_name, 
+                                                           output_name, 
+                                                           &clone_operation ); 
+    clone_gen_opts.default_naming =
+       (options.default_numbering==UF_ASSEM_autogen) ? UF_CLONE_autogen:
+       (options.default_numbering==UF_ASSEM_autotrans) ? UF_CLONE_autotranslate:
+       UF_CLONE_default_naming;
+
+    if ( error_code == 0 )
+        error_code = CONVERT_clone_default_action ( options.default_action, 
+                                               &clone_gen_opts.default_action );
+    if ( error_code == 0 )
+        error_code=CONVERT_clone_nm_options(&clone_gen_opts.copy_nonmaster_opts,
+                                            options.copy_nonmaster_opts );
+    if ( error_code == 0 )
+        error_code = UF_CLONE_create_log_file ( clone_operation, input_name, 
+                                                logfile_name, &clone_gen_opts );
+    CONVERT_clone_cleanup ( clone_gen_opts.copy_nonmaster_opts );
+    return error_code;
+}  

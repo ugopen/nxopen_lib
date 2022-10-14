@@ -1,0 +1,42 @@
+NXOPENJARDIR = $(UGII_ROOT_DIR)
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+
+compile: LicensingNoUI.jar LicensingUIInternal.jar LicensingUIExternal.jar
+
+LicensingNoUI.class: LicensingBase.class
+	javac -classpath $(CLASSPATH) LicensingNoUI.java
+	
+LicensingBase.class:
+	javac -classpath $(CLASSPATH) LicensingBase.java
+
+LicensingUIInternal.class: LicensingBase.class
+	javac -classpath $(CLASSPATH) LicensingUIInternal.java
+	
+LicensingUIExternal.class: LicensingBase.class
+	javac -classpath $(CLASSPATH) LicensingUIExternal.java	
+	
+LicensingNoUI.jar:  LicensingNoUI.class jars
+	jar cmf manifestNoUI.txt LicensingNoUI.jar LicensingNoUI.class LicensingBase.class	
+	$(UGII_BASE_DIR)\ugopen\SignJar.bat LicensingNoUI.jar
+	
+LicensingUIInternal.jar:  LicensingUIInternal.class jars_copied.txt
+	jar cmf manifestUIInternal.txt LicensingUIInternal.jar LicensingUIInternal*.class LicensingBase.class
+	$(UGII_BASE_DIR)\ugopen\SignJar.bat LicensingUIInternal.jar
+	
+LicensingUIExternal.jar:  LicensingUIExternal.class jars_copied.txt
+	jar cmf manifestUIExternal.txt LicensingUIExternal.jar LicensingUIExternal*.class LicensingBase.class	
+	$(UGII_BASE_DIR)\ugopen\SignJar.bat LicensingUIExternal.jar
+
+jars_copied.txt: jars
+	echo COPY_JARS> jar_copied.txt
+	
+jars:
+	mkdir jars
+	copy $(NXOPENJARDIR)\NX*.jar jars
+
+clean:
+	- del line.prt
+
+clean_all: clean
+	- del *.class
+	- del *.jar

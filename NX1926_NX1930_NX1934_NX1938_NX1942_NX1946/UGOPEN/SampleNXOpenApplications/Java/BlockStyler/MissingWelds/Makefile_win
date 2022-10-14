@@ -1,0 +1,25 @@
+#===============================================================================
+#
+#                   Copyright (c) 2015 Siemens PLM Solutions
+#                     Unpublished - All rights reserved
+#===============================================================================
+#File description: Makefile for Windows.
+#===============================================================================
+#
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: MissingWelds.jar
+
+MissingWelds.class:
+    javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) MissingWelds.java
+
+MissingWelds.jar: MissingWelds.class
+    echo Main-Class: MissingWelds> manifest.txt
+    jar cmf manifest.txt MissingWelds.jar MissingWelds.class
+
+clean_all:
+    del MissingWelds.class
+    del MissingWelds.jar
+    del manifest.txt

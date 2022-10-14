@@ -1,0 +1,14 @@
+NXOPENJARDIR=$(UGII_ROOT_DIR)
+CLASSPATH=".:$(NXOPENJARDIR)/NXOpen.jar:$(NXOPENJARDIR)/NXOpenUF.jar"
+
+compile: CreateImage.jar
+
+CreateImage.class:
+	javac -classpath $(CLASSPATH) CreateImage.java
+
+CreateImage.jar: CreateImage.class
+	echo Main-Class: CreateImage> manifest.txt
+	jar cmf manifest.txt CreateImage.jar CreateImage.class
+
+clean_all:
+	- rm *.class 

@@ -1,0 +1,20 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: InterOP.jar
+
+InterOP.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) InterOP.java
+	
+InterOP.jar: InterOP.class
+	echo Main-Class: InterOP> manifest.txt
+	jar cmf manifest.txt InterOP.jar InterOP.class
+run: InterOP.jar
+	java -classpath $(CLASSPATH)  InterOP
+clean:
+	- del RenamedArc.prt
+
+clean_all: clean
+	- del *.class
+	- del InterOP.jar

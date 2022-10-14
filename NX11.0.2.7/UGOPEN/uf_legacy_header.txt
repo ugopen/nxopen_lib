@@ -1,0 +1,1102 @@
+/*==============================================================================
+
+             Copyright (c) 1998-2000 Unigraphics Solutions Inc.
+                     Unpublished - All rights reserved
+================================================================================
+                    
+
+File description:
+
+    File for Prototypes for Legacy UG/Open Routines
+
+==============================================================================*/
+
+#ifndef UF_LEGACY_H_INCLUDED
+#define UF_LEGACY_H_INCLUDED
+
+#include <uf_defs.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* uf_assem_ftn_count_ref_sets_in read the count of member's links to reference sets
+   -- replaced  by UF_ASSEM_count_ref_sets_in */
+extern void FTN(uf_assem_ftn_count_ref_sets_in)(tag_t *object, int *count);
+
+/* uf_assem_ftn_get_ref_set_inst find if object is in any reference sets and find     
+   the required instance  -- replaced by UF_ASSEM_get_ref_set_inst */
+extern void FTN(uf_assem_ftn_get_ref_set_inst)( tag_t *object, int *number, tag_t *ref_set);                               
+
+/* UF_ATTR_count count the number of attributes of the 'type' specified for the input
+   'object' -- replaced by UF_ATTR_count_attributes */
+extern int UF_ATTR_count( tag_t object, int type );
+
+/* UF_ATTR_find search specified 'type' for specified attribute 'title'
+    -- replaced by UF_ATTR_find_attribute */ 
+extern int UF_ATTR_find( tag_t object, int type, char *title );
+
+/* uf_attr_ftn_count find attribute count -- replaced by UF_ATTR_count_attributes */
+extern int FTN(uf_attr_ftn_count)( tag_t *object, int *type ); 
+                                           
+/* uf_attr_ftn_delete_all remove all attributes from object 
+    -- replaced by UF_ATTR_delete_all */
+extern void FTN(uf_attr_ftn_delete_all)( tag_t *object, int *type );
+
+/* uf_ftn_initialize -- replaced by UF_initialize */
+extern int FTN(uf_ftn_initialize) ( void );
+
+/* uf_ftn_terminate -- replaced by UF_terminate */
+extern int FTN(uf_ftn_terminate) ( void );
+
+/* uf5005 read layer status  -- replaced by UF_LAYER_ask_status */
+extern void FTN(uf5005)(const int *ip1, int *ir2);
+
+/* uf5006 set layer status -- replaced by UF_LAYER_set_status */
+extern void FTN(uf5006)(const int *ip1, const int *ip2);
+
+/* uf5011 read object subtype -- replaced by UF_OBJ_ask_type_and_subtype */
+extern int FTN(uf5011) ( const tag_t *np1 );
+
+/* uf5013 read object layer -- replaced by UF_OBJ_ask_display_properties */
+extern int FTN(uf5013)(const tag_t *np1);
+
+/* uf5014 edit object layer -- replaced by UF_OBJ_set_layer */
+extern void FTN(uf5014)(const tag_t *np1, const int *ip2);
+
+/* uf5015 read object color -- replaced by UF_OBJ_ask_display_properties */
+extern int FTN(uf5015)(const tag_t *np1);
+
+/* uf5016 edit object color -- replaced by UF_OBJ_set_color */
+extern void FTN(uf5016)(const tag_t *np1, const int *ip2);
+
+/* uf5017 read object blank status -- replaced by UF_OBJ_ask_display_properties*/
+extern int FTN(uf5017)(const tag_t *np1);
+
+/* uf5018 edit object blank status -- replaced by UF_OBJ_set_blank_status */
+extern void FTN(uf5018) ( const tag_t *np1 , const int *ip2 );
+
+/* uf5019 read object density -- replaced by UF_OBJ_ask_display_properties */
+extern int FTN(uf5019)(const tag_t *np1);
+
+/* uf5020 edit object density -- replaced by UF_OBJ_set_line_width */
+extern void FTN(uf5020) ( const tag_t *np1, const int *ip2);
+
+/* uf5021 read object font -- replaced by UF_OBJ_ask_display_properties */
+extern int FTN(uf5021)(const tag_t *np1);
+
+/* uf5022 edit object font -- replaced by UF_OBJ_set_font */
+extern void FTN(uf5022) ( const tag_t *np1 , const int *ip2 );
+
+/* uf5023 read part metric/english switch -- replaced by UF_PART_ask_units*/
+extern void FTN(uf5023) ( int *ir1);
+
+/* uf5030 create matrix  -- replaced by UF_MTX3_initialize and UF_CSYS_create_matrix */
+extern void FTN(uf5030) ( const double rp1 [ 6 ] , tag_t *nr2 );
+
+/* uf5031 read matrix -- replaced by UF_CSYS_ask_matrix_values */
+extern void FTN(uf5031) ( const tag_t *np1 , double rar2 [ 9 ] );
+
+/* uf5032 read object matrix pointer -- replaced by UF_CSYS_ask_matrix_of_object */
+extern void FTN(uf5032) ( const tag_t *np1 , tag_t *nr2 );
+
+/* uf5033 read object matrix -- replaced by UF_CSYS_ask_matrix_of_object and
+UF_CSYS_ask_matrix_values */
+extern void FTN(uf5033) ( const tag_t  *np1 , double rar2 [ 9 ] );
+
+/* uf5034 edit object matrix pointer -- replaced by UF_CSYS_edit_matrix_of_object */
+extern void FTN(uf5034) ( const tag_t *np1 , const tag_t *np2 );
+
+/* uf5034x edit object matrix pointer -- replaced by UF_CSYS_edit_matrix_of_object */
+extern void FTN(uf5034x) ( const tag_t *np1 , const tag_t *np2 );
+
+/* uf5035 create csys -- replaced by UF_CSYS_create_matrix and UF_CSYS_create_csys */
+extern void FTN(uf5035) ( const double rp1 [ 3 ] , const double rp2 [ 6 ] , tag_t *nr3 );
+
+/* uf5036 change wcs pointer -- replaced by UF_CSYS_set_wcs */
+extern void FTN(uf5036) ( const tag_t *np1 );
+
+/* uf5037 read wcs pointer -- replaced by UF_CSYS_ask_wcs */
+extern void FTN(uf5037) ( tag_t *nr1 );
+
+/* uf5038 read csys origin -- replaced by UF_CSYS_ask_csys_info */
+extern void FTN(uf5038) ( const tag_t *np1 , double rr2 [ 3 ] );
+
+/* uf5040 create point -- replaced by UF_CURVE_create_point */
+extern void FTN(uf5040)(double *ra1, tag_t *nr2);
+
+/* uf5041 read point data -- replaced by UF_CURVE_ask_point_data */
+extern void FTN(uf5041)(const tag_t *np1, double *rar2);
+
+/* uf5042 edit point data(with update) -- replaced by UF_CURVE_edit_point_data*/
+extern void FTN(uf5042)(const tag_t *np1, double *ra2);
+
+/* uf5042x edit point data(without update) -- replaced by UF_CURVE_edit_point_data */
+extern void FTN(uf5042x) (const tag_t *np1, double *ra2);
+
+/* uf5050 create line -- replaced by UF_CURVE_create_line */
+extern void FTN(uf5050)(double *ra1, double *ra2, tag_t *nr3);
+
+/* uf5051 read line data -- replaced by UF_CURVE_ask_line_data */
+extern void FTN(uf5051)(const tag_t *np1, double *rar2, double *rar3);
+
+/* uf5052 edit line data(with update) -- replaced by UF_CURVE_edit_line_data */
+extern void FTN(uf5052)(const tag_t *np1, double *ra2, double *ra3);
+
+/* uf5052x edit line data(without update) -- replaced by UF_CURVE_edit_line_data */
+extern void FTN(uf5052x)(const tag_t *np1, double *ra2, double *ra3);
+
+/* uf5060 create arc -- replaced by UF_CURVE_create_arc */
+extern void FTN(uf5060)(const double *rp1, const double *rp2, double *ra3, const double *rp4, tag_t *nr5);
+
+/* uf5061 read arc data -- replaced by UF_CURVE_ask_arc_data */
+extern void FTN(uf5061)(const tag_t *np1, double *rr2, double *rr3, double *rar4, double *rr5);
+
+/* uf5062 edit arc data -- replaced by UF_CURVE_edit_arc_data */
+extern void FTN(uf5062)(const tag_t *np1, const double *rp2, const double *rp3, double *ra4, const double *rp5);
+
+/* uf5062x edit arc data -- replaced by UF_CURVE_edit_arc_data */ 
+extern void FTN(uf5062x)(const tag_t *np1, const double *rp2, const double *rp3, const double *rp4, const double *rp5);
+
+/* uf5103 remove all attributes -- replaced by UF_ATTR_delete_all */
+extern void FTN(uf5103)(const tag_t *np1);
+
+/* uf5108 find string attribute count -- replaced by UF_ATTR_count_attributes */
+extern int FTN(uf5108)(const tag_t *np1);
+
+/* uf5110 read part attribute object identifier - replaced by UF_ATTR_ask_part_attribute */
+extern void FTN(uf5110)(tag_t *nr1);
+
+/* uf5112 find integer attribute count -- replaced by UF_ATTR_count_attributes */
+extern int FTN(uf5112)(const tag_t *np1);
+
+/* uf5116 find floating point attribute count 
+                    -- replaced by UF_ATTR_count_attributes*/
+extern int FTN(uf5116)(const tag_t *np1);
+
+/* uf5120 find null attribute count -- replaced by UF_ATTR_count_attributes */
+extern int FTN(uf5120)(const tag_t *np1);
+
+/* uf5124 find date & time attribute count 
+                    -- replaced by UF_ATTR_count_attributes*/
+extern int FTN(uf5124)(const tag_t *np1);
+
+/* uf5200 cycle by layer  -- replaced by UF_LAYER_cycle_by_layer */
+extern void FTN(uf5200)(tag_t *nr1);
+
+/* uf5202 cycle layer -- replaced by UF_LAYER_cycle_by_layer */
+extern void FTN(uf5202)(tag_t *nr1, const int *ip2);
+
+/* uf5205 Delete an entity -- replaced by UF_OBJ_delete_object */
+extern void FTN(uf5205)(const tag_t *np1);
+
+/* uf5510 create group  -- replaced by UF_GROUP_create_group */
+extern void FTN(uf5510)(tag_t *na1, const int *ip2, tag_t *nr3);
+
+/* uf5511 read group members count -- replaced by UF_GROUP_ask_group_data */
+extern void FTN(uf5511)(const tag_t *np1, int *ir2);
+
+/* uf5512 read group member object identifier 
+				-- replaced by UF_GROUP_ask_group_data */
+extern void FTN(uf5512)(const tag_t *np1, const int *ip2, tag_t *nr3);
+
+/* uf5513 find ancestor group of an object or group
+				-- replaced by UF_GROUP_ask_group_of_tag */
+extern void FTN(uf5513)(const tag_t *np1, tag_t *nr2);
+
+/* uf5514 add object to group -- replaced by UF_GROUP_add_member_to_group */
+extern void FTN(uf5514)(const tag_t *np1, const tag_t *np2, int *ir3);
+
+/* uf5515 remove from group  -- replaced by UF_GROUP_del_member_from_group */
+extern void FTN(uf5515)(tag_t *np1);
+
+/* uf5516 ungroup objects -- replaced by UF_GROUP_ungroup_top 
+				and UF_GROUP_ungroup_all */
+extern void FTN(uf5516)(const int *ip1, const tag_t *np2, int *ir3);
+
+/* uf5817 read member reference set 
+    -- replaced by UF_ASSEM_count_ref_sets_in and UF_ASSEM_get_ref_set_inst */
+extern void FTN(uf5817)(tag_t *np1, int *ip2, int *ir3, tag_t *nr4);
+
+/* uf5920 normalize and orthogonalize matrix -- replaced by UF_MTX3_initialize */
+extern void FTN(uf5920)(const double rp1 [ 6 ] , double rr2 [ 9 ] , int *ir3);
+
+extern void FTN(uf1615)(char *cp1, double *rr2, int *ir3, short cp1_len);
+
+extern void FTN(uf1616)(char *cp1, int *ia2, int *ip3, double *rr4,
+                        int *ir5, short cp1_len);
+
+extern void FTN(uf1617)(char *cp1, int *ip2, tag_t *nr3, int *ir4,
+                        double *rr5, int *ir6, short cp1_len);
+
+extern void FTN(uf1619)(const int *ip1, const int *ip2, int *iap3, int *ir4);
+
+extern void FTN(uf1630)(char *cp1, int *ia2, double *rr3,
+                        double *rr4, int *ir5, short cp1_len);
+
+extern void FTN(uf1640)(const tag_t *np1, const int *ip2);
+
+extern void FTN(uf1650)(int *ir1);
+
+extern void FTN(uf1651)(const int *ip1);
+
+extern void FTN(uf1652)(char *cp1, char *cr2, int *ir3,
+                        short cp1_len, short cr2_len);
+
+extern void FTN(uf1653)(char *cr1, short cr1_len);
+
+extern void FTN(uf2700)(const int *ip1);
+
+extern void FTN(uf2701)(const tag_t *np1);
+
+extern void FTN(uf2702)(void);
+
+extern void FTN(uf2703)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf2720)(char *cp1, int *ip2, double *rp3,
+    int *ip4, int *ip5, int *ir6, short cp1_len);
+
+extern void FTN(uf2721)(char *cp1, int *ip2, double *rp3,
+        int *ip4, int *ip5, int *ip6, int *ir7, short cp1_len);
+
+extern void FTN(uf2722)(char *cp1, int *ip2, double *rp3,
+    int *ip4, int *ip5, int *ip6, int *ir7, short cp1_len);
+
+extern void FTN(uf4400)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len);
+
+extern void FTN(uf4403)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf4404)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4406)(char *cp1, double *rp2, int *ir3, short cp1_len);
+
+extern void FTN(uf4409)(int *ir1, char *cr2, int *ir3, short cr2_len);
+
+extern void FTN(uf4500)(char *cp1, int *ip2, int *ip3, int *ir4,
+                  int *ir5, short cp1_len);
+
+extern void FTN(uf4504)(char *cp1, int *ip2, int *ip3, int *ir4,
+                  int *ir5, short cp1_len);
+
+extern void FTN(uf4506)(char *cp1, int *ip2, int *ip3, int *ir4,
+                  int *ir5, short cp1_len);
+
+extern void FTN(uf4507)(char *cp1, int *ip2, int *ip3, int *ip4,
+                  int *ir5, int *ir6, short cp1_len);
+
+extern void FTN(uf4508)(char *cp1, int *ip2, int *ip3, char *cp4,
+         int *ir5, short cp1_len, short cp4_len);
+
+extern void FTN(uf4509)(int *ir1);
+
+extern void FTN(uf4510)(int *ip1, int *ip2, int *ir3, int *ir4);
+
+extern void FTN(uf4511)(int *ip1, int *ip2, int *ir3, int *ir4);
+
+extern void FTN(uf4512)(int *ip1, int *ip2, double *ra3, int *ir4);
+
+extern void FTN(uf4513)(int *ip1, int *ip2, int *ir3, int *ir4);
+
+extern void FTN(uf4514)(int *ip1, char *cr2, int *ir3, short cr2_len);
+
+extern void FTN(uf4516)(int *ip1, int *ip2, int *ip3,
+        int *ir4, int *ir5);
+
+extern void FTN(uf4517)(int *ip1, int *ir2, int *ir3, int *ir4);
+
+extern void FTN(uf4518)(int *ir1);
+
+extern void FTN(uf4519)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4520)(int *ip1, int *ip2, int *ip3, int *ir4);
+
+extern void FTN(uf4521)(int *ip1, int *ip2, int *ip3, int *ir4);
+
+extern void FTN(uf4522)(int *ip1, int *ip2, double *ra3, int *ir4);
+
+extern void FTN(uf4523)(int *ip1, int *ip2, int *ip3, int *ir4);
+
+extern void FTN(uf4524)(int *ip1, char *cp2, int *ir3, short cp2_len);
+
+extern void FTN(uf4525)(int *ip1, int *ir2);
+
+extern void FTN(uf4526)(int *ip1, int *ip2, int *ip3,
+        int *ip4, int *ir5);
+
+extern void FTN(uf4527)(int *ip1, int *ip2, int *ip3, int *ir4);
+
+extern void FTN(uf4530)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4531)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4532)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4533)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4534)(int *ip1, int *ir2, int *ir3);
+
+extern void FTN(uf4535)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4536)(int *ip1, int *ir2);
+
+extern void FTN(uf4540)(int *ip1, int *ip2, int *ir3);
+
+extern void FTN(uf4544)(int *ip1, int *ip2, int *ir3, int *ir4);
+
+extern void FTN(uf4547)(int *ip1, int *ip2, int *jr3, int *ir4);
+
+extern void FTN(uf4548)(int *ir1);
+
+extern void FTN(uf4549)(int *ir1);
+
+extern void FTN(uf4560)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4561)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4562)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len);
+
+extern void FTN(uf4563)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4564)(char *cp1, int *ip2, int *ip3, int *ir4,
+                  short cp1_len);
+
+extern void FTN(uf4565)(int *ip1, char *cr2, int *ir3, short cr2_len);
+
+extern void FTN(uf4566)(int *ip1, char *cp2, int *ir3, short cp2_len);
+
+extern void FTN(uf4567)(char *cp1, char *cp2, int *ip3, int *ip4,
+         int *ip5, int *ir6, short cp1_len, short cp2_len);
+
+extern void FTN(uf4570)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4571)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4572)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf4573)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len);
+
+extern void FTN(uf4574)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len);
+
+extern void FTN(uf4575)(char *cp1, int *ip2, char *cp3, char *cr4,
+        int *ir5, short cp1_len, short cp3_len, short cr4_len);
+
+extern void FTN(uf4576)(char *cp1, int *ip2, char *cr3, char *cr4,
+        int *ir5, short cp1_len, short cr3_len, short cr4_len);
+
+extern void FTN(uf4577)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4578)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len);
+
+extern void FTN(uf4579)(char *cp1, int *ip2, char *cr3, int *ir4,
+         short cp1_len, short cr3_len);
+
+extern void FTN(uf4580)(int *ip1, char *cr2, int *ir3, short
+        cr2_len);
+
+extern void FTN(uf4581)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf4582)(int *ip1, int *ip2, char *cr3, char *cr4,
+     short cr3_len, short cr4_len);
+
+extern void FTN(uf4583)(char *cp1, char *cp2, int *ir3, int *ir4,
+     short cp1_len, short cp2_len);
+
+extern void FTN(uf4595)(int *ip1, char *cr2, int *ir3, short cr2_len);
+
+extern void FTN(uf4596)(int *ip1, int *ir2, int *ir3);
+
+extern void FTN(uf4599)(int *ip1, char *cr2, short cr2_len);
+
+extern void FTN(uf4600)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4601)(int *ir1, int *ir2);
+
+extern void FTN(uf4602)(int *ir1, int *ir2);
+
+extern void FTN(uf4603)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4605)(int *jr1, int *ir2);
+
+extern void FTN(uf4606)(int *ir1, int *ir2, int *ir3, int *ir4);
+
+extern void FTN(uf4607)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4608)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4609)(int *ir1, int *ir2);
+
+extern void FTN(uf4612)(char *cp1, int *ip2, int *ip3, int *
+        ir4, short cp1_len);
+
+extern void FTN(uf4613)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len);
+
+extern void FTN(uf4617)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len);
+
+extern void FTN(uf4618)(char *cp1, int *ip2, char *cp3, int *ir4,
+         short cp1_len, short cp3_len);
+
+
+extern void FTN(uf4620)(char *cp1, char *cr2, int *ir3, short
+        cp1_len, short cr2_len);
+
+extern void FTN(uf4621)(char *cr1, int *ir2, short cr1_len);
+
+extern void FTN(uf4623)(char *cp1, char *cr2, int *ir3, short
+        cp1_len, short cr2_len);
+
+extern void FTN(uf4650)(char *cp1, int *ip2, int *ip3, int *
+        ip4, int *ip5, char *cp6, int *ir7, short cp1_len, short
+        cp6_len);
+
+extern void FTN(uf4901)(char *cr1, short cr1_len);
+
+extern void FTN(uf5000)(int *ir1, char *cr2, short cr2_len);
+
+extern void FTN(uf5001)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf5003)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf5007)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len);
+
+extern void FTN(uf5008)(char *cp1, int *ip2, int *ir3, int *ir4, short cp1_len);
+
+extern void FTN(uf5009)(int *ip1, char *cp2, int *ip3, int *ir4, short cp2_len);
+
+extern int FTN(uf5010) ( const tag_t *object_id );
+
+extern void FTN(uf5027)(int *np1, char *sr2, int *ir3, short sr2_len);
+
+extern void FTN(uf5028)(char *sp1, int *ip2, int *nr3, short sp1_len);
+
+extern void FTN(uf5029)(int *np1, char *cp2, int *ip3, short cp2_len);
+
+extern void FTN(uf5101)(int *np1, char *cp2, int *ip3, char *cp4,
+         int *ip5, short cp2_len, short cp4_len);
+
+extern void FTN(uf5102)(int *np1, char *cp2, int *ip3, short cp2_len);
+
+extern int FTN(uf5109)(int *np1, char *cp2, int *ip3, short cp2_len);
+
+extern void FTN(uf5111)(int *np1, char *cp2, int *ip3, short cp2_len);
+
+extern int FTN(uf5113)(int *np1, char *cp2, short cp2_len);
+
+extern void FTN(uf5115)(int *np1, char *cp2, double *rp3, short cp2_len);
+
+extern int FTN(uf5117)(int *np1, char *cp2, short cp2_len);
+
+extern void FTN(uf5119)(int *np1, char *cp2, short cp2_len);
+
+extern int FTN(uf5121)(int *np1, char *cp2, short cp2_len);
+
+extern void FTN(uf5123)(int *np1, char *cp2, int *ip3, short cp2_len);
+
+extern int FTN(uf5125)(int *np1, char *cp2, short cp2_len);
+
+extern void FTN(uf5186)
+(
+    tag_t *object_tag,       /* <I> drafting object tag             */
+    int   *num_symbol_fonts, /* <O> number of symbol fonts used     */
+    tag_t *symbol_font_tags, /* <O> tags of the symbol font objects */
+    int   *return_code       /* <O> return code                     */
+                             /*     0 = success                     */
+                             /*     1 = invalid object tag          */
+                             /*     2 = not drafting object         */
+);
+
+
+extern void FTN(uf5201)(tag_t *object, const int *type);
+
+extern void FTN(uf5203)(int *na1, char *cp2, int *ip3, short cp2_len);
+
+extern void FTN(uf5426)(const tag_t *np1, int *ir2);
+
+extern void FTN(uf5427)(const tag_t *np1, const int *ip2, tag_t *nr3);
+
+extern void FTN(uf5428)(tag_t *np1, int *ir2);
+
+extern void FTN(uf5429)(const tag_t *np1, int *ir2, double *rr3, double *rr4,
+                        double *rr5);
+
+extern void FTN(uf5430)(const tag_t *np1, const int *ip2, tag_t *nr3, int *ir4,
+                        int *ir5, double *rr6, double *rr7);
+
+extern void FTN(uf5560)( int *annotation_type );
+
+extern void FTN(uf5570)(tag_t *np1, int *ip2, int *ia3,
+        int *ia4, int *ir5, int *ir6, int *ir7, double * rr8,
+        double *rr9);
+
+extern void FTN(uf5571)(int *ip1, int *ia2, double *rr3);
+
+extern void FTN(uf5572)(int *ip1, int *ia2, double *rr3);
+
+extern void FTN(uf5574)(int *ip1, int *ia2, char *cr3, 
+                        int *ir4, int *ir5, short cr3_len);
+
+extern void FTN(uf5595)(char *cp1, double *rp2, int *nr3, char *cr4,
+                        int *ir5, short cp1_len, short cr4_len);
+
+extern void FTN(uf5596)(char *cp1, int *np2, int *ip3, char *cr4,
+                        int *ir5, short cp1_len, short cr4_len);
+
+extern void FTN(uf5800)(char *cp1, char *cp2, char *cp3, double *ra4,
+         int *ip5, int *nr6, int *ir7, short cp1_len,
+         short cp2_len, short cp3_len);
+
+extern void FTN(uf5801)(int *np1, char *cr2, char *cr3, char *cr4,
+        double *rr5, int *ir6, short cr2_len, short cr3_len, short
+        cr4_len);
+
+extern void FTN(uf5802)(int *np1, char *cp2, char *cp3, double *ra4,
+        short cp2_len, short cp3_len);
+
+extern int FTN(uf5803)(tag_t *np1);
+
+extern void FTN(uf5806)(tag_t *np1, int *ir2, tag_t *nr3);
+
+extern void FTN(uf5810)(char *cp1, double *ra2, int *na3,
+        int *ip4, int *nr5, int *ir6, short cp1_len);
+
+extern void FTN(uf5811)(int *np1, char *cr2, double *rr3, short cr2_len);
+
+extern void FTN(uf5812)(int *np1, char *cp2, double *ra3, short cp2_len);
+
+extern int FTN(uf5813)( tag_t *ref_set );
+
+extern void FTN(uf5814)( tag_t *ref_set, int *indx, tag_t *member );
+
+extern void FTN(uf5815)(tag_t *np1, tag_t *na2, int *ip3, int *ip4);
+
+extern void FTN(uf5816)(char *cp1, char *cp2, char *cp3, double *rp4,
+         int *np5, int *ip6, int *na7, int *ir8, short
+        cp1_len, short cp2_len, short cp3_len);
+
+extern void FTN(uf_attr_ftn_assign)(int *np1, int *ip2, char * cp3, char *cp4,
+                int *ip5, double *rp6, short cp3_len, short cp4_len);
+
+extern void FTN(uf_attr_ftn_cycle)(int *np1, int *ia2, int * ia3, char *cr4,
+             char *cr5, int *ir6, double *rr7, short cr4_len, short cr5_len);
+
+extern void FTN(uf_attr_ftn_delete)(int *np1, int *ip2, char *cp3, short cp3_len);
+
+extern int FTN(uf_attr_ftn_find)(int *np1, int *ip2, char *cp3, short cp3_len);
+
+extern void FTN(uf_attr_ftn_read_value)(int *np1, char *cp2, int *ia3,
+        char *cr4, int *ir5, double *rr6, short cp2_len, short cr4_len);
+
+
+extern void FTN(uf5820)(int *ir1);
+
+extern void FTN(uf5821)(int *ip1, int *ir2);
+
+extern void FTN(uf5822)(int *np1, char *cr2, char *cr3, int *ir4, int *ir5,
+                        int *ir6, double *rr7, int *ir8, short cr2_len,
+                        short cr3_len);
+
+extern void FTN(uf5823)(char *cp1, char *cp2, int *ip3, double *rp4,
+                        int *np5, int *ir6, short cp1_len, short cp2_len);
+
+extern void FTN(uf5824)(int *ia1, char *cr2, short cr2_len);
+
+extern void FTN(uf5826)(int *ir1);
+
+extern void FTN(uf5827)(int *ip1, int *ir2);
+
+extern void FTN(uf5890)(double *ra1, tag_t *nr2);
+
+extern void FTN(uf5902) ( tag_t   *np1,
+                          double     *start_param,
+                          double     *end_param,
+                          int  *units_sw,
+                          double     *arc_length,
+                          int  *rc );
+
+extern void FTN(uf6001)(char *cp1, int *nr2, short cp1_len);
+
+/*  uc6031 is no longer available.  Please use UF_MOTION_create_link instead /*
+
+extern void FTN(uf6400)(char *cp1, int *np2, int *ir3, short cp1_len);
+
+extern void FTN(uf6401)(char *cp1, int *np2, int *ir3, short cp1_len);
+
+extern void FTN(uf6402)(char *cp1, int *np2, int *ir3, short cp1_len);
+
+extern void FTN(uf6403)(char *cp1, int *np2, int *ir3, short cp1_len);
+
+extern void FTN(uf6404)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6405)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6406)(char *cp1, int *np2, double *rp3, int *ip4,
+                        int *ip5, int *ip6, int *ir7, short cp1_len);
+
+extern void FTN(uf6407) (const tag_t *np1, int *ir2);
+
+extern void FTN(uf6408)(int *np1, int *ip2, char *cr3, double *rr4,
+                        int *ir5, int *ir6, int *ir7, short cr3_len);
+
+extern void FTN(uf6409)(int *np1, int *ir2, char *cr3, int *ir4, short cr3_len);
+
+extern void FTN(uf6410)(char *cp1, char *cp2, int *ip3, int *ip4,
+                        int *ip5, int *ir6, short cp1_len, short cp2_len);
+
+extern void FTN(uf6411)(char *cp1, char *cr2, int *ir3, short cp1_len,
+                        short cr2_len);
+
+extern void FTN(uf6420)(int *ir1, double *rr2);
+
+extern void FTN(uf6421)(const int *ir1, const double *rr2,
+                        int *ir3);
+
+extern void FTN(uf6430)(char *cp1, double *rr2, double *rr3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6431)(char *cp1, double *rp2, double *rp3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6432)(char *cp1, int *ip2, int *ir3, short cp1_len);
+
+extern void FTN(uf6433)(char *cp1, double *rr2, int *ir3, short cp1_len);
+
+extern void FTN(uf6434)(char *cp1, int *ip2, int *np3, double *rp4,
+                        int *ir5, short cp1_len);
+
+extern void FTN(uf6435)(char *cp1, double *rp2, int *ir3, short cp1_len);
+
+extern void FTN(uf6436)(char *cp1, int *ir2, double *rr3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6437)(char *cp1, int *ip2, double *rp3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6438)(char *cp1, int *ir2, double *rr3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6439)(char *cp1, int *ip2, double *rp3, double *rp4,
+                        int *ir5, short cp1_len);
+
+extern void FTN(uf6440)(char *cp1, int *ir2, int *ir3, short cp1_len);
+
+extern void FTN(uf6442)(char *cp1, double *rr2, double *rr3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6443)(char *cp1, double *rp2, double *rp3, int *ir4,
+                        short cp1_len);
+
+extern void FTN(uf6444)(char *cp1, int *ir2, int *ir3, int *ir4, int *ir5,
+                        int *ir6, int *ir7, int *ir8, short cp1_len);
+
+extern void FTN(uf6445)(char *cp1, int *ip2, int *ip3, int *ip4, int *ip5,
+                        int *ip6, int *ip7, int *ir8, short cp1_len);
+
+extern void FTN(uf6446)(char *cp1, int *ir2, int *ir3, int *ir4, short cp1_len);
+
+extern void FTN(uf6447)(char *cp1, int *ip2, int *ip3, int *ir4, short cp1_len);
+
+extern void FTN(uf6448)(char *cr1, short cr1_len);
+
+extern void FTN(uf6449)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6450)(char *cp1, char *cp2, int *ip3, int *ip4, int *ir5,
+                        short cp1_len, short cp2_len);
+
+extern void FTN(uf6453)(void);
+
+extern void FTN(uf6454)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6455)(char *cp1, char *cp2, int *ir3, short cp1_len,
+                        short cp2_len);
+
+extern void FTN(uf6456)(char *ca1, int *ir2, int *ir3, short ca1_len);
+
+extern void FTN(uf6457)(char *cp1, int *ip2, int *na3, int *ir4, short cp1_len);
+
+extern void FTN(uf6460)(char *cp1, int *ip2, char *cp3, int *ip4,
+         double *rp5, int *ir6, short cp1_len, short cp3_len);
+
+extern void FTN(uf6462)(char *cp1, char *cp2, double *rr3, int *ir4,
+                        short cp1_len, short cp2_len);
+
+extern void FTN(uf6463)(char *cp1, char *cp2, int *ip3, double *
+        rp4, int *ir5, short cp1_len, short cp2_len);
+
+extern void FTN(uf6464)(char *cp1, char *cp2, char *cp3, int *ir4,
+        short cp1_len, short cp2_len, short cp3_len);
+
+
+extern void FTN(uf6466)(char *cr1, char *cr2, short cr1_len, short cr2_len);
+
+extern void FTN(uf6467)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6468)(char *cp1, int *ip2, double *rp3,
+        int *ir4, short cp1_len);
+
+extern void FTN(uf6469)(char *cp1, int *ir2, short cp1_len);
+
+extern void FTN(uf6470)(char *cp1, char *cp2, int *ir3, short cp1_len,
+                        short cp2_len);
+
+extern void FTN(uf6471)(char *ca1, int *ir2, short ca1_len);
+
+extern void FTN(uf6472)(char *cp1, int *ir2, int *ir3, short cp1_len);
+
+extern void FTN(uf6473)(char *cp1, char *ca2, int *ir3, 
+                        short cp1_len, short ca2_len);
+
+extern void FTN(uf6476)(int *ip1, int *ir2);
+
+extern void FTN(uf6477)(int *ir1);
+
+extern void FTN(uf6478)(char *cp1, int *ip2, int *ip3,
+    double *rp4, int *ir5, short cp1_len);
+
+extern void FTN(uf6479)(char *cp1, int *ir2, int *ir3,
+    double *rr4, int *ir5, short cp1_len);
+
+extern void FTN(uf6480)(char *cp1, int *ip2, int *ip3,
+    double *rp4, int *ir5, short cp1_len);
+
+extern void FTN(uf6481)(char *cp1, char *cp2, double *rp3, int *
+    ip4, int *ir5, short cp1_len, short cp2_len);
+
+extern void FTN(uf6482)(char *cp1, char *cp2, int *ir3, short
+    cp1_len, short cp2_len);
+
+extern void FTN(uf6483)(char *cp1, char *cp2, double *rr3, int *
+    ir4, short cp1_len, short cp2_len);
+
+extern void FTN(uf6484)(char *cp1, char *cp2, double *rp3, int *
+    ir4, short cp1_len, short cp2_len);
+
+extern void FTN(uf6485)(char *cp1, double *rr2, int *ir3, short
+    cp1_len);
+
+extern void FTN(uf6488)(char *cp1, char *cp2, int *ir3, int *ir4,
+         short cp1_len, short cp2_len);
+
+extern void FTN(uf6489)(char *cp1, char *cp2, int *ip3, int *ir4,
+         short cp1_len, short cp2_len);
+
+extern void FTN(uf6492)(char *cr1, short cr1_len);
+
+extern void FTN(uf6494)(char *cp1, int *ir2, short cp1_len);
+
+
+extern void FTN(uf6496)(char *cp1, char *cp2, int *ir3, short
+       cp1_len, short cp2_len);
+
+extern void FTN(uf6497)(char *ca1, int *ir2, short ca1_len);
+
+extern void FTN(uf6498)(char *cp1, int *ir2, int *ir3, short
+        cp1_len);
+
+extern void FTN(uf6499)(char *cp1, char *ca2, int *ir3, short
+         cp1_len, short ca2_len);
+
+extern void FTN(uf6560)(char *cr1, short cr1_len);
+
+extern void FTN(uf6570)(int *ip1, double *rp2, int *ip3,
+        int *ip4, int *ip5, double *rp6, int *ip7, char *cp8,
+        int *ip9, tag_t *np10, tag_t *nr11, short cp8_len);
+
+extern void FTN(uf6570x)(int *ip1, double *rp2, int *ip3, int *ip4, int *ip5,
+                         double *rp6, int *ip7, tag_t *np8, tag_t *nr9);
+
+extern void FTN(uf6573x)(tag_t *np1, int *data);
+
+extern void FTN(uf6571)(const tag_t *np1, const int *jp2,
+                        const int *jp3, int *ir4);
+
+extern void FTN(uf6572)(const tag_t *np1, const int *jp2, const double *rp3, int
+ *ir4);
+
+extern void FTN(uf6573)(tag_t *np1, int *ip2, char *cp3, 
+                        int *ir4, short cp3_len);
+
+extern void FTN(uf6574)(const tag_t *np1, const int *ip2, 
+                        const tag_t *np3, int *ir4);
+
+extern void FTN(uf6575)(const tag_t *np1, const int *ip2, int *ir3, int *ir4);
+
+extern void FTN(uf6576)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, int *ir4, int *ir5);
+
+extern void FTN(uf6577)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, double *rr4, int *ir5);
+
+extern void FTN(uf6578)(tag_t *np1, int *ip2, int *ip3, char *cr4, int *ir5,
+                        short cr4_len);
+
+extern void FTN(uf6578x)(const tag_t *np1, const int *ip2, int *c_msg);
+
+extern void FTN(uf6579)(const tag_t *np1, const int *ip2,
+                        const int *ip3, tag_t *nr4, int *ir5);
+
+extern void FTN(uf6580)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, const int *ip4, int *ir5);
+
+extern void FTN(uf6581)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, const double *rp4, int *ir5);
+
+extern void FTN(uf6582)(tag_t *np1, int *ip2, int *ip3, char *cp4, 
+                        int *ir5, short cp4_len);
+
+extern void FTN(uf6582x)(const tag_t *np1, const int *ip2,
+                         const int *c_msg, int *ir4);
+
+extern void FTN(uf6583)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, const tag_t *np4, int *ir5);
+
+extern void FTN(uf6584)(const tag_t *np1, const int *ip2, 
+                        const int *ip3, const int *ip4, int *ir5);
+
+extern void FTN(uf6585)(const tag_t *np1, int *ir2, int *ir3);
+
+extern void FTN(uf6587)(const tag_t *np1, int *ir2);
+
+extern void FTN(uf6588)(const tag_t *np1, const int *ip2, tag_t *nr3, int *ir4);
+
+extern void FTN(uf6589)(const tag_t *np1, const tag_t *np2, int *ia3);
+
+
+
+
+
+/*
+ UF_SKET_ask_info, used to interrogate a sketch, should be replaced by
+ UF_SKET_ask_sketch_info, UF_SKET_ask_geoms_of_sketch and UF_SKET_ask_dimensions_of_sketch.
+*/
+extern int UF_SKET_ask_info
+(
+ tag_t sketch_tag ,/* <I>
+                      Sketch tag.
+                   */
+ int option ,/* <I>
+                Option:
+                1 = Sketch CSYS
+                2 = Sketch datum(pre-v13 sketches only)
+                3 = Sketch geometry
+                4 = Sketch dimension
+                5 = Sketch view(pre-v13 sketches only)
+             */
+ char view_name[16] ,/* <O>
+                        Name of sketch view (for option = 5).
+                     */
+ uf_list_p_t * object_list  /* <OF>
+                               List of sketches or NULL if none found. This 
+                               argument must be freed by calling 
+                               UF_MODL_delete_list
+                            */
+);
+
+
+/*
+ UF_SKET_delete_dimension, used to delete dimensions stored as a list, 
+ should be replaced by UF_SKET_delete_dimensions.
+*/
+extern int UF_SKET_delete_dimension 
+(
+ uf_list_p_t  dim_tags  /* <I>
+                           List of dimension tags to be deleted.
+                        */
+);
+
+/************************************************************
+ Clone retired definitions
+************************************************************/
+/*----------------------------------------------------------------------------*/
+/* Clone Typdefs and Functions previously defined in uf_assem.h. These have been
+   superseded by the new interface defined in uf_clone.h.
+   i.e. 
+       UF_ASSEM_clone_create_log_file is replaced by UF_CLONE_create_log_file
+   and
+       UF_ASSEM_clone_execute_log_file is replaced by UF_CLONE_execute_log_file
+   The interface defined in uf_clone.h provides many more functions
+   giving much finer programmatic control over a clone operation.
+*/
+/*----------------------------------------------------------------------------*/
+
+typedef struct UF_ASSEM_clone_ex_log_opts_s
+{
+    logical allow_missing_components; /* A flag indicating whether the clone 
+                                         should proceed even if components in 
+                                         the assembly being cloned cannot be 
+                                         found. */
+    logical allow_out_of_sync_bvrs;   /* A flag for use in a UG/Manager 
+                                         environment to control the clone 
+                                         operation's behaviour with respect
+                                         to BOM View Revisions (BVR's) - see 
+                                         the UG/Manager Users Manual for an 
+                                         explanation of these. The flag 
+                                         indicates whether the clone should 
+                                         proceed even if components in the 
+                                         assembly have BVR's in the database 
+                                         that are not synchronized with the 
+                                         Unigraphics component structure.  The 
+                                         flag will be ignored in a Native 
+                                         Unigraphics environment. */
+} UF_ASSEM_clone_ex_log_opts_t, *UF_ASSEM_clone_ex_log_opts_p_t;
+
+/*----------------------------------------------------------------------------
+This function applies a Clone log file that has previously been saved
+from the Clone, Import or Export Interactive interface, or which has
+been written externally to Unigraphics.
+
+If the input_name and output_name are both UG/Manager CLI
+names or both Native file specifications, then a clone is performed.
+
+If the input name is a UG/Manager CLI name and the output name is
+a Native File System name an export is performed.
+
+If the input name is a Native file specification and the output name is
+a UG/Manager CLI name an import is performed.
+
+In all cases the log file must be valid for the operation being
+performed. See the UG/Manager UG/Open manual for a description
+of UG/Manager CLI names.
+
+Environment: Internal  and  External
+
+See Also:  UF_UGMGR_set_clone_auto_trans
+           UF_ASSEM_clone_ex_log_opts_t
+           UF_ASSEM_clone_create_log_file
+
+History:
+
+----------------------------------------------------------------------------*/
+
+
+extern int UF_ASSEM_clone_execute_log_file (
+    const char   *input_name, /* <I>
+                              Input part name, either a UG/Manager CLI name or 
+                              a Native file specification
+                              */
+    const char   *output_name, /* <I>
+                               Ouput part name, either a UG/Manager CLI name or
+                                a Native file specification
+                               */
+    const char   *logfile_name, /* <I>
+                                Native File specification of Log file to execute
+                                */
+    UF_ASSEM_clone_ex_log_opts_t   options /* <I>
+                                           options to apply
+                                           */
+);
+
+
+/* UF_ASSEM_clone_action_e: enum specifying a default action to be
+   applied to components in a clone, import or export operation.
+*/
+typedef enum UF_ASSEM_clone_action_e
+{
+    UF_ASSEM_retain,
+    UF_ASSEM_clone,
+    UF_ASSEM_replace,
+    UF_ASSEM_overwrite,
+    UF_ASSEM_use_existing,
+    UF_ASSEM_default_action
+} UF_ASSEM_clone_action_t, *UF_ASSEM_clone_action_p_t;
+
+/* UF_ASSEM_clone_num_technique_t: enum specifying a numbering
+   technique for a clone operation. Currently only autogen, and autotrans
+   are supported - both only relevant in a UG/Manager environment.
+   This enum is for use with the UF_ASSEM_clone_create_log_file function
+  
+*/
+typedef enum UF_ASSEM_clone_num_technique_e
+{
+    UF_ASSEM_autogen,
+    UF_ASSEM_autotrans
+} UF_ASSEM_clone_num_technique_t, *UF_ASSEM_clone_num_technique_p_t;
+
+/* UF_ASSEM_clone_copy_nm_opt_t: Element of a linked list setting the
+   flag for a specific non-master type to indicate whether or not it
+   should be copied during a clone, import or export operation, the
+   list is terminated by setting the next field of this structure to
+   NULL
+*/
+typedef struct UF_ASSEM_clone_copy_nm_opt_s
+{
+    char *nonmaster_type;          /* A string specifying the part file type
+                                      for which the flag should be set. */
+    logical copy;                  /* A logical indicating whether that type
+                                      should be copied (TRUE) or not (FALSE) */
+    struct UF_ASSEM_clone_copy_nm_opt_s *next;
+                                   /* A pointer to the next element in the list,
+                                      or NULL to terminate the list */
+} UF_ASSEM_clone_copy_nm_opt_t, *UF_ASSEM_clone_copy_nm_opt_p_t;
+
+typedef struct UF_ASSEM_clone_gen_log_opts_s
+{
+    UF_ASSEM_clone_action_t        default_action; /* Enum value indicating the 
+                                                      default action to be 
+                                                      applied to components. */
+    UF_ASSEM_clone_num_technique_t  default_numbering; /* Enum value indicating 
+                                                      the default numbering
+                                                      technique to be applied 
+                                                      to components. */
+    UF_ASSEM_clone_copy_nm_opt_p_t copy_nonmaster_opts; /* Pointer to a linked 
+                                                 list of nonmaster_type/logical 
+                                                 pairs indicating whether
+                                                 those nonmaster types should
+                                                 be copied during the clone,
+                                                 import or export operation.
+                                                 Only relevant in a 
+                                                 UG/Manager environment, this
+                                                 pointer may be null. */
+} UF_ASSEM_clone_gen_log_opts_t, *UF_ASSEM_clone_gen_log_opts_p_t;
+
+/*----------------------------------------------------------------------------
+This function performs a dry run clone operation with the logging
+output written to the given log file. This is suitable for generating a
+basic log file for subsequent editing external to Unigraphics before
+being used as input to UF_ASSEM_clone_execute_log_file. If one of
+the input or output file names is in UG/Manager CLI form, then the
+log file generated is for an import or an export as appropriate. If the
+input_name and output_name are both UG/Manager CLI names or
+both Native file specifications, then a log file for a clone is generated.
+
+If the input name is a UG/Manager CLI name and the output name is
+a Native File System name an export logfile is generated. If the input
+name is a Native file specification and the output name is a
+UG/Manager CLI name an import logfile is generated See the
+UG/Manager UG/Open manual for a description of UG/Manager CLI names.
+
+Environment: Internal  and  External
+
+See Also:  UF_UGMGR_set_clone_auto_trans
+           UF_UGMGR_clone_gen_log_opts_t
+           UF_ASSEM_clone_execute_log_file
+          
+History:
+----------------------------------------------------------------------------*/
+extern int UF_ASSEM_clone_create_log_file
+(
+    const char  *input_name,  /* <I>
+                              Input part name, either a UG/Manager CLI name or 
+                              a Native file specification
+                              */
+    const char  *output_name, /* <I>
+                              Ouput part name, either a UG/Manager CLI name or 
+                              a Native file specification
+                              */
+    const char  *logfile_name,/* <I> 
+                              Native File specification of Logfile to generate.
+                              */
+    UF_ASSEM_clone_gen_log_opts_t   options /* <I>
+                                            Options to apply
+                                            */
+);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* UF_LEGACY_H_INCLUDED */

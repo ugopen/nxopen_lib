@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Licensing</title>
+	</head>
+	<body>
+			<h3>Licensing
+			</h3>
+			<P>This example shows how to sign a jar file and the caveats with running the jar 
+                file.&nbsp; There are four java files in this example.&nbsp; LicensingBase.java, 
+                which holds a static method which will run a recorded Java workflow of creating a 
+                part, inserting a sketch with a line, and then saving the part.&nbsp;&nbsp; 
+                LicensingNoUI.java is used to run the recorded java journal in LicensingBase 
+                with no Java UI.&nbsp;&nbsp; And LicensingUIExternal.java is used to run the 
+                recorded java journal in LicensingBase when the button&nbsp;on the form it creates is 
+                pushed that is meant to be run outside of NX.&nbsp; And LicensingUIInternal.java 
+                is like LicensingUIExternal.java, except that it is meant to be run inside of 
+                NX.&nbsp; The reason there is a differenece is in how to shut down the Form 
+                correctly based upon where the jar file is run at.</P>
+            <P>Two jar files are created which are then signed.&nbsp; Then these jar files can 
+                be run outside of NX by using &quot;java -jar &lt;name of jarfile&gt;.jar&quot;.&nbsp; Or inside 
+                of NX using&nbsp; File - Execute - NX Open and selecting the jar file.</P>
+            <P>To make the jar files work outside if NX, the jar file&#39;s manifest needs to 
+                specify where the dependent jar files are located at.&nbsp;&nbsp; Additionally 
+                the manifest file needs to specify the Main-Class to look for main method to run 
+                the jar file.&nbsp;&nbsp; Both of these topics can be further explored on Sun&#39;s 
+                website concerning jar files and manifest files.</P>
+            <P>To make this work for this example, two manifest files are provided in this 
+                example that have this setup for the examples.&nbsp; To make this work  
+                the NXOpen jar files need to be copied locally to where the jar file is at.&nbsp; 
+                It is requirement of Java that the jars referenced in the manifest file be in 
+                relative URL paths.&nbsp; To make it simple for this example, we are just going 
+                to have a local copy of the jars in&nbsp; a directory (called &quot;jars&quot;) to 
+                reference.</P>
+            <P>When running a jar file that is signed, in general the user does not need to worry about 
+                when the Session object is obtained.&nbsp; The only caveat to this is when you 
+                have Java application that has a UI and is run outside of NX.&nbsp; When a jar 
+                file is run inside of NX, we check the jar files signature before we run the jar 
+                file.&nbsp; So in this scenario it doesn&#39;t matter when the Session object is 
+                obtained.&nbsp;&nbsp; However, when a jar file is run outside of NX, we check 
+                the signature when the Session object is obtained.&nbsp; For java programs that 
+                contain no UI, in general this is not a problem as we are able to locate the launching jar 
+                file and check its signature.&nbsp; However, in java programs that use a UI, 
+                depending on where the Session is obtained, we may not be able to locate the 
+                signed jar file to check its signature.&nbsp; Which then means we attempt to 
+                check out an author license, and if that fails we do not instantiate a Session 
+                object.</P>
+            <P>The solution to this problem we are advocating, is to obtain the Session object 
+                in the main method.&nbsp; And then pass the Session object as parameter to the 
+                Form constructor.&nbsp; And then storing the Session object as private member.&nbsp; 
+                The only caveat to mention is when you obtain the Session object, you will be 
+                checking out a Gateway license.</P>
+            <P>&nbsp;</P>
+			<h4>How to run the example</h4>
+			<P>Unless noted otherwise, the commands in these instructions must be run from an 
+				NX command prompt.&nbsp; See the general notes of the examples for <A href="../README.htm#How_to_start_an_NX_command_prompt">
+					instructions on how to start an NX command prompt</A>.</P>
+			<P>Instructions for Windows: All commands are the same as in Unix except substitute 
+				"make" with "nmake -f Makefile_win".</P>
+            <P>Note: after running one of the jar files, you will need to delete the part file 
+                to run another one.&nbsp; This is because they both use the same code to 
+                generate the part.</P>
+			<H5>Batch mode</H5>
+			<OL style="MARGIN-TOP: 0in" type="1">
+				<LI class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+					Compile the example
+				</LI>
+			</OL>
+			<PRE style="MARGIN-LEFT: 0.5in">make </PRE>
+			<OL style="MARGIN-TOP: 0in" type="1" start="2">
+				<LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					Run the jar file</LI>
+			</OL>
+			<pre style="MARGIN-LEFT: 0.5in">To run the LicensingUIExternal.jar file, run the command &quot;java -jar LicensingUIExternal.jar&quot;.&nbsp;&nbsp; 
+                And to run the LicensingNoUI.jar file, run the command &quot;java -jar 
+                LicensingNoUI.jar&quot;.</LI></PRE>
+			<LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">&nbsp;<H5>Interactive mode</H5>
+			<OL style="MARGIN-TOP: 0in" type="1">
+				<LI class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+					Compile the example
+				</LI>
+			</OL>
+			<PRE style="MARGIN-LEFT: 0.5in">make </PRE>
+			<OL style="MARGIN-TOP: 0in" type="1" start="2">
+				<LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					Start NX.
+				</LI>
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					                    In NX, go to File - Execute - NX Open, select LicensingNoUI.jar or LicensingUIInternal.jar, and press 
+				Ok.&nbsp; The results will be printed to the listing window.
+				</LI>
+			</OL>
+			
+	</body>
+</html>

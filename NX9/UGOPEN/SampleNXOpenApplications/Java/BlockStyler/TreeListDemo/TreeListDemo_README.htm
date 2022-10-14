@@ -1,0 +1,87 @@
+<html>
+	<head>
+        <title>TreeListDemo</title>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <DIV class="Section1">
+            <H3>TreeListDemo
+            </H3>
+            <P>This example demonstrates most of the functionalities of tree list such as node addition
+            and deletion, column properties, state icons, tool tip, node edit, menu creation, drag and drop, node  
+			data usage, cross selection etc..&nbsp;</P>
+
+            <h4>Files required</h4>
+            <ol>
+            <li> TreeListDemo.java </li>
+            <li> TreeListDemo.dlx : This file is located at $UGII_BASE_DIR/ugopen/SampleNXOpenApplications/C++/BlockStyler/TreeListDemo.</li>
+			<li> Any part file </li>
+			<br>
+            The dlx file must be placed in one of the following locations:<br>
+			<br>
+           	<ol>
+            <li> From where NX session is launched </li>
+            <li> $UGII_USER_DIR/application </li>
+            <li> For released applications, using UGII_CUSTOM_DIRECTORY_FILE is highly
+                recommended. This variable is set to a full directory path to a file 
+                containing a list of root directories for all custom applications.
+                e.g., UGII_CUSTOM_DIRECTORY_FILE=<NX install directory>\ugii\menus\custom_dirs.dat </li>
+			</ol>
+            </ol>
+
+            <H4>How to run the example</H4>
+            <P>Unless noted otherwise, the commands in these instructions must be run from an 
+                NX command prompt.&nbsp; See the general notes of the examples for <A href="../../README.htm#How_to_start_an_NX_command_prompt">
+                    instructions on how to start an NX command prompt</A>.</P>
+            <P>Instructions for Windows: All commands are the same as in Unix except substitute "make" with 
+			"nmake -f Makefile_win".</P>
+
+            <H5>Interactive mode</H5>
+            <OL style="MARGIN-TOP: 0in" type="1">
+                <LI class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+                    Compile the example with following command:
+                </LI>
+            </OL>
+            <PRE style="MARGIN-LEFT: 0.5in">make</PRE>
+            <OL style="MARGIN-TOP: 0in" type="1" start="2">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Start NX. 
+                </LI>
+            </OL>
+			
+            <OL style="MARGIN-TOP: 0in" type="1" start="3">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Open any part file with at least one feature in it.
+                </LI>
+            </OL>
+
+            <OL style="MARGIN-TOP: 0in" type="1" start="4">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                In NX, go to File - Execute - NX Open, select TreeListDemo.jar, and press 
+                Ok.&nbsp; The Tree List Demonstration dialog will be displayed on the screen.
+                </LI>
+            </OL>
+				
+		    <OL style="MARGIN-TOP: 0in" type="1" start="5">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                 It is advisable to expand the dialog-width to see the complete group title, labels etc which 
+				 help in understanding the tree.
+                </LI>
+            </OL>	
+			
+			<OL style="MARGIN-TOP: 0in" type="1" start="6">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                 Observed that the tree functionality is grouped and each group caters to particular functionality of tree.
+				 The group title would be helpful in identifying particular functionality.
+                </LI>
+            </OL>
+			
+			<OL style="MARGIN-TOP: 0in" type="1" start="7">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                 In some groups instructions are provided. Follow the same to understand the tree list behavior.
+				</LI>
+            </OL>
+        </DIV>
+    </body>
+</html>

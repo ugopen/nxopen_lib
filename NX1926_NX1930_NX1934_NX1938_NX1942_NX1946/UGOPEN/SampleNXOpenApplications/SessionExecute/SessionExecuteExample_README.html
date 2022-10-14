@@ -1,0 +1,115 @@
+<!--  -->
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Complie Link Readme</title>
+</head>
+
+<body>
+
+<h3>Compile Link Readme</h3>
+<p>The example here has 4 different files included. In order to run the example the file CPPToBeExecuted.cpp must be built, and one or more of the other 3 must also be used.<br>
+<p>==========================================================================================================================<br>
+-------------------------------<br>
+<b>How to Build the C++ DLL to Run<br></b>
+-------------------------------<br></p>
+   <p>The purpose of this example is to run a C++ DLL using session execute. The code we are compiling here is the code intended to be called from another example. There is simple logic in the code which parses the expected arguments from each example. If there are no arguments nothing happens.<br>
+   <b>Windows</b>
+   <ol>
+	  <li> Using Visual Studio - create a new project using the NX Open AppWizard.
+		   This is described in the Automation -> NXOpen -> Open for C/C++ -> 
+		   Open C Reference Guide -> Overview -> Setting up your system. 
+		   When setting the Application Settings,
+		   select "Create an Internal application" and select C++ as the language.</li>
+
+	  <li> Remove all the existing files from project.</li>
+
+	  <li> Add the CPPToBeExecuted.cpp to Source Files
+		   by selecting the Project pulldown and select "Add Existing Item...". Select the file 
+		   using the popup window.</li>
+
+	  <li> Build the internal image by going to the Build menu and selecting either 
+		  "Build Solution" or "Rebuild Solution".</li>
+	</ol>
+   <br>This will create an executable called CPPToBeExecuted.dll in the Debug directory.<br>
+
+   <p>The uflink tool can also be used to create the executable by following these steps:
+   <ol>
+	   <li> Open an NX command prompt window.</li>
+	   <li> Change directories to the directory containing the source code.</li>
+	   <li> Compile and link using uflink:</li><br>
+	   &nbsp &nbsp &nbsp &nbsp ufcomp CPPToBeExecuted.cpp<br>
+	   &nbsp &nbsp &nbsp &nbsp uflink UFDLL=CPPToBeExecuted.dll<br>
+   </ol>
+
+   This will create CPPToBeExecuted.dll in the current directory. </p>
+
+   <b>Unix</b>
+   <ol>
+	   <li> Start up an NX command prompt window then start up ufmenu ($UGII_BASE_DIR/ugopen/ufmenu).</li>
+	   <li> Compile the program accepting the defaults.</li>
+	   <li> Link an internal user function program.</li>
+	   <li> Answer the first question for linking with an "i" (Link internal/external user function (i/e):)</li><br> 
+		  &nbsp &nbsp &nbsp  Select "y" for the next input to create an application with user interface code<br>
+		  &nbsp &nbsp &nbsp  Select "y" for the next input to Link a UG/Open++ Image (y/n).<br>
+	   <li> Take the default linking options.</li>
+	   <li> Provide the name of the program to link => CPPToBeExecuted</li>
+	   <li> Do not add any subroutines or libraries.</li>
+   </ol>    
+   This will create CPPToBeExecuted.so in the current directory.<br>
+
+   Exit out of ufmenu.<br><br>
+
+==========================================================================================================================<br>
+<b>Building and Running the Caller examples</b> <br>
+==========================================================================================================================<br>
+----------------------------------<br>
+<b>How to Build and Run the C# Example<br></b>
+----------------------------------<br>
+<ol>
+	<li> Open Microsoft Visual Studio .Net.</li>
+
+	<li> Create a new C# project named DotNetExecuteCPPExample using the NX Open AppWizard. This is described in the 
+	   NX Open Programmers Guide -> Wizard Setup.<br>
+	   Also information under Creating NX Open Automation -> Applications will be helpful.
+	   When setting the Application Settings, select "Create an Internal application". <br>
+	   Select to activate the application Explicitly and to unload immediately.
+	   Then pick Finish.</li>
+	<li> Remove all the existing files from project.</li>
+	<li>  Add the DotNetExecuteCPPExample.cs to the project by selecting the Project pulldown and select 
+		"Add Existing Item...". Select the file using the popup window.</li>
+	<li> Build the internal image by going to the Build menu and selecting either "Build" or "Rebuild".</li>
+	<li> This will create an executable called DotNetExecuteCPPExample.dll in the Debug directory.</li>
+	
+	<li> In NX go to File -> Execute -> NXOpen, Select DotNetExecuteCPPExample.dll. 
+	<li> Select the Enter User Function Arguments and enter the path to CPPToBeExecuted.dll </li>	
+	<li> A new part should be created and a very small block should be created at the orign.</li>
+</ol>
+==========================================================================================================================<br>
+----------------------------------<br>
+<b>How to Build and Run the Java example<br></b>
+----------------------------------<br>
+<br><b>Windows</b>
+
+<br>Use following commands to compile and run the example</br>
+<br>&nbsp;&nbsp;nmake -f Makefile_win</br>
+<br>In NX go to File -> Execute -> NXOpen, Select JavaExecuteCPPExample.jar.  Select the Enter User Function Arguments and enter the path to CPPToBeExecuted.dll. A new part should be created with a medium sized block created at the orign.
+
+<br><br><b>Linux</b>
+<br>Use the following commands to compile and run the example
+<br>make
+<br>perl ugjava.pl JavaExecuteCPPExample &lt;path to CPPToBeExecuted.so&gt;
+<br>in the syslog there will be output for the created the geometry as well as the string "Inside Java Session Execute Example with argument: "
+
+<br>==========================================================================================================================<br>
+----------------------------------<br>
+<b>How to Run the Python example<br></b>
+----------------------------------<br>
+<br><b>Windows</b>
+<br>In NX go to Menu -> Tools -> Journal -> Play, Select PythonExecuteCPPExample.py. Select the Enter User Function Arguments and enter the path to CPPToBeExecuted.dll. A new part should be created and a Large block should be created at the orign
+</body>
+
+</html>

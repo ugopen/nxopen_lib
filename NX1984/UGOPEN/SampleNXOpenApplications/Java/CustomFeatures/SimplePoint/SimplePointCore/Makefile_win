@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: SimplePointCore.jar
+
+SimplePointCore.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) SimplePointCore.java
+	
+SimplePointCore.jar: SimplePointCore.class
+	echo Main-Class: SimplePointCore> manifest.txt
+	jar cmf manifest.txt SimplePointCore.jar SimplePointCore.class
+
+run: SimplePointCore.jar
+    	java -classpath $(CLASSPATH)  SimplePointCore
+
+clean_all: clean
+	- del SimplePointCore.class
+	- del SimplePointCore.jar

@@ -1,0 +1,9 @@
+VSWIZARD 7.0
+Wizard=VsWizard.VsWizardEngine.15.0
+
+Param="WIZARD_NAME = NXOpen_VB"
+Param="VB_WIZARD_OPTION = YES"
+Param="MSVS_WIZARD_FOLDER = VBWizards"
+Param="PROJECT_TYPE = VBPROJ"
+Param="WIZARD_UI = TRUE" 
+Param="FALLBACK_LCID = 1033"

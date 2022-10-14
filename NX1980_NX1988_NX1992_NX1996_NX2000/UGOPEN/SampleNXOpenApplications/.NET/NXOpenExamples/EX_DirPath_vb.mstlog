@@ -1,0 +1,12 @@
+--Log entry goes here--
+New part: EX_DirPath 
+Dir Path: \\pnqfiler2\ugdev\ugnx40\ip19\wnti32\kits
+Dir Path: /dir1
+Dir Path: /dir2
+Current Dir: {0}/dir1
+Index Nth Dir
+0/dir1
+1/dir2
+2/dir3
+3/dir4
+End of Log File

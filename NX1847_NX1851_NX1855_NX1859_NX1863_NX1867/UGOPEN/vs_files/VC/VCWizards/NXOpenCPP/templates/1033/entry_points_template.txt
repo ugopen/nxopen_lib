@@ -1,0 +1,202 @@
+[!if UFSTA_ENTRY_POINT]
+//  NX Startup
+extern "C" DllExport void ufsta( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUSR_ENTRY_POINT]
+//  Explicit Execution
+extern "C" DllExport void ufusr( char *parm, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if USER_EXITS]
+[!if UFGET_ENTRY_POINT]
+//  Open Part User Exit
+extern "C" DllExport void ufget( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCRE_ENTRY_POINT]
+//  New Part User Exit
+extern "C" DllExport void ufcre( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPUT_ENTRY_POINT]
+//  Save Part User Exit
+extern "C" DllExport void ufput( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSVAS_ENTRY_POINT]
+//  Save Part As User Exit
+extern "C" DllExport void ufsvas( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFMRG_ENTRY_POINT]
+//  Import Part User Exit
+extern "C" DllExport void ufmrg( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGRP_ENTRY_POINT]
+//  Execute GRIP Program  User Exit
+extern "C" DllExport void ufgrp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFRCP_ENTRY_POINT]
+//  Add Existing Part User Exit
+extern "C" DllExport void ufrcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFFCP_ENTRY_POINT]
+//  Export Part User Exit
+extern "C" DllExport void uffcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUSD_ENTRY_POINT]
+//  Component Where-Used User Exit
+extern "C" DllExport void ufusd( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPLT_ENTRY_POINT]
+//  Plot File User Exit
+extern "C" DllExport void ufplt( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UF2DA_ENTRY_POINT]
+//  2D Analysis Using Curves User Exit
+extern "C" DllExport void uf2da( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUDS_ENTRY_POINT]
+//  User Defined Symbols User Exit
+extern "C" DllExport void ufuds( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSO_ENTRY_POINT]
+//  Open CLSF User Exit
+extern "C" DllExport void ufclso( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSS_ENTRY_POINT]
+//  Save CLSF User Exit
+extern "C" DllExport void ufclss( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSR_ENTRY_POINT]
+//  Rename CLSF User Exit
+extern "C" DllExport void ufclsr( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLG_ENTRY_POINT]
+//  Generate CLF User Exit
+extern "C" DllExport void ufclg( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPOST_ENTRY_POINT]
+//  Postprocess CLSF User Exit
+extern "C" DllExport void ufpost( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCCP_ENTRY_POINT]
+//  Create Component User Exit
+extern "C" DllExport void ufccp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCDP_ENTRY_POINT]
+//  Change Displayed Part User Exit
+extern "C" DllExport void ufcdp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCWP_ENTRY_POINT]
+//  Change Work Part User Exit
+extern "C" DllExport void ufcwp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFDCP_ENTRY_POINT]
+//  Remove Component User Exit
+extern "C" DllExport void ufdcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFMCP_ENTRY_POINT]
+//  Reposition Component User Exit
+extern "C" DllExport void ufmcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSCPO_ENTRY_POINT]
+//  Substitute Component Out User Exit
+extern "C" DllExport void ufscpo( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSCPI_ENTRY_POINT]
+//  Substitute Component In User Exit
+extern "C" DllExport void ufscpi( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFRRS_ENTRY_POINT]
+//  Replace Reference Set User Exit
+extern "C" DllExport void ufrrs( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFNCP_ENTRY_POINT]
+//  Rename Component User Exit
+extern "C" DllExport void ufncp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGEN_ENTRY_POINT]
+//  Access Genius Library Management System User Exit
+extern "C" DllExport void ufgen( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGRPD_ENTRY_POINT]
+//  Execute Debug GRIP User Exit
+extern "C" DllExport void ufgrpd( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUFUN_ENTRY_POINT]
+//  Execute UG/Open API User Exit
+extern "C" DllExport void ufufun( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPOP_ENTRY_POINT]
+//  Open Spreadsheet User Exit
+extern "C" DllExport void ufspop( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPCL_ENTRY_POINT]
+//  Close Spreadsheet User Exit
+extern "C" DllExport void ufspcl( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPUP_ENTRY_POINT]
+//  Update Spreadsheet User Exit
+extern "C" DllExport void ufspup( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPUF_ENTRY_POINT]
+//  Finish Updating Spreadsheet User Exit
+extern "C" DllExport void ufspuf( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UDOP_ENTRY_POINT]
+//  CAM User Defined Operation User Exit
+extern "C" DllExport void udop( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if DPUD_ENTRY_POINT]
+//  CAM User Defined Drive Path User Exit
+extern "C" DllExport void dpud( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFNOPR_ENTRY_POINT]
+//  CAM New Operation User Exit
+extern "C" DllExport void ufnopr( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCAMS_ENTRY_POINT]
+//  CAM Startup User Exit
+extern "C" DllExport void ufcams( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGENS_ENTRY_POINT]
+//  GENS User Exit
+extern "C" DllExport void ufgens( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!endif]

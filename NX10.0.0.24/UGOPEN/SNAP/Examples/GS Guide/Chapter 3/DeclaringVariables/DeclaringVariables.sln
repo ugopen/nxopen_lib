@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DeclaringVariables", "DeclaringVariables.vbproj", "{6104661C-A407-45E9-AEE1-1BE97039C09F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6104661C-A407-45E9-AEE1-1BE97039C09F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6104661C-A407-45E9-AEE1-1BE97039C09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6104661C-A407-45E9-AEE1-1BE97039C09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6104661C-A407-45E9-AEE1-1BE97039C09F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		UDUDRY = False
+		UDUVERBOSE = False
+		UDUFORCE = False
+		UDUDETACHED = False
+		UDUCUSTOM = False
+		UDUCUSTOMLIST = 
+		UDUCUSTOMBUILD = 
+		UDUFILESCOPE = 
+		UDUSCENARIO = DEFAULT
+	EndGlobalSection
+EndGlobal

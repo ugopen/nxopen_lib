@@ -1,0 +1,297 @@
+[!if UFSTA_ENTRY_POINT]
+/*  Unigraphics Startup
+**      This entry point activates the application at Unigraphics startup */
+extern DllExport void ufsta( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUSR_ENTRY_POINT]
+/*  Explicit Activation
+**      This entry point is used to activate the application explicitly, as in
+**      "File->Execute UG/Open->User Function..." */
+extern DllExport void ufusr( char *parm, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if USER_EXITS]
+[!if UFGET_ENTRY_POINT]
+/*  Open Part
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Open" */
+extern DllExport void ufget( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCRE_ENTRY_POINT]
+/*  New Part
+**      This user exit is invoked after the following menu item is activated:
+**      "File->New" */
+extern DllExport void ufcre( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPUT_ENTRY_POINT]
+/*  Save Part
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Save" */
+extern DllExport void ufput( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSVAS_ENTRY_POINT]
+/*  Save Part As
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Save As..." */
+extern DllExport void ufsvas( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFMRG_ENTRY_POINT]
+/*  Import Part
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Import->Part" */
+extern DllExport void ufmrg( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGRP_ENTRY_POINT]
+/*  Execute GRIP Program
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Execute->GRIP" */
+extern DllExport void ufgrp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFRCP_ENTRY_POINT]
+/*  Add Existing Part
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Add Existing Part" menu item is activated and before the
+**      "Select Part" dialog. */
+extern DllExport void ufrcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFFCP_ENTRY_POINT]
+/*  Export Part
+**      This user exit is invoked after the "File->Export->Part" menu item is
+**      activated and before the "Select Part" dialog. */
+extern DllExport void uffcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUSD_ENTRY_POINT]
+/*  Component Where-Used
+**      This user exit is invoked after the "Assemblies->Reports->Where Used"
+**      menu item is activated and before the "Select Components" dialog. */
+extern DllExport void ufusd( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPLT_ENTRY_POINT]
+/*  Plot File
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Plot..." */
+extern DllExport void ufplt( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UF2DA_ENTRY_POINT]
+/*  2D Analysis Using Curves
+**      This user exit is invoked after the following menu item is activated:
+**      "Info->Analysis...->AreaProperties - Using Curves" */
+extern DllExport void uf2da( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUDS_ENTRY_POINT]
+/*  User Defined Symbols
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Drafting->Create->User Defined Symbols" */
+extern DllExport void ufuds( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSO_ENTRY_POINT]
+/*  Open CLSF
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Manufacturing..." */
+extern DllExport void ufclso( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSS_ENTRY_POINT]
+/*  Save CLSF
+**      This user exit is invoked after any of the following actions:
+**      "File->Save->CLSF"
+**      "File->Save->CLSF As"
+**      "Preferences->Autofile CLSF"
+**      "Toolbox->Operation->Generate->OK" */
+extern DllExport void ufclss( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLSR_ENTRY_POINT]
+/*  Rename CLSF
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Manufacturing->File->Save->CLSF As" */
+extern DllExport void ufclsr( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCLG_ENTRY_POINT]
+/*  Generate CLF
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Manufacturing->Toolbox->Tool Path...->Postprocess->
+**      Generate CLF" */
+extern DllExport void ufclg( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFPOST_ENTRY_POINT]
+/*  Postprocess CLSF
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Manufacturing->Toolbox->Tool Path...->Postprocess->
+**      Postprocess" */
+extern DllExport void ufpost( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCCP_ENTRY_POINT]
+/*  Create Component
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Create New Component->Add Object Methods" menu item is activated and
+**      before the "Select Part" dialog. */
+extern DllExport void ufccp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCDP_ENTRY_POINT]
+/*  Change Displayed Part
+**      This user exit is invoked after the "File->Change->Displayed Part"
+**      menu item is activated and before the "Select Part" dialog. */
+extern DllExport void ufcdp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCWP_ENTRY_POINT]
+/*  Change Work Part
+**      This user exit is invoked after the "Assemblies->Change Work Part..."
+**      menu item is activated and before the "Select Part" dialog. */
+extern DllExport void ufcwp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFDCP_ENTRY_POINT]
+/*  Remove Component
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Remove Component" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufdcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFMCP_ENTRY_POINT]
+/*  Reposition Component
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Reposition Component" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufmcp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSCPO_ENTRY_POINT]
+/*  Substitute Component Out
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Substitute Component" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufscpo( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSCPI_ENTRY_POINT]
+/*  Substitute Component In
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Substitute Component->Choose" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufscpi( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFRRS_ENTRY_POINT]
+/*  Replace Reference Set
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Replace Reference Set" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufrrs( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFNCP_ENTRY_POINT]
+/*  Rename Component
+**      This user exit is invoked after the "Assemblies->Edit Structure->
+**      Rename Component" menu item is activated and before the
+**      "Select Components" dialog. */
+extern DllExport void ufncp( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGEN_ENTRY_POINT]
+/*  Access Genius Library Management System
+**      This user exit is invoked after the "Genius" push button is activated
+**      when creating or editing a tool in CAM. */
+extern DllExport void ufgen( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGRPD_ENTRY_POINT]
+/*  Execute Debug GRIP
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Execute->Debug GRIP" */
+extern DllExport void ufgrpd( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFUFUN_ENTRY_POINT]
+/*  Execute UG/Open API
+**      This user exit is invoked after the following menu item is activated:
+**      "File->Execute UG/Open->User Function" */
+extern DllExport void ufufun( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPOP_ENTRY_POINT]
+/*  Open Spreadsheet
+**      This user exit is invoked after a spreadsheet executable is started
+**      and before any spreadsheets are loaded. Interactively, this occurs
+**      after the "Toolbox->Spreadsheet" menu item is activated. */
+extern DllExport void ufspop( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPCL_ENTRY_POINT]
+/*  Close Spreadsheet
+**      This user exit is invoked when a spreadsheet is closed. Interactively,
+**      this occurs when either of the following menu items is selected from
+**      the spreadsheet menu bar:
+**      "File->Exit"
+**      "Connect->Disconnect" */
+extern DllExport void ufspcl( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPUP_ENTRY_POINT]
+/*  Update Spreadsheet
+**      This user exit is invoked at the start of expression update.
+**      Interactively, this occurs after the "Tools->Update UG Part" menu item
+**      is activated. */
+extern DllExport void ufspup( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFSPUF_ENTRY_POINT]
+/*  Finish Updating Spreadsheet
+**      This user exit is invoked at the completion of expression update. */
+extern DllExport void ufspuf( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UDOP_ENTRY_POINT]
+/*  CAM User Defined Operation
+**      This user exit is invoked when a CAM User Defined Operation is created
+**      or edited. */
+extern DllExport void udop( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if DPUD_ENTRY_POINT]
+/*  CAM User Defined Drive Path
+**      This user exit is invoked when a CAM User Defined Drive Path is created
+**      or edited. */
+extern DllExport void dpud( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFNOPR_ENTRY_POINT]
+/*  CAM New Operation
+**      This user exit is invoked after a CAM operation is created or
+**      reinitialized via the following menu item:
+**      "Application->Manufacturing..." */
+extern DllExport void ufnopr( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFCAMS_ENTRY_POINT]
+/*  CAM Startup
+**      This user exit is invoked after the following menu item is activated:
+**      "Application->Manufacturing..." */
+extern DllExport void ufcams( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!if UFGENS_ENTRY_POINT]
+// GENS User exit
+extern DllExport void ufgens( char *param, int *returnCode, int rlen )
+[!output BODY_TEMPLATE]
+[!endif]
+[!endif]

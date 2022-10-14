@@ -1,0 +1,118 @@
+# Sample batch parameters file 2D & 3D meshing
+
+#mesh:
+#Specify body_type (optional): SOLID, SHEET , SHEET_MS , ALL_BODY_TYPES
+body_type              ALL_BODY_TYPES
+# 0.0 or (-)ive element size is auto size or not specified
+element_size           12.0
+# Valid values of element_type: TET_10, TET_4, TRI_3, TRI_6, QUAD_4, QUAD_8
+# Default : TET_10
+element_type           QUAD_4
+
+# Values of mid_node_option are "Mixed", "Straight", "Curved"
+mid_node_option        Mixed
+# Default max jacobian for tet : 12.354
+# Default max_jacobian for tri or quad : 
+max_jacobian           12.345
+surface_mesh_variation 50.0
+volume_mesh_variation  50.0
+small_feature_size     10.0
+
+#Midnode Tolerance (for only mid_node_option: Mixed)
+geometry_tolerance_toggle OFF
+geometry_tolerance_value  0.01
+
+# Additional 2D mesh parameters
+#
+# Method to be used for 2D mesh.  Values : "Automatic" or "Paver"
+# (Default : "Automatic")
+2D_meshing_method      Automatic
+#
+# Target Minimum Element Edge Length: "ON" or "OFF" (Default : "ON")
+target_minimum_element_edge_length        ON       
+#
+# Multi Block Decomposition: "ON" or "OFF" (Default : "ON")
+multi_block_decomposition        OFF          
+#
+# CAD Curvature Abstraction: "ON" or "OFF" (Default : "ON")
+CAD_curvature_abstraction        OFF       
+#
+# Minimum Element Length: (used only if CAD_curvature_abstraction is ON)
+minimum_feature_length        5.0 
+#
+# Mesh transition : "ON" or "OFF" (Default : "ON")
+mesh_transition        ON
+
+# Minimum Two Elements Through Thickness (For Tet only; Default: "OFF" )
+two_element_through_thickness_toggle OFF
+
+# Auto fix failed elements (For Tet only; Default: "OFF" )
+auto_fix_failed_elements OFF
+
+# Attempt Mapped Meshing (For Tet only; Default: "OFF" )
+attempt_mapped_meshing OFF
+
+
+# Mesh Quality options (For 2D only; Default: "OFF" )
+max_included_angle_tria_toggle OFF
+max_included_angle_tria        140
+
+min_included_angle_tria_toggle OFF
+min_included_angle_tria        20
+
+max_included_angle_quad_toggle OFF
+max_included_angle_quad        150
+
+min_included_angle_quad_toggle OFF
+min_included_angle_quad        20
+
+
+
+
+# Additional quad related params
+# 
+match_edge_toggle      OFF
+edge_match_tolerance   0.508
+maximum_quad_warp      10.0
+
+# Values are "ON" or "OFF"
+#
+attempt_quad_mapping   ON
+split_poor_quads       ON
+
+# Attempt Quad only option Values are 0 => "Off-Allow Triangles", 1 => "ON-Allow 0 Triangles", 2 => "ON-Allow 1 Triangles"
+# Valid only for QUAD elements and attempt mapping attempt_quad_mapping=OFF
+#
+quad_only_option      0 
+
+#merge_edge:
+
+# Merge_edges toggle used for 2D mesh only
+# Values: ON or OFF (Default OFF)
+merge_edge_ON_OFF      OFF
+
+# Merge edge angle tolerance in Deg (used only if merge_edge_ON_OFF  is ON)
+merge_edge_angle_tolerance  15
+
+#suppress_hole::
+
+# suppress_hole: toggle used for 2D mesh only
+# Values: ON or OFF (Default OFF)
+suppress_hole_ON_OFF      ON
+
+# suppress hole diameter (used only if suppress_hole_ON_OFF  is ON)
+suppress_hole_diameter  10
+
+# suppress_hole_point_type (used only if suppress_hole_ON_OFF  is ON)
+# Options: NONE, POINT, MESHPOINT
+suppress_hole_point_type  MESHPOINT
+
+#fillets:
+
+# Values of fillet_type are  "None", "all", "Inside", "Outside"
+fillet_type            None
+min_fillet_radius      0.0
+max_fillet_radius      5.0
+elem_per_quarter_round 3
+
+

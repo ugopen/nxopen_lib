@@ -1,0 +1,43 @@
+'=============================================================================
+'
+'   Copyright 2008 Siemens Product Lifecycle Management Software Inc. All Rights Reserved.
+'
+'=============================================================================
+' 
+' ===========================================================================
+'   DESCRIPTION
+        ' This is an unofficial list of the CAM operation type numbers.
+		' Details are in the API documentation.
+' ============================================================================
+' Operation Types
+'    UF_machining_operation_type             100 
+'    UF_mach_instanced_oper_subtype              1 
+'    UF_mach_orphan_oper_subtype                 2 
+'    UF_mach_oldopr_subtype                     10       /* Obsolete */ 
+'    UF_mach_pocket_subtype                    110 
+'    UF_mach_surface_contour_subtype           210 
+'    UF_mach_vasc_subtype                      211 
+'    UF_mach_cavity_milling_subtype            260 
+'    UF_mach_face_milling_subtype              261 
+'    UF_mach_volumn_milling_subtype            262 
+'    UF_mach_zlevel_milling_subtype            263 
+'    UF_mach_fb_hole_milling_subtype           264 
+'    UF_mach_plunge_milling_subtype            265 
+'    UF_mach_vazl_milling_subtype              266 
+'    UF_mach_turn_rough_subtype                510 
+'    UF_mach_turn_finish_subtype               520 
+'    UF_mach_turn_teachmode_subtype            530 
+'    UF_mach_turn_thread_subtype               540 
+'    UF_mach_turn_cdrill_subtype               550 
+'    UF_mach_turn_auxiliary_subtype            560 
+'    UF_mach_hole_making_subtype               600 
+'    UF_mach_wedm_subtype                      700 
+'    UF_mach_mill_ud_subtype                   800 
+'    UF_mach_gmc_subtype                       900 
+'    UF_mach_probing_subtype                  1000 
+'    UF_mach_mill_mc_subtype                  1100 
+'    UF_mach_lathe_mc_subtype                 1200 
+'    UF_mach_wedm_mc_subtype                  1300 
+'    UF_mach_lathe_ud_subtype                 1400 
+'    UF_mach_wedm_ud_subtype                  1500 
+'    UF_mach_mass_edit_subtype                1600 

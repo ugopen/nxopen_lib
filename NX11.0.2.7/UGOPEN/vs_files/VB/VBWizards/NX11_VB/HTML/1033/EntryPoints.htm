@@ -1,0 +1,475 @@
+<HTML DIR="LTR">
+	<HEAD>
+		<TITLE>NX11 Open VB Wizard</TITLE>
+		<META NAME="vs_targetSchema" CONTENT="http://schemas.microsoft.com/intellisense/ie5">
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+		<STYLE TYPE="text/css">@import url(../../1033/NewStyles.css);</STYLE>
+		<SCRIPT>
+		var strURL = window.external.FindSymbol("PRODUCT_INSTALLATION_DIR");
+	    strURL += window.external.FindSymbol("MSVS_WIZARD_FOLDER") + "/"+ window.external.FindSymbol("WIZARD_NAME")+"/";
+		// Do NOT use GetHostLocale - only english is supported - hardcode to 1033
+		// strURL += window.external.GetHostLocale();
+		strURL += "1033";
+		strURL += "/NewStyles.css";
+		document.styleSheets(0).imports(0).href = strURL;
+		</SCRIPT>
+	</HEAD>
+	<BODY BGCOLOR="BUTTONFACE" TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" ONLOAD="InitDocument(document);" ONKEYDOWN="if (!bValidating) OnKey();" ONKEYPRESS="if (!bValidating) OnPress();">
+		<TABLE CLASS="ONE" HEIGHT="100%" WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+			<COL CLASS="LinkPane">
+			<COL>
+			<!--OPEN OF INTRODUCTORY INFORMATION TABLE//-->
+			<TR VALIGN="TOP">
+				<TD HEIGHT="79" WIDTH="100%" COLSPAN="2">
+					<TABLE CLASS="TWO" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<COL WIDTH="12">
+						<COL>
+						<COL WIDTH="12">
+						<TR>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD CLASS="IMAGE" VALIGN="BOTTOM" WIDTH="110" ROWSPAN="2">
+								<DIV CLASS="SMALLA" ID="Layer0">
+									<IMG CLASS="SMALLEST" SRC="../../images/small_nx_icon.gif" WIDTH="63" HEIGHT="63" ALT="" BORDER="0">
+								</DIV>
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="6" ROWSPAN="2">
+								&nbsp;
+							</TD>
+						</TR>
+						<TR>
+							<TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="65">
+								<H4 CLASS="HEAD" ID="HEAD">Entry Points</H4>
+								<P CLASS="SUBHEAD" ID="SUBHEAD">Specify the entry points of the DLL.</P>
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+								&nbsp;
+							</TD>
+						</TR>
+						<TR>
+							<TD VALIGN="TOP" CLASS="RULE" COLSPAN="5" HEIGHT="2">
+								<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+									<TR VALIGN="TOP">
+										<TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"></TD>
+										<TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"></TD>
+									</TR>
+								</TABLE>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+			<!--CLOSE OF INTRODUCTORY INFORMATION TABLE//-->
+			<!--OPEN OF NAVIGATION, CONTENT, AND BUTTON TABLES//-->
+			<TR VALIGN="TOP">
+				<TD CLASS="Three" VALIGN="TOP" HEIGHT="100%" WIDTH="100%">
+					<TABLE CLASS="fixedSize" HEIGHT="100%" WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<TR VALIGN="TOP">
+							<!--Maybe replace the following <TD> tag with this...
+	   <TD CLASS="threeCustom" VALIGN="TOP" STYLE="BACKGROUND-IMAGE: url('../../images/NX8_Open_Background.gif');">-->
+							<TD CLASS="threeCustom" VALIGN="TOP">
+								<!--OPEN OF NAVIGATION TABLE//-->
+								<TABLE CLASS="THREE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL>
+									<COL WIDTH="1">
+									<TR>
+										<TD VALIGN="TOP" COLSPAN="3" HEIGHT="12">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="100%">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP" HEIGHT="100%">
+											<!--OPEN OF NAVIGATIONAL LINKS//-->
+											<DIV CLASS="LINK">
+												<TABLE WIDTH="100%" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN CLASS="ACTIVELINK" ID="Default" TITLE="Examine an overview of selections." onClick="Next(document, 'default.htm');" TABINDEX="1">
+																Overview</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<DIV CLASS="LINK">
+												<TABLE WIDTH="100%" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN CLASS="ACTIVELINK" ID="AppSettings" TITLE="Specify the type and features of the DLL." onClick="Next(document, 'AppSettings.htm');" TABINDEX="2">
+																Application Settings</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<DIV CLASS="LINKSELECTED">
+												<SPAN CLASS="VERTLINE1"><IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+												</SPAN><SPAN CLASS="HORILINE1">
+													<TABLE WIDTH="167" HEIGHT="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+														<TR VALIGN="TOP">
+															<TD CLASS="DOTTEDLINE" HEIGHT="1">
+															</TD>
+														</TR>
+														<TR VALIGN="TOP">
+															<TD HEIGHT="100%">
+																<IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="28" ALT="" BORDER="0">
+															</TD>
+														</TR>
+														<TR VALIGN="TOP">
+															<TD CLASS="DOTTEDLINE" HEIGHT="1">
+															</TD>
+														</TR>
+													</TABLE>
+												</SPAN>
+												<TABLE WIDTH="160" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXTSELECTED">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN ID="EntryPoints" TITLE="Specify the entry points of the DLL.">Entry Points</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<!--CLOSE OF NAVIGATIONAL LINKS//-->
+										</TD>
+										<TD WIDTH="1">
+											<DIV CLASS="VERTLINE">
+												<IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+											</DIV>
+										</TD>
+									</TR>
+								</TABLE>
+							</TD>
+						</TR>
+					</TABLE>
+					<!--CLOSE OF NAVIGATION TABLE//-->
+				</TD>
+				<TD VALIGN="TOP" HEIGHT="100%">
+					<!--OPEN OF CONTENT AND BUTTON TABLE//-->
+					<TABLE CLASS="ONE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<COL WIDTH="100%">
+						<TR VALIGN="TOP">
+							<TD HEIGHT="100%">
+								<!--OPEN OF CONTENT//-->
+								<TABLE CLASS="CONTENT" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL WIDTH="398">
+									<COL WIDTH="12">
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="12" COLSPAN="3">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" WIDTH="12">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP">
+											<SPAN CLASS="itemTextTop" ID="ENTRY_POINTS_SPAN" TITLE="">How would you like to 
+												activate the application?
+												<P CLASS="Spacer">&nbsp;</P>
+												<INPUT TYPE="checkbox" CLASS="CheckBoxA" ACCESSKEY="U" ID="MAIN_ENTRY_POINT" TITLE="Explicitly (Main)" value="ON">
+												<DIV CLASS="itemTextCheckboxB" ID="MAIN_ENTRY_POINT_DIV" TITLE="Explicitly (Main)" STYLE="WIDTH:391PX;">
+													<LABEL FOR="MAIN_ENTRY_POINT" ID="UFUSR_XXXX_LABEL">Explicitly (<U>M</U>ain)</LABEL>
+												</DIV>
+												<BR>
+												
+												<INPUT TYPE="checkbox" CLASS="CheckBoxA" ACCESSKEY="S" ID="STARTUP_ENTRY_POINT" TITLE="Automatically (Startup)" value="ON">
+												<DIV CLASS="itemTextCheckboxB" ID="STARTUP_ENTRY_POINT_DIV" TITLE="Automatically (Startup)" STYLE="WIDTH:391PX;">
+													<LABEL FOR="STARTUP_ENTRY_POINT" ID="UFSTA_XXXX_LABEL">Automatically (<U>S</U>tartup)</LABEL>
+												</DIV>
+												<BR>
+												
+												<INPUT TYPE="checkbox" CLASS="CheckBoxA" onPropertyChange="OnUserExits()" ACCESSKEY="E" ID="USER_EXITS" TITLE="From a User Exit" value="ON">
+												<DIV CLASS="itemTextCheckboxB" ID="USER_EXITS_DIV" TITLE="From a User Exit" STYLE="WIDTH:391PX;">
+													<LABEL FOR="USER_EXITS" ID="USER_EXITS_LABEL">From a User <U>E</U>xit</LABEL>
+													<BR>
+													<DIV CLASS="select" ID="USER_EXITS_DIV" TITLE="User Exits List">
+														<SELECT CLASS="sideBtn" SIZE="5" ID="USER_EXITS_LIST" OnChange="OnUserExitList()" STYLE="WIDTH:350PX;" MULTIPLE ACCESSKEY="G" TITLE="User Exits List" TABINDEX="8">
+														</SELECT>
+													</DIV>
+												</DIV>
+												<BR>
+											</SPAN>
+											<HR>
+											<SPAN CLASS="itemText" ID="ADDITIONAL_FEATURES_SPAN" TITLE="">How would you like to 
+												unload the application?
+												<P CLASS="Spacer">&nbsp;</P>
+												<INPUT TYPE="radio" CLASS="Radio" NAME="UnloadType" ID="UNLOAD_UG_TERMINATE" ACCESSKEY="T" TITLE="Automatically, when the NX session terminates">
+												<DIV CLASS="itemTextRadioB" ID="UNLOAD_UG_TERMINATE_DIV" TITLE="Automatically, when the NX session terminates" STYLE="WIDTH:391PX;">
+													<LABEL FOR="UNLOAD_UG_TERMINATE" ID="UNLOAD_UG_TERMINATE_LABEL">Automatically, when 
+														the&nbsp; NX session <U>t</U>erminates</LABEL>
+												</DIV>
+												<BR>
+												<INPUT TYPE="radio" CLASS="Radio" NAME="UnloadType" ID="UNLOAD_IMMEDIATELY" ACCESSKEY="C" TITLE="Automatically, when the application completes">
+												<DIV CLASS="itemTextRadioB" ID="UNLOAD_ON_COMPLETE_DIV" TITLE="Automatically, when the application completes" STYLE="WIDTH:391PX;">
+													<LABEL FOR="UNLOAD_IMMEDIATELY" ID="UNLOAD_ON_COMPLETE_LABEL">Automatically, when 
+														the application <U>c</U>ompletes</LABEL>
+												</DIV>
+												<BR>
+												<INPUT TYPE="radio" CLASS="Radio" NAME="UnloadType" ID="UNLOAD_SEL_DIALOG" ACCESSKEY="D" TITLE="Explicitly, via an unload dialog">
+												<DIV CLASS="itemTextRadioB" ID="UNLOAD_SEL_DIALOG_DIV" TITLE="Explicitly, via an unload dialog" STYLE="WIDTH:391PX;">
+													<LABEL FOR="UNLOAD_SEL_DIALOG" ID="UNLOAD_SEL_DIALOG_LABEL">Explicitly, via an 
+														unload <U>d</U>ialog</LABEL>
+												</DIV>
+											</SPAN>
+										</TD>
+										<TD VALIGN="TOP" WIDTH="12">
+											&nbsp;
+										</TD>
+									</TR>
+								</TABLE>
+								<!--CLOSE OF CONTENT//-->
+							</TD>
+						</TR>
+						<TR VALIGN="BOTTOM">
+							<TD HEIGHT="48">
+								<!--OPEN OF BUTTON HTML//-->
+								<TABLE HEIGHT="48" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL>
+									<COL WIDTH="75">
+									<COL WIDTH="4">
+									<COL WIDTH="75">
+									<COL WIDTH="4">
+									<COL WIDTH="75">
+									<COL WIDTH="12">
+									<TR>
+										<TD VALIGN="TOP" CLASS="RULE" COLSPAN="8" HEIGHT="2">
+											<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+												<TR VALIGN="TOP">
+													<TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"></TD>
+													<TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"></TD>
+												</TR>
+											</TABLE>
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="11" COLSPAN="8">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP" HEIGHT="23">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<BUTTON CLASS="BUTTONS" ID="FinishBtn" ACCESSKEY="F" onClick="OnFinish(document);">F</U>inish</BUTTON>
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="4">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<BUTTON CLASS="BUTTONS" ID="CancelBtn" onClick="window.external.Finish(document, 'cancel');">
+												Cancel</BUTTON>
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="4">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<!-- Disable Help Button for now
+  				<BUTTON CLASS="BUTTONS" ID="HelpBtn" onClick="window.external.OnHelp('vc.appwiz.custom.appset');">Help</BUTTON> -->
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="12" COLSPAN="8">
+											&nbsp;
+										</TD>
+									</TR>
+								</TABLE>
+								<!--CLOSE OF BUTTON HTML//-->
+							</TD>
+						</TR>
+					</TABLE>
+					<!--CLOSE OF NAVIGATION, CONTENT, AND BUTTON TABLES//-->
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>
+<SCRIPT LANGUAGE="JSCRIPT">
+
+/*var tab_array = new Array();
+tab_array[0] = Default;
+tab_array[1] = AppSettings;
+tab_array[2] = EntryPoints;*/
+
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFGET_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCRE_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFPUT_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSVAS_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFMRG_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFGRP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFRCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFFCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFUSD_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFPLT_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UF2DA_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFUDS_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCLSO_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCLSS_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCLSR_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCLG_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFPOST_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCDP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCWP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFDCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFMCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSCPO_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSCPI_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFRRS_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFNCP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFGEN_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFGRPD_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFUFUN_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSPOP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSPCL_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSPUP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFSPUF_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UDOP_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "DPUD_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFNOPR_ENTRY_POINT_OPTION";
+USER_EXITS_LIST.options[USER_EXITS_LIST.length]      = new Option();
+USER_EXITS_LIST.options[USER_EXITS_LIST.length-1].id = "UFCAMS_ENTRY_POINT_OPTION";
+
+function InitDocument(document)
+{
+	setDirection();
+
+	// Do we need this?
+        window.external.Load(document);
+
+        FinishBtn.focus();
+
+        UNLOAD_IMMEDIATELY.disabled = false;
+        UNLOAD_SEL_DIALOG.disabled = false;
+	if (window.external.FindSymbol("OPENPP_CALLS"))
+        {
+            UNLOAD_UG_TERMINATE.checked = true;
+            UNLOAD_IMMEDIATELY.disabled = true;
+            UNLOAD_SEL_DIALOG.disabled = true;
+        }
+
+	var nOptions = USER_EXITS_LIST.length;
+        var options  = USER_EXITS_LIST.options;
+
+        for ( i=0; i<nOptions; ++i )
+        {
+            var userExitCheck = options[i].id.replace("_OPTION","");
+            options[i].selected = window.external.FindSymbol(userExitCheck);
+        }
+}
+
+function Next(document, linkto)
+{
+	window.external.Next(document, linkto);
+}
+
+function OnFinish(document)
+{
+	OnWizFinish(document);
+}
+
+function OnUserExits()
+{
+	USER_EXITS_LIST.disabled = true;
+
+	if (USER_EXITS.checked)
+	{
+            USER_EXITS_LIST.disabled = false;
+	}
+}
+
+function OnUserExitList()
+{
+	var nOptions = USER_EXITS_LIST.length;
+        var options  = USER_EXITS_LIST.options;
+
+        for ( i=0; i<nOptions; ++i )
+        {
+            var userExitCheck = options[i].id.replace("_OPTION","");
+            window.external.AddSymbol(userExitCheck, options[i].selected );
+        }
+}
+
+</SCRIPT>
+
+<SCRIPT ID="INCLUDE_SCRIPT" LANGUAGE="JSCRIPT"></SCRIPT>
+<SCRIPT ID="INCLUDE_COMMON" LANGUAGE="JSCRIPT"></SCRIPT>
+
+<SCRIPT>
+	var strPath = window.external.FindSymbol("PRODUCT_INSTALLATION_DIR");
+	strPath += window.external.FindSymbol("MSVS_WIZARD_FOLDER") + "/"+ window.external.FindSymbol("WIZARD_NAME")+"/";
+	// Do NOT use GetHostLocale - only english is supported - hardcode to 1033
+	// strPath += window.external.GetHostLocale();
+	strPath += "1033";
+	var strScriptPath = strPath + "/Script.js";	
+	var strCommonPath = strPath + "/Common.js";
+	document.scripts("INCLUDE_SCRIPT").src = strScriptPath;
+	document.scripts("INCLUDE_COMMON").src = strCommonPath;
+	
+</SCRIPT>

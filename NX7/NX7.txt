@@ -1,0 +1,7 @@
+libnxopencpp.lib
+libnxopenuicpp.lib
+libopenintpp.lib
+libopenpp.lib
+libufun.lib
+libugopenint.lib
+libvmathpp.lib

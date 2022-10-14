@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: ChangeFaceColor.jar
+
+ChangeFaceColor.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ChangeFaceColor.java
+	
+ChangeFaceColor.jar: ChangeFaceColor.class
+	echo Main-Class: ChangeFaceColor> manifest.txt
+	jar cmf manifest.txt ChangeFaceColor.jar ChangeFaceColor.class
+
+run: ChangeFaceColor.jar
+    	java -classpath $(CLASSPATH)  ChangeFaceColor
+
+clean_all: clean
+	- del ChangeFaceColor.class
+	- del ChangeFaceColor.jar

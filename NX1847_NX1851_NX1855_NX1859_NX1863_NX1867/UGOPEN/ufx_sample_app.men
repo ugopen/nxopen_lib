@@ -1,0 +1,69 @@
+!*=======================================================================
+!
+!        Copyright (c) 1994, 1995, 1996 Siemens Product Lifecycle Management Software Inc.
+!                                 All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding an Internal User Function application
+!   to NX.  This example uses the following three files included
+!   in the NX/Open kit:
+!        ufx_sample_app.c
+!        ufx_add_sample_app_button.men
+!        ufx_sample_app.men
+!
+!   Please see the MenuScript chapter of the NX/Open Programmer's Guide
+!   for a detailed description of this example, the required MenuScript
+!   environment variables and directories, and the correct placement of
+!   the shared library and menu files.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   contained in this C file to allow you create your own application.
+!
+!   The sample callbacks also illustrate the arguments to the callbacks
+!   you will write.
+!
+!   Additional information on MenuScript can be found in:
+!     - the NX/Open MenuScript User Guide
+!     - the NX/Open API Reference Manual
+!     - the NX/Open API Programmer's Manual
+!     - the NX/Open MenuScript Quick Reference Card
+!     - the NX/Open MenuScript Menu File Reference Card
+!
+!   This menu file should be place in your UGII_SITE_DIR or UGII_USER_DIR
+!   application directory.
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+TOP_MENU
+
+CASCADE_BUTTON SAMPLE_APP_MENU
+LABEL Sample
+
+END_OF_TOP_MENU
+
+MENU SAMPLE_APP_MENU
+
+BUTTON SAMPLE_APP_BUTTON1
+LABEL Print Button ID
+ACTIONS SAMPLE_APP__action1
+
+BUTTON SAMPLE_APP_BUTTON2
+LABEL Test Callback Returns
+ACTIONS SAMPLE_APP__action2
+
+BUTTON SAMPLE_APP_BUTTON3
+LABEL Print Application ID
+ACTIONS SAMPLE_APP__action3
+
+BUTTON SAMPLE_APP_BUTTON4
+LABEL Print Button Data
+ACTIONS SAMPLE_APP__action4
+
+END_OF_MENU

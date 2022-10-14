@@ -1,0 +1,136 @@
+<html xmlns:o>
+    <head>
+        <title>NX Open for Java examples</title>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body bgcolor="white">
+        <h2 align="center"><img border="0" src="NX.gif" width="128" height="80"></h2>
+        <h2 align="center">NX™ Open for Java™ examples</h2>
+        <h3><span style="FONT-WEIGHT: 400">How to use these examples</span></h3>
+        <ul>
+            <li>
+            Copy the NX Open examples directory to a directory for which you have 
+            write-access
+            <li>
+                Set the UGII_LICENSE_FILE and JAVA_HOME environment variables to valid 
+                settings.&nbsp; Start an NX command prompt using the <a href="#How_to_start_an_NX_command_prompt">
+                    instructions</a> in the section below.&nbsp; Add the Java Runtime 
+                Environment's javac and java executables to your PATH.&nbsp; Run <nobr><code>java&nbsp;-version</code></nobr>
+            to verify that java is in your PATH and that you are using the correct version 
+            of java.
+            <li>
+            Follow the instructions in the README file for the example that you want to 
+            run.
+            <li>
+                If you want to run an example on Unix from an interactive session of NX, start 
+                NX through ugmenu or the <NOBR><TT><B>$UGII_ROOT_DIR/ugii</B></TT></NOBR> script.
+            </li>
+        </ul>
+        <h3 align="left"><span style="FONT-WEIGHT: 400">Table of examples</span></h3>
+        <table border="1" width="100%" id="table1">
+            <tr>
+                <th width="170">
+                    Example name</th>
+                <th>
+                    What the example illustrates</th>
+            </tr>
+            <tr>
+                <td><a href="AssemblyListing/README.htm">AssemblyListing</a></td>
+                <td>Walking the assembly component hierarchy, creating a java.io.OutputStream from 
+                    the NX listing window, printing to the NX listing window, printing a java 
+                    exception stack trace to the NX listing window</td>
+            </tr>
+            <tr>
+                <td><a href="CreateNote/README.htm">CreateNote</a></td>
+                <td>Using notes to annotate a part, using NX Open within a Java Swing dialog, 
+                    running a Java Swing dialog inside NX</td>
+            </tr>
+            <tr>
+                <td><a href="FeatureViewer/README.htm">FeatureViewer</a></td>
+                <td>Using NX Open within a Java Swing dialog, running a Java Swing dialog inside 
+                    NX, querying the features of a part</td>
+            </tr>
+            <tr>
+                <td><a href="RemotingExample/README.htm">RemotingExample</a></td>
+                <td>Using the remoting capability of NX Open for Java, creating and querying curves 
+                    using a remote application</td>
+            </tr>
+            <tr>
+                <td><a href="QuerySketch/README.htm">QuerySketch</a></td>
+                <td>Creating a sketch, querying the contents of a sketch, using NX selection 
+                    manager to select items inside NX, creating a java.io.OutputStream from the NX 
+                    listing window, interoperation between NX Open for Java and Java UF</td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>UF examples</b></td>
+            </tr>
+            <tr>
+                <td><a href="CreateArc/ReadMe.htm">CreateArc</a></td>
+                <td>This example creates an Arc using createArc() method of UFCurve class.</td>
+            </tr>
+            <tr>
+                <td><a href="CreateArcThru3pts/ReadMe.htm">CreateArcThru3pts</a></td>
+                <td>This example creates arc through 3 points.</td>
+            </tr>
+            <tr>
+                <td><a href="CreateBSurface/ReadMe.htm">CreateBSurface</a></td>
+                <td>This example creates B-Surface through 3 points.</td>
+            </tr>
+            <tr>
+                <td><a href="CreateExtruded/ReadMe.htm">CreateExtruded</a></td>
+                <td>This example creates extrude using modl().createExtruded.</td>
+            </tr>
+            <tr>
+                <td><a href="CreateFillet/ReadMe.htm">CreateFillet</a></td>
+                <td>This example creates fillet between Line and Arc.</td>
+            </tr>
+            <tr>
+                <td><a href="DrfAskPreferences/ReadMe.htm">DrfAskPreferences</a></td>
+                <td>This example queries the current settings of the drafting parameters.</td>
+            </tr>
+            <tr>
+                <td><a href="InterOP/ReadMe.htm">InterOP</a></td>
+                <td>This example explains how to use NXOpen and NXOpen.UF APIs altogether.</td>
+            </tr>
+            <tr>
+                <td><a href="ModlCreate/ReadMe.htm">ModlCreate</a></td>
+                <td>This example explains how to create a cylinder with groove.</td>
+            </tr>
+            <tr>
+                <td><a href="ModlCreateBlend/ReadMe.htm">ModlCreateBlend</a></td>
+                <td>This example creates a Block with blending edges.</td>
+            </tr>
+            <tr>
+                <td height="21"><a href="ProjCurves/ReadMe.htm">ProjCurves</a></td>
+                <td height="21">This example demonstrates curve projection functionality.</td>
+            </tr>
+            <tr>
+                <td height="21"><a href="CreateImage/ReadMe.htm">CreateImage</a></td>
+                <td height="21">It shows how to snag an image using NX Open for Java Swing.</td>
+            </tr>
+        </table>
+        <h5><a name="How_to_start_an_NX_command_prompt">How to start an NX command prompt</a></h5>
+        <p>On Windows:</p>
+        <p>Go to Start - Programs.&nbsp; The shortcut to launch an NX command prompt is 
+            located in the same cluster where the shortcut to launch NX is located.</p>
+        <p>On Unix:</p>
+        <p>Run ugmenu and select the "UGOPEN-API" option.&nbsp; Then select "Non-menu 
+            activites" and then the shell type.</p>
+        <h5>How to run the examples on Unix</h5>
+        <p>On Unix, some java libraries need to be added to LD_PRELOAD before running a 
+            program.&nbsp; The script $UGII_BASE_DIR/ugopen/run_java should be used in 
+            place of the standard java executable to run a program in batch mode.&nbsp; Use 
+            ugmenu or the <NOBR><TT><B>$UGII_ROOT_DIR/ugii</B></TT></NOBR> script to start 
+            up NX when you want to run a java program inside NX (i.e. interactive mode).</p>
+        <p>Special settings like these are not required on Windows.</p>
+        <p><EM>Note for Windows</EM>: many of the examples use 'nmake' for compiling; 
+            'nmake' is included with Microsoft Visual Studio.&nbsp; For those who don't 
+            have Visual Studio, 'nmake' can be downloaded free of charge from Microsoft or 
+            Lucent.</SPAN></FONT><FONT face="Arial" color="navy" size="2"><SPAN style="FONT-SIZE: 10pt; COLOR: navy; FONT-FAMILY: Arial"></SPAN></FONT></p>
+        <p><i></i>&nbsp;</p>
+        <P><I>Copyright 2005 UGS Corp. All rights reserved.&nbsp; The use of NX, including 
+                these examples, is subject to UGS license terms.&nbsp; NX is a trademark of UGS 
+                Corp.&nbsp; Java is a registered trademark of Sun Microsystems, Inc.</I></P>
+    </body>
+</html>
