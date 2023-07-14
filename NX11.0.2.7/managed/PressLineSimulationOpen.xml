@@ -1,0 +1,2421 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PressLineSimulationOpen</name>
+    </assembly>
+    <members>
+        <member name="T:NXOpen.PressLineSimulation.ApplicationManager">
+             <summary> Represents a manager for the press line simulation application. Use this interface to obtain builders and root application 
+                objects. </summary>   
+             <remarks> <para>To obtain an instance of this class, refer to <see cref="T:NXOpen.Session"> NXOpen.Session  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.GetApplicationManager(NXOpen.Session)">
+            <summary>  
+             Returns the ApplicationManager object for the running session which serves as the 'gateway' class for the application API.  
+             References to all other objects in this API are obtained either directly or indirectly via methods and properties on this class.  
+             Platform Session should be initialized using 'GetSession' method from NXOpen API prior to this call.  
+            </summary> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.ApplicationManager.Tag">
+            <summary>  
+             Returns the tag of this object.  
+            </summary> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.GetSimulationSetup(NXOpen.Part)">
+            <summary>  Accessor for the part singleton <see cref="T:NXOpen.PressLineSimulation.SimulationSetup"> PressLineSimulation.SimulationSetup </see> 
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="simulationPart"> This parameter may not be a null reference (Nothing in Visual Basic).</param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateSetPressModelBuilder">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.SetPressModelBuilder"> PressLineSimulation.SetPressModelBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+             
+            <para> Deprecated in NX1872.0.0.  Use the overload method taking a <see cref="T:NXOpen.Part"> Part </see> as input</para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateSetPressModelBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.SetPressModelBuilder"> PressLineSimulation.SetPressModelBuilder </see> in a part file 
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="owningPart"> The owning part for which the builder will set the press modelThis parameter may not be a null reference (Nothing in Visual Basic).</param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateConvertFromDieValidationBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.ConvertFromDieValidationBuilder"> PressLineSimulation.ConvertFromDieValidationBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilderListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.MountPointBuilderListBuilder"> PressLineSimulation.MountPointBuilderListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilder(NXOpen.Part,NXOpen.PressLineSimulation.MountPoint)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.MountPointBuilder"> PressLineSimulation.MountPointBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.1 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="mountPoint"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMachineAdjustmentBuilderListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilderListBuilder"> PressLineSimulation.MachineAdjustmentBuilderListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.LinearCamListBuilder"> PressLineSimulation.LinearCamListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamBuilder(NXOpen.Part,NXOpen.PressLineSimulation.LinearCam)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.LinearCamBuilder"> PressLineSimulation.LinearCamBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="linearCam"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.RotaryCamListBuilder"> PressLineSimulation.RotaryCamListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamBuilder(NXOpen.Part,NXOpen.PressLineSimulation.RotaryCam)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.RotaryCamBuilder"> PressLineSimulation.RotaryCamBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="rotaryCam"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.UserMotionListBuilder"> PressLineSimulation.UserMotionListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionBuilder(NXOpen.Part,NXOpen.PressLineSimulation.UserMotion)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.UserMotionBuilder"> PressLineSimulation.UserMotionBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="userMotion"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterListBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.HydraulicLifterListBuilder"> PressLineSimulation.HydraulicLifterListBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterBuilder(NXOpen.Part,NXOpen.PressLineSimulation.HydraulicLifter)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.HydraulicLifterBuilder"> PressLineSimulation.HydraulicLifterBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="hydraulicLifter"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateCushionControlBuilder(NXOpen.Part,NXOpen.PressLineSimulation.CushionControl)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.CushionControlBuilder"> PressLineSimulation.CushionControlBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <param name="hydraulicLifter"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMotionCurvesBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.MotionCurvesBuilder"> PressLineSimulation.MotionCurvesBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateImportPartBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.ImportPartBuilder"> PressLineSimulation.ImportPartBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX1847.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="part"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ApplicationManager.CreateClientDataStoreBuilder(NXOpen.Part)">
+            <summary>  Creates a <see cref="T:NXOpen.PressLineSimulation.ClientDataStoreBuilder"> PressLineSimulation.ClientDataStoreBuilder </see> 
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="owningPart"> This parameter may not be a null reference (Nothing in Visual Basic).</param>  
+            <returns></returns> 
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.AxisControlColumn">
+            <summary>  This class is very simple implementation of the <see cref="T:NXOpen.PressLineSimulation.AxisControlData"> NXOpen.PressLineSimulation.AxisControlData </see> class. </summary>  
+             <remarks>   
+                The values of a curve are represented by an array of values that are interpreted as the values of the curve at equidistantly spaced angles. 
+                The maximum angle represented by the curve is given by the property MaxAngle and is usually 360. Hence, the more values are stored in the  
+                array, the more precision can be given to the curve.<para>Use the <see cref="T:NXOpen.PressLineSimulation.ControlItemManager"> NXOpen.PressLineSimulation.ControlItemManager </see> class to obtain objects of this class. </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.AxisControlColumn.GetValues">
+            <summary>  Use this method to get the raw array of curves values stored in the control column. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.AxisControlColumn.SetValues(System.Double[])">
+            <summary>  Use this method to set the array of curves values stored in the control column. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="values"></param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.AxisControlColumn.MaxAngle">
+            <summary>  Returns or sets  the maximum angle. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.AxisControlData">
+            <summary>  This class is the base class for axis data representations in Press Line Simulation  </summary>  
+             <remarks> <para>This class is abstract and cannot be instanciated </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.AxisControlData.DisplayName">
+            <summary>  Returns  the name of the axis, with which it is displayed in the UI. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.AxisControlData.External">
+            <summary>  Returns or sets  the external status of the axis control column  
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ClientDataStore">
+            <summary>  Represents the client data store in press line simulation. </summary>  
+             <remarks>  It can be used to store key value pairs used in client programs and stored in the part file. <para>Use the <see cref="T:NXOpen.PressLineSimulation.SimulationSetup"> NXOpen.PressLineSimulation.SimulationSetup </see> class to obtain a ClientDataStore object. </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.Get(System.String)">
+            <summary>  Use this method to obtain a value referenced by a key. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="key"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.Set(System.String,System.String)">
+            <summary>  Use this method to set a value referenced by a key. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="key"></param>  
+            <param name="value"></param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.Exists(System.String)">
+            <summary>  Use this method to check if a given key exists in the store. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="key"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.Delete(System.String)">
+            <summary>  Use this method to delete a key value pair from the store. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="key"></param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.Clear">
+            <summary>  Use this method to remove all key value pairs from the store. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ClientDataStore.GetKeys">
+            <summary>  Getter for the keys stored in the store  
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ClientDataStoreBuilder">
+            <summary>  Represents the client data store in press line simulation. </summary>  
+             <remarks>  It can be used to store key value pairs used in client programs and stored in the part file. <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateClientDataStoreBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateClientDataStoreBuilder  </see></para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ControlItemManager">
+            <summary>  Represents the external control manager in press line simulation. </summary>  
+             <remarks>  It can be used to get access to the signals, axes, and control units exposed to journamation clients. <para>Use the <see cref="T:NXOpen.PressLineSimulation.SimulationSetup"> NXOpen.PressLineSimulation.SimulationSetup </see> class to obtain a ControlItemManager object. </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ControlItemManager.Scope">
+            <summary>  the type of scope in which control items are requested  </summary>  
+             <remarks>  </remarks>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.ControlItemManager.Scope.All">
+            <summary>  all items  </summary>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.ControlItemManager.Scope.Internal">
+            <summary>  only internal items  </summary>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.ControlItemManager.Scope.External">
+            <summary>  only external items  </summary>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ControlItemManager.FindSignalRecordByDisplayName(System.String)">
+            <summary>  Use this method to find an object of class <see cref="T:NXOpen.PressLineSimulation.SignalRecord"> NXOpen.PressLineSimulation.SignalRecord </see>. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="signalName"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ControlItemManager.FindAxisControlColumnByDisplayName(System.String)">
+            <summary>  Use this method to find an object of class <see cref="T:NXOpen.PressLineSimulation.AxisControlColumn"> NXOpen.PressLineSimulation.AxisControlColumn </see>. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="axisName"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ControlItemManager.GetSignals(NXOpen.PressLineSimulation.ControlItemManager.Scope,NXOpen.PressLineSimulation.SignalRecord[]@)">
+            <summary>  Use this method to find <see cref="T:NXOpen.PressLineSimulation.SignalRecord"> NXOpen.PressLineSimulation.SignalRecord </see> objects. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="scope"></param>  
+            <param name="signals"></param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ControlItemManager.GetAxisControlColumns(NXOpen.PressLineSimulation.ControlItemManager.Scope,NXOpen.PressLineSimulation.AxisControlColumn[]@)">
+            <summary>  Use this method to find <see cref="T:NXOpen.PressLineSimulation.AxisControlColumn"> NXOpen.PressLineSimulation.AxisControlColumn </see> objects. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="scope"></param>  
+            <param name="axes"></param> 
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ConvertFromDieValidationBuilder">
+             <summary> Use this builder to convert a simulation job done in Die Validation to Press Line Simulation. </summary>   
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateConvertFromDieValidationBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateConvertFromDieValidationBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.ConvertFromDieValidationBuilder.PressModelFilePath">
+            <summary>  Returns or sets  the press model file path  
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.ConvertFromDieValidationBuilder.SimulationJobPath">
+            <summary>  Returns or sets  the simulation job path  
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.CushionControl">
+            <summary>  Represents a linear cam used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.CushionControlBuilder"> NXOpen.PressLineSimulation.CushionControlBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.CushionControlBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.CushionControl"> PressLineSimulation.CushionControl </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateCushionControlBuilder(NXOpen.Part,NXOpen.PressLineSimulation.CushionControl)"> NXOpen.PressLineSimulation.ApplicationManager.CreateCushionControlBuilder  </see></para> 
+            Default values. 
+            <list type="table">  
+              
+            <listheader><term>  
+            Property</term>  <description>  
+            Value</description> </listheader> 
+            <item><term>  
+              
+            BinderLiftDistance </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            BinderLiftDuration </term> <description>  
+              
+            10 </description> </item>  
+             
+            <item><term>  
+              
+            Disabled </term> <description>  
+              
+            1 </description> </item>  
+             
+            <item><term>  
+              
+            VentilationLiftDistance </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            VentilationStayDuration </term> <description>  
+              
+            10 </description> </item>  
+             
+            </list>  
+             
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.CushionControlBuilder.BinderLiftDistance">
+            <summary>  Returns or sets  the binder lift distance. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.CushionControlBuilder.BinderLiftDuration">
+            <summary>  Returns or sets  the binder lift duration. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.CushionControlBuilder.Disabled">
+            <summary>  Returns or sets  the disable status. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.CushionControlBuilder.VentilationLiftDistance">
+            <summary>  Returns or sets  the ventilation lift distance. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.CushionControlBuilder.VentilationStayDuration">
+            <summary>  Returns or sets  the ventilation stay duration. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.DrivenCamBuilder">
+            <summary>  Represents a PressLineSimulation. </summary>  
+             <remarks> DrivenCam builder. It is an abstract class 
+                    and cannot be instantiated. <para>This is an abstract class, and cannot be instantiated. </para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.DrivenCamBuilder.CamCollisionFacetingTolerance">
+            <summary>  Returns or sets  the cam collision faceting tolerance. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.HydraulicLifter">
+            <summary>  Represents a hydraulic lifter used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.HydraulicLifterBuilder"> NXOpen.PressLineSimulation.HydraulicLifterBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.HydraulicLifterBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.HydraulicLifterBuilder"> PressLineSimulation.HydraulicLifterBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterBuilder(NXOpen.Part,NXOpen.PressLineSimulation.HydraulicLifter)"> NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterBuilder  </see></para> 
+            Default values. 
+            <list type="table">  
+              
+            <listheader><term>  
+            Property</term>  <description>  
+            Value</description> </listheader> 
+            <item><term>  
+              
+            BackStopOffset.Value </term> <description>  
+              
+            0 (millimeters part), 0 (inches part) </description> </item>  
+             
+            <item><term>  
+              
+            Disable </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            RamMaxLift.Value </term> <description>  
+              
+            0 (millimeters part), 0 (inches part) </description> </item>  
+             
+            <item><term>  
+              
+            RamToPlungerRatio </term> <description>  
+              
+            1 </description> </item>  
+             
+            </list>  
+             
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilder.SetOutOfDate">
+            <summary>  To set the out of date status of the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilder.DeleteCam">
+            <summary>  To delete this motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.BackStopOffset">
+            <summary>  Returns  the backstop offset. </summary>  
+             <remarks>  This is the distance from the original plunger position to  the point of contact with the drive.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.CamBodies">
+            <summary>  Returns  the plunger bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.CamDir">
+            <summary>  Returns or sets  the cam direction. </summary>  
+             <remarks>  Vector goes from the plunger toward the drive.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.CompName">
+            <summary>  Returns or sets  the simulation component name. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+             
+            <para> Deprecated in NX1899.0.0.  Use <see cref="P:NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName"> NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName </see> instead.</para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.Description">
+            <summary>  Returns or sets  the description of the hydraulic lifter. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.Disable">
+            <summary>  Returns or sets  the disable status of the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.DriveBodies">
+            <summary>  Returns  the plunger drive bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.RamBodies">
+            <summary>  Returns  the ram bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.RamDirection">
+            <summary>  Returns or sets  the ram motion direction. </summary>  
+             <remarks>  Points in the direction the ram will move as the plunger is closed.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.RamMaxLift">
+            <summary>  Returns  the ram maximum lift distance. </summary>  
+             <remarks>  The ram will stop moving at this distance even if the plunger continues to move.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilder.RamToPlungerRatio">
+            <summary>  Returns or sets  the ratio that determines how far the the ram will move relative to the plunger. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.HydraulicLifterBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Append(NXOpen.PressLineSimulation.HydraulicLifterBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Append(NXOpen.PressLineSimulation.HydraulicLifterBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.FindIndex(NXOpen.PressLineSimulation.HydraulicLifterBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Erase(NXOpen.PressLineSimulation.HydraulicLifterBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Erase(NXOpen.PressLineSimulation.HydraulicLifterBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.SetContents(NXOpen.PressLineSimulation.HydraulicLifterBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Swap(NXOpen.PressLineSimulation.HydraulicLifterBuilder,NXOpen.PressLineSimulation.HydraulicLifterBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.HydraulicLifterBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.HydraulicLifterListBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.HydraulicLifterListBuilder"> PressLineSimulation.HydraulicLifterListBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateHydraulicLifterListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.HydraulicLifterListBuilder.PopulateList">
+            <summary>  To populate the list of hydraulic lifter builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_dievalidation ("DIE VALIDATION")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.HydraulicLifterListBuilder.CamList">
+            <summary>  Returns  the list of hydraulic lifter builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.ImportPartBuilder">
+            <summary>  Use this class to import press line setup parts, mount, and positions them at the right position. </summary>  
+             <remarks>  
+                <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateImportPartBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateImportPartBuilder  </see></para> 
+            <para> Created in NX1847.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ImportPartBuilder.SetImportReferenceCoordinateSystem(NXOpen.Matrix3x3,NXOpen.Point3d)">
+            <summary>  Use this method to set the coordinate system used as a reference within the imported part  
+             </summary>  
+             <remarks> <para> Created in NX1847.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="matrix"></param>  
+            <param name="origin"></param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.ImportPartBuilder.SetMountCoordinateSystem(NXOpen.Matrix3x3,NXOpen.Point3d)">
+            <summary>  Use this method to set the coordinate system used as the mount position within the setup part  
+             </summary>  
+             <remarks> <para> Created in NX1847.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="matrix"></param>  
+            <param name="origin"></param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.ImportPartBuilder.ImportPart">
+            <summary>  Returns or sets  the import part that is going to be added to the assembly and mounted  
+             </summary>  
+             <remarks> <para> Created in NX1847.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.ImportPartBuilder.MountPoint">
+            <summary>  Returns or sets  the target mount point that the part is going to be associated to  
+             </summary>  
+             <remarks> <para> Created in NX1847.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.LinearCam">
+            <summary>  Represents a linear cam used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.LinearCamBuilder"> NXOpen.PressLineSimulation.LinearCamBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.LinearCamBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.LinearCamBuilder"> PressLineSimulation.LinearCamBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamBuilder(NXOpen.Part,NXOpen.PressLineSimulation.LinearCam)"> NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamBuilder  </see></para> 
+            Default values. 
+            <list type="table">  
+              
+            <listheader><term>  
+            Property</term>  <description>  
+            Value</description> </listheader> 
+            <item><term>  
+              
+            BackstopOffset.Value </term> <description>  
+              
+            0 (millimeters part), 0 (inches part) </description> </item>  
+             
+            </list>  
+             
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilder.SetOutOfDate">
+            <summary>  To set the out of date status of the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilder.DeleteCam">
+            <summary>  To delete the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.BackstopOffset">
+            <summary>  Returns  the offset from the cam to the backstop. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.CamBodies">
+            <summary>  Returns  the linear cam bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.CamDir">
+            <summary>  Returns or sets  the direction of motion from the cam toward the backstop. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.CompName">
+            <summary>  Returns or sets  the unique name used to identify the simulation component. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+             
+            <para> Deprecated in NX1899.0.0.  Use <see cref="P:NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName"> NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName </see> instead.</para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.Description">
+            <summary>  Returns or sets  the description of the cam. </summary>  
+             <remarks>  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.Disable">
+            <summary>  Returns or sets  the disable status of the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilder.DriveBodies">
+            <summary>  Returns  the drive bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.LinearCamBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Append(NXOpen.PressLineSimulation.LinearCamBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Append(NXOpen.PressLineSimulation.LinearCamBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.FindIndex(NXOpen.PressLineSimulation.LinearCamBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Erase(NXOpen.PressLineSimulation.LinearCamBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Erase(NXOpen.PressLineSimulation.LinearCamBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.SetContents(NXOpen.PressLineSimulation.LinearCamBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Swap(NXOpen.PressLineSimulation.LinearCamBuilder,NXOpen.PressLineSimulation.LinearCamBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.LinearCamBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.LinearCamListBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.LinearCamListBuilder"> PressLineSimulation.LinearCamListBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateLinearCamListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.LinearCamListBuilder.PopulateList">
+            <summary>  To populate the list of linear cam builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.LinearCamListBuilder.CamList">
+            <summary>  Returns  the list of linear cam builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilder">
+            <summary>  Use this class to configure the machine adjustment axes of the press model. </summary>  
+             <remarks>  <para>Use <see cref="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilderListBuilder"> PressLineSimulation.MachineAdjustmentBuilderListBuilder </see> to obtain a list of MachineAdjustmentBuilder objects. </para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilder.GetAdjustmentName">
+            <summary>  Returns the name of the adjustment object. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilder.Reset">
+            <summary>  Resets the adjustment to its default. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MachineAdjustmentBuilder.AdjustmentValue">
+            <summary>  Returns or sets  the value of the adjustment. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Append(NXOpen.PressLineSimulation.MachineAdjustmentBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Append(NXOpen.PressLineSimulation.MachineAdjustmentBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.FindIndex(NXOpen.PressLineSimulation.MachineAdjustmentBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Erase(NXOpen.PressLineSimulation.MachineAdjustmentBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Erase(NXOpen.PressLineSimulation.MachineAdjustmentBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.SetContents(NXOpen.PressLineSimulation.MachineAdjustmentBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Swap(NXOpen.PressLineSimulation.MachineAdjustmentBuilder,NXOpen.PressLineSimulation.MachineAdjustmentBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.MachineAdjustmentBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MachineAdjustmentBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilderListBuilder">
+            <summary>  Use this class to obtain a list of <see cref="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilder"> PressLineSimulation.MachineAdjustmentBuilder </see> objects. </summary>  
+             <remarks>  <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMachineAdjustmentBuilderListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateMachineAdjustmentBuilderListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MachineAdjustmentBuilderListBuilder.Builders">
+            <summary>  Returns  the list of <see cref="T:NXOpen.PressLineSimulation.MachineAdjustmentBuilder"> PressLineSimulation.MachineAdjustmentBuilder </see> objects. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MotionBuilder">
+            <summary>  Represents the base class for builders that create user defined motions or cams in  
+                    the Press Line Simulation applications. </summary>  
+             <remarks>  This class is abstract and cannot be instanciated. 
+                <para>This is an abstract class, and cannot be instantiated. </para> 
+            <para> Created in NX1899.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName">
+            <summary>  Returns or sets  the user cam display name. </summary>  
+             <remarks>   
+            <para> Created in NX1899.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MotionCurvesBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.MotionCurvesBuilder"> PressLineSimulation.MotionCurvesBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMotionCurvesBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateMotionCurvesBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MotionCurvesBuilder.CurveFile">
+            <summary>  Returns or sets  the motion curve file. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MountPoint">
+            <summary>  Represents a mount point used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.MountPointBuilder"> NXOpen.PressLineSimulation.MountPointBuilder  </see></para> 
+            <para> Created in NX12.0.1 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MountPointBuilder">
+            <summary>  Use this class to mount tools, tooling and parts to interfaces. </summary>  
+             <remarks>   
+                <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilder(NXOpen.Part,NXOpen.PressLineSimulation.MountPoint)"> NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MountPointBuilder.GeometrySelectionFilterType">
+             <summary> Selection filter for mounting bodies.</summary>   
+             <remarks>  
+                     Use this enum in conjunction with <see cref="P:NXOpen.PressLineSimulation.MountPointBuilder.SelectionFilter"> PressLineSimulation.MountPointBuilder.SelectionFilter </see> to  
+                    filter the selectable items that should be mounted. </remarks>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.MountPointBuilder.GeometrySelectionFilterType.OnlyUnmounted">
+            <summary>  Only bodies that are not mounted can be selected. </summary>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.MountPointBuilder.GeometrySelectionFilterType.All">
+            <summary>  Everything can be selected. </summary>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilder.GetLineComponentName">
+            <summary>  Returns the display names of the press model line component that the mount point is associated with. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilder.GetMountPointName">
+            <summary>  Returns the display name of the press model mount point. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilder.GetMountedGeometry">
+            <summary>  Returns the geometry that will be mounted on commit. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilder.MountGeometry(NXOpen.NXObject)">
+            <summary>  Adds to the list of geometry that is mounted on commit. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="geometry"></param>  
+            <returns></returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilder.UnMountGeometry(NXOpen.NXObject)">
+            <summary>  Adds to the list of geometry that is unmounted on commit. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <param name="geometry"></param>  
+            <returns></returns> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MountPointBuilder.SelectionFilter">
+            <summary>  Returns or sets  the geometry selection filter  
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MountPointBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Append(NXOpen.PressLineSimulation.MountPointBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Append(NXOpen.PressLineSimulation.MountPointBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.FindIndex(NXOpen.PressLineSimulation.MountPointBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Erase(NXOpen.PressLineSimulation.MountPointBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Erase(NXOpen.PressLineSimulation.MountPointBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.SetContents(NXOpen.PressLineSimulation.MountPointBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Swap(NXOpen.PressLineSimulation.MountPointBuilder,NXOpen.PressLineSimulation.MountPointBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.MountPointBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.MountPointBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MountPointBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.MountPointBuilderListBuilder">
+            <summary>  Use this class to obtain a list of <see cref="T:NXOpen.PressLineSimulation.MountPointBuilder"> PressLineSimulation.MountPointBuilder </see> objects. </summary>  
+             <remarks>  <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilderListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateMountPointBuilderListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.MountPointBuilderListBuilder.Builders">
+            <summary>  Returns  the list of <see cref="T:NXOpen.PressLineSimulation.MountPointBuilder"> PressLineSimulation.MountPointBuilder </see> objects. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.RotaryCam">
+            <summary>  Represents a rotary cam used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.RotaryCamBuilder"> NXOpen.PressLineSimulation.RotaryCamBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.RotaryCamBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.RotaryCamBuilder"> PressLineSimulation.RotaryCamBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamBuilder(NXOpen.Part,NXOpen.PressLineSimulation.RotaryCam)"> NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamBuilder  </see></para> 
+            Default values. 
+            <list type="table">  
+              
+            <listheader><term>  
+            Property</term>  <description>  
+            Value</description> </listheader> 
+            <item><term>  
+              
+            BackstopOffset.Value </term> <description>  
+              
+            0 (millimeters part), 0 (inches part) </description> </item>  
+             
+            </list>  
+             
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilder.SetOutOfDate">
+            <summary>  To set the out of date status of the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilder.DeleteCam">
+            <summary>  To delete the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.BackstopOffset">
+            <summary>  Returns  the offset (in degrees) from the cam to the backstop. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.CamAxis">
+            <summary>  Returns or sets  the axis of rotation. </summary>  
+             <remarks>  The backstop is counter-clockwise when the axis is pointing toward you.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.CamBodies">
+            <summary>  Returns  the rotary cam bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.CompName">
+            <summary>  Returns or sets  the unique name used to identify the simulation component. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+             
+            <para> Deprecated in NX1899.0.0.  Use <see cref="P:NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName"> NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName </see> instead.</para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.Description">
+            <summary>  Returns or sets  the description of the cam. </summary>  
+             <remarks>  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.Disable">
+            <summary>  Returns or sets  the disable status of the cam. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilder.DriveBodies">
+            <summary>  Returns  the drive bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.RotaryCamBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Append(NXOpen.PressLineSimulation.RotaryCamBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Append(NXOpen.PressLineSimulation.RotaryCamBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.FindIndex(NXOpen.PressLineSimulation.RotaryCamBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Erase(NXOpen.PressLineSimulation.RotaryCamBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Erase(NXOpen.PressLineSimulation.RotaryCamBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.SetContents(NXOpen.PressLineSimulation.RotaryCamBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Swap(NXOpen.PressLineSimulation.RotaryCamBuilder,NXOpen.PressLineSimulation.RotaryCamBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.RotaryCamBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.RotaryCamListBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.RotaryCamListBuilder"> PressLineSimulation.RotaryCamListBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateRotaryCamListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.RotaryCamListBuilder.PopulateList">
+            <summary>  To populate the list of rotary cam builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.RotaryCamListBuilder.CamList">
+            <summary>  Returns  the list of rotary cam builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.SetPressModelBuilder">
+            <summary>  A builder to setup the press model </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateSetPressModelBuilder"> NXOpen.PressLineSimulation.ApplicationManager.CreateSetPressModelBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.SetPressModelBuilder.IsPressModelAlreadyLoaded">
+            <summary>  Can be used to check if a press model is already loaded for the owning part. </summary>  
+             <remarks>  A commit will override the model  
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+             <returns></returns> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SetPressModelBuilder.ControllerCurveFilePath">
+            <summary>  Returns or sets  the controller curve file path 
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SetPressModelBuilder.ControllerDefinitionFilePath">
+            <summary>  Returns or sets  the controller definition file path 
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SetPressModelBuilder.PressModelDefinitionFilePath">
+            <summary>  Returns or sets  the press model definition file path 
+             </summary>  
+             <remarks> <para> Created in NX1899.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SetPressModelBuilder.PressModelPartPath">
+            <summary>  Returns or sets  the file path to the press model root part  
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker") OR nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.SignalRecord">
+            <summary>  Represents the signal record class in press line simulation. </summary>  
+             <remarks>  <para>Use the <see cref="T:NXOpen.PressLineSimulation.ControlItemManager"> NXOpen.PressLineSimulation.ControlItemManager </see> class to obtain objects of this class. </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SignalRecord.DisplayName">
+            <summary>  Returns  the signal record name. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SignalRecord.External">
+            <summary>  Returns or sets  the external status of the signal record  
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SignalRecord.OffAngle">
+            <summary>  Returns or sets  the off angle of the signal record. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SignalRecord.OnAngle">
+            <summary>  Returns or sets  the on angle of the signal record. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SignalRecord.UserEditable">
+            <summary>  Returns or sets  the user editablity of the signal record. </summary>  
+             <remarks>   
+            <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.SimulationSetup">
+            <summary>  Represents the simulation setup in press line simulation. </summary>  
+             <remarks>  <para>Use the <see cref="T:NXOpen.PressLineSimulation.ApplicationManager"> NXOpen.PressLineSimulation.ApplicationManager </see> class to create a SimulationSetup object. </para> 
+            <para> Created in NX1872.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SimulationSetup.ClientDataStore">
+            <summary>  Returns or sets  an object of the <see cref="T:NXOpen.PressLineSimulation.ClientDataStore"> NXOpen.PressLineSimulation.ClientDataStore </see>  
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_line_setup (" NX Press Line Setup")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.SimulationSetup.ControlItemManager">
+            <summary>  Returns  an object of class <see cref="T:NXOpen.PressLineSimulation.ControlItemManager"> NXOpen.PressLineSimulation.ControlItemManager </see>  
+             </summary>  
+             <remarks> <para> Created in NX1872.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotion">
+            <summary>  Represents a user defined motion used in a press line simulation. </summary>  
+             <remarks>  <para>To create or edit an instance of this class, use <see cref="T:NXOpen.PressLineSimulation.UserMotionBuilder"> NXOpen.PressLineSimulation.UserMotionBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotionBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.UserMotionBuilder"> PressLineSimulation.UserMotionBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionBuilder(NXOpen.Part,NXOpen.PressLineSimulation.UserMotion)"> NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionBuilder  </see></para> 
+            Default values. 
+            <list type="table">  
+              
+            <listheader><term>  
+            Property</term>  <description>  
+            Value</description> </listheader> 
+            <item><term>  
+              
+            Disable </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            PressStart </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            PressStop </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            ReturnStart </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            ReturnStop </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            TypeOfCurve </term> <description>  
+              
+            Calculate </description> </item>  
+             
+            <item><term>  
+              
+            TypeOfMotion </term> <description>  
+              
+            Linear </description> </item>  
+             
+            <item><term>  
+              
+            ValuesInitial </term> <description>  
+              
+            0 </description> </item>  
+             
+            <item><term>  
+              
+            ValuesPeak </term> <description>  
+              
+            0 </description> </item>  
+             
+            </list>  
+             
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotionBuilder.MotionType">
+            <summary>  The type of motion to create. </summary>  
+             <remarks>   </remarks>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.UserMotionBuilder.MotionType.Linear">
+            <summary>  </summary>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.UserMotionBuilder.MotionType.Rotary">
+            <summary>  </summary>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotionBuilder.CurveType">
+            <summary>  The method used to define the motion curve. </summary>  
+             <remarks>   </remarks>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.UserMotionBuilder.CurveType.Calculate">
+            <summary>  </summary>  
+              
+        </member>
+        <member name="F:NXOpen.PressLineSimulation.UserMotionBuilder.CurveType.FromFile">
+            <summary>  </summary>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilder.GetMotionCurve(System.Double[]@)">
+            <summary>  Get the motion curve values if type is set to from file. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="curveValues"> The array of motion curve values. </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilder.SetMotionCurve(System.Double[])">
+            <summary>  Set the motion curve values if type is set to from file. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+             <param name="curveValues"> The array of motion curve values. </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilder.SetOutOfDate">
+            <summary>  To set the out of date status of the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilder.DeleteCam">
+            <summary>  To delete the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.ComponentName">
+            <summary>  Returns or sets  the simulation component name. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+             
+            <para> Deprecated in NX1899.0.0.  Use <see cref="P:NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName"> NXOpen.PressLineSimulation.MotionBuilder.CamDisplayName </see> instead.</para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.Description">
+            <summary>  Returns or sets  the description of the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.Disable">
+            <summary>  Returns or sets  the disabled status of the motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.MotionBodies">
+            <summary>  Returns  the motion bodies. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.MotionOrigin">
+            <summary>  Returns or sets  the motion vector origin  
+             </summary>  
+             <remarks> <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.MotionVector">
+            <summary>  Returns or sets  the motion vector. </summary>  
+             <remarks>  Defines the direction of motion for linear type and axis of rotation for rotary type.  
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.PressStart">
+            <summary>  Returns or sets  the press start angle. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.PressStop">
+            <summary>  Returns or sets  the press stop angle. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.ReturnStart">
+            <summary>  Returns or sets  the return start angle. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.ReturnStop">
+            <summary>  Returns or sets  the return stop angle. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.TypeOfCurve">
+            <summary>  Returns or sets  the method used to define the motion curve. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.TypeOfMotion">
+            <summary>  Returns or sets  the type of motion. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.ValuesInitial">
+            <summary>  Returns or sets  the initial value. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilder.ValuesPeak">
+            <summary>  Returns or sets  the peak value. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements to get this property: None.</para><para>License requirements to set this property: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotionBuilderList">
+            <summary>  Represents a list of objects. </summary>  
+             <remarks>  
+            <para>To create a new instance of this class, use <see cref="M:NXOpen.Part.CreateObjectList"> NXOpen.Part.CreateObjectList  </see></para> 
+            <para> Created in NX4.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Append(NXOpen.PressLineSimulation.UserMotionBuilder[])">
+            <summary>  Appends a set of objects to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> items to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Append(NXOpen.PressLineSimulation.UserMotionBuilder)">
+            <summary>  Appends an object to the list 
+                 
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object"> item to append </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.ClearIndex(System.Int32)">
+            <summary>  Deletes the item at the index specified. </summary>  
+             <remarks>   The size of the list does 
+                *   not change, but the item at this index is set to NULL. 
+                 
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteIdx"> index of item to be deleted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.FindIndex(NXOpen.PressLineSimulation.UserMotionBuilder)">
+            <summary>  Finds the index where the input object appears. </summary>  
+             <remarks>   If it does not appear, 
+                *   -1 is returned. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> Object to find index for </param>  
+            <returns> index of input object, -1 if not on list </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.FindItem(System.Int32)">
+            <summary>  Returns the object at the input index. </summary>  
+             <remarks>   May be NULL. 
+                  
+            <para> Created in NX4.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of object to return </param>  
+            <returns> object found at input index </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Erase(System.Int32)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Erase(System.Int32,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object at the given position from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> index of item to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Erase(NXOpen.PressLineSimulation.UserMotionBuilder)">
+            <summary>  Erases the object from the list, but does not delete the object. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Erase(NXOpen.PressLineSimulation.UserMotionBuilder,NXOpen.ObjectList.DeleteOption)">
+            <summary>  Erases the object from the list. </summary>  
+             <remarks>  
+                    The list is shifted so that there isn't a null where the object used to exist.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="obj"> object to be removed from the list </param>  
+            <param name="deleteOption"> whether to delete the object </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Clear">
+            <summary>  Clears the entire list without deleting the objects. </summary>  
+             <remarks>   The caller is responsible for  
+                    accounting for these objects.  If they are not used or deleted by the time the part is  
+                    closed (in other words, leaked) an error will occur  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Clear(NXOpen.ObjectList.DeleteOption)">
+            <summary>  Clears the entire list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="deleteOption"> whether to delete the objects when removing them </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.GetContents">
+            <summary>  Gets the contents of the entire list   
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <returns> The list contents </returns> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.SetContents(NXOpen.PressLineSimulation.UserMotionBuilder[])">
+            <summary>  Sets the contents of the entire list. </summary>  
+             <remarks>  This overwrites the previous contents of this list,  
+                    but does not delete any objects that were originally on the list. 
+                  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="objects"> The list contents </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Swap(System.Int32,System.Int32)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index1"> location of the first item </param>  
+            <param name="index2"> location of the second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Swap(NXOpen.PressLineSimulation.UserMotionBuilder,NXOpen.PressLineSimulation.UserMotionBuilder)">
+            <summary>  Exchanges the position of two objects inside the list. </summary>  
+             <remarks>  
+                    The first object is placed where the second used to be, 
+                    and second object where the first used to be.  
+            <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="object1"> first item </param>  
+            <param name="object2"> second item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.Insert(System.Int32,NXOpen.PressLineSimulation.UserMotionBuilder)">
+            <summary>  Inserts an object at the specified location  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="location"> location at which to insert the object </param>  
+            <param name="object"> object to be inserted </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.MoveToTop(System.Int32)">
+            <summary>  Move object at the specified location to the top of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionBuilderList.MoveToBottom(System.Int32)">
+            <summary>  Move object at the specified location to the bottom of the list. </summary>  
+             <remarks>  
+            <para> Created in NX10.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+             <param name="index"> location of the item </param> 
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionBuilderList.Length">
+            <summary>  Returns  the length of the list  
+             </summary>  
+             <remarks> <para> Created in NX5.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+        <member name="T:NXOpen.PressLineSimulation.UserMotionListBuilder">
+            <summary>  Represents a <see cref="T:NXOpen.PressLineSimulation.UserMotionListBuilder"> PressLineSimulation.UserMotionListBuilder </see> builder  </summary>  
+             <remarks> <para>To create a new instance of this class, use <see cref="M:NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionListBuilder(NXOpen.Part)"> NXOpen.PressLineSimulation.ApplicationManager.CreateUserMotionListBuilder  </see></para> 
+            <para> Created in NX12.0.0 </para>  
+             </remarks>  
+              
+        </member>
+        <member name="M:NXOpen.PressLineSimulation.UserMotionListBuilder.PopulateList">
+            <summary>  To populate the list of user motion builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: nx_pls_die_checker (" NX Press Die Checker")</para> </remarks>  
+              
+        </member>
+        <member name="P:NXOpen.PressLineSimulation.UserMotionListBuilder.CamList">
+            <summary>  Returns  the list of user motion builders. </summary>  
+             <remarks>   
+            <para> Created in NX12.0.0 </para>  
+            <para>License requirements: None.</para> </remarks>  
+              
+        </member>
+    </members>
+</doc>

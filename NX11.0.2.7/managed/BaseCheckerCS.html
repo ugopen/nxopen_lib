@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">   
+<title>BaseChecker Class</title>
+<link href="NXOpenChecker.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="header">
+<div class="headertitle">
+<div class="title"><a href="#anch00000">BaseChecker</a> Class</div>
+</div>
+</div>
+
+<table class="summary">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Public Member Functions</h2></td></tr>
+<tr><td align="right" valign="top">&#160;</td><td valign="bottom"><a href="#anch00001">BaseChecker</a> ()</td></tr>
+<tr><td >&#160;</td><td>A constructor method of the checker.  <a href="#anch00001">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">void&#160;</td><td valign="bottom"><a href="#anch00002">AddParameter</a> (string label, string parameterTitle, System.Object parameterValue)</td></tr>
+<tr><td >&#160;</td><td>Adds a parameter to the checker.  <a href="#anch00002">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">string []&#160;</td><td valign="bottom"><a href="#anch00003">GetParameterTitles</a> ()</td></tr>
+<tr><td >&#160;</td><td>Gets the unique titles of all parameters of the checker.  <a href="#anch00003">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">NXOpen.Validate.Parameter&#160;</td><td valign="bottom"><a href="#anch00004">GetParameter</a> (string title)</td></tr>
+<tr><td >&#160;</td><td>Gets the parameter object with the specified title.  <a href="#anch00004">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">List&lt; NXOpen.Validate.Parameter &gt;&#160;</td><td valign="bottom"><a href="#anch00005">GetParameters</a> ()</td></tr>
+<tr><td >&#160;</td><td>Gets all parameters from the checker.  <a href="#anch00005">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">NXOpen.Validate.Logger&#160;</td><td valign="bottom"><a href="#anch00006">GetLogger</a> ()</td></tr>
+<tr><td >&#160;</td><td>Gets a logger object from the checker.  <a href="#anch00006">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">virtual void&#160;</td><td valign="bottom"><a href="#anch00007">DoCheck</a> ()</td></tr>
+<tr><td >&#160;</td><td>A derived class of the BaseChecker class should override this method to provide a concrete checking logic.  <a href="#anch00007">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">virtual void&#160;</td><td valign="bottom"><a href="#anch00008">DoCustomize</a> ()</td></tr>
+<tr><td >&#160;</td><td>A derived class of the BaseChecker class should override this method to provide a concrete checker customization logic.  <a href="#anch00008">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">virtual void&#160;</td><td valign="bottom"><a href="#anch00009">DoHelp</a> ()</td></tr>
+<tr><td >&#160;</td><td>A derived class of the BaseChecker class should override this method to display the help document of the concrete checker.  <a href="#anch00009">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">void&#160;</td><td valign="bottom"><a href="#anch00010">Register</a> ()</td></tr>
+<tr><td >&#160;</td><td>Registers the checker.  <a href="#anch00010">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">void&#160;</td><td valign="bottom"><a href="#anch00011">PrintChecker</a> ()</td></tr>
+<tr><td >&#160;</td><td>Prints the category, the display name, the class id, and the parameters of the checker.  <a href="#anch00011">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+</table>
+
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>Static Public Member Functions</h2></td></tr>
+<tr><td align="right" valign="top">static void&#160;</td><td valign="bottom"><a href="#anch00012">RegisterAllCheckersInAssembly</a> (Assembly assembly)</td></tr>
+<tr><td >&#160;</td><td>Registers all checkers in the specified C# Assembly.  <a href="#anch00012">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+</table>
+
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>Properties</h2></td></tr>
+<tr><td align="right" valign="top">string&#160;</td><td valign="bottom"><a href="#anch00013">ClassId</a> = &quot;&quot;<code> [get, set]</code></td></tr>
+<tr><td >&#160;</td><td>The class id of the checker.  <a href="#anch00013">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">string&#160;</td><td valign="bottom"><a href="#anch00014">Category</a> = &quot;&quot;<code> [get, set]</code></td></tr>
+<tr><td >&#160;</td><td>The category of the checker.  <a href="#anch00014">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">string&#160;</td><td valign="bottom"><a href="#anch00015">DisplayName</a> = &quot;&quot;<code> [get, set]</code></td></tr>
+<tr><td >&#160;</td><td>The display name of the checker.  <a href="#anch00015">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">static Dictionary&lt; string, NXOpen.Validation.Result &gt;&#160;</td><td valign="bottom"><a href="#anch00016">ResultTypes</a><code> [get]</code></td></tr>
+<tr><td >&#160;</td><td>Dictionary of the checker result types.  <a href="#anch00016">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+</table>
+
+<a id="anch00000"></a>
+
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The abstract class BaseChecker provides the following properties, methods, and fields to simplify a Check-Mate checker definition. A concrete checker class can be derived from the abstract class BaseChecker by inheriting these properties, methods, and fields.</p>
+<p>Class Scope: </p><pre class="fragment">Properties:
+    ResultTypes : Dictionary&lt;string, NXOpen.Validation.Result&gt;
+
+Methods:
+    RegisterAllCheckersInAssembly(Assembly assembly) : void
+</pre><p>Instance Scope: </p><pre class="fragment">Constructors:
+    BaseChecker()
+
+Properties:
+    ClassId : string
+    Category : string
+    DisplayName : string
+
+Methods:
+    AddParameter(string label, string parameterTitle, System.Object parameterValue) : void
+    GetParameterTitles() : string []
+    GetParameter(string title) : NXOpen.Validate.Parameter
+    GetParameters() : List&lt;NXOpen.Validate.Parameter&gt;
+    GetLogger() : NXOpen.Validate.Logger
+    DoCheck() : void virtual
+    DoCustomize() : void virtual
+    DoHelp() : void virtual
+    Register() : void
+    PrintChecker() : void
+
+    _DoCheck(CheckerNode checkerNode) : void
+    _DoCustomize(CheckerNode checkerNode) : void
+    _DoHelp(CheckerNode checkerNode) : void
+    SetRegistered(bool isRegistered) : void
+    CanRegister() : bool
+
+Fields:
+    m_parameters : List&lt;NXOpen.Validate.Parameter&gt;
+    m_checkerNode : NXOpen.Validate.CheckerNode
+</pre><p>A concrete checker class needs to provide its own unique class id, a category, a display name, a checking logic, an optional checker customization logic, and an optional display logic of the checker document. And then this concrete checker class can be registered into the Check-Mate by using its method Register().</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="anch00001"></a>
+<h2 class="memtitle">BaseChecker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseChecker.BaseChecker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor method of the checker. </p>
+
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="anch00002"></a>
+<h2 class="memtitle">AddParameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BaseChecker.AddParameter </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>parameterTitle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System.Object&#160;</td>
+          <td class="paramname"><em>parameterValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a parameter to the checker. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>Specifies a label of the parameter.</td></tr>
+    <tr><td class="paramname">parameterTitle</td><td>Specifies a unique title of the parameter.</td></tr>
+    <tr><td class="paramname">parameterValue</td><td>Specifies a value of the parameter.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="anch00007"></a>
+<h2 class="memtitle">DoCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseChecker.DoCheck </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A derived class of the BaseChecker class should override this method to provide a concrete checking logic. </p>
+
+
+</div>
+</div>
+<a id="anch00008"></a>
+<h2 class="memtitle">DoCustomize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseChecker.DoCustomize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A derived class of the BaseChecker class should override this method to provide a concrete checker customization logic. </p>
+
+
+</div>
+</div>
+<a id="anch00009"></a>
+<h2 class="memtitle">DoHelp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseChecker.DoHelp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A derived class of the BaseChecker class should override this method to display the help document of the concrete checker. </p>
+
+
+</div>
+</div>
+<a id="anch00006"></a>
+<h2 class="memtitle">GetLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NXOpen.Validate.Logger BaseChecker.GetLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a logger object from the checker. </p>
+
+<dl class="section return"><dt>Returns</dt><dd>Returns a logger object of the checker.</dd></dl>
+
+</div>
+</div>
+<a id="anch00004"></a>
+<h2 class="memtitle">GetParameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NXOpen.Validate.Parameter BaseChecker.GetParameter </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>title</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the parameter object with the specified title. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>Specifies a unique title of the parameter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the parameter object that has the specified unique title in the checker. Else, returns null.</dd></dl>
+
+</div>
+</div>
+<a id="anch00003"></a>
+<h2 class="memtitle">GetParameterTitles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string [] BaseChecker.GetParameterTitles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the unique titles of all parameters of the checker. </p>
+
+<dl class="section return"><dt>Returns</dt><dd>Returns the unique titles of all parameters of the checker.</dd></dl>
+
+</div>
+</div>
+<a id="anch00005"></a>
+<h2 class="memtitle">GetParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;NXOpen.Validate.Parameter&gt; BaseChecker.GetParameters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets all parameters from the checker. </p>
+
+<dl class="section return"><dt>Returns</dt><dd>Returns all parameters of the checker. </dd></dl>
+
+</div>
+</div>
+<a id="anch00011"></a>
+<h2 class="memtitle">PrintChecker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BaseChecker.PrintChecker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the category, the display name, the class id, and the parameters of the checker. </p>
+
+
+</div>
+</div>
+<a id="anch00010"></a>
+<h2 class="memtitle">Register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BaseChecker.Register </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers the checker. </p>
+
+
+</div>
+</div>
+<a id="anch00012"></a>
+<h2 class="memtitle">RegisterAllCheckersInAssembly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BaseChecker.RegisterAllCheckersInAssembly </td>
+          <td>(</td>
+          <td class="paramtype">Assembly&#160;</td>
+          <td class="paramname"><em>assembly</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Registers all checkers in the specified C# Assembly. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">assembly</td><td>Specifies the C# Assembly which contains checker classes.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+
+<h2 class="groupheader">Property Documentation</h2>
+<a id="anch00013"></a>
+
+<h2 class="memtitle">ClassId</h2>
+
+<div class="memitem">
+  <div class="memproto">
+  <table class="mlabels">
+    <tr>
+      <td class="mlabels-left">
+        <table class="memname">
+          <tr>
+            <td class="memname">string BaseChecker.ClassId = &quot;&quot;</td>
+          </tr>
+        </table>
+      </td>
+      <td class="mlabels-right">
+        <span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  
+      </td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="memdoc">
+    <p>The class id of the checker. </p>
+  </div>
+</div>
+
+<a id="anch00014"></a>
+
+<h2 class="memtitle">Category</h2>
+
+<div class="memitem">
+  <div class="memproto">
+  <table class="mlabels">
+    <tr>
+      <td class="mlabels-left">
+        <table class="memname">
+          <tr>
+            <td class="memname">string BaseChecker.ClassId = &quot;&quot;</td>
+          </tr>
+        </table>
+      </td>
+      <td class="mlabels-right">
+        <span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  
+      </td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="memdoc">
+    <p>The category of the checker. </p>
+  </div>
+</div>
+
+<a id="anch00015"></a>
+
+<h2 class="memtitle">DisplayName</h2>
+
+<div class="memitem">
+  <div class="memproto">
+  <table class="mlabels">
+    <tr>
+      <td class="mlabels-left">
+        <table class="memname">
+          <tr>
+            <td class="memname">string BaseChecker.ClassId = &quot;&quot;</td>
+          </tr>
+        </table>
+      </td>
+      <td class="mlabels-right">
+        <span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  
+      </td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="memdoc">
+    <p>The display name of the checker. </p>
+  </div>
+</div>
+
+<a id="anch00016"></a>
+<h2 class="memtitle">ResultTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;string, NXOpen.Validation.Result&gt; BaseChecker.ResultTypes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b>
+<div class="fragment">
+  <!--<div class="line">= <span class="keyword">new</span> Dictionary&lt;string, NXOpen.Validation.Result&gt;()</div>-->
+  <div class="line">    {</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;LOG_PASS&quot;</span>]        = NXOpen.Validation.Result.Pass,</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;LOG_INFO&quot;</span>]        = NXOpen.Validation.Result.Information,</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;LOG_WARNING&quot;</span>]     = NXOpen.Validation.Result.Warning,</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;LOG_ERROR&quot;</span>]       = NXOpen.Validation.Result.Failed,</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;Unknown&quot;</span>]         = NXOpen.Validation.Result.Unknown,</div>
+  <div class="line">&nbsp;&nbsp;&nbsp;&nbsp;[<span class="stringliteral">&quot;LOG_SKIP&quot;</span>]        = NXOpen.Validation.Result.Skipped</div>
+  <div class="line">    }</div>
+</div><!-- fragment -->
+<p>Dictionary of the checker result types. </p>
+
+</div>
+</div>
+
+<hr/>
+
+The documentation for this class was generated from the following file:
+
+<ul>
+  <li>BaseChecker.cs</li>
+</ul>
+
+</body>
+</html>
