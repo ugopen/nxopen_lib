@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimulationProcessStudioWizard xmlns="http://www.plmxml.org/Schemas/UGCAESchema" xmlns:plm="http://www.plmxml.org/Schemas/PLMXMLSchema" xmlns:ps="http://www.plmxml.org/Schemas/ProcessStudioSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" author="Various" class="com.eds.plm.ugcamplugin.UGCamDataModel" date="2007-08-22" language="en" schemaVersion="1" time="07:54:34" version="2.0" xsi:schemaLocation="http://www.plmxml.org/Schemas/UGCAESchema http://web2.net.plm.eds.com/~spfind/xml/UGCAESchema.xsd">
+<WizardProperties class="com.eds.plm.ugcamplugin.UGCamDataModelProperties" isValid="true" pluginName="PluginUGCam" processGUID="-77f9d11a:11489c07260:-7fec" title="Demo vb edit tool from Wizard">
+<TemplatePart>mill_contour</TemplatePart>
+<AssociatedNXApplications>All</AssociatedNXApplications>
+<CompanyLogo class="com.eds.plm.studio.WizardIcon" name="ugs.bmp"/>
+<WizardIcon class="com.eds.plm.studio.WizardIcon" name="wizard_manufacturing"/>
+<WizardPreview class="com.eds.plm.studio.WizardIcon" name=""/>
+<Help class="com.eds.plm.studio.Help" label="information" sensitive="true" url="step.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+<ConfigurationFile>cam_library.dat</ConfigurationFile>
+</WizardProperties>
+<StepArray>
+<WelcomeStep class="com.eds.plm.ugcamplugin.ReferencingSuperStep" guid="61a37f1:1148548bd85:-7ffc" topLevel="true">
+<Next>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff8"/>
+</Next>
+<Previous/>
+<StepProperties autoExecute="false" class="com.eds.plm.ugcamplugin.WelcomeGroupProperties">
+<NavigatorItem class="com.eds.plm.studio.NavigatorItem">
+<Label>Welcome</Label>
+<Icon class="com.eds.plm.studio.WizardIcon" name="toolpath_generate_sc"/>
+</NavigatorItem>
+<StepIcon class="com.eds.plm.studio.WizardIcon" name="cam_wizard_welcome"/>
+</StepProperties>
+<Children>
+<WelcomeSubStep class="com.eds.plm.ugcamplugin.ReferencingSimpleStep" guid="61a37f1:1148548bd85:-7ffb" topLevel="false">
+<Next/>
+<Previous/>
+<Properties class="com.eds.plm.ugcamplugin.WelcomeProperties">
+<Label>Demo - Running a vb program from the Wizard</Label>
+<Label>This wizard will create a tool, ask you for the length, </Label>
+<Label>and then run a vb program to set the flute length to match the tool length.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="GE.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.ugcamplugin.welcome.ICON" name="Welcome" width="65" x="0" y="0">
+<ps:Connectors/>
+</StepUI>
+<StepForm class="com.eds.plm.ugcamplugin.WelcomePanel"/>
+</WelcomeSubStep>
+</Children>
+<StepUI class="com.eds.plm.studio.SuperStepBox" height="107" image="com.eds.plm.ugcamplugin.welcome.ICON" name="Welcome" width="150" x="16" y="18">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ffc"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff8"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+</WelcomeStep>
+<ObjectStep class="com.eds.plm.ugcamplugin.ReferencingSuperStep" guid="61a37f1:1148548bd85:-7ff8" topLevel="true">
+<Next>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff0"/>
+</Next>
+<Previous>
+<ps:GUID guid="61a37f1:1148548bd85:-7ffc"/>
+</Previous>
+<StepProperties autoExecute="true" class="com.eds.plm.ugcamplugin.ObjectCreateGroupProperties">
+<NavigatorItem class="com.eds.plm.studio.NavigatorItem">
+<Label>Create Tool</Label>
+<Icon class="com.eds.plm.studio.WizardIcon" name="cam_new_tool_sc"/>
+</NavigatorItem>
+<StepIcon class="com.eds.plm.studio.WizardIcon" name="cam_wizard_create"/>
+</StepProperties>
+<Children>
+<CreateSubStep class="com.eds.plm.ugcamplugin.ReferencingSimpleStep" guid="61a37f1:1148548bd85:-7ff7" topLevel="false">
+<Next>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff6"/>
+</Next>
+<Previous/>
+<Properties class="com.eds.plm.ugcamplugin.ObjectCreateProperties">
+<Label>Create Tool</Label>
+<Label>Please specify name, object type</Label>
+<Label>and subtype to be used for the</Label>
+<Label>new object.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="step.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+<ForceNewObject>false</ForceNewObject>
+<TemplatePart class="com.eds.plm.ugcamplugin.TemplateInput" name="mill_contour"/>
+<ObjectName class="com.eds.plm.ugcamplugin.NameInput" label="Object Name" sensitive="true" value="my_tool" visible="true"/>
+<ObjectType class="com.eds.plm.ugcamplugin.ObjectTypeInput" label="Creating a" sensitive="false" value="2" visible="false"/>
+<BaseObject class="com.eds.plm.ugcamplugin.SubtypeInput" label="Subtype" sensitive="false" value="MILL" visible="true"/>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.ugcamplugin.objectcreate.ICON" name="Tool: my_tool" width="91" x="0" y="0">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff7"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff6"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+<StepForm class="com.eds.plm.ugcamplugin.ObjectCreatePanel"/>
+</CreateSubStep>
+<ParentSubStep class="com.eds.plm.ugcamplugin.ReferencingSimpleStep" guid="61a37f1:1148548bd85:-7ff6" topLevel="false">
+<Next/>
+<Previous>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff7"/>
+</Previous>
+<Properties class="com.eds.plm.ugcamplugin.ObjectParentProperties">
+<Label>Create object</Label>
+<Label>Please specify parents to be</Label>
+<Label>used for the new object.</Label>
+<Label>.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="step.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+<ProgramGroup class="com.eds.plm.ugcamplugin.ParentInput" label="Program" sensitive="true" visible="true"/>
+<ToolGroup class="com.eds.plm.ugcamplugin.ParentInput" label="Tool Group" sensitive="true" value="GENERIC_MACHINE" visible="true"/>
+<GeometryGroup class="com.eds.plm.ugcamplugin.ParentInput" label="Geometry Group" sensitive="true" visible="true"/>
+<MethodGroup class="com.eds.plm.ugcamplugin.ParentInput" label="Method Group" sensitive="true" visible="true"/>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.ugcamplugin.objectcreate.ICON" name="Specify Parents" width="100" x="0" y="0">
+<ps:Connectors/>
+</StepUI>
+<StepForm class="com.eds.plm.ugcamplugin.ObjectParentPanel"/>
+</ParentSubStep>
+</Children>
+<StepUI class="com.eds.plm.studio.SuperStepBox" height="107" image="com.eds.plm.ugcamplugin.objectcreate.ICON" name="Create Object" width="150" x="211" y="27">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff8"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff0"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+</ObjectStep>
+<CustomizableItemStep class="com.eds.plm.ugcamplugin.ReferencingSuperStep" guid="61a37f1:1148548bd85:-7ff0" topLevel="true">
+<Next>
+<ps:GUID guid="3f70e04d:11488a5a0d1:-7fef"/>
+</Next>
+<Previous>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff8"/>
+</Previous>
+<StepProperties autoExecute="false" class="com.eds.plm.ugcamplugin.CustomizableGroupProperties">
+<NavigatorItem class="com.eds.plm.studio.NavigatorItem">
+<Label>Enter Length</Label>
+<Icon class="com.eds.plm.studio.WizardIcon" name="ont_o_properties_sc"/>
+</NavigatorItem>
+<StepIcon class="com.eds.plm.studio.WizardIcon" name="cam_wizard_create"/>
+</StepProperties>
+<Children>
+<CustomizableItemSubStep class="com.eds.plm.ugcamplugin.ReferencingSimpleStep" guid="61a37f1:1148548bd85:-7fef" topLevel="false">
+<Next/>
+<Previous/>
+<Properties class="com.eds.plm.ugcamplugin.CustomizableProperties">
+<Label>Tool Parameter Input</Label>
+<Label>Please specify the parameter value</Label>
+<Label>.</Label>
+<Label>.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="step.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+<ObjectName></ObjectName>
+<ObjectType>2</ObjectType>
+<DetailedObjectType>1201</DetailedObjectType>
+<ItemID class="com.eds.plm.ugcamplugin.CustomizableInput" value="8005"/>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.ugcamplugin.customizable.ICON" name="(L) Length" width="70" x="0" y="0">
+<ps:Connectors/>
+</StepUI>
+<StepForm class="com.eds.plm.ugcamplugin.CustomizablePanel"/>
+</CustomizableItemSubStep>
+</Children>
+<StepUI class="com.eds.plm.studio.SuperStepBox" height="107" image="com.eds.plm.ugcamplugin.customizable.ICON" name="Customizable Item" width="150" x="387" y="87">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff0"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="3f70e04d:11488a5a0d1:-7fef"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+</CustomizableItemStep>
+<UserDefinedStep class="com.eds.plm.studio.ModifiableSuperStep" guid="3f70e04d:11488a5a0d1:-7fef" topLevel="true">
+<Next>
+<ps:GUID guid="61a37f1:1148548bd85:-7ffa"/>
+</Next>
+<Previous>
+<ps:GUID guid="61a37f1:1148548bd85:-7ff0"/>
+</Previous>
+<StepProperties autoExecute="false" class="com.eds.plm.uggenericplugin.UserDefinedGroupProperties">
+<NavigatorItem class="com.eds.plm.studio.NavigatorItem">
+<Label>Set flute length</Label>
+<Icon class="com.eds.plm.studio.WizardIcon" name="user_defined_step_sc"/>
+</NavigatorItem>
+<StepIcon class="com.eds.plm.studio.WizardIcon" name="user_defined_step_lc"/>
+</StepProperties>
+<Children>
+<MessageSubStep class="com.eds.plm.studio.SimpleStep" guid="-77f9d11a:11489c07260:-7fed" topLevel="false">
+<Next>
+<ps:GUID guid="-77f9d11a:11489c07260:-7fef"/>
+</Next>
+<Previous/>
+<Properties class="com.eds.plm.uggenericplugin.MessageProperties">
+<Label>Sample of running an API program</Label>
+<Label>In this step, a vb program is played which edits the tool, </Label>
+<Label>and sets the flute length equal to the tool length.</Label>
+<Label>There is a delay the first time it is run.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="step.html#message" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.uggenericplugin.message.ICON" name="Message" width="62" x="0" y="0">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="-77f9d11a:11489c07260:-7fed"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="-77f9d11a:11489c07260:-7fef"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+<StepForm class="com.eds.plm.uggenericplugin.MessagePanel"/>
+</MessageSubStep>
+<JournalSubStep class="com.eds.plm.studio.SimpleStep" guid="-77f9d11a:11489c07260:-7fef" topLevel="false">
+<Next/>
+<Previous>
+<ps:GUID guid="-77f9d11a:11489c07260:-7fed"/>
+</Previous>
+<Properties class="com.eds.plm.uggenericplugin.JournalDialogProperties">
+<HelpURL>
+<HelpURL class="com.eds.plm.studio.HelpURL" url="step.html#jouranldialog"/>
+</HelpURL>
+<JournalDialog Initializer="MillToolSetFluteLengthWizdObject.vb" class="com.eds.plm.studio.JournalDialogItem"/>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.uggenericplugin.journaldialog.ICON" name="Journal Play" width="80" x="0" y="0">
+<ps:Connectors/>
+</StepUI>
+<StepForm class="com.eds.plm.uggenericplugin.JournalDialogPanel"/>
+</JournalSubStep>
+</Children>
+<StepUI class="com.eds.plm.studio.SuperStepBox" height="107" image="com.eds.plm.uggenericplugin.userdefined.ICON" name="User Defined" width="150" x="168" y="172">
+<ps:Connectors>
+<ps:Connector class="com.eds.plm.studio.Connector">
+<ps:StartStep>
+<ps:GUID guid="3f70e04d:11488a5a0d1:-7fef"/>
+</ps:StartStep>
+<ps:EndStep>
+<ps:GUID guid="61a37f1:1148548bd85:-7ffa"/>
+</ps:EndStep>
+<ps:Strategy>
+<ps:LineStrategy class="com.eds.plm.studio.LineStrategy"/>
+</ps:Strategy>
+</ps:Connector>
+</ps:Connectors>
+</StepUI>
+</UserDefinedStep>
+<FinishStep class="com.eds.plm.ugcamplugin.ReferencingSuperStep" guid="61a37f1:1148548bd85:-7ffa" topLevel="true">
+<Next/>
+<Previous>
+<ps:GUID guid="3f70e04d:11488a5a0d1:-7fef"/>
+</Previous>
+<StepProperties autoExecute="false" class="com.eds.plm.ugcamplugin.FinishGroupProperties">
+<NavigatorItem class="com.eds.plm.studio.NavigatorItem">
+<Label>Finish</Label>
+<Icon class="com.eds.plm.studio.WizardIcon" name="finished_flag_sc"/>
+</NavigatorItem>
+<StepIcon class="com.eds.plm.studio.WizardIcon" name="finished_flag_large"/>
+</StepProperties>
+<Children>
+<FinishSubStep class="com.eds.plm.ugcamplugin.ReferencingSimpleStep" guid="61a37f1:1148548bd85:-7ff9" topLevel="false">
+<Next/>
+<Previous/>
+<Properties class="com.eds.plm.ugcamplugin.FinishProperties">
+<Label>Thank you for using the Manufacturing Wizard.</Label>
+<Label>You can now edit the objects in the Operation Navigator.</Label>
+<Label>For help use the 'help' button at the top right</Label>
+<Label>hand corner.</Label>
+<Help class="com.eds.plm.studio.Help" label="Help" sensitive="true" url="step.html" visible="true">
+<ps:Icon class="com.eds.plm.studio.WizardIcon" name="information"/>
+</Help>
+</Properties>
+<StepUI class="com.eds.plm.studio.SimpleStepBox" height="82" image="com.eds.plm.ugcamplugin.finish.ICON" name="Finish" width="50" x="0" y="0">
+<ps:Connectors/>
+</StepUI>
+<StepForm class="com.eds.plm.ugcamplugin.FinishPanel"/>
+</FinishSubStep>
+</Children>
+<StepUI class="com.eds.plm.studio.SuperStepBox" height="107" image="com.eds.plm.ugcamplugin.finish.ICON" name="Finish" width="150" x="21" y="303">
+<ps:Connectors/>
+</StepUI>
+</FinishStep>
+</StepArray>
+</SimulationProcessStudioWizard>

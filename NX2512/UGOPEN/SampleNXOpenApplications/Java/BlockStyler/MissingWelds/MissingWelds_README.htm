@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>MissingWelds</title>
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head>
+<body>
+    <div class="Section1">
+        <h3>
+            MissingWelds
+        </h3>
+        <p>
+            This example demonstrates the block styler wizard. It is used to create a clearance set
+            on an assembly and determine where the assembly is missing welds. The example also
+            demonstrates the task navigator context menu, used to create a report of the missing
+            welds, or export an image of a missing weld to a pdf.&nbsp;
+            <br />
+            <br />
+            NOTE: The example is not a comprehensive tool for finding the missing welds and is
+            solely used for demonstrating the block styler wizard block.
+        </p>
+        <h4>Files required</h4>
+        <ol>
+            <li> MissingWelds.java </li>
+            <li> MissingWelds.dlx : This file is located at $UGII_BASE_DIR/ugopen/SampleNXOpenApplications/C++/BlockStyler/MissingWelds.</li>
+            <li> MissingWelds.prt </li>
+            <li> Plate_2.prt </li>
+            <li> Plate_3.prt </li>
+            <li> Plate_7.prt </li>
+            <li> Plate_8.prt </li>
+            <br />
+            The dlx file must be placed in one of the following locations:
+            <br />
+            <br />
+            <ol>
+                <li> From where NX session is launched </li>
+                <li> $UGII_USER_DIR/application </li>
+                <li>
+                    For released applications, using UGII_CUSTOM_DIRECTORY_FILE is highly
+                    recommended. This variable is set to a full directory path to a file
+                    containing a list of root directories for all custom applications.
+                    e.g., UGII_CUSTOM_DIRECTORY_FILE=<nx install directory>\ugii\menus\custom_dirs.dat
+                </li>
+            </ol>
+        </ol>
+        <h4>How to run the example</h4>
+        <p>
+            Unless noted otherwise, the commands in these instructions must be run from an
+            NX command prompt.&nbsp; See the general notes of the examples for <a href="../../README.htm#How_to_start_an_NX_command_prompt">
+                instructions on how to start an NX command prompt
+            </a>.
+        </p>
+        <p>
+            Instructions for Windows: All commands are the same as in Unix except substitute "make" with
+            "nmake -f Makefile_win".
+        </p>
+        <h5>Interactive mode</h5>
+        <ol style="MARGIN-TOP: 0in" type="1">
+            <li class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+                Compile the example with following command:
+            </li>
+        </ol>
+        <pre style="MARGIN-LEFT: 0.5in">make</pre>
+        <ol style="MARGIN-TOP: 0in" type="1" start="2">
+            <li class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                Start NX.
+            </li>
+        </ol>
+        <ol style="MARGIN-TOP: 0in" type="1" start="3">
+            <li class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                Open MissingWelds.prt file.
+            </li>
+        </ol>
+        <ol style="MARGIN-TOP: 0in" type="1" start="4">
+            <li class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                In NX, go to File - Execute - NX Open, select MissingWelds.jar, and press
+                Ok.&nbsp; The MissingWelds dialog will be displayed on the screen.
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

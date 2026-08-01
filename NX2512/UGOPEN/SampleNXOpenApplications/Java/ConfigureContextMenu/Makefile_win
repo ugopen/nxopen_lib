@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUI.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: ConfigureContextMenu.jar
+
+ConfigureContextMenu.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ConfigureContextMenu.java
+	
+ConfigureContextMenu.jar: ConfigureContextMenu.class
+	echo Main-Class: ConfigureContextMenu> manifest.txt
+	jar cmf manifest.txt ConfigureContextMenu.jar ConfigureContextMenu.class
+
+run: ConfigureContextMenu.jar
+		java -classpath $(CLASSPATH)  ConfigureContextMenu
+
+clean_all: clean
+	- del *.class
+	- del ConfigureContextMenu.jar

@@ -233,10 +233,6 @@ def main():
         added_files = row['added_names'].replace("|", "\\|")
         removed_files = row['removed_names'].replace("|", "\\|")
         
-        # Ensure no escaped underscores (user request)
-        added_files = added_files.replace("\\_", "_")
-        removed_files = removed_files.replace("\\_", "_")
-        
         line = f"| {row['folder']} | {row['internal_ver']} | {row['vs_ver']} | {added_files} | {removed_files} |"
         md_lines.append(line)
         

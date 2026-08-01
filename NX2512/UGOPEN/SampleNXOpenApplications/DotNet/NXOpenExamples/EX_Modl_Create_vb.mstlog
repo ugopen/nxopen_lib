@@ -1,0 +1,18 @@
+--Log entry goes here--
+New part : EX_Modl_Create 
+Successful:Modl.CreateList
+Successful:Modl.CreateCyl1
+Successful:Modl.AskFeatBody
+Body is : 9454
+Successful:Modl.AskBodyFaces
+Face_list is : NXOpen.Tag[]
+Successful:Modl.AskListCount
+Count is: 3
+face is : 9457
+face data is: 0,0,1
+face is : 9458
+face data is: 0,0,1
+face is : 9459
+face data is: 1,0,1
+Successful:Modl.CreateRectGroove
+End of Log File

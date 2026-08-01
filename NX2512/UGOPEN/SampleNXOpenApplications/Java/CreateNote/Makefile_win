@@ -1,0 +1,18 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = .;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUI.jar;$(NXOPENJARDIR)/NXOpenUF.jar
+JAVAC_FLAGS = 
+
+CreateNoteExample.jar: nxexamples\createnote\CreateNoteExample.class nxexamples\utils\DialogOutputStream.class
+	echo Main-Class: nxexamples.createnote.CreateNoteExample> manifest.txt
+	jar cmf manifest.txt CreateNoteExample.jar nxexamples
+	
+
+nxexamples\createnote\CreateNoteExample.class: nxexamples\createnote\CreateNoteExample.java nxexamples\createnote\UserSymbolDialog.java
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) nxexamples\createnote\*.java
+
+nxexamples\utils\DialogOutputStream.class: nxexamples\utils\DialogOutputStream.java
+    javac $(JAVAC_FLAGS) nxexamples\utils\DialogOutputStream.java
+    
+clean:
+	del nxexamples\createnote\*.class
+	del nxexamples\utils\*.class

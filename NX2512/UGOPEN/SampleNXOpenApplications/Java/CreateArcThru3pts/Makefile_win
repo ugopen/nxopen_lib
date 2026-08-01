@@ -1,0 +1,22 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: CreateArcThru3pts.jar
+
+CreateArcThru3pts.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) CreateArcThru3pts.java
+	
+CreateArcThru3pts.jar: CreateArcThru3pts.class
+	echo Main-Class: CreateArcThru3pts> manifest.txt
+	jar cmf manifest.txt CreateArcThru3pts.jar CreateArcThru3pts.class
+
+run: CreateArcThru3pts.jar
+    	java -classpath $(CLASSPATH)  CreateArcThru3pts
+
+clean:
+	- del CreateArcThru3pts.prt
+
+clean_all: clean
+	- del *.class
+	- del CreateArcThru3pts.Jar

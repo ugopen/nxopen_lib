@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>CreateNote</title>
+</head>
+
+<body>
+
+<h3>CreateNote</h3>
+<p>This example creates notes by either copying an existing note or creating a 
+note from a user defined symbol.</p>
+<h4>How to run the example</h4>
+<p>Instructions for Windows: All commands are the same as in Unix except 
+substitute &quot;make&quot; with &quot;nmake -f Makefile_win&quot;</p>
+<ol>
+	<li>Compile the example.<pre>make</pre>
+	</li>
+	<li>Start NX.</li>
+	<li>In NX, open a part. If you have one that has a note in it, that would be 
+	helpful. If not, open any part or an new/empty part.</li>
+	<li>Go to File - Execute - NX Open, select CreateNoteExample.jar and press 
+	Ok.</li>
+	<li>On the dialog, select either the &quot;create from user defined symbol&quot; or 
+	&quot;copy existing note&quot; option.<br>
+	For create from user defined symbol:
+	<ol>
+		<li>Select the name of the user defined symbol and the symbol's size and 
+		aspect ratio.</li>
+		<li>Click the &quot;Create&quot; button.</li>
+		<li>Pick the location for the new note. The note will be created in the 
+		XY plane of the WCS. <br>
+		You can create as many copies as you want. </li>
+		<li>When you are finished, cancel when prompted for the location.</li>
+	</ol>
+	<br>For copy existing note:
+	<ol>
+		<li>Click the &quot;Create&quot; button.</li>
+		<li>Select a note to copy. You can select one that existed previously in 
+		the part or select<br>
+		one that was just created.</li>
+		<li>Pick the location for the new note. The note will be created in the 
+		XY plane of the WCS. <br>
+		You can create as many copies as you want. </li>
+		<li>When you are finished, cancel when prompted for the location.</li>
+	</ol>
+	</li>
+</ol>
+<h4>Design notes</h4>
+<p>The key portions of code are UserSymbolDialog.getNoteCreationData, 
+UserSymbolDialog.loadSymbolNames, and the call to Annotations.createNote in 
+main(). Most of the rest of the code is just for the GUI for the example. 
+loadSymbolNames() reads the names of the available user defined symbols from the 
+selected Symbol Font Definition file (sbf file). getNoteCreationData() gets the 
+text and preferences for the new note. If &quot;copy existing note&quot; was selected, 
+getNoteCreationData prompts the user to pick a note and gets the text and 
+preferences for the new note from the selected note. If &quot;create from user 
+defined symbol&quot; is selected, the user symbol that was selected is loaded into 
+the part and the user symbol preferences for the new note are constructed based 
+on what the user specified on the form. Then, the main subroutine prompts the 
+user for the location for the new note and creates the note.</p>
+
+</body>
+
+</html>

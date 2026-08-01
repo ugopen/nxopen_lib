@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: CustomMenuCreator.jar
+
+CustomMenuCreator.class:
+    javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) CustomMenuCreator.java
+	
+CustomMenuCreator.jar: CustomMenuCreator.class
+    echo Main-Class: CustomMenuCreator> manifest.txt
+    jar cmf manifest.txt CustomMenuCreator.jar CustomMenuCreator.class
+
+run: ColoredBlock.jar
+        java -classpath $(CLASSPATH)  CustomMenuCreator
+
+clean_all: clean
+    - del CustomMenuCreator.class
+    - del CustomMenuCreator.jar

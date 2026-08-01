@@ -1,0 +1,103 @@
+<!--
+
+------------------------------------------------------------------------------------
+
+          Copyright 2012 Siemens Product Lifecycle Management Software Inc.
+                            All Rights Reserved.
+
+------------------------------------------------------------------------------------
+
+
+
+-->
+
+<html>
+    <head>
+        <title>ExecuteCheckerAndGetResults</title>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <DIV class="Section1">
+            <H3>ExecuteCheckerAndGetResults</H3>
+
+            <H4>Description</H4>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This example demonstrates how to record the journal of executing a Check-Mate checker,
+               and how to get the executing result of a Check-Mate checker by playing the journal in NX.</p>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This example uses the Check-Mate checker <b>%mqc_report_browseable_features</b> whose
+               display name is <b>"Number of browseable features"</b>, and this Check-Mate checker reports
+               the number of browseable features in the work part. This example records journal
+               using Java language.</p>
+
+            <H4>Files required</H4>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;1. ExecuteCheckerAndGetResults.prt</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;2. ExecuteCheckerAndGetResults.java</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;3. Makefile_win</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;The above listed files are located at $UGII_BASE_DIR\ugopen\SampleNXOpenApplications\Java\CheckMate\ExecuteCheckerAndGetResults</p>
+
+            <H4>Build Steps</H4>
+            <H5>Windows</H5>
+            <p>1. Copy the directory $UGII_BASE_DIR\ugopen\SampleNXOpenApplications\Java\ExecuteCheckerAndGetResults to another place, such as D:\.</p>
+            <p>2. Open Microsoft Visual Studio->Visual Studio Tools->Visual Studio x64 Win64 Command Prompt.</p>
+            <p>3. On the command line window, execute following command to go to the work directory.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;cd /d D:\ExecuteCheckerAndGetResults</p>
+            <p>4. On the command line window, set following environment variables:</p>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;set ugii_base_dir=NX base directory</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;set ugs_license_server=28000@NX license server IP</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;set ugii_java_home=JRE home directory</p>
+
+            <p>5. On the command line window, execute following command to generate jar and class file.</p>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;nmake /f Makefile_win</p>
+
+            <p><b>Note:</b> Please confirm the path of the bin directory in JDK home is existing
+                     in the environment variable Path. Otherwise, the javac command cannot
+                     be executed.</p>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This will create ExecuteCheckerAndGetResults.class and
+               ExecuteCheckerAndGetResults.jar in the work directory.</p>
+
+            <H5>Linux</H5>
+            <p>-N/A-</p>
+
+            <H4>Settings before Launching NX</H4>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Set the environment variable ugii_java_home.</p>
+
+            <H4>Settings after Launching NX</H4>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;None</p>
+
+            <H4>Example execution steps</H4>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;1. Start NX.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;2. Open the part file ExecuteCheckerAndGetResults.prt.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;3. Change the Role to Advanced with full menus if not set.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;4. Find the four features in the Part Navigator in the work part.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;5. Open Check-Mate on the HD3D Tools. Click the Set Up Tests button to open Set Up Tests dialog.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;6. Click Tests to load all checkers. Notice that there will be a tree structure in the Categories area.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;7. Execute the example to execute checker by Library execution:</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Invoke ExecuteCheckerAndGetResults.class or ExecuteCheckerAndGetResults.jar
+               using File->Execute->NX Open... (Ctrl+U).</p>
+
+            <H4>Note:</H4>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;1. "NXOpen application must be signed before its release. If not signed the application may not get executed.
+               For more details on signing the application refer to NXOpen Programmer's Guide."</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;2. A Check-Mate license and a Java authoring license is required to run the
+               example. See the online documentation for details of licensing.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;3. This example was generated by recording this workflow:</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 Open Check-Mate on the HD3D Tools. Click the Set Up Tests button to open Set Up Tests dialog.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 Click Tests to load all checkers. Notice that there will be a tree structure in the Categories area.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3 Select the Check-Mate checker Get Information->Modeling->Number of browseable features. Click the Add to Selected button.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4 The checker will appear in the Chosen Tests area. Click Execute Check-Mate button to execute the chosen checker.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.5 Notice four features will be reported in the Results area of the Check-Mate.</p>
+
+            <H4>CAVEATS</H4>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;1. The journal file should be saved as ASCII format.</p>
+
+        </DIV>
+    </body>
+</html>

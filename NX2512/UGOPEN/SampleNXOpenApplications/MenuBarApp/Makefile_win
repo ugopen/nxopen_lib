@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUI.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: MenuBarJavaApp.jar
+
+MenuBarJavaApp.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) MenuBarJavaApp.java
+	
+MenuBarJavaApp.jar: MenuBarJavaApp.class
+	echo Main-Class: MenuBarJavaApp> manifest.txt
+	jar cmf manifest.txt MenuBarJavaApp.jar MenuBarJavaApp.class
+
+run: MenuBarJavaApp.jar
+    	java -classpath $(CLASSPATH)  MenuBarJavaApp
+
+clean_all: clean
+	- del *.class
+	- del MenuBarJavaApp.jar

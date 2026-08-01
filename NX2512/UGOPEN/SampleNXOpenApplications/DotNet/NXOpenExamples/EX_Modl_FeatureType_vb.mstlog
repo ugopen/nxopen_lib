@@ -1,0 +1,12 @@
+--Log entry goes here--
+New part : EX_Modl_FeatureType 
+Successful:Modl.CreateBlock1
+Successful:Assem.AskWorkPart
+Successful:Obj.CycleObjsInPart
+Successful:Modl.AskFeatType
+Feature 0 = 21451 is of type BLOCK
+Successful:Modl.AskFeatRelatives
+Parent array for 21451 contains 0 members
+  children array for feature 21451 conatins 0 members
+Successful:Obj.CycleObjsInPart
+End of Log File

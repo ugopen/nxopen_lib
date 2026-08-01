@@ -1,0 +1,25 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)\NXOpen.jar"
+RUN_JAVA = 
+JAVAC_FLAGS = 
+
+compile: clean_all ValidateNXOpenSetup.jar sign run
+
+ValidateNXOpenSetup.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ValidateNXOpenSetup.java
+
+ValidateNXOpenSetup.jar: ValidateNXOpenSetup.class
+	echo Main-Class: ValidateNXOpenSetup> manifestValidateNXOpenSetup.txt
+	echo Class-Path: file:///$(NXOPENJARDIR)\NXOpen.jar>> manifestValidateNXOpenSetup.txt
+	jar cmf manifestValidateNXOpenSetup.txt ValidateNXOpenSetup.jar ValidateNXOpenSetup.class
+
+sign:
+	$(NXOPENJARDIR)\SignJar ValidateNXOpenSetup.jar
+run:
+	java -jar ValidateNXOpenSetup.jar
+
+clean_all:
+	- del ValidateNXOpenSetup.class 
+	- del ValidateNXOpenSetup.jar
+	- del manifestValidateNXOpenSetup.txt
+

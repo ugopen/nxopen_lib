@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  -->
+
+<CustomFeatureLib
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="CustomFeatureConfiguration_schema.xsd">
+    <CustomFeature 
+    FeatureClass="NXOpen::CustomFeature::MeasureAreaBetweenPoints" 
+    FeatureName="Measure Area Between Points" 
+    FeatureIcon="measure_area_between_points" 
+    FeatureLibrary="MeasureAreaBetweenPointsCore"
+    FeatureUILibrary="MeasureAreaBetweenPointsUI"
+    IsWithoutBody="true"/>
+</CustomFeatureLib>

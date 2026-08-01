@@ -1,0 +1,25 @@
+#===============================================================================
+#
+#                   Copyright (c) 2009 Siemens PLM Solutions
+#                     Unpublished - All rights reserved
+#===============================================================================
+#File description: Makefile for Windows.
+#===============================================================================
+#
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: TreeListDemo.jar
+
+TreeListDemo.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) TreeListDemo.java
+	
+TreeListDemo.jar: TreeListDemo.class
+	echo Main-Class: TreeListDemo> manifest.txt
+	jar cmf manifest.txt TreeListDemo.jar TreeListDemo.class 
+
+
+clean_all: clean
+	- del TreeListDemo.class
+	- del TreeListDemo.jar

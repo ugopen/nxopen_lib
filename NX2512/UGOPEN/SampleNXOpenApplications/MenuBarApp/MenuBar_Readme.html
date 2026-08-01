@@ -1,0 +1,113 @@
+<!--  -->
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>PartCallbacks</title>
+</head>
+
+<body>
+
+<h3>PartCallbacks</h3>
+
+<p><b>Description:</b> This example demonstrates how a custom application is added to NX. It defines menubar applications with callbacks
+	for both the C++, .Net, Java, and Python and adds the applications to the start menu.  </p>
+
+<p><b>Files Required for example</b></p>
+This table represents the various demos for registering part callback for every available reason via the different languages.<br>
+<table width="800" border="2"> 
+
+<tr>
+<td width="100">Language</td> 
+<td width="210">Application Files</td> 
+<td width="210">Men Files</td> 
+<td width="500">Note</td> 
+</tr> 
+
+<tr>
+<td width="100">C++</td> 
+<td width="210">MenuBarCppApp.cpp & MenuBarCppApp.h</td> 
+<td width="210">MenuBarCppApp.men & MenuBarCppAppButton.men</td> 
+<td width="500">Both the files must be compiled together</td> 
+</tr>
+
+<tr>
+<td width="100">C#</td> 
+<td width="210">MenuBarCSharpApp.cs</td> 
+<td width="210">MenuBarCSharpApp.men & MenuBarCSharpAppButton.men</td> 
+<td width="500"></td> 
+</tr>
+
+<tr>
+<td width="100">JAVA</td> 
+<td width="210">MenuBarJavaApp.java</td> 
+<td width="210">MenuBarJavaApp.men & MenuBarJavaAppButton.men</td> 
+<td width="500"></td> 
+</tr>
+
+<tr>
+<td width="100">Python</td> 
+<td width="210">MenuBarPythonApp.py</td> 
+<td width="210">MenuBarPythonApp.men & MenuBarPythonAppButton.men</td> 
+<td width="500"></td> 
+</tr>
+
+</table>
+
+<p><b>How to Compile the Files:</b> The detailed description on how to compile the files in various languages is available in<A 
+href="MenuBar_CompileLink_README.html"> MenuBar_CompileLink_README.html</A> There is no steps needed to build Python. </p>
+<p><b>NOTE:</b>It is not required to build all of the examples, just build the languages that interest you (if applicable).</p>
+
+
+</p><b>How to Run the Example</b></p>
+	<p>&nbsp &nbsp [A] <u>Create Directory structure</u></p>
+		<ol>Create an application root.<br>
+			<br><b>Make a directory called MenuBarApplicationRoot, and make two subdirectories in this directory. With one called application and the other startup.  And then
+				place the following files in the directories.
+			</b>
+
+			<ul>	
+				<li> MenuBarApplicationRoot (directory)</li>
+				<ul>
+					<li>application (directory)</li>
+					<ul>
+						<li>MenuBarCppApp.dll (This file is obtained from the build steps For C++ binary.  You will want to rename the dll to have this name)</li>
+						<li>MenuBarCppApp.men</li>
+						<li>MenuBarCSharpApp.dll (This file is obtained from the build steps For C Sharp binary.  You will want to rename the dll to have this name)</li>
+						<li>MenuBarCSharpApp.men</li>
+						<li>MenuBarJavaApp.jar</li>
+						<li>MenuBarJavaApp.men</li>
+						<li>MenuBarPythonApp.py</li>
+						<li>MenuBarPythonApp.men</li>
+					</ul>
+				</ul>
+				<ul>
+					<li>startup (directory)</li>
+					<ul>
+						<li>MenuBarCppAppButton.men</li>
+						<li>MenuBarCSharpAppButton.men</li>
+						<li>MenuBarJavaAppButton.men</li>
+						<li>MenuBarPythonAppButton.men</li>
+					</ul>
+				</ul>
+			</ul>
+			<br><b>Set the varaible UGII_USER_DIR pointing to the full path of directory MenuBarApplicationRoot in the NX command prompt.
+			</b>
+		</ol>
+
+	<p>&nbsp &nbsp [B] <u>Execute the Example</u></p>
+		<ol>
+			<ol>
+				<p><b>NOTE:</b> In the workflow below replace <b>LANG</b> with the language you want to run.  For Example CPP for C++.</p>
+
+				<li> Start NX</li>
+				<li> Create New Part or Open an Existing Part. (The Start Menu won't appear until a part is open)</li>
+				<li> To launch Sample <b>LANG</b> application, go to Start->All Applications-> Sample <b>LANG</b> Application. This will create "Sample <b>LANG</b>" menu next to Help.</li>
+				<li> Click on the different buttons under the menu "Sample <b>LANG</b>" to verify the callbacks associated with the button names.</li>
+			</ol>
+		</ol>
+
+</body>
+
+</html>

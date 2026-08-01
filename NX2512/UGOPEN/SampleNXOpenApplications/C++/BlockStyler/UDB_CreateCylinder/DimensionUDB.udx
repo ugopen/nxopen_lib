@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<UserDefinedUIBlockPalette NX="NX 8" Saved="Fri Jun 24 18:54:12 2011
+" Creator="naidus"><PaletteEntry id="DimensionUDB"><ObjectData class="NewStylerItem"><NewStylerItem><item icon="hand" class="DimensionUDB.dlx" AutomationClass="DimensionUDB"/></NewStylerItem></ObjectData><Presentation name="DimensionUDB" category="Dimension" description="This a dimension block where toggle control enables or disables the Double block. If toggled on, the double-field is greyed out."/></PaletteEntry>
+</UserDefinedUIBlockPalette>

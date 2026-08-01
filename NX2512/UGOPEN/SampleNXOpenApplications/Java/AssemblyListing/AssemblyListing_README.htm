@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>AssemblyListing</title>
+</head>
+
+<body>
+
+<h3>AssemblyListing</h3>
+<p>This example demonstrates how to walk through the assembly hierarchy using NX Open for Java.&nbsp; 
+For each component in the assembly, the program will list the component name, 
+path to its part file, and the number of times the component appears in the 
+assembly.</p>
+<h4>How to run the example</h4>
+<p>Unless noted otherwise, the commands in these instructions must be run from 
+an NX command prompt.&nbsp; See the general notes of the examples for 
+<a href="../README.htm#How_to_start_an_NX_command_prompt">instructions on how to start an NX command prompt</a>.</p>
+<p>Instructions for Windows: All commands are the same as in Unix except 
+substitute &quot;make&quot; with &quot;nmake -f Makefile_win&quot;.</p>
+<h5>Batch mode</h5>
+<pre>make run</pre>
+<p>The program will list the components in the toycar_assy assembly from the 
+parts directory of the java examples.</p>
+<h5>Interactive mode</h5>
+<ol>
+	<li>Compile the example.<pre>make</pre>
+	</li>
+	<li>Start NX.</li>
+	<li>Open a file that contains an assembly.&nbsp; A simple toy car assembly 
+	is provided in parts directory of the java examples.&nbsp; To use that 
+	assembly, open ../parts/toycar_assy.prt.</li>
+	<li>In NX, go to File - Execute - NX 
+		Open, select AssemblyListing.jar and press Ok.&nbsp; A list of the 
+	components in the assembly will be printed in the listing window.</li>
+</ol>
+<blockquote>
+	<p>&nbsp;</p>
+</blockquote>
+
+</body>
+
+</html>

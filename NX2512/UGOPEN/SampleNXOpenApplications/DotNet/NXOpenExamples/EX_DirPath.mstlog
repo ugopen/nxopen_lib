@@ -1,0 +1,14 @@
+Log Entry : 
+--Log entry goes here--
+Loaded: <Project Folder>\bin\Debug\EX_DirPath.prt OR <Current Working Dir>\EX_DirPath.prt
+Dir Path: <Value of UGII_BASE_DIR Environment Var>
+Dir Path: /dir1
+Dir Path: /dir2
+Current Dir : /dir1
+Index	 Nth Dir
+0	/dir1
+1	/dir2
+2	/dir3
+3	/dir4
+Successful
+End of Log File

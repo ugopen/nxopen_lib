@@ -1,0 +1,15 @@
+NXOPENJARDIR = $(UGII_ROOT_DIR)
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+
+compile: java_part_callbacks.jar
+
+java_part_callbacks.class:
+    javac -classpath $(CLASSPATH) java_part_callbacks.java
+	
+java_part_callbacks.jar: java_part_callbacks.class
+    echo Main-Class: java_part_callbacks> manifest.txt
+    jar cmf manifest.txt java_part_callbacks.jar java_part_callbacks.class
+
+clean_all: clean
+    - del java_part_callbacks.class
+    - del java_part_callbacks.jar
