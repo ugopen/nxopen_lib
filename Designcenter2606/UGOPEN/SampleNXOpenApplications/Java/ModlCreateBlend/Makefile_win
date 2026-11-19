@@ -1,0 +1,20 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: ModlCreateBlend.jar
+
+ModlCreateBlend.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ModlCreateBlend.java
+	
+ModlCreateBlend.jar: ModlCreateBlend.class
+	echo Main-Class: ModlCreateBlend> manifest.txt
+	jar cmf manifest.txt ModlCreateBlend.jar ModlCreateBlend.class
+run: ModlCreateBlend.jar
+    	java -classpath $(CLASSPATH)  ModlCreateBlend
+clean:
+	- del ModlCreateBlend.prt
+
+clean_all: clean
+	- del *.class
+	- del ModlCreateBlend.jar

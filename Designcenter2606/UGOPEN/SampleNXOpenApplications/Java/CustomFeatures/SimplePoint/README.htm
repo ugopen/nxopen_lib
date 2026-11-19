@@ -1,0 +1,76 @@
+<html>
+	<head>
+        <title>SimplePoint</title>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <DIV class="Section1">
+            <H3>SimplePoint
+            </H3>
+            <P>This example demonstrates how a Custom feature "Simple Point" can be implemented.&nbsp;</P>
+
+            <h4>Build Steps</h4>
+            <P>The custom feature consists of two parts: Core and UI. Both parts must be built separately.</P>
+            <P>Build instructions for each part are provided in the following locations:</P>
+            <UL>
+                <LI><A href="SimplePointCore/README.htm">Build instructions for Core</A></LI>
+                <LI><A href="SimplePointUI/README.htm">Build instructions for UI</A></LI>
+            </UL>
+            <P>After completing these steps, you should have the following files ready to be executed in NX:</P>
+            <UL>
+                <LI>SimplePointCore.jar and SimplePointUI.jar</LI>
+            </UL>
+
+            <h4>Settings before Launching NX</h4>
+            <P>The library SimplePointCore.jar and SimplePointUI.jar along with files CustomFeatureConfiguration.xml and SimplePointUI.dlx,
+                must be placed in one of the following locations:</P>
+            <OL style="MARGIN-TOP: 0in" type="1">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    $UGII_USER_DIR/application
+                </LI>
+            </OL>
+            <OL style="MARGIN-TOP: 0in" type="1" start="2">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    For released applications, using the environment variable UGII_CUSTOM_DIRECTORY_FILE is highly recommended.
+                    This variable is set to a full directory path to a file containing a list of root directories for all custom applications.
+                    e.g., UGII_CUSTOM_DIRECTORY_FILE=&lt;NX install directory&gt;\ugii\menus\custom_dirs.dat
+                </LI>
+            </OL>
+            <P>Note: The entry in UGII_CUSTOM_DIRECTORY_FILE should specify the parent directory of the application folder
+                where the executables and other files are placed. For example, if the executables and files are located in
+                &lt;user_custom_dir&gt;\application, then the entry in UGII_CUSTOM_DIRECTORY_FILE should be &lt;user_custom_dir&gt;.</P>
+
+            <h4>Settings after Launching NX</h4>
+            <P>None.</P>
+
+            <h4 id="Example_execution_steps">Example execution steps</h4>
+            <OL style="MARGIN-TOP: 0in" type="1">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Start NX.
+                </LI>
+            </OL>
+            <OL style="MARGIN-TOP: 0in" type="1" start="2">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Open any part file.
+                </LI>
+            </OL>
+            <OL style="MARGIN-TOP: 0in" type="1" start="3">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    In NX, go to File - Execute - NX Open, select SimplePointUI.jar, and press
+                    Ok.&nbsp; The SimplePointUI dialog will be displayed on the screen.
+                </LI>
+            </OL>
+            <OL style="MARGIN-TOP: 0in" type="1" start="4">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Provide the input coordinates to create a Simple Point feature.
+                </LI>
+            </OL>
+            <OL style="MARGIN-TOP: 0in" type="1" start="5">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Dialog OK/Apply creates the Simple Point.
+                </LI>
+            </OL>
+        </DIV>
+    </body>
+</html>

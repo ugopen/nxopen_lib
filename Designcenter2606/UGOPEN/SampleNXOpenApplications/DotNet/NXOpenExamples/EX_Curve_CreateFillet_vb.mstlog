@@ -1,0 +1,11 @@
+Log Entry : \r\n--Log entry goes here--
+New part : 
+Successful:Curve.CreateLine
+Successful:Curve.CreateLine
+Successful:Csys.AskWcs
+Successful:Csys.AskMatrixOfObject
+Successful:Curve.CreateArc
+Successful:Curve.CreateArc
+Successful:Curve.CreateFillet
+Successful:Curve.CreateFillet
+End of Log File
