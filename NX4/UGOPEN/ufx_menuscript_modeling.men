@@ -1,0 +1,57 @@
+!
+!  This menu file is used in conjunction with the ufx_menuscript_ufsta.c
+!  example program contained in the UGOPEN kit.  This example 
+!  illustrates migrating the mult_ufsta.c example (also contained
+!  in the UGOPEN kit) from UF_UI_append_menubar_menu to the
+!  use of MenuScript.  See ufx_menuscript_ufsta.c for complete 
+!  instructions on the use of this example.
+!
+! 
+!
+VERSION 120
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+AFTER UG_TOOLBOX
+
+CASCADE_BUTTON TESTS
+LABEL Tests
+
+END_OF_AFTER
+
+MENU TESTS
+
+BUTTON SELECT_TEST
+LABEL Selection Test...
+ACTIONS select_test
+
+BUTTON DIALOG_TEST
+LABEL Dialog Test...
+ACTIONS dialog_test
+
+END_OF_MENU
+
+MENU UG_INFO
+
+BUTTON CURVATURE
+LABEL Curvature Test...
+ACTIONS curvature
+
+BUTTON CURING
+LABEL Curing Test...
+ACTIONS curing
+
+BUTTON QUERY
+LABEL Query Test...
+ACTIONS query
+
+END_OF_MENU
+
+MODIFY
+
+BUTTON UG_MODELING_TOOLBOX_FEATURE
+LABEL Feature...
+ACTIONS/REPLACE open_curve_palette STANDARD close_curve_palette
+
+END_OF_MODIFY
+
+

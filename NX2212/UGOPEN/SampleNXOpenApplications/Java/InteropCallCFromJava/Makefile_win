@@ -1,0 +1,16 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: JavaApp.jar
+
+JavaApp.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) JavaApp.java
+	
+JavaApp.h: JavaApp.class
+    javah -classpath $(CLASSPATH) -jni JavaApp	
+	
+JavaApp.jar: JavaApp.class JavaApp.h
+	echo Main-Class: JavaApp> manifest.txt
+	jar cmf manifest.txt JavaApp.jar JavaApp.class
+

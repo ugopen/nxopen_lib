@@ -1,0 +1,20 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: JavaExecuteCPPExample.jar
+
+JavaExecuteCPPExample.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) JavaExecuteCPPExample.java
+	
+JavaExecuteCPPExample.jar: JavaExecuteCPPExample.class
+	echo Main-Class: JavaExecuteCPPExample> manifest.txt
+	jar cmf manifest.txt JavaExecuteCPPExample.jar JavaExecuteCPPExample.class
+run: JavaExecuteCPPExample.jar
+	java -classpath $(CLASSPATH)  JavaExecuteCPPExample
+clean:
+	- del RenamedArc.prt
+
+clean_all: clean
+	- del *.class
+	- del JavaExecuteCPPExample.jar

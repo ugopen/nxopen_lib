@@ -1,0 +1,4221 @@
+Log Entry : 
+--Log entry goes here--
+Faceted model is attached to solid
+
+Model contains 150 facets 
+
+Maxmium vertices in any facet is 4
+
+UFFacet 0 has 4 vertices
+
+ UFFacet normal (-0.6845500450, 0.6845505219, 0.2505630036) d_coeff -29.1899344603
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 29.5000001201, 38.9999996020)
+
+    Normal (-0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 29.7320499195, 38.0000002741)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.6339745963, 29.3660257745, 38.0000002741)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 1 has 4 vertices
+
+ UFFacet normal (-0.1861572186, 0.6947469823, 0.6947460835) d_coeff -47.3790354792
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 29.5000001201, 38.9999996020)
+
+    Normal (-0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 28.8660249372, 39.7320525853)
+
+    Normal (-0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 2 has 3 vertices
+
+ UFFacet normal (-0.6947475698, 0.1861571410, 0.6947455168) d_coeff -32.1213177701
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 27.9999999549, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 27.9999999549, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 3 has 3 vertices
+
+ UFFacet normal (-0.2581984459, 0.0691839713, 0.9636115092) d_coeff -39.9652159053
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 28.5000007922, 39.7320525853)
+
+    Normal (-0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 27.9999999549, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 4 has 3 vertices
+
+ UFFacet normal (-0.1890140352, 0.1890146789, 0.9636115118) d_coeff -43.4588446378
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 28.8660249372, 39.7320525853)
+
+    Normal (-0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 28.5000007922, 39.7320525853)
+
+    Normal (-0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 5 has 3 vertices
+
+ UFFacet normal (-0.0691839841, 0.2581986047, 0.9636114657) d_coeff -45.6356528122
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.5000000185, 28.8660249372, 39.7320525853)
+
+    Normal (-0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 6 has 4 vertices
+
+ UFFacet normal (-0.6947477117, 0.1861569884, 0.6947454158) d_coeff -32.1213094305
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 27.9999999549, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 27.9999999549, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 28.5000007922, 39.7320525853)
+
+    Normal (-0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 7 has 4 vertices
+
+ UFFacet normal (-0.5085904346, 0.5085907889, 0.6947454061) d_coeff -41.5217702459
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 28.5000007922, 39.7320525853)
+
+    Normal (-0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 28.8660249372, 39.7320525853)
+
+    Normal (-0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 29.5000001201, 38.9999996020)
+
+    Normal (-0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 8 has 3 vertices
+
+ UFFacet normal (-0.1861565945, 0.6947488436, 0.6947443894) d_coeff -47.3790250259
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 29.5000001201, 38.9999996020)
+
+    Normal (-0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 9 has 4 vertices
+
+ UFFacet normal (-0.9351130591, 0.2505629328, 0.2505629328) d_coeff -16.5371536062
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 27.9999999549, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.2679491863, 28.9999992829, 38.0000002741)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.0000000000, 27.9999999549, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 10 has 3 vertices
+
+ UFFacet normal (-0.6845513144, 0.6845492915, 0.2505628972) d_coeff -29.1898941564
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 29.3660257745, 38.0000002741)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 28.9999992829, 38.0000002741)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 28.8660249372, 38.9999996020)
+
+    Normal (-0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 11 has 4 vertices
+
+ UFFacet normal (-0.2505631715, 0.9351128870, 0.2505633368) d_coeff -37.0736680353
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 29.5000001201, 38.9999996020)
+
+    Normal (-0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 29.7320499195, 38.0000002741)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 12 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.9659253371, 0.2588208706) d_coeff -38.8129541932
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 13 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.7071067812, 0.7071067812) d_coeff -48.6008999608
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 14 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.2588187558, 0.9659259038) d_coeff -45.8839625355
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 15 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.7071090479, 0.7071045145) d_coeff -48.6008772938
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 16 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.0000000000, 1.0000000000) d_coeff -40.0000012766
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 17 has 3 vertices
+
+ UFFacet normal (0.6845508400, 0.6845497428, 0.2505629605) d_coeff -36.0354183320
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 28.9999992829, 38.0000002741)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 29.3660257745, 38.0000002741)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 18 has 4 vertices
+
+ UFFacet normal (0.6947478523, 0.1861566574, 0.6947453639) d_coeff -39.0687762743
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 28.5000007922, 39.7320525853)
+
+    Normal (0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.9999998179, 27.9999999549, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.3660251362, 27.9999999549, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 19 has 3 vertices
+
+ UFFacet normal (0.1861565489, 0.6947488497, 0.6947443956) d_coeff -49.2405910040
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 29.5000001201, 38.9999996020)
+
+    Normal (0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 20 has 3 vertices
+
+ UFFacet normal (0.0691839437, 0.2581986054, 0.9636114684) d_coeff -46.3274924506
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 28.8660249372, 39.7320525853)
+
+    Normal (0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 21 has 3 vertices
+
+ UFFacet normal (0.1890140211, 0.1890146270, 0.9636115247) d_coeff -45.3489839184
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 28.5000007922, 39.7320525853)
+
+    Normal (0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.5000001539, 28.8660249372, 39.7320525853)
+
+    Normal (0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 22 has 3 vertices
+
+ UFFacet normal (0.2581984662, 0.0691838253, 0.9636115142) d_coeff -42.5471966086
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 27.9999999549, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 28.5000007922, 39.7320525853)
+
+    Normal (0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 23 has 4 vertices
+
+ UFFacet normal (0.1861571460, 0.6947470117, 0.6947460736) d_coeff -49.2406078629
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 29.3660257745, 39.3660260936)
+
+    Normal (0.0000000000, 0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 28.9999992829, 39.7320525853)
+
+    Normal (0.0000000000, 0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.5000001539, 28.8660249372, 39.7320525853)
+
+    Normal (0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 29.5000001201, 38.9999996020)
+
+    Normal (0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 24 has 4 vertices
+
+ UFFacet normal (0.5085904761, 0.5085907745, 0.6947453863) d_coeff -46.6076733248
+
+ UFFacet IS convex
+
+  Vertex 0: (8.5000001539, 28.8660249372, 39.7320525853)
+
+    Normal (0.2500000000, 0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 28.5000007922, 39.7320525853)
+
+    Normal (0.4330126941, 0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 29.5000001201, 38.9999996020)
+
+    Normal (0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 25 has 3 vertices
+
+ UFFacet normal (0.6947470992, 0.1861571472, 0.6947459857) d_coeff -39.0688075103
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 27.9999999549, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 27.9999999549, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 26 has 4 vertices
+
+ UFFacet normal (0.2505631554, 0.9351129005, 0.2505633024) d_coeff -39.5792973500
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 29.7320499195, 38.9999996020)
+
+    Normal (0.0000000000, 0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 29.5000001201, 38.9999996020)
+
+    Normal (0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.9999998179, 29.7320499195, 38.0000002741)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 27 has 4 vertices
+
+ UFFacet normal (0.6845501216, 0.6845505232, 0.2505627908) d_coeff -36.0354280731
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 29.3660257745, 38.0000002741)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 29.7320499195, 38.0000002741)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 29.5000001201, 38.9999996020)
+
+    Normal (0.4330126941, 0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 28 has 4 vertices
+
+ UFFacet normal (0.9351129989, 0.2505630453, 0.2505630453) d_coeff -25.8882913352
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 28.8660249372, 38.9999996020)
+
+    Normal (0.7500000000, 0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 27.9999999549, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 27.9999999549, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 28.9999992829, 38.0000002741)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 29 has 4 vertices
+
+ UFFacet normal (0.0000000000, 1.0000000000, 0.0000000000) d_coeff -30.0000009574
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 30 has 4 vertices
+
+ UFFacet normal (-0.2588207112, 0.9659253798, 0.0000000000) d_coeff -28.4601209041
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 29.7320499195, 38.0000002741)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 29.7320499195, 1.9999999758)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 31 has 4 vertices
+
+ UFFacet normal (-0.7071078260, 0.7071057364, 0.0000000000) d_coeff -20.3165968816
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 28.9999992829, 38.0000002741)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 29.3660257745, 38.0000002741)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 29.3660257745, 1.9999999758)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 28.9999992829, 1.9999999758)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 32 has 4 vertices
+
+ UFFacet normal (-0.9659257843, 0.2588192019, 0.0000000000) d_coeff -7.2469376406
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 28.9999992829, 1.9999999758)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 27.9999999549, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 27.9999999549, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 28.9999992829, 38.0000002741)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 33 has 4 vertices
+
+ UFFacet normal (-0.7071055770, 0.7071079854, 0.0000000000) d_coeff -20.3166643508
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 29.7320499195, 1.9999999758)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 29.3660257745, 1.9999999758)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 29.3660257745, 38.0000002741)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 29.7320499195, 38.0000002741)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 34 has 4 vertices
+
+ UFFacet normal (-0.9659257843, 0.0000000000, 0.2588192019) d_coeff -9.8351297419
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 27.9999999549, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 27.9999999549, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 1.9999999758, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 1.9999999758, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 35 has 4 vertices
+
+ UFFacet normal (-0.7071078437, 0.0000000000, 0.7071057187) d_coeff -27.3876537628
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 27.9999999549, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 27.9999999549, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 1.9999999758, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 1.9999999758, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 36 has 4 vertices
+
+ UFFacet normal (-0.2588185964, 0.0000000000, 0.9659259465) d_coeff -38.1194019074
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 1.9999999758, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 27.9999999549, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 37 has 4 vertices
+
+ UFFacet normal (-0.7071078260, 0.0000000000, 0.7071057364) d_coeff -27.3876544712
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 1.9999999758, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 1.9999999758, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 27.9999999549, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 27.9999999549, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 38 has 3 vertices
+
+ UFFacet normal (-0.1861563245, 0.6947478358, -0.6947454696) d_coeff -19.5892192302
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 29.5000001201, 0.9999999879)
+
+    Normal (-0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 39 has 4 vertices
+
+ UFFacet normal (-0.6947467172, 0.1861567150, -0.6947464836) d_coeff -4.3314845488
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 28.5000007922, 0.2679491863)
+
+    Normal (-0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 27.9999999549, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.6339745963, 27.9999999549, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 40 has 3 vertices
+
+ UFFacet normal (-0.6845513428, 0.6845493199, -0.2505627422) d_coeff -19.1673793312
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 28.9999992829, 1.9999999758)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 29.3660257745, 1.9999999758)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 41 has 4 vertices
+
+ UFFacet normal (-0.9351130979, 0.2505629432, -0.2505627779) d_coeff -6.5146368494
+
+ UFFacet IS convex
+
+  Vertex 0: (0.0000000000, 27.9999999549, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 28.9999992829, 1.9999999758)
+
+    Normal (-0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 27.9999999549, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 42 has 4 vertices
+
+ UFFacet normal (-0.6845500734, 0.6845505503, -0.2505628486) d_coeff -19.1674160561
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 29.3660257745, 1.9999999758)
+
+    Normal (-0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 29.7320499195, 1.9999999758)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 29.5000001201, 0.9999999879)
+
+    Normal (-0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 43 has 4 vertices
+
+ UFFacet normal (-0.2505631818, 0.9351129257, -0.2505631818) d_coeff -27.0511346508
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 29.7320499195, 1.9999999758)
+
+    Normal (-0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.1339746269, 29.5000001201, 0.9999999879)
+
+    Normal (-0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 44 has 3 vertices
+
+ UFFacet normal (-0.6947465621, 0.1861568709, -0.6947465969) d_coeff -4.3314890133
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 27.9999999549, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 27.9999999549, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 45 has 4 vertices
+
+ UFFacet normal (-0.5085897030, 0.5085900573, -0.6947464772) d_coeff -13.7319319610
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 28.8660249372, 0.9999999879)
+
+    Normal (-0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 29.5000001201, 0.9999999879)
+
+    Normal (-0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.5000000185, 28.8660249372, 0.2679491863)
+
+    Normal (-0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.1339746269, 28.5000007922, 0.2679491863)
+
+    Normal (-0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 46 has 4 vertices
+
+ UFFacet normal (-0.1861569453, 0.6947459877, -0.6947471513) d_coeff -19.5891626519
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.5000000185, 28.8660249372, 0.2679491863)
+
+    Normal (-0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.1339746269, 29.5000001201, 0.9999999879)
+
+    Normal (-0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 47 has 3 vertices
+
+ UFFacet normal (-0.2581988888, 0.0691840900, -0.9636113820) d_coeff -1.4207567449
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 27.9999999549, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 28.5000007922, 0.2679491863)
+
+    Normal (-0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 48 has 3 vertices
+
+ UFFacet normal (-0.1890143594, 0.1890150032, -0.9636113846) d_coeff -4.9143913662
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 28.5000007922, 0.2679491863)
+
+    Normal (-0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 28.8660249372, 0.2679491863)
+
+    Normal (-0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 49 has 3 vertices
+
+ UFFacet normal (-0.0691841028, 0.2581990476, -0.9636113385) d_coeff -7.0912051170
+
+ UFFacet IS convex
+
+  Vertex 0: (1.5000000185, 28.8660249372, 0.2679491863)
+
+    Normal (-0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 50 has 4 vertices
+
+ UFFacet normal (-1.0000000000, 0.0000000000, 0.0000000000) d_coeff 0.0000000000
+
+ UFFacet IS convex
+
+  Vertex 0: (0.0000000000, 27.9999999549, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 1.9999999758, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 1.9999999758, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.0000000000, 27.9999999549, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 51 has 3 vertices
+
+ UFFacet normal (-0.6845502687, -0.6845503030, 0.2505629908) d_coeff -8.6534187381
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 0.9999999879, 38.0000002741)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 0.6339745963, 38.0000002741)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 52 has 4 vertices
+
+ UFFacet normal (-0.6947475694, -0.1861570892, 0.6947455311) d_coeff -26.5366042395
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 1.5000000185, 39.7320525853)
+
+    Normal (-0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 1.9999999758, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.6339745963, 1.9999999758, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 53 has 3 vertices
+
+ UFFacet normal (-0.1861570649, -0.6947475800, 0.6947455270) d_coeff -26.5366041011
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 0.4999999940, 38.9999996020)
+
+    Normal (-0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 54 has 3 vertices
+
+ UFFacet normal (-0.0691840925, -0.2581984438, 0.9636115011) d_coeff -37.8896962083
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 1.1339746269, 39.7320525853)
+
+    Normal (-0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 55 has 3 vertices
+
+ UFFacet normal (-0.1890143900, -0.1890143900, 0.9636114988) d_coeff -37.7884036330
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 1.5000000185, 39.7320525853)
+
+    Normal (-0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.5000000185, 1.1339746269, 39.7320525853)
+
+    Normal (-0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 56 has 3 vertices
+
+ UFFacet normal (-0.2581984438, -0.0691840925, 0.9636115011) d_coeff -37.8896962083
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 1.9999999758, 39.7320525853)
+
+    Normal (-0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 1.5000000185, 39.7320525853)
+
+    Normal (-0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 57 has 4 vertices
+
+ UFFacet normal (-0.1861570892, -0.6947475694, 0.6947455311) d_coeff -26.5366042213
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.5000000185, 1.1339746269, 39.7320525853)
+
+    Normal (-0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.1339746269, 0.4999999940, 38.9999996020)
+
+    Normal (-0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 58 has 4 vertices
+
+ UFFacet normal (-0.5085905263, -0.5085905263, 0.6947455313) d_coeff -26.2640514301
+
+ UFFacet IS convex
+
+  Vertex 0: (1.5000000185, 1.1339746269, 39.7320525853)
+
+    Normal (-0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 1.5000000185, 39.7320525853)
+
+    Normal (-0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.1339746269, 0.4999999940, 38.9999996020)
+
+    Normal (-0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 59 has 3 vertices
+
+ UFFacet normal (-0.6947475800, -0.1861570649, 0.6947455270) d_coeff -26.5366041011
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 1.9999999758, 39.3660260936)
+
+    Normal (-0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 1.9999999758, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 60 has 4 vertices
+
+ UFFacet normal (-0.2505628019, -0.9351130850, 0.2505629673) d_coeff -9.0202672364
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 0.4999999940, 38.9999996020)
+
+    Normal (-0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 0.2679491863, 38.0000002741)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 61 has 4 vertices
+
+ UFFacet normal (-0.6845502933, -0.6845502807, 0.2505629844) d_coeff -8.6534184912
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 0.6339745963, 38.0000002741)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 0.2679491863, 38.0000002741)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 0.4999999940, 38.9999996020)
+
+    Normal (-0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 62 has 4 vertices
+
+ UFFacet normal (-0.9351130850, -0.2505628019, 0.2505629673) d_coeff -9.0202672277
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 1.1339746269, 38.9999996020)
+
+    Normal (-0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 1.9999999758, 38.9999996020)
+
+    Normal (-0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 1.9999999758, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 0.9999999879, 38.0000002741)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 63 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.9659257843, 0.2588192019) d_coeff -9.8351297419
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 64 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.7071078437, 0.7071057187) d_coeff -27.3876537628
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 65 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.2588185964, 0.9659259465) d_coeff -38.1194019074
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 66 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.7071078260, 0.7071057364) d_coeff -27.3876544712
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 67 has 4 vertices
+
+ UFFacet normal (0.7071073479, 0.0000000000, 0.7071062145) d_coeff -34.4587468857
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 27.9999999549, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 27.9999999549, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 1.9999999758, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 1.9999999758, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 68 has 4 vertices
+
+ UFFacet normal (0.2588186141, 0.0000000000, 0.9659259418) d_coeff -40.7075877919
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 27.9999999549, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 27.9999999549, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 1.9999999758, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 69 has 4 vertices
+
+ UFFacet normal (0.7071079145, 0.0000000000, 0.7071056478) d_coeff -34.4587298856
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 1.9999999758, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 1.9999999758, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 27.9999999549, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 27.9999999549, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 70 has 4 vertices
+
+ UFFacet normal (0.9659257621, 0.0000000000, 0.2588192845) d_coeff -19.4943908108
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 1.9999999758, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 1.9999999758, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 27.9999999549, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 27.9999999549, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 71 has 4 vertices
+
+ UFFacet normal (0.9659257621, 0.2588192845, 0.0000000000) d_coeff -16.9061978835
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 28.9999992829, 38.0000002741)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 27.9999999549, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 27.9999999549, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 28.9999992829, 1.9999999758)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 72 has 4 vertices
+
+ UFFacet normal (0.7071056478, 0.7071079145, 0.0000000000) d_coeff -27.3877185150
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 29.7320499195, 38.0000002741)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 29.3660257745, 38.0000002741)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 29.3660257745, 1.9999999758)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 29.7320499195, 1.9999999758)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 73 has 4 vertices
+
+ UFFacet normal (0.2588207289, 0.9659253751, 0.0000000000) d_coeff -31.0483279844
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 29.7320499195, 1.9999999758)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 30.0000009574, 38.0000002741)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 29.7320499195, 38.0000002741)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 74 has 4 vertices
+
+ UFFacet normal (0.7071073479, 0.7071062145, 0.0000000000) d_coeff -27.3876845148
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 28.9999992829, 1.9999999758)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 29.3660257745, 1.9999999758)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 29.3660257745, 38.0000002741)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 28.9999992829, 38.0000002741)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 75 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.9659253798, -0.2588207112) d_coeff -28.4601209041
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 76 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.7071057364, -0.7071078260) d_coeff -20.3165968816
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 77 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.2588192019, -0.9659257843) d_coeff -7.2469376406
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 78 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.7071079854, -0.7071055770) d_coeff -20.3166643508
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 79 has 4 vertices
+
+ UFFacet normal (-0.7071067635, 0.0000000000, -0.7071067989) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 27.9999999549, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 27.9999999549, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 1.9999999758, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 1.9999999758, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 80 has 4 vertices
+
+ UFFacet normal (-0.2588190425, 0.0000000000, -0.9659258270) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 27.9999999549, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 1.9999999758, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 81 has 4 vertices
+
+ UFFacet normal (-0.7071067989, 0.0000000000, -0.7071067635) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 1.9999999758, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 1.9999999758, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 27.9999999549, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 27.9999999549, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 82 has 4 vertices
+
+ UFFacet normal (-0.9659258270, 0.0000000000, -0.2588190425) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 1.9999999758, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 1.9999999758, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 27.9999999549, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 27.9999999549, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 83 has 4 vertices
+
+ UFFacet normal (-0.9659258270, -0.2588190425, 0.0000000000) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 0.9999999879, 38.0000002741)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 1.9999999758, 38.0000002741)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.0000000000, 1.9999999758, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 0.9999999879, 1.9999999758)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 84 has 4 vertices
+
+ UFFacet normal (-0.7071067989, -0.7071067635, 0.0000000000) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 0.2679491863, 38.0000002741)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 0.6339745963, 38.0000002741)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 0.6339745963, 1.9999999758)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 0.2679491863, 1.9999999758)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 85 has 4 vertices
+
+ UFFacet normal (-0.2588190425, -0.9659258270, 0.0000000000) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (0.9999999879, 0.2679491863, 1.9999999758)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.9999999879, 0.2679491863, 38.0000002741)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 86 has 4 vertices
+
+ UFFacet normal (-0.7071067635, -0.7071067989, 0.0000000000) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 0.9999999879, 1.9999999758)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.6339745963, 0.6339745963, 1.9999999758)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 0.6339745963, 38.0000002741)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.2679491863, 0.9999999879, 38.0000002741)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 87 has 3 vertices
+
+ UFFacet normal (0.6845504071, -0.6845502357, 0.2505627963) d_coeff -15.4989151903
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 0.2679491863, 38.0000002741)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 0.6339745963, 38.0000002741)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 88 has 4 vertices
+
+ UFFacet normal (0.1861570166, -0.6947475987, 0.6947455212) d_coeff -28.3981741055
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 1.1339746269, 39.7320525853)
+
+    Normal (0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 89 has 3 vertices
+
+ UFFacet normal (0.6947471094, -0.1861570711, 0.6947459959) d_coeff -33.4840937552
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 1.1339746269, 38.9999996020)
+
+    Normal (0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 1.9999999758, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 1.9999999758, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 90 has 3 vertices
+
+ UFFacet normal (0.2581984640, -0.0691839464, 0.9636115061) d_coeff -40.4716812709
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 1.5000000185, 39.7320525853)
+
+    Normal (0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.9999998179, 1.9999999758, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 91 has 3 vertices
+
+ UFFacet normal (0.1890143760, -0.1890143381, 0.9636115118) d_coeff -39.6785480196
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 1.1339746269, 39.7320525853)
+
+    Normal (0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 1.5000000185, 39.7320525853)
+
+    Normal (0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 92 has 3 vertices
+
+ UFFacet normal (0.0691840521, -0.2581984445, 0.9636115038) d_coeff -38.5815369084
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 1.9999999758, 40.0000012766)
+
+    Normal (0.0000000000, 0.0000000000, 1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.9999999879, 39.7320525853)
+
+    Normal (0.0000000000, -0.5000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.5000001539, 1.1339746269, 39.7320525853)
+
+    Normal (0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 93 has 4 vertices
+
+ UFFacet normal (0.6947477100, -0.1861567583, 0.6947454792) d_coeff -33.4840796649
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 1.9999999758, 39.3660260936)
+
+    Normal (0.7071067691, 0.0000000000, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 1.9999999758, 39.7320525853)
+
+    Normal (0.5000000000, 0.0000000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 1.5000000185, 39.7320525853)
+
+    Normal (0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.5000000685, 1.1339746269, 38.9999996020)
+
+    Normal (0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 94 has 4 vertices
+
+ UFFacet normal (0.5085905677, -0.5085905118, 0.6947455115) d_coeff -31.3499563471
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 1.5000000185, 39.7320525853)
+
+    Normal (0.4330126941, -0.2500000000, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 1.1339746269, 39.7320525853)
+
+    Normal (0.2500000000, -0.4330126941, 0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.5000000685, 1.1339746269, 38.9999996020)
+
+    Normal (0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 95 has 3 vertices
+
+ UFFacet normal (0.1861570192, -0.6947475861, 0.6947455331) d_coeff -28.3981745991
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.6339745963, 39.3660260936)
+
+    Normal (0.0000000000, -0.7071067691, 0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 96 has 4 vertices
+
+ UFFacet normal (0.9351130247, -0.2505629144, 0.2505630798) d_coeff -18.3714018739
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 1.9999999758, 38.9999996020)
+
+    Normal (0.8660253882, 0.0000000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.5000000685, 1.1339746269, 38.9999996020)
+
+    Normal (0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.7320510412, 0.9999999879, 38.0000002741)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (10.0000003191, 1.9999999758, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 97 has 4 vertices
+
+ UFFacet normal (0.6845501455, -0.6845504718, 0.2505628659) d_coeff -15.4989152328
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 0.6339745963, 38.0000002741)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 0.9999999879, 38.0000002741)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 1.1339746269, 38.9999996020)
+
+    Normal (0.7500000000, -0.4330126941, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 98 has 4 vertices
+
+ UFFacet normal (0.2505627858, -0.9351130985, 0.2505629328) d_coeff -11.5258937793
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 0.4999999940, 38.9999996020)
+
+    Normal (0.4330126941, -0.7500000000, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.2679491863, 38.9999996020)
+
+    Normal (0.0000000000, -0.8660253882, 0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 0.2679491863, 38.0000002741)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 99 has 4 vertices
+
+ UFFacet normal (0.0000000000, -1.0000000000, 0.0000000000) d_coeff 0.0000000000
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 100 has 3 vertices
+
+ UFFacet normal (-0.6947465723, -0.1861567949, -0.6947466071) d_coeff 1.2532169626
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 1.9999999758, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.6339745963, 1.9999999758, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 101 has 4 vertices
+
+ UFFacet normal (-0.1861568159, -0.6947465748, -0.6947465989) d_coeff 1.2532169796
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 0.4999999940, 0.9999999879)
+
+    Normal (-0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 1.1339746269, 0.2679491863)
+
+    Normal (-0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 102 has 4 vertices
+
+ UFFacet normal (-0.6845503216, -0.6845503091, -0.2505628294) d_coeff 1.3691006644
+
+ UFFacet IS convex
+
+  Vertex 0: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 0.4999999940, 0.9999999879)
+
+    Normal (-0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.9999999879, 0.2679491863, 1.9999999758)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.6339745963, 0.6339745963, 1.9999999758)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 103 has 4 vertices
+
+ UFFacet normal (-0.2505628123, -0.9351131237, -0.2505628123) d_coeff 1.0022512371
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 0.2679491863, 1.9999999758)
+
+    Normal (-0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 0.4999999940, 0.9999999879)
+
+    Normal (-0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 104 has 3 vertices
+
+ UFFacet normal (-0.6845502970, -0.6845503313, -0.2505628358) d_coeff 1.3691006838
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 0.6339745963, 1.9999999758)
+
+    Normal (-0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.2679491863, 0.9999999879, 1.9999999758)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 105 has 4 vertices
+
+ UFFacet normal (-0.9351131237, -0.2505628123, -0.2505628123) d_coeff 1.0022512284
+
+ UFFacet IS convex
+
+  Vertex 0: (0.2679491863, 0.9999999879, 1.9999999758)
+
+    Normal (-0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.0000000000, 1.9999999758, 1.9999999758)
+
+    Normal (-1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (0.2679491863, 1.9999999758, 0.9999999879)
+
+    Normal (-0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 106 has 3 vertices
+
+ UFFacet normal (-0.1861567949, -0.6947465723, -0.6947466071) d_coeff 1.2532169626
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 0.4999999940, 0.9999999879)
+
+    Normal (-0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 107 has 4 vertices
+
+ UFFacet normal (-0.5085897947, -0.5085897947, -0.6947466024) d_coeff 1.5257694109
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 0.4999999940, 0.9999999879)
+
+    Normal (-0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 1.5000000185, 0.2679491863)
+
+    Normal (-0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.5000000185, 1.1339746269, 0.2679491863)
+
+    Normal (-0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 108 has 4 vertices
+
+ UFFacet normal (-0.6947465748, -0.1861568159, -0.6947465989) d_coeff 1.2532170011
+
+ UFFacet IS convex
+
+  Vertex 0: (0.6339745963, 1.9999999758, 0.6339745963)
+
+    Normal (-0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 1.9999999758, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.1339746269, 1.5000000185, 0.2679491863)
+
+    Normal (-0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (0.4999999940, 1.1339746269, 0.9999999879)
+
+    Normal (-0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 109 has 3 vertices
+
+ UFFacet normal (-0.0691842112, -0.2581988867, -0.9636113739) d_coeff 0.6547661877
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.5000000185, 1.1339746269, 0.2679491863)
+
+    Normal (-0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 110 has 3 vertices
+
+ UFFacet normal (-0.1890147143, -0.1890147143, -0.9636113717) d_coeff 0.7560588479
+
+ UFFacet IS convex
+
+  Vertex 0: (1.5000000185, 1.1339746269, 0.2679491863)
+
+    Normal (-0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.1339746269, 1.5000000185, 0.2679491863)
+
+    Normal (-0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 111 has 3 vertices
+
+ UFFacet normal (-0.2581988867, -0.0691842112, -0.9636113739) d_coeff 0.6547661877
+
+ UFFacet IS convex
+
+  Vertex 0: (1.1339746269, 1.5000000185, 0.2679491863)
+
+    Normal (-0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (0.9999999879, 1.9999999758, 0.2679491863)
+
+    Normal (-0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 112 has 4 vertices
+
+ UFFacet normal (0.0000000000, 0.0000000000, -1.0000000000) d_coeff 0.0000000000
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 113 has 4 vertices
+
+ UFFacet normal (1.0000000000, 0.0000000000, 0.0000000000) d_coeff -10.0000003191
+
+ UFFacet IS convex
+
+  Vertex 0: (10.0000003191, 1.9999999758, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 27.9999999549, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 27.9999999549, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (10.0000003191, 1.9999999758, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 114 has 3 vertices
+
+ UFFacet normal (0.6947460915, 0.1861568772, -0.6947470658) d_coeff -11.2789499187
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 27.9999999549, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 27.9999999549, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 115 has 4 vertices
+
+ UFFacet normal (0.1861568727, 0.6947460171, -0.6947471414) d_coeff -21.4507320295
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 29.5000001201, 0.9999999879)
+
+    Normal (0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 28.8660249372, 0.2679491863)
+
+    Normal (0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 116 has 4 vertices
+
+ UFFacet normal (0.6845501500, 0.6845505516, -0.2505626358) d_coeff -26.0129171323
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 29.5000001201, 0.9999999879)
+
+    Normal (0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.9999998179, 29.7320499195, 1.9999999758)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.3660251362, 29.3660257745, 1.9999999758)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 117 has 4 vertices
+
+ UFFacet normal (0.2505631658, 0.9351129392, -0.2505631474) d_coeff -29.5567680855
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 30.0000009574, 1.9999999758)
+
+    Normal (0.0000000000, 1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 29.7320499195, 1.9999999758)
+
+    Normal (0.5000000000, 0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 29.5000001201, 0.9999999879)
+
+    Normal (0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 118 has 3 vertices
+
+ UFFacet normal (0.6845508683, 0.6845497711, -0.2505628055) d_coeff -26.0129012580
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 29.3660257745, 1.9999999758)
+
+    Normal (0.7071067691, 0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 28.9999992829, 1.9999999758)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 119 has 4 vertices
+
+ UFFacet normal (0.9351130376, 0.2505630557, -0.2505628903) d_coeff -15.8657704722
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 28.9999992829, 1.9999999758)
+
+    Normal (0.8660253882, 0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 27.9999999549, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.7320510412, 27.9999999549, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 120 has 3 vertices
+
+ UFFacet normal (0.1861562789, 0.6947478419, -0.6947454757) d_coeff -21.4507822634
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 29.3660257745, 0.6339745963)
+
+    Normal (0.0000000000, 0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 29.7320499195, 0.9999999879)
+
+    Normal (0.0000000000, 0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 29.5000001201, 0.9999999879)
+
+    Normal (0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 121 has 4 vertices
+
+ UFFacet normal (0.5085897445, 0.5085900429, -0.6947464574) d_coeff -18.8178295066
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 29.5000001201, 0.9999999879)
+
+    Normal (0.4330126941, 0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 28.5000007922, 0.2679491863)
+
+    Normal (0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.5000001539, 28.8660249372, 0.2679491863)
+
+    Normal (0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 122 has 4 vertices
+
+ UFFacet normal (0.6947468577, 0.1861563841, -0.6947464317) d_coeff -11.2789436909
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 27.9999999549, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 27.9999999549, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 28.5000007922, 0.2679491863)
+
+    Normal (0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.5000000685, 28.8660249372, 0.9999999879)
+
+    Normal (0.7500000000, 0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 123 has 3 vertices
+
+ UFFacet normal (0.0691840624, 0.2581990483, -0.9636113412) d_coeff -7.7830458339
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 28.9999992829, 0.2679491863)
+
+    Normal (0.0000000000, 0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 28.8660249372, 0.2679491863)
+
+    Normal (0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 124 has 3 vertices
+
+ UFFacet normal (0.1890143454, 0.1890149513, -0.9636113975) d_coeff -6.8045333716
+
+ UFFacet IS convex
+
+  Vertex 0: (8.5000001539, 28.8660249372, 0.2679491863)
+
+    Normal (0.2500000000, 0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 28.5000007922, 0.2679491863)
+
+    Normal (0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 125 has 3 vertices
+
+ UFFacet normal (0.2581989091, 0.0691839439, -0.9636113870) d_coeff -4.0027416752
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 28.5000007922, 0.2679491863)
+
+    Normal (0.4330126941, 0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 27.9999999549, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 126 has 4 vertices
+
+ UFFacet normal (0.2588190602, -0.9659258222, 0.0000000000) d_coeff -2.0705524566
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 0.2679491863, 38.0000002741)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.0000000000, 38.0000002741)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 0.2679491863, 1.9999999758)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 127 has 4 vertices
+
+ UFFacet normal (0.7071062854, -0.7071072770, 0.0000000000) d_coeff -6.1744871921
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 0.9999999879, 38.0000002741)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 0.6339745963, 38.0000002741)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 0.6339745963, 1.9999999758)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 0.9999999879, 1.9999999758)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 128 has 4 vertices
+
+ UFFacet normal (0.9659258049, -0.2588191251, 0.0000000000) d_coeff -9.1416201129
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 0.9999999879, 1.9999999758)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 1.9999999758, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 1.9999999758, 38.0000002741)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 0.9999999879, 38.0000002741)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 129 has 4 vertices
+
+ UFFacet normal (0.7071068697, -0.7071066926, 0.0000000000) d_coeff -6.1744930359
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 0.2679491863, 1.9999999758)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 0.6339745963, 1.9999999758)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 0.6339745963, 38.0000002741)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 0.2679491863, 38.0000002741)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 130 has 4 vertices
+
+ UFFacet normal (0.9659258049, 0.0000000000, -0.2588191251) d_coeff -9.1416201129
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 27.9999999549, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (10.0000003191, 27.9999999549, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (10.0000003191, 1.9999999758, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 1.9999999758, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 131 has 4 vertices
+
+ UFFacet normal (0.7071068697, 0.0000000000, -0.7071066926) d_coeff -6.1744930359
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 27.9999999549, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 27.9999999549, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 1.9999999758, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 1.9999999758, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 132 has 4 vertices
+
+ UFFacet normal (0.2588190602, 0.0000000000, -0.9659258222) d_coeff -2.0705524566
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 1.9999999758, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 27.9999999549, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.9999998179, 27.9999999549, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 133 has 4 vertices
+
+ UFFacet normal (0.7071062854, 0.0000000000, -0.7071072770) d_coeff -6.1744871921
+
+ UFFacet IS convex
+
+  Vertex 0: (9.7320510412, 1.9999999758, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.3660251362, 1.9999999758, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.3660251362, 27.9999999549, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 27.9999999549, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 134 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.7071067635, -0.7071067989) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 135 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.2588190425, -0.9659258270) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (1.9999999758, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (1.9999999758, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (7.9999999033, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 136 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.7071067989, -0.7071067635) d_coeff 0.8965754722
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 137 has 4 vertices
+
+ UFFacet normal (0.0000000000, -0.9659258270, -0.2588190425) d_coeff 0.5176380787
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (1.9999999758, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (1.9999999758, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 138 has 3 vertices
+
+ UFFacet normal (0.1861567492, -0.6947465784, -0.6947466132) d_coeff -0.6083505904
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 139 has 4 vertices
+
+ UFFacet normal (0.6947467154, -0.1861564850, -0.6947465470) d_coeff -5.6942505745
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 1.1339746269, 0.9999999879)
+
+    Normal (0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 1.5000000185, 0.2679491863)
+
+    Normal (0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.9999998179, 1.9999999758, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.3660251362, 1.9999999758, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 140 has 4 vertices
+
+ UFFacet normal (0.6845501739, -0.6845505002, -0.2505627109) d_coeff -5.4764013250
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.5000000685, 1.1339746269, 0.9999999879)
+
+    Normal (0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.7320510412, 0.9999999879, 1.9999999758)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.3660251362, 0.6339745963, 1.9999999758)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 141 has 4 vertices
+
+ UFFacet normal (0.9351130635, -0.2505629248, -0.2505629248) d_coeff -8.3488792461
+
+ UFFacet IS convex
+
+  Vertex 0: (10.0000003191, 1.9999999758, 1.9999999758)
+
+    Normal (1.0000000000, 0.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 0.9999999879, 1.9999999758)
+
+    Normal (0.8660253882, -0.5000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 1.1339746269, 0.9999999879)
+
+    Normal (0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (9.7320510412, 1.9999999758, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 142 has 3 vertices
+
+ UFFacet normal (0.6845504355, -0.6845502641, -0.2505626413) d_coeff -5.4764038319
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 0.6339745963, 1.9999999758)
+
+    Normal (0.7071067691, -0.7071067691, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.9999998179, 0.2679491863, 1.9999999758)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 143 has 4 vertices
+
+ UFFacet normal (0.2505627962, -0.9351131373, -0.2505627779) d_coeff -1.5033767666
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 0.2679491863, 1.9999999758)
+
+    Normal (0.5000000000, -0.8660253882, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.0000000000, 1.9999999758)
+
+    Normal (0.0000000000, -1.0000000000, 0.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 0.2679491863, 0.9999999879)
+
+    Normal (0.0000000000, -0.8660253882, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 144 has 3 vertices
+
+ UFFacet normal (0.6947461017, -0.1861568011, -0.6947470760) d_coeff -5.6942438567
+
+ UFFacet IS convex
+
+  Vertex 0: (9.3660251362, 1.9999999758, 0.6339745963)
+
+    Normal (0.7071067691, 0.0000000000, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (9.7320510412, 1.9999999758, 0.9999999879)
+
+    Normal (0.8660253882, 0.0000000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (9.5000000685, 1.1339746269, 0.9999999879)
+
+    Normal (0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 145 has 4 vertices
+
+ UFFacet normal (0.5085898362, -0.5085897802, -0.6947465826) d_coeff -3.5601289979
+
+ UFFacet IS convex
+
+  Vertex 0: (9.5000000685, 1.1339746269, 0.9999999879)
+
+    Normal (0.7500000000, -0.4330126941, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.5000001539, 1.1339746269, 0.2679491863)
+
+    Normal (0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 1.5000000185, 0.2679491863)
+
+    Normal (0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 146 has 4 vertices
+
+ UFFacet normal (0.1861567433, -0.6947466042, -0.6947465890) d_coeff -0.6083505421
+
+ UFFacet IS convex
+
+  Vertex 0: (7.9999999033, 0.6339745963, 0.6339745963)
+
+    Normal (0.0000000000, -0.7071067691, -0.7071067691)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (8.5000001539, 1.1339746269, 0.2679491863)
+
+    Normal (0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 3: (8.8660254723, 0.4999999940, 0.9999999879)
+
+    Normal (0.4330126941, -0.7500000000, -0.5000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 147 has 3 vertices
+
+ UFFacet normal (0.2581989069, -0.0691840651, -0.9636113789) d_coeff -1.9272231020
+
+ UFFacet IS convex
+
+  Vertex 0: (8.9999998179, 1.9999999758, 0.2679491863)
+
+    Normal (0.5000000000, 0.0000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.8660254723, 1.5000000185, 0.2679491863)
+
+    Normal (0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 148 has 3 vertices
+
+ UFFacet normal (0.1890147002, -0.1890146624, -0.9636113846) d_coeff -1.1340882634
+
+ UFFacet IS convex
+
+  Vertex 0: (8.8660254723, 1.5000000185, 0.2679491863)
+
+    Normal (0.4330126941, -0.2500000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (8.5000001539, 1.1339746269, 0.2679491863)
+
+    Normal (0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+UFFacet 149 has 3 vertices
+
+ UFFacet normal (0.0691841708, -0.2581988874, -0.9636113766) d_coeff -0.0370755909
+
+ UFFacet IS convex
+
+  Vertex 0: (8.5000001539, 1.1339746269, 0.2679491863)
+
+    Normal (0.2500000000, -0.4330126941, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 1: (7.9999999033, 0.9999999879, 0.2679491863)
+
+    Normal (0.0000000000, -0.5000000000, -0.8660253882)
+
+    Vertex convexity = IS CONVEX
+
+  Vertex 2: (7.9999999033, 1.9999999758, 0.0000000000)
+
+    Normal (0.0000000000, 0.0000000000, -1.0000000000)
+
+    Vertex convexity = IS CONVEX
+
+End of Log File

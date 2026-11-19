@@ -1,0 +1,49 @@
+#
+#  The cgmdef.txt file specifies the defaults used to create CGM files
+#  for File->Export CGM and File->Export PDF and NX Open functionality.
+#
+# A # starting a line signifies a comment.  The following keywords are 
+# supported:
+# EXPORT_VDC_TYPE can be set to either real or integer
+# EXPORT_VDC_TYPE   real 
+# 
+# Export Font Mapping.  
+#
+# Individual fonts can be mapped specifically by specifying the
+# EXPORT_TEXT_FONT keyword.  The first font will be the NX font, 
+# and the second font the corresponding font that will be used in 
+# the CGM file.  The CGM file can use a standard TrueType font, or
+# you can specify a traditional CGM font like Hershey:Simplex_Roman.
+# If a font contains an embedded space, replace the space with a #, since
+# the space is used as a delimiter.  So to specify Times New Roman use:
+#
+# EXPORT_TEXT_FONT blockfont Times#New#Roman
+#
+# The # will be replaced prior to the font being used in the CGM file.
+# Fontnames should be specified in the proper case, NX fonts should be
+# all lower case and TrueType fonts should be mixed case.  Specifying NX
+# fonts as all upper case will work to preserve legacy behavior, but is not
+# recommended.  It is recommended that you use the case sensitive names for
+# all fonts, which means lower case for NX fonts.
+#
+# A special font name of "ALL_UG_FONTS" can be used to map all NX fonts
+# to a single CGM font, e.g:
+#
+# EXPORT_TEXT_FONT ALL_UG_FONTS            HERSHEY:SIMPLEX_ROMAN
+#
+# EXPORT_TEXT_FONT mdcfont                 HERSHEY:SIMPLEX_ROMAN
+# EXPORT_TEXT_FONT blackfont               HERSHEY:DUPLEX_ROMAN
+# EXPORT_TEXT_FONT script                  HERSHEY:SIMPLEX_SCRIPT
+# EXPORT_TEXT_FONT blockfont               Times#New#Roman
+# EXPORT_TEXT_FONT Arial#Unicode#MS        Courier#New
+# EXPORT_TEXT_FONT Arial                   Courier#New
+# EXPORT_TEXT_FONT leroy                   Arial
+#
+# The following can be used to map specific fonts in a CGM file back to
+# an NX font when a CGM file is imported.  If the CGM file was exported
+# with NX fonts, then no mapping is required.  Note that a # will be replaced
+# with a space.
+#
+# IMPORT_TEXT_FONT HERSHEY:SIMPLEX_ROMAN   blockfont 
+# IMPORT_TEXT_FONT HERSHEY:SIMPLEX_SCRIPT  Times#New#Roman 
+# IMPORT_TEXT_FONT HERSHEY:DUPLEX_ROMAN    blockfont

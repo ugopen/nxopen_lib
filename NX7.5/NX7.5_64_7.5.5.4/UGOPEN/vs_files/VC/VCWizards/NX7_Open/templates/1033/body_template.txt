@@ -1,0 +1,31 @@
+[!if OPENPP_CALLS]
+{
+    /* Initialize the API environment */
+    UgSession session( true );
+
+    try
+    {
+        /* TODO: Add your application code here */
+    }
+
+    /* Handle errors */
+    catch ( const UgException &exception )
+    {
+        processException( exception );
+    }
+}
+[!else]
+{
+    /* Initialize the API environment */
+    if( UF_CALL(UF_initialize()) ) 
+    {
+        /* Failed to initialize */
+        return;
+    }
+    
+    /* TODO: Add your application code here */
+
+    /* Terminate the API environment */
+    UF_CALL(UF_terminate());
+}
+[!endif]

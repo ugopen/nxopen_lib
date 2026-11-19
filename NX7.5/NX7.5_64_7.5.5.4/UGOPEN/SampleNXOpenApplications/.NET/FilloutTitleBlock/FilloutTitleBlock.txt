@@ -1,0 +1,38 @@
+-------------------------------------------------------------------------------
+
+
+          Copyright 2010 Siemens Product Lifecycle Management Software Inc.
+                            All Rights Reserved.
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+                         Fillout Title Block Example
+-------------------------------------------------------------------------------
+
+
+This example shows one possible use for journaling for use in Drafting.
+
+In this example, we will take a part, and make a drawing using the template for a C drawing.
+At this point, we have a drawing, with an empty title block.  We now run the journal file 
+fill_in_title_block_templ.vb.  This will query us for certain fields to put into the drawing.
+Fill in the values, and hit OK.  And the title block will be filled in.  This only works for 
+a C drawing made using the template.
+
+HOW TO RUN THE EXAMPLE:
+1. Open a part.  An example part has been provided, but any part will do.
+2. Select the Template for a C drawing, from the Drawing Templates tab.  Note: If the Drawing Templates tab has not already been set up, it needs to be, see below.
+3. After UG is done processing, you will be in Drafting viewing a C drawing sheet.
+4. Run the fill_in_title_block_templ.vb journal file.  Use Tools - Journal - Play and use Browse to find the vb file.  Hit Run on the dialog.
+5. When prompted, fill in the dialog with the information to populate the title block.  Hit OK when you are satisfied with the information.  
+6. The title block will be updated with the information you entered in the dialog.
+
+TEMPLATE SETUP
+A. In UG, goto Preferences-Palettes
+B. On the Palette dialog choose "Open Palette File"
+C. Browse to your "%UGII_BASE_DIR%\ugii\html_files" folder. 
+  
+Note: the UGII_BASE_DIR is expanded in the SYSLOG if the system does not recognize the environment variable.
+D. Choose the "english_drawing_templates.pax" file
+E. The palette should now be on your resource bar.
+F. Go back to step 2 above and select the template for a C drawing.

@@ -1,0 +1,151 @@
+<!--  -->
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>PartCallbacks</title>
+</head>
+
+<body>
+
+<h3>PartCallbacks</h3>
+
+<p><b>Description:</b> This example demonstrates how to register the part callbacks and how the part callbacks are executed.</p>
+
+<p><b>Files Required for Registering Part Related Callbacks</b></p>
+This table represents the various demos for registering part callback for every available reason via the different languages.<br>
+<table width="800" border="2"> 
+
+<tr>
+<td width="100">Language</td> 
+<td width="210">Files</td> 
+<td width="500">Note</td> 
+</tr> 
+
+<tr>
+<td width="100">C++</td> 
+<td width="210">cpp_part_callbacks.cpp & cpp_part_callbacks.h</td> 
+<td width="500">Both the files must be compiled together</td> 
+</tr>
+
+<tr>
+<td width="100">C#</td> 
+<td width="210">cs_part_callbacks.cs</td> 
+<td width="500">You must add a reference to the following .Net component when compiling in Visual Studio: System.Windows.Forms</td> 
+</tr>
+
+<tr>
+<td width="100">C</td> 
+<td width="210">ufun_part_callbacks.c</td> 
+<td width="500"></td> 
+</tr>
+
+<tr>
+<td width="100">JAVA</td> 
+<td width="210">java_part_callbacks.java</td> 
+<td width="500"></td> 
+</tr>
+
+<tr>
+<td width="100">VB</td> 
+<td width="210">vb_part_callbacks.vb</td> 
+<td width="500"></td> 
+</tr>
+
+</table>
+
+<p><b>How to Compile the Files:</b> The detailed description on how to compile the files in various languages is available in<A 
+href="../PartCallbacks_CompileLink_README.html"> PartCallbacks_CompileLink_README.html</A></p>
+
+
+</p><b>How to Run the Example</b></p>
+	<p>&nbsp &nbsp [A] <u>How to Register the Part Callbacks</u></p>
+		<ol>Once you have successfully finished compiling the files, you can follow one of the below methods to register the part callbacks:<br>
+			<br><b>Method 1:</b>
+			<ol>	
+				<li> Start NX.</li>
+				<li> Go to File -> Execute ->NX Open.</li>
+				<li> You will lead to window called "Execute User Function".</li> 
+				<li> Navigate to the location of the .dll/.so file. Hit ok.</li>
+			</ol>
+
+			<br><b>Method 2:</b>
+			<ol>
+				<li> The output library needs to be placed in a folder called startup (for example c:\user_dir\startup).</li>
+				<li> Also the UGII_USER_DIR environment variable needs to point to the startup directory's parent folder
+				(for example: UGII_USER_DIR=c:\user_dir).</li>
+				<li> Once you have the startup directory and user dir environment variable set up, start NX.</li>
+				<li>The part callbacks will be registered at startup. Now anytime you create new, open, save, save as, close, modify, 
+				 rename, or change the workpart your part callbacks will be executed.</li>      
+			</ol>
+		</ol>
+
+	<p>&nbsp &nbsp [B] <u>How to Execute the Part Callbacks</u></p>
+		<ol>Once you have successfully registered the part callbacks, you can execute the callbacks using one of the below methods:<br>
+			<br><b>Method 1:</b>
+			<p>Using sample program (execute_all_part_callbacks.c) which works to invoke every possible part related callback.
+				<ol>
+					<li> Create New Part</li>
+					<li> Save Part As</li>
+					<li> Modify Part</li>
+					<li> Save Part</li>
+					<li> Close Part</li>
+					<li> Change Workpart (note the workpart changes automatically whenever parts are opened or closed)</li>
+					<li> Open Part</li>
+					<li> Rename Part (note rename part happens automatically whenever the part is 'saved as')</li>
+				</ol>
+				<p>It is used to demo callbacks already registered by one of the following:	
+					<ol>
+						<li> cpp_part_callbacks.cpp & cpp_part_callbacks.h</li>
+						<li> cs_part_callbacks.cs</li>
+						<li> java_part_callbacks.java</li>
+						<li> ufun_part_callbacks.c</li>
+						<li> vb_part_callbacks.vb</li>
+						<li> or any custom program you write with part related callbacks</li>
+					</ol>
+				</p>
+				<p>	The path and filenames used in this demo are hard-coded. Please validate that the filenames used are valid on your machine
+					or change them as needed before compiling this program.<br>
+
+					The default part names are:
+					<ol>
+						<li> c:\temp\part1_temp.prt</li>
+						<li> c:\temp\demo_part1.prt</li>
+					</ol>
+				</p>
+
+				<p>
+					If you already have part files with those names at those locations on your machine the program will produce errors at runtime.
+					You must delete the parts created at those locations between each time you run this demo program.
+				</p>
+
+				<p>
+					To demo all of the available part callbacks at runtime - compile and link execute_all_part_callbacks.c. 
+					Then start NX and go to File->Execute->NX Open and select your compiled execute_all_callbacks program to run the demo.
+				</p>
+			</p>
+
+			<br><b>Method 2:</b>
+			<ol>
+				<li> This is an interactive method. Once you have registered the Part Callbacks, you can invoke every possible part callback manually.</li>
+				<li>All the part callbacks can be verified manually by performing the below operations.
+				<ol>
+					<li> Create New Part</li>
+					<li> Save Part As</li>
+					<li> Modify Part</li>
+					<li> Save Part</li>
+					<li> Close Part</li>
+					<li> Change Workpart (note the workpart changes automatically whenever parts are opened or closed)</li>
+					<li> Open Part</li>
+					<li> Rename Part (note rename part happens automatically whenever the part is 'saved as')</li>
+				</ol>
+			</ol>
+		</ol>
+
+<p><b></b></p>
+
+
+</body>
+
+</html>

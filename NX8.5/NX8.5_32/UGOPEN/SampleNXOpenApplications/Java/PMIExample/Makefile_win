@@ -1,0 +1,18 @@
+NXOPENJARDIR = $(UGII_ROOT_DIR)
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+
+compile: PMIExample.jar
+
+PMIExample.class:
+	javac -classpath $(CLASSPATH) PMIExample.java
+	
+PMIExample.jar: PMIExample.class
+	echo Main-Class: PMIExample> manifest.txt
+	jar cmf manifest.txt PMIExample.jar PMIExample.class
+
+run: PMIExample.jar
+    	java -classpath $(CLASSPATH)  PMIExample
+
+clean_all: clean
+	- del PMIExample.class
+	- del PMIExample.jar

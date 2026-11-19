@@ -1,0 +1,13 @@
+Log Entry : \r\n--Log entry goes here--
+New part : 
+Successful:Modl.CreateBlock1
+Successful:Curve.CreateLine
+Successful:Modl.AskFeatFaces
+Successful:Modl.AskListCount
+Successful:Curve.CreateProjCurves
+Successful:Curve.AskProjCurves
+Successful:Curve.AskProjCurveParents
+Successful:Curve.AskProjCurveParents
+Successful:Curve.AskProjCurveParents
+Successful:Curve.AskProjCurveParents
+End of Log File

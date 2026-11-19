@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Scenario SYSTEM "scenarios.dtd">
+<!-- See Programmers's Guide / Scenario Descriptors -->
+<Scenario name="Relations Scenario" domainPath="Examples" trigram="REL">
+    <!-- See Programmers's Guide / Input Definitions -->
+    <InputDefinition name="Response over Excitation Analysis" defaultSelectionWidgetStyle="list_with_checkbox">
+        <!-- See Programmers's Guide / Slots / Data Slots -->
+        <Slot name="Excitation Functions">
+            <!-- See Programmers's Guide / Slots / Data Slots / Variables -->
+            <IndependentVariable name="Excitation Frequency">
+                <AllowedDataTypes>
+                    <DataType type="real"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="frequency"/>
+                </AllowedDomains>
+            </IndependentVariable>
+            <SelectionVariable name="Excitation DOF">
+                <AllowedDataTypes>
+                    <DataType type="dof"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="dof_name"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="Excitation Node">
+                <AllowedDataTypes>
+                    <DataType type="integer"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="node"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="Excitation Subcase">
+                <AllowedDomains>
+                    <VariableDomain type="subcase_name"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <DependentVariable name="Excitation Type">
+                <AllowedDataTypes>
+                    <DataType type="real"/>
+                    <DataType type="complex"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="displacement"/>
+                    <VariableDomain type="rotation"/>
+                    <VariableDomain type="velocity"/>
+                    <VariableDomain type="angular_velocity"/>
+                    <VariableDomain type="acceleration"/>
+                    <VariableDomain type="angular_acceleration"/>
+                    <VariableDomain type="force"/>
+                    <VariableDomain type="moment"/>
+                </AllowedDomains>
+            </DependentVariable>
+        </Slot>
+        <Slot name="Frequency Response Functions">
+            <IndependentVariable name="FRF Frequency">
+                <AllowedDataTypes>
+                    <DataType type="real"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="frequency"/>
+                </AllowedDomains>
+            </IndependentVariable>
+            <SelectionVariable name="FRF Excitation Node">
+                <AllowedDataTypes>
+                    <DataType type="integer"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="node" subTypes="excitation"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="FRF Excitation DOF">
+                <AllowedDataTypes>
+                    <DataType type="dof"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="dof_name" subTypes="dof_excitation"/>
+                </AllowedDomains>
+            </SelectionVariable>
+           <SelectionVariable name="FRF Response Node">
+                <AllowedDataTypes>
+                    <DataType type="integer"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="node" subTypes="response"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="FRF Response DOF">
+                <AllowedDataTypes>
+                    <DataType type="dof"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="dof_name" subTypes="dof_response"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <DependentVariable name="FRF Type">
+                <AllowedDataTypes>
+                    <DataType type="real" />
+                    <DataType type="complex"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <RationalDomain>
+                        <Any/>
+                        <Over/>
+                        <Any/>
+                    </RationalDomain>
+                </AllowedDomains>
+            </DependentVariable>
+        </Slot>
+        <Slot name="Response Functions">
+            <IndependentVariable name="Response Frequency">
+                <AllowedDataTypes>
+                    <DataType type="real"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="frequency"/>
+                </AllowedDomains>
+            </IndependentVariable>
+            <SelectionVariable name="Response DOF">
+                <AllowedDataTypes>
+                    <DataType type="dof"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="dof_name"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="Response Node">
+                <AllowedDataTypes>
+                    <DataType type="integer"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="node"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <SelectionVariable name="Response Subcase">
+                <AllowedDomains>
+                    <VariableDomain type="subcase_name"/>
+                </AllowedDomains>
+            </SelectionVariable>
+            <DependentVariable name="Response Type">
+                <AllowedDataTypes>
+                    <DataType type="real" />
+                    <DataType type="complex"/>
+                </AllowedDataTypes>
+                <AllowedDomains>
+                    <VariableDomain type="displacement"/>
+                    <VariableDomain type="rotation"/>
+                    <VariableDomain type="velocity"/>
+                    <VariableDomain type="angular_velocity"/>
+                    <VariableDomain type="acceleration"/>
+                    <VariableDomain type="angular_acceleration"/>
+                    <VariableDomain type="force"/>
+                    <VariableDomain type="moment"/>
+                    <VariableDomain type="pressure"/>
+                </AllowedDomains>
+            </DependentVariable> 
+        </Slot>
+        <!-- See Programmers's Guide / Relations / AggregateSetUnion and Programmers's Guide / Callbacks / Data Aggregation -->
+        <AggregatedSelectionVariable name="Node Excitation" callback="RelationExcitationFRFNodeDofAggregation">
+            <VariableRef name="Excitation Node"/>
+            <VariableRef name="FRF Excitation Node"/>
+            <VariableRef name="Excitation DOF"/>
+            <VariableRef name="FRF Excitation DOF"/>
+        </AggregatedSelectionVariable>
+        <AggregatedSelectionVariable name="Node Response" callback="RelationResponseFRFNodeDofAggregation">
+            <VariableRef name="Response Node"/>
+            <VariableRef name="FRF Response Node"/>
+            <VariableRef name="Response DOF"/>
+            <VariableRef name="FRF Response DOF"/>
+        </AggregatedSelectionVariable>
+        <AggregatedSelectionVariable name="Subcase" callback="RelationExcitationResponseSubcaseAggregation"> 
+            <VariableRef name="Excitation Subcase"/>
+            <VariableRef name="Response Subcase"/>
+        </AggregatedSelectionVariable>     
+        <!-- See Programmers's Guide / Visualizations / Stacked Visualization -->
+        <StackedVisualization name="Excitations / FRFs / Contributions and Responses" 
+                              numPlots="3">
+            <ComplexViewOptions>
+                <ComplexViewOption value="magnitude"/>
+            </ComplexViewOptions>
+        </StackedVisualization>
+        <StackDataAllocation>
+            <AllocateStackResultGroup name="Excitation Functions">
+                <VisualizationRef name="Excitations / FRFs / Contributions and Responses"/>
+            </AllocateStackResultGroup>
+            <AllocateStackResultGroup name="Frequency Response Functions">
+                <VisualizationRef name="Excitations / FRFs / Contributions and Responses"/>
+            </AllocateStackResultGroup>
+            <AllocateStackResultGroup name="Response Functions">
+                <VisualizationRef name="Excitations / FRFs / Contributions and Responses"/>
+            </AllocateStackResultGroup>
+        </StackDataAllocation>
+    </InputDefinition>
+</Scenario>

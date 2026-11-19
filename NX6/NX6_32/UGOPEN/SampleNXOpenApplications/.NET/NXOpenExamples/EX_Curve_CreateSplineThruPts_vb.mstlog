@@ -1,0 +1,44 @@
+Log Entry : \r\n--Log entry goes here--
+New Part File Created :-EX_Curve_CreateSplineThruPts
+CreateSplineThruPts Data Creation:-
+Successful
+Create Spine Through Points= 
+Successful
+Query Spine Through Points= 
+Successful
+SplineThruPts Data
+degree= 3
+periodicity= 0
+num_points= 5
+parameters= {0,0.17,0.32,0.45,1.29}
+point_data= {------------point_data[0]
+point {1.1,0.532,2}
+slope_type 1
+slope {0.615412418498041,2.52699346411887,2.01935326915292}
+crvatr_type -1
+crvatr {0,0,0}
+------------point_data[1]
+point {1.524,0.6789,2.3}
+slope_type 0
+slope {2.85495098039216,1.18811764705882,5.41578921568627}
+crvatr_type 1
+crvatr {-5.29895751122518,-1.43407046891102,3.10796962411598}
+------------point_data[2]
+point {2,0.9,3.5956}
+slope_type -1
+slope {0,0,0}
+crvatr_type -1
+crvatr {0,0,0}
+------------point_data[3]
+point {2.3456,1.3456,3.789}
+slope_type 1
+slope {0.980083987579545,1.96016797515909,0.980083987579545}
+crvatr_type 2
+crvatr {1,-1,1}
+------------point_data[4]
+point {3.1,2.4567,3.3214}
+slope_type 2
+slope {1,-2,1}
+crvatr_type 2
+crvatr {-1,-1,-1}
+End of Log File

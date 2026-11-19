@@ -1,0 +1,65 @@
+$$ ===================================================================
+$$
+$$      Copyright (c) 1996,1997 Electronic Data Systems Corporation
+$$                   Unpublished - All rights reserved
+$$
+$$ ===================================================================
+
+$$*****************************************************************************
+$$                                                                            
+$$ DESCRIPTION -                                                              
+$$   This program shows how to use the following UG/Open GRIP command(s):     
+$$                                                                            
+$$         ufargs                                             
+$$                                                                            
+$$ PROGRAM DESCRIPTION -                                                      
+$$   The following example works in conjunction with the ufd_call_grip.c   
+$$   example file. Compile and link this GRIP source file with GRADE.    
+$$   You then compile and link ufd_call_grip.c as an internal UG/Open API.    
+$$   Open a part with a point or a line, then execute the internal
+$$   UG/Open API program.
+$$
+$$              
+$$                                                                            
+$$*****************************************************************************
+
+$$
+$$ UG/Open API calling GRIP sample program
+$$
+$$ Perform single selection with the specified mask and cue.
+$$ Return the selected object, the pick point in absolute, the view
+$$ name picked in, and the user response.
+$$
+$$ Input from UG/Open API
+$$   masks  : selection mask
+$$            masks(1)     = count of object types specified
+$$            masks(2..11) = object type codes
+$$   selmsg : Cue for single selection
+$$
+$$ Output to UG/Open API
+$$   object : selected object from single selection
+$$   pickpt : 3d pick point in Absolute space
+$$   pickvw : view pick occurred in
+$$   usresp : user response to the single selection dialog
+$$
+$$ Declarations.
+    gripsw / declrv
+    number / masks(11), pickpt(3), usresp
+    entity / object
+    string / selmsg(132), pickvw(132)
+$$ Register and initialize the argument list with UG/Open API.
+    ufargs / masks, selmsg, object, pickpt, pickvw, usresp
+$$ Set the selection mask as requested by UG/Open API.
+    mask / all
+    if   / masks(1) > 0 AND masks(1) < 10,$
+           mask / masks(1+1..masks(1)+1)
+$$ Perform single selection.
+    ident  / selmsg, object, cursor, pickpt(1), pickpt(2),$
+             pickpt(3), usresp
+    jump   / halt:, halt:, usresp
+$$ Find the view that the selection was made in.
+    pickvw = &vwsel
+$$ Map the pick point from the WCS to the Absolute coordinate system.
+    pickpt = map  / pickpt, from, &wcs, to, &abs
+$$ Return control to the UG/Open API program.
+    halt: halt

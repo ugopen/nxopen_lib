@@ -1,0 +1,23 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: InteropNXOpenWithUFWrap.jar
+
+InteropNXOpenWithUFWrap.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) InteropNXOpenWithUFWrap.java
+	
+InteropNXOpenWithUFWrap.jar: InteropNXOpenWithUFWrap.class
+	echo Main-Class: InteropNXOpenWithUFWrap> manifest.txt
+	jar cmf manifest.txt InteropNXOpenWithUFWrap.jar InteropNXOpenWithUFWrap.class
+
+run: InteropNXOpenWithUFWrap.jar
+    	java -classpath $(CLASSPATH)  InteropNXOpenWithUFWrap
+
+clean:
+	- del InteropNXOpenWithUFWrap.prt
+
+clean_all: clean
+	- del *.class
+	- del InteropNXOpenWithUFWrap.jar
+	 

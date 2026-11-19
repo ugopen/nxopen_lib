@@ -1,0 +1,14 @@
+Log Entry : 
+--Log entry goes here--
+Loaded: <Project Folder>\bin\Debug\EX_Modl_Create.prt OR <Current Working Dir>\EX_Modl_Create.prt
+Body is : 6360
+Face_list is : NXOpen.Tag[]
+Count is: 3
+face is : 6363
+face data is: 0,0,1
+face is : 6364
+face data is: 0,0,1
+face is : 6365
+face data is: 1,0,1
+Successful
+End of Log File

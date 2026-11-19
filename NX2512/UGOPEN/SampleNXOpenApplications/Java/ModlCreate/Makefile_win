@@ -1,0 +1,22 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: ModlCreate.jar
+
+ModlCreate.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ModlCreate.java
+	
+ModlCreate.jar: ModlCreate.class
+	echo Main-Class: ModlCreate> manifest.txt
+	jar cmf manifest.txt ModlCreate.jar ModlCreate.class
+
+run: ModlCreate.jar
+    	java -classpath $(CLASSPATH)  ModlCreate
+
+clean:
+	- del ModlCreate.prt
+
+clean_all: clean
+	- del *.class
+	- del ModlCreate.jar

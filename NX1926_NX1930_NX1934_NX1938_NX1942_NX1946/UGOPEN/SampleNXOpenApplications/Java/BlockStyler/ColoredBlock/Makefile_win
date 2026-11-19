@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: ColoredBlock.jar
+
+ColoredBlock.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ColoredBlock.java
+	
+ColoredBlock.jar: ColoredBlock.class
+	echo Main-Class: ColoredBlock> manifest.txt
+	jar cmf manifest.txt ColoredBlock.jar ColoredBlock.class
+
+run: ColoredBlock.jar
+    	java -classpath $(CLASSPATH)  ColoredBlock
+
+clean_all: clean
+	- del ColoredBlock.class
+	- del ColoredBlock.jar

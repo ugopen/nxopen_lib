@@ -1,0 +1,15 @@
+!  NX UDO customized menu file button for Associate Notes demo
+!  See ufx_udo.h for documentation and use of this file.
+!
+! 
+!
+VERSION 120
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MODIFY
+
+APPLICATION_BUTTON UG_APP_DRAFTING
+LIBRARIES ufx_udo_application.sl
+MENU_FILES assoc_notes.men
+
+END_OF_MODIFY

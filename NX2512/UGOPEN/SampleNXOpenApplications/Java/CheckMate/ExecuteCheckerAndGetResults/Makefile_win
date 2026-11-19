@@ -1,0 +1,18 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)/nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: ExecuteCheckerAndGetResults.jar
+
+ExecuteCheckerAndGetResults.class:
+    javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) ExecuteCheckerAndGetResults.java
+    
+ExecuteCheckerAndGetResults.jar: ExecuteCheckerAndGetResults.class
+    echo Main-Class: ExecuteCheckerAndGetResults> manifest.txt
+    jar cmf manifest.txt ExecuteCheckerAndGetResults.jar ExecuteCheckerAndGetResults.class
+
+clean_all:
+    - del *.class
+    - del manifest.txt
+    - del ExecuteCheckerAndGetResults.jar
+     

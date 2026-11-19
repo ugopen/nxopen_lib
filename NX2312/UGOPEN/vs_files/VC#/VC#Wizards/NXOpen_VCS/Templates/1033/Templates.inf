@@ -1,0 +1,9 @@
+readme.txt
+[!if VB_WIZARD_OPTION == "YES"]
+vbfile.vb
+[!endif]
+[!if CS_WIZARD_OPTION == "YES"]
+csfile.cs
+[!endif]
+
+

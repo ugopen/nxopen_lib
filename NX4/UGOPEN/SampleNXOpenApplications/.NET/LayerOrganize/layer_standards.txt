@@ -1,0 +1,14 @@
+# Created V. Lucas
+SOLIDS:
+    Body
+SKETCHES:
+    Sketch
+CURVES:
+    Curve
+REFGEOMS:
+    DatumAxis, DatumPlane, CoordinateSystem
+DRAFTINGOBJS:
+    UF_drafting_entity_type
+MANUFACTURING:
+    UF_machining_geom_type, UF_machining_dp_type
+	

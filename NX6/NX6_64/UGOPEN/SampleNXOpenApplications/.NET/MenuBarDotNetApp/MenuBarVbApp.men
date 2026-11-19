@@ -1,0 +1,72 @@
+!*=======================================================================
+!
+!        Copyright (c) 2007 Siemens
+!        Unpublished - All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding a VB application to NX.  
+!   This example uses the following files included in the UGOPEN kit:
+!        MenuBarVbApp.cpp
+!        MenuBarVbApp.men
+!        MenuBarDotNetAppButton.men
+!
+!   Please see the MenuScript chapter of the Consolidated Programmer's Guide
+!   for a detailed description of this example, the required MenuScript
+!   environment variables and directories, and the correct placement of
+!   the shared library and menu files.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   to allow you create your own application.
+!
+!   Additional information on MenuScript can be found in:
+!     - the NXOpen MenuScript User Guide
+!     - the NXOpen API Reference Manual (see MenuBar)
+!     - the NXOpen API Programmer's Guide
+!     - the NXOpen MenuScript Quick Reference Card
+!     - the NXOpen MenuScript Menu File Reference Card
+!
+!    This menu file must be placed in the "application" directory under a 
+!    directory listed in the file pointed to by the environment variable
+!    in UGII_CUSTOM_DIRECTORY_FILE (i.e. the menu file must not be in
+!    the "startup" directory).
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+TOP_MENU
+
+CASCADE_BUTTON SAMPLE_VB_APP_MENU
+LABEL Sample VB
+
+END_OF_TOP_MENU
+
+MENU SAMPLE_VB_APP_MENU
+
+BUTTON SAMPLE_VB_APP_BUTTON1
+LABEL Print Button ID
+ACTIONS SAMPLE_VB_APP__action1
+
+BUTTON SAMPLE_VB_APP_BUTTON2
+LABEL Test Callback Returns
+ACTIONS SAMPLE_VB_APP__action2
+
+BUTTON SAMPLE_VB_APP_BUTTON3
+LABEL Print Application ID
+ACTIONS SAMPLE_VB_APP__action3
+
+BUTTON SAMPLE_VB_APP_BUTTON4
+LABEL Print This Button Data
+ACTIONS SAMPLE_VB_APP__action4
+
+TOGGLE_BUTTON SAMPLE_VB_APP_BUTTON5
+LABEL Print Toggle Status
+ACTIONS SAMPLE_VB_APP__action5
+
+
+END_OF_MENU

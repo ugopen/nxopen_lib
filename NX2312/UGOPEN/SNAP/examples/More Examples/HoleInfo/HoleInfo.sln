@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HoleInfo", "HoleInfo.vbproj", "{DC1879BF-19B6-4547-A271-5AF40B5C6C88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Debug|x64.ActiveCfg = Debug|x64
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Debug|x64.Build.0 = Debug|x64
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Release|Any CPU.ActiveCfg = Release|x64
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Release|x64.ActiveCfg = Release|x64
+		{DC1879BF-19B6-4547-A271-5AF40B5C6C88}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

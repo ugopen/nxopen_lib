@@ -1,0 +1,19 @@
+!
+! UIStyler Sample MenuScript File
+!
+!
+!
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+BEFORE UG_HELP
+  CASCADE_BUTTON LAUNCH_CASCADE
+  LABEL Dialog Launcher
+END_OF_BEFORE
+ 
+MENU LAUNCH_CASCADE
+  BUTTON DEMO_BTN
+  LABEL Display demo dialog
+  ACTIONS ufstyler_sample.dlg 
+END_OF_MENU

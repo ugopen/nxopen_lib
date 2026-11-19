@@ -1,0 +1,123 @@
+# Sample batch parameters file 2D & 3D meshing
+
+#mesh:
+#Specify body_type (optional): SOLID, SHEET , SHEET_MS , ALL_BODY_TYPES
+body_type              ALL_BODY_TYPES
+
+
+# Element Properties:
+# Valid values of element_type: TET_10, TET_4, TRI_3, TRI_6, QUAD_4, QUAD_8
+# Default : TET_10
+element_type           QUAD_4
+
+
+# Mesh Parameters:
+# Element Size. 0.0 or (-)ive element size is auto size or not specified
+element_size           1.0
+# Attempt Free Mapped Meshing (For Tet only; Default: "ON" )
+attempt_mapped_meshing      ON
+# Attempt Multi Block Cylinders(For Tet) or Attempt Multi-Block Decomposition(For 2D)  (Default : "OFF")
+multi_block_decomposition        OFF   
+# Method to be used for 2D mesh.  Values : "Automatic" or "Paver"
+# (Default : "Automatic")
+2D_meshing_method      Automatic
+# Attempt Free Mapped Meshing (For 2D only; Default: "ON" )
+attempt_quad_mapping   ON
+#Attempt Quad only option Values are 0 => "Off-Allow Triangles", 1 => "ON-Allow 0 Triangles", 2 => "ON-Allow 1 Triangles"
+# Valid only for QUAD elements and attempt mapping attempt_quad_mapping=OFF; For 2D Only
+#
+quad_only_option      0 
+
+
+#Mesh Quality Options:
+# Values of mid_node_option are "Mixed", "Straight", "Curved"
+mid_node_option        Mixed
+#Midnode Tolerance (for only mid_node_option: Mixed)
+geometry_tolerance_toggle OFF
+geometry_tolerance_value  0.0
+# Default max jacobian for tet : 10
+# Default max_jacobian for tri or quad : 5
+max_jacobian           10
+# Additional 2D mesh parameters
+# Target Minimum Element Edge Length: "ON" or "OFF" (For 2D only; Default : "OFF")
+target_minimum_element_edge_length        OFF 
+# Target Maximum Element length ( For 2D only; Default: "OFF" )
+target_maximum_element_length_toggle  OFF
+target_maximum_element_length         1.0
+# Max Skew ( For 2D only; Default: "OFF" )
+max_skew_toggle   OFF
+max_skew          30.0
+# Attempt to Fix Failed Elements (For 2D only;Default: "OFF")
+split_poor_quads       OFF
+# Move Nodes Off Geometry (For 2D only;Default: "OFF" ; Used only if split_poor_quads is ON)
+move_nodes_off_geometry  OFF
+# Max Warp Threshold (For 2D only;Default: "OFF")
+max_warp_toggle     OFF
+maximum_quad_warp   5.0
+# Aspect Ratio (For 2D only; Default: "OFF"; Used only if Attempt to Fix Failed Elements(split_poor_quads)is ON  )
+aspect_ratio_toggle  OFF
+aspect_ratio  8.0
+# Max & Min Included Angles Tria  (For 2D only; Default: "OFF" ;Used only if move_nodes_off_geometry is ON )
+max_included_angle_tria_toggle OFF
+max_included_angle_tria        150
+min_included_angle_tria_toggle OFF
+min_included_angle_tria        30
+# Max & Min Included Angles Quad  (For 2D only; Default: "OFF"; Used only if split_poor_quads is ON )
+max_included_angle_quad_toggle OFF
+max_included_angle_quad        150
+min_included_angle_quad_toggle OFF
+min_included_angle_quad        30
+
+
+#Desired Mesh Collector if already existing in the template
+#ex: mesh_collector   ThinShell
+#mesh_collector  <NAME_OF_MESHCOLLECTOR>
+
+
+#Mesh Settings:
+#Surface Curvature Based Size Variation 
+surface_mesh_variation 50.0
+# Internal Mesh Gradation (For Tet only )
+internal_mesh_gradation            1.05
+# Internal Max Edge Lenght Value (For Tet only; Default: "OFF" )
+internal_max_edge_length_toggle    OFF
+internal_max_edge_length_value     0.0
+# Minimum Two Elements Through Thickness (For Tet only; Default: "OFF" )
+two_element_through_thickness_toggle OFF
+# Auto fix failed elements (For Tet only; Default: "OFF" )
+auto_fix_failed_elements OFF
+
+#Model Cleanup Options:
+#Small Feature Tolerance 
+small_feature_size     10.0
+# Additional 2D mesh parameters
+# CAD Curvature Abstraction: "ON" or "OFF" (For 2D Only; Default : "OFF")
+CAD_curvature_abstraction        OFF       
+# Minimum Element Length: (For 2D Only; used only if CAD_curvature_abstraction is ON)
+minimum_feature_length        5.0 
+#suppress_hole::
+# suppress_hole: toggle used for 2D mesh only
+# Values: ON or OFF (Default OFF)
+suppress_hole_ON_OFF      OFF
+
+# suppress hole diameter (used only if suppress_hole_ON_OFF  is ON)
+suppress_hole_diameter  0.0
+
+# suppress_hole_point_type (used only if suppress_hole_ON_OFF  is ON)
+# Options: NONE, POINT, MESHPOINT
+suppress_hole_point_type  MESHPOINT
+
+#merge_edge:
+# Merge_edges toggle used for 2D mesh only
+# Values: ON or OFF (Default OFF)
+merge_edge_ON_OFF      OFF
+
+# Merge edge angle tolerance in Deg (used only if merge_edge_ON_OFF  is ON)
+merge_edge_angle_tolerance  15
+
+# Match Edge Toggle and Value ( For 2D Only; Default OFF)
+match_edge_toggle      OFF
+edge_match_tolerance   0.02
+
+
+

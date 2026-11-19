@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: Preferences.jar
+
+Preferences.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) Preferences.java
+	
+Preferences.jar: Preferences.class
+	echo Main-Class: Preferences> manifest.txt
+	jar cmf manifest.txt Preferences.jar Preferences.class
+
+run: Preferences.jar
+    	java -classpath $(CLASSPATH)  Preferences
+
+clean_all: clean
+	- del Preferences.class
+	- del Preferences.jar

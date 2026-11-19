@@ -1,0 +1,223 @@
+
+/*==============================================================================
+
+             Copyright (c) 1998, 1999 Unigraphics Solutions Inc.
+                     Unpublished - All rights reserved
+================================================================================
+                    
+
+File description:
+
+    File for Implementations for Legacy UG/Open Routines
+    These routines can only be linked into Internal UG/Open
+
+==============================================================================*/
+
+#include <string.h>
+#include <stdlib.h>
+
+#include <uf_defs.h>
+#include <uf_disp.h>
+#include <uf_legacy.h>
+#include <uf.h>
+#include <uf_group.h>
+#include <uf_assem.h>
+#include <uf_obj.h>
+#include <uf_mtx.h>
+#include <uf_curve.h>
+#include <uf_modl.h>
+#include <uf_csys.h>
+#include <uf_attr.h>
+#include <uf_layer.h>
+#include <uf_ui.h>
+#include <uf_patt.h>
+#include <uf_view.h>
+
+
+static int CONVERT_char_to_cstring(char *cr3, char **string1, short cr3_len);
+
+static int CONVERT_cstring_to_char(char *string1, char *cr3, short cr3_len);
+
+static int CONVERT_char_to_cstring(char *cr3, char **string1, short cr3_len)
+{
+    char *string;
+    int err=0, n;
+
+    if (cr3 == NULL) 
+      return (-1);
+
+    n = (int )cr3_len;
+    /* Remove trailing blanks. */
+    while (n && cr3[n-1] == ' ')
+         --n;
+
+    string = (char *)malloc(sizeof(char)*cr3_len + 1);
+    strncpy(string, cr3, n);
+    string[n] = '\0';
+    *string1 = string;
+    return (err);
+
+}
+
+static int CONVERT_cstring_to_char(char *string1, char *cr3, short cr3_len)
+{
+    int err=0;
+
+    if(cr3 == NULL) 
+      return (-1);
+
+    /* Blank the destination string. */
+    memset(cr3, ' ', cr3_len);
+    if ( string1 == NULL)
+       return err;
+
+    strncpy(cr3, string1, strlen(string1));
+    return (err);
+
+}
+
+/*************** New for V17 ***************/
+extern void FTN(uf1617)(char *cp1, int *ip2, tag_t *nr3, int *ir4,
+                        double *rr5, int *ir6, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir6= uc1617 (strng, *ip2, nr3, ir4, rr5);
+    free (strng);
+
+} /* uf1617_ */
+
+/*************** New for V16 ********/
+extern void FTN(uf1615)(char *cp1, double *rr2, int *ir3, short cp1_len)
+{
+
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir3 = uc1615(strng, rr2);
+    free (strng);
+
+} /* uf1615_ */
+
+extern void FTN(uf1616)(char *cp1, int *ia2, int *ip3, double *rr4,
+                        int *ir5, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+    *ir5= uc1616 (strng, ia2, *ip3, rr4);
+    free (strng);
+
+} /* uf1616_ */
+
+extern void FTN(uf1619)(const int *ip1, const int *ip2, int *iap3, int *ir4)
+{
+     *ir4 = UF_UI_set_select_mask ( *ip1 , *ip2 , iap3 );
+}
+
+extern void FTN(uf1630)(char *cp1, int *ia2, double *rr3, 
+                        double *rr4, int *ir5, short cp1_len)
+{
+    char *strng;
+
+    CONVERT_char_to_cstring (cp1, &strng, cp1_len);
+
+    *ir5 = uc1630(strng, ia2, rr3, rr4);
+
+    free (strng);
+
+} /* uf1630_ */
+
+
+extern void FTN(uf1640)(const tag_t *np1, const int *ip2)
+{
+     UF_DISP_set_highlight( *np1, *ip2);
+}
+
+extern void FTN(uf1650)(int *ir1)
+{
+        UF_UI_ask_cursor_view(ir1);
+}
+
+extern void FTN(uf1651)(const int *ip1)
+{
+        UF_UI_set_cursor_view(*ip1);
+}
+
+extern void FTN(uf1652)(char *cp1, char *cr2, int *ir3, 
+                        short cp1_len, short cr2_len)
+{
+    char *strng1, strng2[140];
+
+    CONVERT_char_to_cstring (cp1, &strng1, cp1_len);
+    *ir3 = uc1652 (strng1, strng2);
+    CONVERT_cstring_to_char (strng2, cr2, cr2_len);
+    free (strng1);
+
+} /* uf1652_ */
+
+extern void FTN(uf1653)(char *cr1, short cr1_len)
+{
+    char strng1[140];
+
+    uc1653 (strng1);
+    CONVERT_cstring_to_char (strng1, cr1, cr1_len);
+
+} /* uf1653_ */
+
+extern void FTN(uf2700)(const int *ip1)
+{
+     UF_DISP_set_display( *ip1);
+}
+
+extern void FTN(uf2701)(const tag_t *np1)
+{
+     UF_DISP_add_item_to_display( *np1);
+}
+
+extern void FTN(uf2702)(void)
+{
+     UF_DISP_regenerate_display();
+}
+
+extern void FTN(uf5821)(int *ip1, int *ir2)
+{
+
+    UF_PATT_switch_t setting;
+
+    *ir2 = 0;
+
+    /*  CHECK FOR VALID INPUT */
+    if (*ip1 < 1 || *ip1 > 2) 
+    {
+	*ir2 = 1;
+        return;
+    }
+
+    setting = (*ip1 == 1) ? UF_PATT_on : UF_PATT_off;
+
+    if (UF_PATT_set_archiving(setting) != 0) 
+        *ir2 = 1;
+
+} /* uf5821_ */
+
+
+extern void FTN(uf5827)(int *ip1, int *ir2)
+{
+   UF_PATT_switch_t setting = (*ip1 == 1) ? UF_PATT_on : UF_PATT_off;
+
+    *ir2 = 0; /*  Initialize */
+
+    /*  Check for valid input */
+    if (*ip1 < 1 || *ip1 > 2) 
+    {
+        *ir2 = 1;
+        return;
+    }
+
+    if (UF_PATT_set_shading (setting) != 0)
+       *ir2 = 1;
+    
+
+} /* uf5827_ */

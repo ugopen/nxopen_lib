@@ -1,0 +1,58 @@
+# Sample batch parameters file 2D & 3D meshing
+
+#mesh:
+
+# 0.0 or (-)ive element size is auto size or not specified
+element_size           12.0
+# Valid values of element_type: TET_10, TET_4, TRI_3, TRI_6, QUAD_4, QUAD_8
+# Default : TET_10
+element_type           TET_10
+
+# Values of mid_node_option are "Mixed", "Straight", "Curved"
+mid_node_option        Curved
+# Default max jacobian for tet : 12.354
+# Default max_jacobian for tri or quad : 
+max_jacobian           12.345
+surface_mesh_variation 50.0
+volume_mesh_variation  50.0
+small_feature_size     10.0
+
+
+# Additional 2D mesh parameters
+#
+# Method to be used for 2D mesh.  Values : "Automatic" or "Paver"
+# (Default : "Automatic")
+2D_meshing_method      Automatic
+
+#
+# Mesh transition : "ON" or "OFF" (Default : "ON")
+mesh_transition        ON
+
+# Additional quad related params
+# 
+edge_match_tolerance   0.508
+maximum_quad_warp      10.0
+
+# Values are "ON" or "OFF"
+#
+attempt_quad_mapping   ON
+split_poor_quads       ON
+
+
+#merge_edge:
+
+# Merge_edges toggle used for 2D mesh only
+# Values: ON or OFF (Default OFF)
+merge_edge_ON_OFF      OFF
+
+# Merge edge angle tolerance in Deg (used only if merge_edge_ON_OFF  is ON)
+merge_edge_angle_tolerance  15
+
+
+#fillets:
+
+# Values of fillet_type are  "None", "all", "Inside", "Outside"
+fillet_type            None
+min_fillet_radius      0.0
+max_fillet_radius      5.0
+elem_per_quarter_round 3

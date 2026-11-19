@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar;$(NXOPENJARDIR)/NXOpenUI.jar"
+JAVAC_FLAGS = 
+
+compile: SimpleUDO.jar
+
+SimpleUDO.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) SimpleUDO.java
+	
+SimpleUDO.jar: SimpleUDO.class
+	echo Main-Class: SimpleUDO> manifest.txt
+	jar cmf manifest.txt SimpleUDO.jar SimpleUDO.class
+
+run: SimpleUDO.jar
+    	java -classpath $(CLASSPATH)  SimpleUDO
+
+clean_all: clean
+	- del SimpleUDO.class
+	- del SimpleUDO.jar

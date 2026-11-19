@@ -1,0 +1,22 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: CreateBSurface.jar
+
+CreateBSurface.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) CreateBSurface.java
+	
+CreateBSurface.jar: CreateBSurface.class
+	echo Main-Class: CreateBSurface> manifest.txt
+	jar cmf manifest.txt CreateBSurface.jar CreateBSurface.class
+
+run: CreateBSurface.jar
+    	java -classpath $(CLASSPATH)  CreateBSurface
+
+clean:
+	- del CreateBSurface.prt
+
+clean_all: clean
+	- del *.class
+	- del CreateBSurface.jar

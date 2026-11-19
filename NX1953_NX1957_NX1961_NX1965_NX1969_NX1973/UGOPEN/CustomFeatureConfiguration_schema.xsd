@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+
+<xs:element name="CustomFeatureLib">
+	<xs:complexType>
+        <xs:sequence>
+             <xs:element name="CustomFeature"  maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="FeatureClass" type="xs:string" use="required"/> <!-- Feature class is the name of class of custom feature this cannot have white space-->
+					<xs:attribute name="FeatureName" type="xs:string" use="required"/>  <!-- Feature name which will be displayed in part navigator and other UI -->
+					<xs:attribute name="FeatureIcon" type="xs:string" use="optional"/>  <!-- Feature Icon Bitmap name, this need to follow standard icon conventions of NX  extension not to be specified here-->
+					<xs:attribute name="FeatureLibrary" type="xs:string" use="required"/> <!-- Feature math library -->
+					<xs:attribute name="FeatureUILibrary" type="xs:string" use="optional"/> <!-- Feature UI library -->
+					<xs:attribute name="IsWithoutBody" type="xs:boolean" use="required"/> <!-- Feature creates body or not -->
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>  	
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>

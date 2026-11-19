@@ -1,0 +1,19 @@
+NXOPENJARDIR = $(UGII_ROOT_DIR)
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+
+compile: ProjCurves.jar
+
+ProjCurves.class:
+	javac -classpath $(CLASSPATH) ProjCurves.java
+	
+ProjCurves.jar: ProjCurves.class
+	echo Main-Class: ProjCurves> manifest.txt
+	jar cmf manifest.txt ProjCurves.jar ProjCurves.class
+run: ProjCurves.jar
+    	java -classpath $(CLASSPATH)  ProjCurves
+clean:
+	- del ProjCurves.prt
+
+clean_all: clean
+	- del *.class
+	- del ProjCurves.jar

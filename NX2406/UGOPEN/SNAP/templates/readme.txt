@@ -1,0 +1,1 @@
+All the simplify templates are stored here.

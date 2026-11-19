@@ -1,0 +1,111 @@
+<!--  -->
+	<html>
+
+	<head>
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Session.Execute</title>
+	</head>
+	
+	<body>
+	
+	<h3>Session.Execute</h3>
+	
+	<p><b>Description:</b> This example demonstrates how to use the Session.Execute API.
+	</p>
+	<p>
+	This API allows users to call from one NXOpen application into another NXOpen application (regardless of languange).  This can be from the same
+	language into the another binary in the same langauge. Or this can be from one language to another language. For example, one could call from a C++ NXOpen application 
+	into another C++ NXOpen application.  Or it can be calling from C++ NXOpen into another supported NXOpen Binary such as Java.
+	</p>
+	<p></p>
+	This topic is not not considered a beginnering topic to NXOpen development.  So it is assumed the reader has some experience with the NXOpen API as well as 
+	has knowledge of how to develop in the relevant languages.  And the instructions for this example assume the reader is familiar with how to build and run with the relevant
+	lanaguages.
+	</p>
+	<p>Another assumption is this example will only be run on windows.  As we will be using the File Execute dialog to pass in paramters and run the Executor program.  This example 
+	can be modified to run on Linux, but this excercise is left to the reader.
+	</p>
+	
+	<b>Layout of Example</b>
+	<p>
+	There are two seperate categories of automation for this example.  The first is "Executor" programs will call into a NXOpen application in each of the languages.  The 
+	second category is the "To Be Executed" program which will be called by the "caller" programs.
+	</p>
+	<p><b>Files Required for Registering Part Related Callbacks</b></p>
+	This table represents the various demos for registering part callback for every available reason via the different languages.<br>
+	<table width="800" border="2"> 
+	
+	<tr>
+	<td width="100">Language</td> 
+	<td width="210">Executor Source File</td> 
+	<td width="210">Expected Executor Binary Name</td> 
+	<td width="500">To Be Executed Source File</td> 
+	<td width="500">Expected To Be Executed Binary Name</td> 
+	</tr> 
+	
+	<tr>
+	<td width="100">C++</td> 
+	<td width="210">CPPExecutor.cpp</td> 
+	<td width="210">CPPExecutor.dll</td> 
+	<td width="500">CPPToBeExecuted.cpp</td> 
+	<td width="500">CPPToBeExecuted.dll</td> 
+	</tr>
+	
+	<tr>
+	<td width="100">C#</td> 
+	<td width="210">CSExecutor.cs</td> 
+	<td width="210">CSExecutor.dll</td> 
+	<td width="500">CSToBeExecuted.cs</td> 
+	<td width="500">CSToBeExecuted.dll</td> 
+	</tr>
+	
+	<tr>
+	<td width="100">JAVA</td> 
+	<td width="210">JavaExecutor.java</td> 
+	<td width="210">JavaExecutor.class</td> 
+	<td width="500">JavaToBeExecuted.java</td> 
+	<td width="500">JavaToBeExecuted.class</td> 
+	</tr>
+	
+	<tr>
+	<td width="100">Python</td> 
+	<td width="210">PythonExecutor.py</td> 
+	<td width="210">Python is not compiled so just source file</td> 
+	<td width="500">PythonToBeExecuted.py</td> 
+	<td width="500">Python is not compiled so just source file</td> 
+	</tr>
+	
+	</table>
+	
+	<p><b>Building the C++, C#, and Java programs.</b></p>
+	<p>  This example will assume all the programs will be built.  It is highly recommended to use the NXOpen Templates to set up the projects for C++ and C#.  
+		Just be aware that the executor examples expect the binaries to be built with specified names.  If you use a different name, you will need to alter the name of the binary generated in the Excutor programs.
+		Additionally, the C++ code needs to be compiled with C++ 17 standard.  As of 2306 this is not what is set by default in the NXOpen Template.  In the future NXOpen may increase the
+		the floor C++ version and that should be used.  This comment is only to call out until the C++ template is C++ 17 or higher, the user will need to set this manually.</p>
+	
+		<p>Lastly all the To Be Executed Programs are expected to be collocated, so the Executor program can execute it.</p>
+	
+	</p><b>What the Example does?</b></p>
+	<p>
+		Each Executor program will take in a directory as a paramter which will contain the To Be Executed programs.  And then for each program there it will execute
+		each To Be Executed program, and pass it a list of parameters that consist of a integer, a double, a boolean, a string, and TaggedObject (which will be the work part).
+	
+		Each To Be Execute program will write the listing window the parameters passed in.
+	</p>
+	
+	
+	</p><b>How to Run the Example</b></p>
+		<ol>
+			<li> Start NX.</li>
+			<li> Create a part.  As the work part will be passed to each To Be Executed Program.</li>
+			<li> Go to File -> Execute ->NX Open.</li>
+			<li> Navigate to the location of the Executor to be executed and select it</li>
+			<li> Enter User Function Arguments</li>
+			<li> In the dialog box that comes up, put in the directory where all the To Be Executed Programs reside. Hit Ok.</li>
+			<li> Hit ok.</li>
+		</ol>
+	</body>
+	
+	</html>
+	

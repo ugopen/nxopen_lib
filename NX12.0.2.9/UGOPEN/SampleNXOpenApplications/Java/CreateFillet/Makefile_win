@@ -1,0 +1,22 @@
+NXOPENJARDIR = $(UGII_BASE_DIR)\nxbin
+CLASSPATH = ".;$(NXOPENJARDIR)/NXOpen.jar;$(NXOPENJARDIR)/NXOpenUF.jar"
+JAVAC_FLAGS = 
+
+compile: CreateFillet.jar
+
+CreateFillet.class:
+	javac $(JAVAC_FLAGS) -classpath $(CLASSPATH) CreateFillet.java
+	
+CreateFillet.jar: CreateFillet.class
+	echo Main-Class: CreateFillet> manifest.txt
+	jar cmf manifest.txt CreateFillet.jar CreateFillet.class
+
+run: CreateFillet.jar
+    	java -classpath $(CLASSPATH)  CreateFillet
+
+clean:
+	- del CreateFillet.prt
+
+clean_all: clean
+	- del *.class
+	- del CreateFillet.jar

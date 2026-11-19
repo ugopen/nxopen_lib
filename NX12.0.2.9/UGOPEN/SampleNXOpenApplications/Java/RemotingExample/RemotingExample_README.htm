@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>RemotingExample</title>
+</head>
+
+<body>
+
+<h3>RemotingExample</h3>
+<p>This example demonstrates how to use remoting with NX Open for Java.  This example
+implements getUnloadOption and onUnload so the server can be stopped while NX is running.  It
+is possible to restart the server as well.</p>
+<h4>How to run the example</h4>
+<p>Unless noted otherwise, the commands in these instructions must be run from 
+an NX command prompt.&nbsp; See the general notes of the examples for 
+<a href="../README.htm#How_to_start_an_NX_command_prompt">instructions on how to start an NX command prompt</a>.</p>
+<p>Instructions for Windows: All commands are the same as in Unix except 
+substitute &quot;make&quot; with &quot;nmake -f Makefile_win&quot;.</p>
+<p>This example uses port 1099 for rmiregistry (the default port).&nbsp; Make 
+sure that no other application is using port 1099.&nbsp; You can use netstat to 
+check this.&nbsp; The example will start rmiregistry if it is not already 
+running.&nbsp; If another application is using port 1099, rmiregistry may fail 
+to start.&nbsp; If the example does not run correctly after you follow the 
+instructions below for running the example, you can check whether rmiregistry 
+started successfully using &quot;ps -ef | grep rmiregistry&quot; on Unix or using the 
+Windows Task Manager on Windows.&nbsp; On Windows, if you cannot determine which 
+process is using port 1099, you may need to restart Windows. </p>
+<h5>Batch mode</h5>
+<pre>make run</pre>
+<p>The program will create two lines, and arc, print data about the geometry to 
+stdout, and will save the part.</p>
+<h5>Interactive mode</h5>
+<ol>
+	<li>Compile the example<pre>make clean
+make
+make run_rmiregistry</pre>
+	</li>
+	<li>Start NX.</li>
+	<li>In NX, go to File - Execute - NX 
+		Open, select NXRemoteServerImpl.class, and press Ok.&nbsp; The listing 
+	window will display a message
+	<pre>Binding Session
+Session bound</pre>
+	<p>You may close the listing window if you wish.</p>
+	<p>&nbsp;</li>
+	<li>At the command prompt, run
+	<pre>make run_client</pre>
+	</li>
+    <li>To shut down the Server while keeping NX running, unload the server using the File - Utilities - Unload Shared Images and select
+    NXRemoteServerImpl.class.  This will unbind the server.  
+    </li>
+    <li>The server can be restarted by executing  NXRemoteServerImpl.class again.   
+    </li>
+</ol>
+<h4>How to run this example with the client on a different host than the server</h4>
+<ol>
+	<li>Compile the client and server<pre>make</pre>
+	<p>&nbsp;</li>
+	<li>Start the rmiregistry and server<pre>make clean
+make run_rmiregistry
+make run_server</pre>
+	</li>
+	<li>Copy the client classes to the other host<p>Copy NXClient.class, 
+	NXRemoteServer.class, and the Makefile to the computer where you 
+	want to run the client.</p>
+	<p>&nbsp;</p></li>
+	<li>Run the client<pre>make HOST=&lt;<i>name of server's host</i>&gt; NXOPENJARDIR=&lt;<i>directory where NXOpen.jar is located</i>&gt; run_client</pre>
+	<p>This does not need to be performed in the NX command prompt.&nbsp; HOST 
+	is set to the internet address for the server.&nbsp; NXOPENJARDIR is set to 
+	the directory where NXOpen.jar and NXOpenRemote.jar are located.&nbsp; 
+	Inside an NX command prompt, NXOPENJARDIR is $UGII_BASE_DIR\nxbin.&nbsp; The make 
+	command can be run without specifying the NXOPENJARDIR if the make command 
+	is run inside an NX command prompt.</li>
+</ol>
+<h4>Properties used by the example</h4>
+<dir>
+	<li>nxexamples.remoting.host - Name of the host where the rmiregistry is 
+	running</li>
+	<li>nxexamples.remoting.servername - The server's name in the rmiregistry</li>
+	<li>nxexamples.remoting.rmilookuptimeout - Maximum amount of the time, in 
+	milliseconds, that the client should use to attempt to lookup the server 
+	name in the RMI registry.&nbsp; If the server's name has not been registered 
+	after this amount of time, the client will exit with a NotBoundException.&nbsp; 
+	This property is used by the client only.  If you receive a NotBoundException, consider
+	increasing the amount of time to wait for the server to be registered.</li>
+</dir>
+
+</body>
+
+</html>

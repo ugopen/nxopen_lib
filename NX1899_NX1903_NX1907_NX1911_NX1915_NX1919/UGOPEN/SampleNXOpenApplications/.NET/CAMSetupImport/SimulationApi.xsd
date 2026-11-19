@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--==============================================================================
+ 
+        Copyright (c) 2017 Siemens Product Lifecycle Management Software Inc.
+                         Unpublished - All rights reserved
+
+==============================================================================
+
+ Description
+    This file contains classes to import geometry files into the workpart
+
+
+==============================================================================-->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Resources">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Machine">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Name" type="xs:string" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ProgramList">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Program" type="Program"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Parts">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Part">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Name" type="xs:string" />
+                                        <xs:element minOccurs="0" name="IsFinishedPart" type="xs:boolean" />
+                                        <xs:element name="Path" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Clamps">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="Clamp">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Name" type="xs:string" />
+                                        <xs:element minOccurs="0" name="Path" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Instances">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Clamps">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Clamp" type="Instance"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Parts">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Part" type="Instance"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ToolList">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="CarrierPlacements">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Carrier">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Name" type="xs:string" />
+                                                    <xs:element maxOccurs="unbounded" name="Slot">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="Name" type="xs:string" />
+                                                                <xs:element name="Tool" type="xs:string" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Program">
+        <xs:sequence>
+            <xs:element name="PrgID" type="xs:string" />
+            <xs:element name="FileName" type="xs:string" />
+            <xs:element minOccurs="0" name="Channel" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Position">
+        <xs:sequence>
+            <xs:element name="X" type="xs:decimal" />
+            <xs:element name="Y" type="xs:decimal" />
+            <xs:element name="Z" type="xs:decimal" />
+            <xs:element name="Alpha" type="xs:decimal" />
+            <xs:element name="Beta" type="xs:decimal" />
+            <xs:element name="Gamma" type="xs:decimal" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Instance">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="ID" type="xs:string" />
+            <xs:element name="Position" type="Position"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

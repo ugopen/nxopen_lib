@@ -1,0 +1,4250 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NXOpen.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:NXOpen.Utilities.BaseSession">
+            <summary>
+            A base class for NXOpen session objects
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.evalualuteCallStack(NXOpen.Utilities.ResourceUtilities.SignatureType@)">
+            <exclude/>
+            <summary>
+            This method evaluates the callstack to detect if we are simply a journal replay
+            or if someone is trying to cheat the licensing system by calling an unsigned .Net dll
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.evalualuteJournalDLLs(System.Collections.ArrayList)">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.initialize">
+            <exclude/>
+            <summary>
+             Initialize the object. 
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.StaticInitialize">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.InitLicense">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.GetObjectManager">
+            <summary>
+            Returns an NXOpenManager object instance that can be used to get NX Open objects 
+            from tags obtained by calling methods on classes in the NXOpen.UF namespace.
+            </summary>
+            <returns>An NXOpenManager object that can be used to get NX Open objects from tags. </returns>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.SetTestOutput(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.SetTestOutput(System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.CloseTestOutput">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.BaseSession.CompareTestOutput(System.String,System.String)">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.NeedDOTNETAuthorLicenseException">
+            <summary>
+            Exception that is thrown when trying to load a DLL that has not
+            been properly built and signed by the SignLibrary utility.
+            </summary>
+        </member>
+        <member name="T:NXOpen.Utilities.NeedSNAPAuthorLicenseException">
+            <summary>
+            Exception that is thrown when trying to load a DLL that has not
+            been properly built and signed by the SignLibrary utility.
+            </summary>
+        </member>
+        <member name="T:NXOpen.Utilities.Decryptor">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.JAM">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.NXObjectManager">
+            <summary>
+            Maintains a mapping between Tags and objects.
+            </summary>
+            <remarks>This class can be used to help use methods in the NXOpen.UF namespace
+            together with objects in the NXOpen namespace. Use the method <see cref="M:NXOpen.Utilities.BaseSession.GetObjectManager"/>
+            to get an object instance of this class.</remarks>
+        </member>
+        <member name="M:NXOpen.Utilities.NXObjectManager.GetTaggedObject(NXOpen.Tag)">
+            <summary>
+            Returns the object corresponding to a tag. Use this method in
+            a remoting application.
+            </summary>
+            <remarks>The object that is returned by this method is unique for given tag
+            while that tag is alive. The Tag property of the object will return the
+            tag with which it was obtained by this method.
+            Methods in classes in the NXOpen.UF namespace may return tags and 
+            GetTaggedObject can be used to obtain the corresponding object.
+            </remarks>
+            <param name="objectTag">Tag for which an object is wanted.</param>
+            <returns>The object for this tag</returns>
+        </member>
+        <member name="M:NXOpen.Utilities.NXObjectManager.Get(NXOpen.Tag)">
+            <summary>
+            Returns the object corresponding to a tag. 
+            </summary>
+            <remarks>The object that is returned by this method is unique for given tag
+            while that tag is alive. The Tag property of the object will return the
+            tag with which it was obtained by this method.
+            Methods in classes in the NXOpen.UF namespace may return tags and Get
+            can be used to obtain the corresponding object.
+            </remarks>
+            <param name="objectTag">Tag for which an object is wanted.</param>
+            <returns>The object for this tag</returns>
+        </member>
+        <member name="T:NXOpen.Utilities.NXRemotableObject">
+            <summary>
+            A base class for all NXOpen remotable objects
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.NXRemotableObject.initialize">
+            <exclude/>
+            <summary>
+            Initialize the object.
+            </summary>
+        </member>
+        <member name="P:NXOpen.Utilities.NXRemotableObject.NextSink">
+            <summary>
+            Gets the next message sink in the sink chain. 
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.NXRemotableObject.SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage)">
+            <summary>
+            Synchronously processes the given message.
+            </summary>
+            <param name="msg">The message to process. </param>
+            <returns>A reply message in response to the request.</returns>
+        </member>
+        <member name="M:NXOpen.Utilities.NXRemotableObject.AsyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage,System.Runtime.Remoting.Messaging.IMessageSink)">
+            <summary>
+            Asynchronously processes the given message.
+            </summary>
+            <param name="msg">The message to process. </param>
+            <param name="replySink">The reply sink for the reply message. </param>
+            <returns>Returns an IMessageCtrl interface that provides a way to control asynchronous messages after they have been dispatched.</returns>
+        </member>
+        <member name="T:NXOpen.Utilities.NXRemotingHelper">
+            <summary>
+            Provides utility methods to extend remoting support for new applications to be developed on NX platform.
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.NXRemotingHelper.IsSessionRunningRemotely(System.Object)">
+            <summary>
+            Checks whether the session object belongs to another process, i.e. if a remote server object
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.NXRemotingHelper.GetServerObject(System.Type,System.Object)">
+            <summary>
+            Retrieves the server object for a given type running on the same port that of the owner (NX session)
+            Naming convention "ClassName_ServerObject" should be used while exporting it from server application.
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.PeReader.#ctor(System.String)">
+            <summary>
+            Constructs a new instance, based on the data from an Assembly DLL.
+            Fetches the security data directory inside the PE Optional header.
+            Throws a InvalidPeFormatException if the assembly has invalid PE format.
+            </summary>
+        </member>
+        <member name="P:NXOpen.Utilities.PeReader.HasSecurityDir">
+            <summary>
+            Return True if the security data directory has been set; otherwise False
+            </summary>
+        </member>
+        <member name="M:NXOpen.Utilities.PeReader.MarshalBytesTo``1(System.IO.BinaryReader)">
+            <summary>
+            Reads in a block from a file and converts it to the struct
+            type specified by the template parameter
+            </summary>
+        </member>
+        <member name="T:NXOpen.Utilities.InvalidPeFormatException">
+            <summary>
+            Exception that is thrown when PeReader class loads 
+            a DLL with invalid Portable Executable (PE) format
+            </summary>
+        </member>
+        <member name="T:NXOpen.Utilities.ResourceUtilities">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.#ctor(System.Byte[])">
+                        Constructs a new instance, based on the data from an Assembly DLL. Throws a
+                        MissingResourceException if the assembly does not contain the appropriate NX
+                        resource.
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.computeHash">
+                        Computes a hashcode from the contents of the assembly. 
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.getEmbeddedData">
+                       Gets the embeddedData embedded in the resource block
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.getSignatureType">
+                     Returns the type of signature 
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.getReleaseSigned">
+            Returns the release assembly was signed in
+            assuming one is present, otherwise it is unknown when signed
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.getSignedBy">
+            Returns the information on whom signed the assembly
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.getSignature">
+                       Gets the signature embedded in the resource block
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.setEmbeddedData(System.Byte[])">
+                       Embeds the given data in the resource block. If the data length is greater than 256
+                       bytes, it is truncated to 256.
+            
+        </member>
+        <member name="M:NXOpen.Utilities.ResourceUtilities.setSignature(System.Byte[])">
+                       Embeds the given signature in the resource block. Note that the embedded data should be set first before
+                       calling this method.
+        </member>
+        <member name="T:NXOpen.Utilities.MissingResourceException">
+            <summary>
+            Exception that is thrown when trying to load a DLL that has not
+            been properly built and signed by the SignDotNet utility.
+            </summary>
+        </member>
+        <member name="T:NXOpen.Utilities.InstanceFunc">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.ClassDefs">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.BaseTypeDefs">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.ParameterType">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.IItemFactory">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.FetchConnect">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.EstablishConnect">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.RuntimeImpl">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.PhysicsInit">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.PropertyFunc">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.Utilities.ScriptHost">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.Utilities.ScriptHost.AddReferenceItemsForHostApp(System.String)">
+            <summary>
+            Adds given references for the running application in addition to default references.
+            </summary>
+            <param name="dllNames"> Comma separated list of .net assembly names.</param>
+        </member>
+        <member name="T:NXOpen.IDefinitionContext">
+            <exclude/>
+            <summary>
+            Interface of defining behavior runtime object with physics runtime object
+            </summary>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RuntimeObject@)">
+            <summary>
+            Define behavior runtime object
+            </summary>
+            <param name="strName">Name of runtime object</param>
+            <param name="item">Physics object</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ComponentPart@)">
+            <summary>
+            Define component part
+            </summary>
+            <param name="strName">Name of component part</param>
+            <param name="item">Component part</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RigidBody@)">
+            <summary>
+            Define behavior rigid body object
+            </summary>
+            <param name="strName">Name of rigid body</param>
+            <param name="item">Rigid body</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CollisionBody@)">
+            <summary>
+            Define behavior collision body
+            </summary>
+            <param name="strName">Name of collision body</param>
+            <param name="item">Collision body</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CollisionSensor@)">
+            <summary>
+            Define behavior collision sensor
+            </summary>
+            <param name="strName">Name of collision sensor</param>
+            <param name="item">Collision sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.TransportSurface@)">
+            <summary>
+            Define behavior transport surface
+            </summary>
+            <param name="strName">Name of transport surface</param>
+            <param name="item">Transport surface</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CollisionMaterial@)">
+            <summary>
+            Define behavior collision material
+            </summary>
+            <param name="strName">Name of collision material</param>
+            <param name="item">Collision material</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Joint@)">
+            <summary>
+            Define behavior joint
+            </summary>
+            <param name="strName">Name of joint</param>
+            <param name="item">Joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AxisJoint@)">
+            <summary>
+            Define behavior axis joint
+            </summary>
+            <param name="strName">Name of axis joint</param>
+            <param name="item">Axis joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.HingeJoint@)">
+            <summary>
+            Define behavior hinge joint
+            </summary>
+            <param name="strName">Name of hinge joint</param>
+            <param name="item">Hinge joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SlidingJoint@)">
+            <summary>
+            Define behavior sliding joint
+            </summary>
+            <param name="strName">Name of sliding joint</param>
+            <param name="item">Sliding joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CylindricalJoint@)">
+            <summary>
+            Define behavior cylindrical joint
+            </summary>
+            <param name="strName">Name of cylindrical joint</param>
+            <param name="item">Cylindrical joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PointOnCurveJoint@)">
+            <summary>
+            Define behavior point on curve joint
+            </summary>
+            <param name="strName">Name of point on curve joint</param>
+            <param name="item">Point on curve joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CurveOnCurveJoint@)">
+            <summary>
+            Define behavior curve on curve joint
+            </summary>
+            <param name="strName">Name of curve on curve joint</param>
+            <param name="item">Curve on curve joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.FixedJoint@)">
+            <summary>
+            Define behavior fixed joint
+            </summary>
+            <param name="strName">Name of fixed joint</param>
+            <param name="item">Fixed joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.BallJoint@)">
+            <summary>
+            Define behavior ball joint
+            </summary>
+            <param name="strName">Name of ball joint</param>
+            <param name="item">Ball joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LimitJoint@)">
+            <summary>
+            Define behavior limit joint
+            </summary>
+            <param name="strName">Name of limit joint</param>
+            <param name="item">Limit joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AngularLimit@)">
+            <summary>
+            Define behavior angular limit
+            </summary>
+            <param name="strName">Name of angular limit</param>
+            <param name="item">Angular limit</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LinearLimit@)">
+            <summary>
+            Define behavior linear limit
+            </summary>
+            <param name="strName">Name of linear limit</param>
+            <param name="item">Linear limit</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SpringJoint@)">
+            <summary>
+            Define behavior spring joint
+            </summary>
+            <param name="strName">Name of spring joint</param>
+            <param name="item">Spring joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AngularSpring@)">
+            <summary>
+            Define behavior angular spring
+            </summary>
+            <param name="strName">Name of angular spring</param>
+            <param name="item">Angular spring</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LinearSpring@)">
+            <summary>
+            Define behavior linear spring
+            </summary>
+            <param name="strName">Name of linear spring</param>
+            <param name="item">linear spring</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SpeedControl@)">
+            <summary>
+            Define behavior speed control
+            </summary>
+            <param name="strName">Name of speed control</param>
+            <param name="item">Speed control</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PositionControl@)">
+            <summary>
+            Define behavior position control
+            </summary>
+            <param name="strName">Name of position control</param>
+            <param name="item">position control</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ForceTorqueControl@)">
+            <summary>
+            Define behavior ForceTorque control
+            </summary>
+            <param name="strName">Name of force/torque control</param>
+            <param name="item">position control</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AxisConstraint@)">
+            <summary>
+            Define behavior axis constraint
+            </summary>
+            <param name="strName">Name of axis constraint</param>
+            <param name="item">AxisConstraint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SpringDamper@)">
+            <summary>
+            Define behavior axis spring damper
+            </summary>
+            <param name="strName">Name of spring damper</param>
+            <param name="item">SpringDamper</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.BreakingConstraint@)">
+            <summary>
+            Define behavior breaking constraint
+            </summary>
+            <param name="strName">Name of breaking constraint</param>
+            <param name="item">Breaking constraint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.GearCoupling@)">
+            <summary>
+            Define behavior gear coupling
+            </summary>
+            <param name="strName">Name of gear coupling</param>
+            <param name="item">Gear coupling</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.CamCoupling@)">
+            <summary>
+            Define behavior mechanical cam coupling
+            </summary>
+            <param name="strName">Name of mechanical cam coupling</param>
+            <param name="item">Mechanical cam coupling</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ElecCamCoupling@)">
+            <summary>
+            Define behavior electronic cam coupling
+            </summary>
+            <param name="strName">Name of electronic cam coupling</param>
+            <param name="item">Electronic cam coupling</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PreventCollision@)">
+            <summary>
+            Define behavior prevent collision
+            </summary>
+            <param name="strName">Name of prevent collision</param>
+            <param name="item">Prevent collision</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ChangeMaterial@)">
+            <summary>
+            Define behavior change material
+            </summary>
+            <param name="strName">Name of change material</param>
+            <param name="item">Change material</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SourceBehavior@)">
+            <summary>
+            Define behavior source behavior
+            </summary>
+            <param name="strName">Name of source behavior</param>
+            <param name="item">Source behavior</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SinkBehavior@)">
+            <summary>
+            Define behavior sink behavior
+            </summary>
+            <param name="strName">Name of sink behavior</param>
+            <param name="item">Sink behavior</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Transformer@)">
+            <summary>
+            Define behavior transformer
+            </summary>
+            <param name="strName">Name of transformer</param>
+            <param name="item">Transformer</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.TransmitterEntry@)">
+            <summary>
+            Define behavior transmitter entry
+            </summary>
+            <param name="strName">Name of entry</param>
+            <param name="item">Transmitter entry</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.TransmitterExit@)">
+            <summary>
+            Define behavior transmitter exit
+            </summary>
+            <param name="strName">Name of exit</param>
+            <param name="item">transmitter exit</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.GraphControl@)">
+            <summary>
+            Define behavior graph control
+            </summary>
+            <param name="strName">Name of graph control</param>
+            <param name="item">Graph Control</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ExternalConnection@)">
+            <summary>
+            Define behavior external control
+            </summary>
+            <param name="strName">Name of external control</param>
+            <param name="item">External Connection</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.SignalAdapter@)">
+            <summary>
+            Define behavior signal adapter
+            </summary>
+            <param name="strName">Name of signal adapter</param>
+            <param name="item">Signal Adapter</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Signal@)">
+            <summary>
+            Define behavior signal
+            </summary>
+            <param name="strName">Name of signal</param>
+            <param name="item">Signal</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.MCDSignal@)">
+            <summary>
+            Define behavior MCD signal
+            </summary>
+            <param name="strName">Name of MCD signal</param>
+            <param name="item">MCD Signal</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ProxyObject@)">
+            <summary>
+            Define behavior proxy object
+            </summary>
+            <param name="strName">Name of proxy object</param>
+            <param name="item">Proxy Object</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RuntimeParameters@)">
+            <summary>
+            Define behavior runtime parameters
+            </summary>
+            <param name="strName">Name of runtime parameters</param>
+            <param name="item">Runtime Parameters</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.VirtualAxis@)">
+            <summary>
+            Define behavior virtual axis
+            </summary>
+            <param name="strName">Name of virtual axis</param>
+            <param name="item">Virtual Axis</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ReadWriteDeviceObject@)">
+            <summary>
+            Define behavior read write device
+            </summary>
+            <param name="strName">Name of read write device</param>
+            <param name="item">Read Write Device</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.DisplayChanger@)">
+            <summary>
+            Define behavior display changer
+            </summary>
+            <param name="strName">Name of display changer</param>
+            <param name="item">Display Changer</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Gripper@)">
+            <summary>
+            Define behavior gripper
+            </summary>
+            <param name="strName">Name of gripper</param>
+            <param name="item">Gripper</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LinearGripper@)">
+            <summary>
+            Define behavior linear gripper
+            </summary>
+            <param name="strName">Name of linear gripper</param>
+            <param name="item">Linear Gripper</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AngularGripper@)">
+            <summary>
+            Define behavior angular gripper
+            </summary>
+            <param name="strName">Name of angular gripper</param>
+            <param name="item">Angular Gripper</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.VacuumGripper@)">
+            <summary>
+            Define behavior vacuum gripper
+            </summary>
+            <param name="strName">Name of vacuum gripper</param>
+            <param name="item">Vacuum Gripper</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ExpressionBlock@)">
+            <summary>
+            Define behavior expression block
+            </summary>
+            <param name="strName">Name of expression block</param>
+            <param name="item">Expression Block</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PathConstraintJoint@)">
+            <summary>
+            Define behavior PathConstraint
+            </summary>
+            <param name="strName">Name of path constraint</param>
+            <param name="item">Path Constraint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.TagForm@)">
+            <summary>
+            Define behavior TagForm
+            </summary>
+            <param name="strName">Name of tag form</param>
+            <param name="item">Read Write Device</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RuntimeNC@)">
+            <summary>
+            Define behavior runtime nc
+            </summary>
+            <param name="strName">Name of runtime nc</param>
+            <param name="item">Runtime NC</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Operation@)">
+            <summary>
+            Define behavior Operation
+            </summary>
+            <param name="strName">Name of Operation</param>
+            <param name="item">Operation</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.DistanceSensor@)">
+            <summary>
+            Define behavior distance sensor
+            </summary>
+            <param name="strName">Name of distance sensor</param>
+            <param name="item">Distance Sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LaserScanner@)">
+            <summary>
+            Define behavior laser scanner
+            </summary>
+            <param name="strName">Name of 2d laser scanner</param>
+            <param name="item">2D Laser Scanner</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LightCurtain@)">
+            <summary>
+            Define behavior light curtain
+            </summary>
+            <param name="strName">Name of light curtain</param>
+            <param name="item">Light Curtain</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PositionSensor@)">
+            <summary>
+            Define behavior position sensor
+            </summary>
+            <param name="strName">Name of position sensor</param>
+            <param name="item">Position Sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.VelocitySensor@)">
+            <summary>
+            Define behavior velocity sensor
+            </summary>
+            <param name="strName">Name of velocity sensor</param>
+            <param name="item">Velocity Sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.GenericSensor@)">
+            <summary>
+            Define behavior generic sensor
+            </summary>
+            <param name="strName">Name of generic sensor</param>
+            <param name="item">Generic Sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.LimitSwitch@)">
+            <summary>
+            Define behavior limit switch
+            </summary>
+            <param name="strName">Name of limit switch</param>
+            <param name="item">Limit Switch</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Relay@)">
+            <summary>
+            Define behavior relay
+            </summary>
+            <param name="strName">Name of relay</param>
+            <param name="item">Relay</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Inclinometer@)">
+            <summary>
+            Define behavior inclinometer
+            </summary>
+            <param name="strName">Name of inclinometer</param>
+            <param name="item">Inclinometer</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Accelerometer@)">
+            <summary>
+            Define behavior accelerometer
+            </summary>
+            <param name="strName">Name of accelerometer</param>
+            <param name="item">Accelerometer</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.ScrewJoint@)">
+            <summary>
+            Define behavior Screw Joint
+            </summary>
+            <param name="strName">Name of Screw Joint</param>
+            <param name="item">Screw Joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PlanarJoint@)">
+            <summary>
+            Define behavior Planar Joint
+            </summary>
+            <param name="strName">Name of Planar Joint</param>
+            <param name="item">Planar Joint</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RackPinion@)">
+            <summary>
+            Define behavior Rack and Pinion coupler
+            </summary>
+            <param name="strName">Name of RackPinion constraint</param>
+            <param name="item">Rack Pinion</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.TableBase@)">
+            <summary>
+            Define behavior Cam/Motion Profile
+            </summary>
+            <param name="strName">Name of Cam/Motion Profile</param>
+            <param name="item">Cam/Motion Profile</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PneumaticCylinder@)">
+            <summary>
+            Define pneumatic cylinder
+            </summary>
+            <param name="strName">Name of cylinder</param>
+            <param name="item">PneumaticCylinder</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PneumaticValve@)">
+            <summary>
+            Define pneumatic valve
+            </summary>
+            <param name="strName">Name of valve</param>
+            <param name="item">PneumaticValve</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.HydraulicCylinder@)">
+            <summary>
+            Define hydraulic cylinder
+            </summary>
+            <param name="strName">Name of cylinder</param>
+            <param name="item">HydraulicCylinder</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.HydraulicValve@)">
+            <summary>
+            Define hydraulic valve
+            </summary>
+            <param name="strName">Name of valve</param>
+            <param name="item">HydraulicValve</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.InverseKinematics@)">
+            <summary>
+            Define Inverse Kinematics behavior
+            </summary>
+            <param name="strName">Name of Inverse Kinematics</param>
+            <param name="item">InverseKinematics</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.BondZone@)">
+            <summary>
+            Define Bond Zone behavior
+            </summary>
+            <param name="strName">Name of Bond Zone</param>
+            <param name="item">BondZone</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.PulleysBeltChain@)">
+            <summary>
+            Define PulleysBeltChain behavior
+            </summary>
+            <param name="strName">Name of Pulleys and belt chain</param>
+            <param name="item">PulleysBeltChain</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.RuntimeButton@)">
+            <summary>
+            Define RuntimeButton behavior
+            </summary>
+            <param name="strName">Name of runtime button</param>
+            <param name="item">User action sensor</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.AlignBody@)">
+            <summary>
+            Define AlignBody behavior
+            </summary>
+            <param name="strName">Name of Align Body</param>
+            <param name="item">Align Body</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.DynamicObjectInstantiation@)">
+            <summary>
+            Define DynamicObjectInstantiation behavior
+            </summary>
+            <param name="strName">Name of Dynamic Object Instantiation</param>
+            <param name="item">Dynamic Object Instantiation</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.Tracer@)">
+            <summary>
+            Define Tracer behavior
+            </summary>
+            <param name="strName">Name of Tracer Object</param>
+            <param name="item">Tracer</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.DynamicMaterial@)">
+            <summary>
+            Define DynamicMaterial
+            </summary>
+            <param name="strName">Name of Dynamic Material</param>
+            <param name="item">Dynamic Material</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Connect(System.String,NXOpen.DynamicMaterialCutter@)">
+            <summary>
+            Define DynamicMaterialCutter
+            </summary>
+            <param name="strName">Name of Dynamic Material Cutter</param>
+            <param name="item">Dynamic Material Cutter</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Parameter(System.String,System.Int32,System.Int32@)">
+            <summary>
+            Define interger parameter
+            </summary>
+            <param name="strName">Name of integer</param>
+            <param name="value">The integer value</param>
+            <param name="item">value</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Parameter(System.String,System.Double,System.Double@)">
+            <summary>
+            Define double parameter
+            </summary>
+            <param name="strName">Name of double</param>
+            <param name="value">The double value</param>
+            <param name="item">value</param>
+        </member>
+        <member name="M:NXOpen.IDefinitionContext.Parameter(System.String,System.Boolean,System.Boolean@)">
+            <summary>
+            Define bool parameter
+            </summary>
+            <param name="strName">Name of bool</param>
+            <param name="value">The boolean value</param>
+            <param name="item">value</param>
+        </member>
+        <member name="T:NXOpen.SimulationAction">
+            <exclude/>
+        </member>
+        <member name="F:NXOpen.SimulationAction.Restart">
+            <summary>  Restart  </summary>  
+              
+        </member>
+        <member name="F:NXOpen.SimulationAction.Pause">
+            <summary>  Pause    </summary>  
+              
+        </member>
+        <member name="F:NXOpen.SimulationAction.Resume">
+            <summary>  Resume   </summary>  
+              
+        </member>
+        <member name="F:NXOpen.SimulationAction.Stop">
+            <summary>  Stop     </summary>  
+              
+        </member>
+        <member name="T:NXOpen.IRuntimeContext">
+            <exclude/>
+            <summary>
+            Interface of runtime execution context
+            </summary>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.AskRoot">
+            <summary>
+            Get root component part
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.Error(System.Boolean,System.String)">
+            <summary>
+            Append an error to runtime
+            </summary>
+            <param name="severity">Whether this error is severity</param>
+            <param name="strMessage">Error description</param>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.ForcePause">
+            <summary>
+            Pause runtime execution
+            </summary>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.SetPerformSimulation(NXOpen.SimulationAction)">
+            <summary>
+            Set runtime action
+            </summary>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.GetRuntimeObject(NXOpen.Tag)">
+            <summary>
+            Get runtime object
+            </summary>
+            <returns>The runtime object</returns>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.GetRuntimeObjects(NXOpen.Tag,System.Int32@,NXOpen.RuntimeObject[]@)">
+            <summary>
+            Get runtime objects
+            </summary>
+            <param name="physTag">The physics tag</param>
+            <param name="numOfObjects">Number of runtime objects</param>
+            <param name="runtimeObjects">Runtime objects</param>
+        </member>
+        <member name="M:NXOpen.IRuntimeContext.ProceedSimulation(System.Double)">
+            <summary>
+            Pause runtime execution after simulating the time slice
+            Time is in seconds.
+            </summary>
+            <param name="slice">The time slice</param>
+        </member>
+        <member name="T:NXOpen.BehaviorDef">
+            <exclude/>
+            <summary>
+            Interface of a behavior module
+            </summary>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Define(NXOpen.IDefinitionContext)">
+            <summary>
+            Definition procedure
+            </summary>
+            <param name="access">Definition context which can define behavior object</param>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Start(NXOpen.IRuntimeContext)">
+            <summary>
+            Start procudure called when runtime starts
+            </summary>
+            <param name="context">Runtime execution context</param>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Stop(NXOpen.IRuntimeContext)">
+            <summary>
+            Stop procudure called when runtime stops
+            </summary>
+            <param name="context">Runtime execution context</param>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Step(NXOpen.IRuntimeContext,System.Double)">
+            <summary>
+            Step procudure called when runtime executes each step
+            </summary>
+            <param name="context">Runtime execution context</param>
+            <param name="dt">Step length</param>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Refresh(NXOpen.IRuntimeContext)">
+            <summary>
+            Refresh procudure allows transfer of data from simulation to display
+            </summary>
+            <param name="context">Runtime execution context</param>
+        </member>
+        <member name="M:NXOpen.BehaviorDef.Repaint">
+            <summary>
+            Repaint procudure called when runtime executes updates the graphics
+            </summary>
+        </member>
+        <member name="T:NXOpen.NXException">
+            <summary>
+            A base class for exceptions thrown by NXOpen methods
+            </summary>
+        </member>
+        <member name="M:NXOpen.NXException.Create(System.Int32)">
+            <summary>
+            Creates an NXException.
+            </summary>
+        </member>
+        <member name="M:NXOpen.NXException.Create(System.String)">
+            <summary>
+            Creates an NXException.
+            </summary>
+        </member>
+        <member name="M:NXOpen.NXException.Create(System.Int32,System.String)">
+            <summary>
+            Creates an NXException.
+            </summary>
+        </member>
+        <member name="P:NXOpen.NXException.ErrorCode">
+            <summary>
+            Gets the error code associated with this exception.
+            </summary>
+        </member>
+        <member name="P:NXOpen.NXException.Message">
+            <summary>
+            Gets the error message associated with this exception.
+            </summary>
+        </member>
+        <member name="P:NXOpen.NXException.UndoMark">
+            <summary>
+            Gets the undo mark associated with this exception.
+            </summary>
+        </member>
+        <member name="M:NXOpen.NXException.AssertErrorCode(System.Int32)">
+            <summary>
+            Assert if the error code is unexpected.
+            </summary>
+        </member>
+        <member name="T:NXOpen.RuntimeObject">
+            <exclude/>
+            <summary>
+            Base class for all physics object
+            </summary>
+        </member>
+        <member name="P:NXOpen.RuntimeObject.Active">
+            <summary>
+            Active property for all physics object
+            </summary>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.AskAssembly">
+            <summary>
+            Get assembly of physics object
+            </summary>
+            <returns>Assembly of physics object</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetPhysicsObject">
+            <summary>
+            Get physics object tag from runtime object
+            </summary>
+            <returns>Physics object tag</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetStringValue(System.Int32)">
+            <summary>
+            Get physics object string property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <returns>string property value</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.SetStringValue(System.Int32,System.String)">
+            <summary>
+            Set physics object string property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <param name="strValue">Property value</param>
+            <returns>true if success or false</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetBoolArrayValue(System.Int32)">
+            <summary>
+            Get physics object bool array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <returns>bool array property value</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.SetBoolArrayValue(System.Int32,System.Boolean[])">
+            <summary>
+            Set physics object bool array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <param name="bArrayValue">bool array property value</param>
+            <returns>true if success or false</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetIntArrayValue(System.Int32)">
+            <summary>
+            Get physics object int array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <returns>int array property value</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.SetIntArrayValue(System.Int32,System.Int32[])">
+            <summary>
+            Set physics object int array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <param name="intArrayValue">int array property value</param>
+            <returns>true if success or false</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetDoubleArrayValue(System.Int32)">
+            <summary>
+            Get physics object double array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <returns>double array property value</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.SetDoubleArrayValue(System.Int32,System.Double[])">
+            <summary>
+            Set physics object double array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <param name="doubleArrayValue">double array property value</param>
+            <returns>true if success or false</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.GetStringArrayValue(System.Int32)">
+            <summary>
+            Get physics object string array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <returns>string array property value</returns>
+        </member>
+        <member name="M:NXOpen.RuntimeObject.SetStringArrayValue(System.Int32,System.String[])">
+            <summary>
+            Set physics object string array property value
+            </summary>
+            <param name="nProp">Property index</param>
+            <param name="strArrayValue">String array property value</param>
+            <returns>true if success or false</returns>
+        </member>
+        <member name="T:NXOpen.RigidBody">
+            <exclude/>
+            <summary>
+            Represent rigid body
+            </summary>
+        </member>
+        <member name="M:NXOpen.RigidBody.Copy">
+            <summary>
+            Generate a copy of this rigid body
+            </summary>
+            <returns>Copied object of this rigid body</returns>
+        </member>
+        <member name="M:NXOpen.RigidBody.ActivateAll(System.Boolean)">
+            <summary>
+            Set active status of all collision bodies, collision sensors and transport surface which attach this rigid body
+            </summary>
+            <param name="bActive">Active status for attached physics objects</param>
+        </member>
+        <member name="P:NXOpen.RigidBody.Parts">
+            <summary>
+            Readonly property which returns collision body and collision sensor which attach this rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.Position">
+            <summary>
+            Position of rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.Orientation">
+            <summary>
+            Orientation of rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.LinearVelocity">
+            <summary>
+            Linear velocity of rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.AngularVelocity">
+            <summary>
+            Angular velocity of rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.Mass">
+            <summary>
+            Mass of rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.Inertia">
+            <summary>
+            Rigid body inertia xx/yy/zz
+            </summary>
+        </member>
+        <member name="P:NXOpen.RigidBody.MaximunForce">
+            <summary>
+            Maximun force of rigid body
+            </summary>
+        </member>
+        <member name="M:NXOpen.RigidBody.ApplyForce(NXOpen.VectorArithmetic.Vector3)">
+            <summary>
+            Apply force to rigid body
+            </summary>
+            <param name="force">Force applied to the rigid body with vector form</param>
+        </member>
+        <member name="M:NXOpen.RigidBody.ApplyTorque(NXOpen.VectorArithmetic.Vector3)">
+            <summary>
+            Apply torque to rigid body
+            </summary>
+            <param name="torque">Torque applied to rigid body with vector form</param>
+        </member>
+        <member name="T:NXOpen.ShapeBody">
+            <exclude/>
+            <summary>
+            Base class for collision shape classes such as collision body and collision sensor
+            </summary>
+        </member>
+        <member name="M:NXOpen.ShapeBody.GetOwner">
+            <summary>
+            Get rigid body which shape body attaches
+            </summary>
+            <returns>Attached rigid body</returns>
+        </member>
+        <member name="T:NXOpen.CollisionBody">
+            <exclude/>
+            <summary>
+            Represent a collision body which specifies geometries can collide
+            </summary>
+        </member>
+        <member name="M:NXOpen.CollisionBody.GetOwner">
+            <summary>
+            Get rigid body which collision body attaches
+            </summary>
+            <returns>Attached rigid body</returns>
+        </member>
+        <member name="P:NXOpen.CollisionBody.TransportSurfaces">
+            <summary>
+            Get transport surfaces which attach this collision body
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionBody.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionBody.Sticky">
+            <summary>
+            Sticky status
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionBody.Surface">
+            <summary>
+            Collision material applied for this collision body
+            </summary>
+        </member>
+        <member name="T:NXOpen.RuntimeButton">
+            <exclude/>
+            <summary>
+            Represent a runtime button which specifies a button which detects user action
+            </summary>
+        </member>
+        <member name="P:NXOpen.RuntimeButton.Triggered">
+            <summary>
+            Sensor triggered status
+            </summary>
+        </member>
+        <member name="P:NXOpen.RuntimeButton.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.CollisionSensor">
+            <exclude/>
+            <summary>
+            Represent a collision sensor which specifies a sensor which detects collide
+            </summary>
+        </member>
+        <member name="M:NXOpen.CollisionSensor.GetOwner">
+            <summary>
+            Get rigid body which attaches this collision sensor
+            </summary>
+            <returns>Attached rigid body</returns>
+        </member>
+        <member name="P:NXOpen.CollisionSensor.NumIntersect">
+            <summary>
+            Total number of objects which collide with this collision sensor
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionSensor.Intersects">
+            <summary>
+            Collision bodies which collides with this collision sensor
+            </summary>
+        </member>
+        <member name="M:NXOpen.CollisionSensor.IsMember(NXOpen.CollisionBody)">
+            <summary>
+            Get if a collision body collides with this collision sensor
+            </summary>
+            <param name="part">Collision body which may collide with this collision sensor</param>
+            <returns>Whether a collision body collides with collision sensor</returns>
+        </member>
+        <member name="M:NXOpen.CollisionSensor.IsMember(NXOpen.RigidBody)">
+            <summary>
+            Get if a rigid body collides with this collision sensor
+            </summary>
+            <param name="body">Rigid body which may collide with this collision sensor</param>
+            <returns>Whether a rigid body collides with collision sensor</returns>
+        </member>
+        <member name="P:NXOpen.CollisionSensor.Triggered">
+            <summary>
+            Status whether this collision sensor collides with other objects
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionSensor.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.TransportSurface">
+            <exclude/>
+            <summary>
+            Represent a transport surface which causes a face on a geometry object to behave like it is moving.
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransportSurface.ParallelSpeed">
+            <summary>
+            Speed which along the direction
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransportSurface.PerpendicularSpeed">
+            <summary>
+            Speed which is perpendicular to the direction
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransportSurface.Surface">
+            <summary>
+            Collision material which applied to transport surface
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransportSurface.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.CollisionMaterial">
+            <exclude/>
+            <summary>
+            Represent material of collision
+            </summary>
+        </member>
+        <member name="M:NXOpen.CollisionMaterial.Copy">
+            <summary>
+            Generate a copy of this collision material object
+            </summary>
+            <returns>A copy of this object</returns>
+        </member>
+        <member name="P:NXOpen.CollisionMaterial.StaticFriction">
+            <summary>
+            Static friction of collision material
+            This is not used by current physics engine in Mechatronics Concept Designer.
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionMaterial.DynamicFriction">
+            <summary>
+            Dynamic friction of collision material
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionMaterial.RollingFriction">
+            <summary>
+            Rolling friction of collision material
+            </summary>
+        </member>
+        <member name="P:NXOpen.CollisionMaterial.Restitution">
+            <summary>
+            Restitution of collision material
+            </summary>
+        </member>
+        <member name="T:NXOpen.Joint">
+            <exclude/>
+            <summary>
+            Base class for all joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.Joint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.Joint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="M:NXOpen.Joint.GetForce(System.Double)">
+            <summary>
+            Get force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.Joint.GetForce">
+            <summary>
+            Get force during simulation
+            </summary>
+            <returns>Force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.Joint.GetTorque(System.Double)">
+            <summary>
+            Get torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.Joint.GetTorque">
+            <summary>
+            Get torque during simulation
+            </summary>
+            <returns>Torque during simulation</returns>
+        </member>
+        <member name="T:NXOpen.AxisJoint">
+            <exclude/>
+            <summary>
+            Base class for axis type joint (hinge, sliding, etc)
+            </summary>
+        </member>
+        <member name="P:NXOpen.AxisJoint.Axis">
+            <summary>
+            Axis of axis type joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.HingeJoint">
+            <exclude/>
+            <summary>
+            Represent hinge joint which specifies rigid body can rotate around axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Anchor">
+            <summary>
+            Anchor point of hinge axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Axis">
+            <summary>
+            Hinge axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Angle">
+            <summary>
+            Initial angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.MultiTurnsAngle">
+            <summary>
+            Multi turns angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.HingeJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.HingeJoint.GetVelocity">
+            <summary>
+            Get angular relative velocity during simulation around the Axis
+            </summary>
+            <returns>Angular relative velocity during simulation arount the Axis</returns>
+        </member>
+        <member name="T:NXOpen.SlidingJoint">
+            <exclude/>
+            <summary>
+            Represent sliding joint which specifies rigid body can move along axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.SlidingJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.SlidingJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.SlidingJoint.Axis">
+            <summary>
+            Slide axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.SlidingJoint.Position">
+            <summary>
+            Initial position of sliding joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SlidingJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.SlidingJoint.GetVelocity">
+            <summary>
+            Get linear relative velocity during simulation along the Axis
+            </summary>
+            <returns>Linear relative velocity during simulation along the Axis</returns>
+        </member>
+        <member name="T:NXOpen.CylindricalJoint">
+            <exclude/>
+            <summary>
+            Represent cylindrical joint which specifies rigid body can move around and along the axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Anchor">
+            <summary>
+            Anchor point of axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Axis">
+            <summary>
+            Move and rotate axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Angle">
+            <summary>
+            Initial angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.MultiTurnsAngle">
+            <summary>
+            Multi turns angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Position">
+            <summary>
+            Initial position
+            </summary>
+        </member>
+        <member name="P:NXOpen.CylindricalJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.CylindricalJoint.GetAngularVelocity">
+            <summary>
+            Get angular relative velocity during simulation around the Axis
+            </summary>
+            <returns>Angular relative velocity during simulation arount the Axis</returns>
+        </member>
+        <member name="M:NXOpen.CylindricalJoint.GetLinearVelocity">
+            <summary>
+            Get linear relative velocity during simulation along the Axis
+            </summary>
+            <returns>Linear relative velocity during simulation along the Axis</returns>
+        </member>
+        <member name="T:NXOpen.PointOnCurveJoint">
+            <exclude/>
+            <summary>
+            Represent sliding joint which specifies rigid body can move along axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.PointOnCurveJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.PointOnCurveJoint.Point">
+            <summary>
+            Connection point
+            </summary>
+        </member>
+        <member name="P:NXOpen.PointOnCurveJoint.Axis">
+            <summary>
+            Connection point
+            </summary>
+        </member>
+        <member name="P:NXOpen.PointOnCurveJoint.Position">
+            <summary>
+            Initial position of point on curve joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PointOnCurveJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.CurveOnCurveJoint">
+            <exclude/>
+            <summary>
+            Represent sliding joint which specifies rigid body can move along axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Point">
+            <summary>
+            Connection point
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Axis">
+            <summary>
+            Tangent direction of connection
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Position">
+            <summary>
+            Initial position of point on curve joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Slip">
+            <summary>
+            Whether joint position is allowed to be independent for each curve
+            </summary>
+        </member>
+        <member name="P:NXOpen.CurveOnCurveJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.FixedJoint">
+            <exclude/>
+            <summary>
+            Represent fixed joint which specifies a rigid body is glued to another
+            </summary>
+        </member>
+        <member name="P:NXOpen.FixedJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.FixedJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.FixedJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.BallJoint">
+            <exclude/>
+            <summary>
+            Represent ball joint which connects two rigid bodies with a shared point and they can move all the way rotationally
+            </summary>
+        </member>
+        <member name="P:NXOpen.BallJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.BallJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.BallJoint.Anchor">
+            <summary>
+            Shared point of two rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.BallJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.LimitJoint">
+            <exclude/>
+            <summary>
+            Base class for all limit joints
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitJoint.AttachVector">
+            <summary>
+            Attach vector
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitJoint.BaseVector">
+            <summary>
+            Base vector
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitJoint.Minimum">
+            <summary>
+            Minimum value
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitJoint.Maximum">
+            <summary>
+            Maximum value
+            </summary>
+        </member>
+        <member name="T:NXOpen.AngularLimit">
+            <exclude/>
+            <summary>
+            Represent angular limit class which limits angular movement
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.AttachVector">
+            <summary>
+            Vector in attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.BaseVector">
+            <summary>
+            Vector in base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.Minimum">
+            <summary>
+            Minimum angle of limit
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.Maximum">
+            <summary>
+            Maximum angle of limit
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularLimit.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.LinearLimit">
+            <exclude/>
+            <summary>
+            Represent angular limit class which limits linear movement
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.AttachVector">
+            <summary>
+            Position in attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.BaseVector">
+            <summary>
+            Position in base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.Minimum">
+            <summary>
+            Minimum distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.Maximum">
+            <summary>
+            Maximum distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearLimit.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.SpringJoint">
+            <exclude/>
+            <summary>
+            Base class for all types of spring joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringJoint.AttachVector">
+            <summary>
+            Vector of attachment
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringJoint.BaseVector">
+            <summary>
+            Vector of base
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringJoint.SpringConstant">
+            <summary>
+            Spring constant
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringJoint.Damping">
+            <summary>
+            Damping factor
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringJoint.RelaxedPosition">
+            <summary>
+            Relaxed position
+            </summary>
+        </member>
+        <member name="T:NXOpen.AngularSpring">
+            <exclude/>
+            <summary>
+            Represent a joint with angular type
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.AttachVector">
+            <summary>
+            Direction in attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.BaseVector">
+            <summary>
+            Direction in base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.SpringConstant">
+            <summary>
+            Spring constant
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.Damping">
+            <summary>
+            Damping factor
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.RelaxedPosition">
+            <summary>
+            Relaxed position
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularSpring.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.LinearSpring">
+            <exclude/>
+            <summary>
+            Represent spring joint with linear type
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.AttachVector">
+            <summary>
+            Position in attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.BaseVector">
+            <summary>
+            Position in base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.SpringConstant">
+            <summary>
+            Spring constant
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.Damping">
+            <summary>
+            Damping factor
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.RelaxedPosition">
+            <summary>
+            Relaxed position
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearSpring.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ControlBase">
+            <exclude/>
+            <summary>
+            Represent control base which is common parent class to Speed and Position controls
+            </summary>
+        </member>
+        <member name="M:NXOpen.ControlBase.GetForce(System.Double)">
+            <summary>
+            Get force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.ControlBase.GetForce">
+            <summary>
+            Get force during simulation
+            </summary>
+            <returns>Force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.ControlBase.GetTorque(System.Double)">
+            <summary>
+            Get torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.ControlBase.GetTorque">
+            <summary>
+            Get torque during simulation
+            </summary>
+            <returns>Torque during simulation</returns>
+        </member>
+        <member name="T:NXOpen.AxisJointLimit">
+            <exclude/>
+            <summary>
+            Represent axis joint limit which specifies position limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.AxisJointLimit.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.AxisJointLimit.Axis">
+            <summary>
+            Attached axis joint (read-only)
+            </summary>
+        </member>
+        <member name="P:NXOpen.AxisJointLimit.UpperLimit">
+            <summary>
+            Upper limit (read-only) for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.AxisJointLimit.LowerLimit">
+            <summary>
+            Lower limit (read-only) for axis joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.SpeedControl">
+            <exclude/>
+            <summary>
+            Represent speed control which specifies speed limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Surface">
+            <summary>
+            Attached transport surface
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.VirtualJoint">
+            <summary>
+            Attached virtual axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Speed">
+            <summary>
+            Speed limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Position">
+            <summary>
+            Position limit (read-only) for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.LimitAcceleration">
+            <summary>
+            Limit acceleration for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Acceleration">
+            <summary>
+            Acceleration limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.LimitJerk">
+            <summary>
+            Limit jerk for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.Jerk">
+            <summary>
+            Jerk limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.LimitForceTorque">
+            <summary>
+            limit force torque for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.LimitForceTorqueForward">
+            <summary>
+            limit force torque forward for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpeedControl.LimitForceTorqueReverse">
+            <summary>
+            limit force torque reverse for axis joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.PositionControl">
+            <exclude/>
+            <summary>
+            Represent position constrol which specifies position limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Surface">
+            <summary>
+            Attached transport surface
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.VirtualJoint">
+            <summary>
+            Attached virtual axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Speed">
+            <summary>
+            Speed limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Position">
+            <summary>
+            Position limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.LimitAcceleration">
+            <summary>
+            Limit acceleration for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Acceleration">
+            <summary>
+            Acceleration limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Deceleration">
+            <summary>
+            Deceleration limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.LimitJerk">
+            <summary>
+            Limit jerk for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.Jerk">
+            <summary>
+            Jerk limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.LimitForceTorque">
+            <summary>
+            limit force torque for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.LimitForceTorqueForward">
+            <summary>
+            limit force torque forward for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionControl.LimitForceTorqueReverse">
+            <summary>
+            limit force torque reverse for axis joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.ForceTorqueControl">
+            <exclude/>
+            <summary>
+            Represent Force/Torque constrol which exert force to axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.ForceTorqueControl.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.ForceTorqueControl.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.ForceTorqueControl.Speed">
+            <summary>
+            Speed limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.ForceTorqueControl.Position">
+            <summary>
+            Position limit for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.ForceTorqueControl.Force">
+            <summary>
+            Force exerted for axis joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.AxisConstraint">
+            <exclude/>
+            <summary>
+            Represent axis constraint which is common parent class to axis limit and axis spring
+            </summary>
+        </member>
+        <member name="M:NXOpen.AxisConstraint.GetForce">
+            <summary>
+            Get force during simulation
+            </summary>
+            <returns>Force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.AxisConstraint.GetTorque">
+            <summary>
+            Get torque during simulation
+            </summary>
+            <returns>Torque during simulation</returns>
+        </member>
+        <member name="T:NXOpen.SpringDamper">
+            <exclude/>
+            <summary>
+            Represent axis spring which specifies spring and damper property for axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringDamper.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringDamper.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringDamper.SpringConstant">
+            <summary>
+            Spring Constant
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringDamper.Damping">
+            <summary>
+            Damping factor
+            </summary>
+        </member>
+        <member name="P:NXOpen.SpringDamper.RelaxedPosition">
+            <summary>
+            Relaxed position
+            </summary>
+        </member>
+        <member name="T:NXOpen.BreakingConstraint">
+            <exclude/>
+            <summary>
+            Represent breaking constraint which specifies the joint can be broken if force/torque exceeds a certain value
+            </summary>
+        </member>
+        <member name="P:NXOpen.BreakingConstraint.BreakingJoint">
+            <summary>
+            Joint which can be broken by force/torque
+            </summary>
+        </member>
+        <member name="P:NXOpen.BreakingConstraint.Force">
+            <summary>
+            Force/torque limit for specified joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.BreakingConstraint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.BreakingConstraint.BreakableJoint">
+            <summary>
+            Joint which can be broken by force/torque
+            </summary>
+        </member>
+        <member name="P:NXOpen.BreakingConstraint.Magnitude">
+            <summary>
+            Force/torque limit for specified joint
+            </summary>
+        </member>
+        <member name="T:NXOpen.GearCoupling">
+            <exclude/>
+            <summary>
+            Represent gear which specifies two axis moves with a fixed ratio
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.MasterAxis">
+            <summary>
+            Master axis joint of gear
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.SlaveAxis">
+            <summary>
+            Slave axis joint of gear
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.MasterMultiple">
+            <summary>
+            Master axis multiple
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.SlaveMultiple">
+            <summary>
+            Slave axis multiple
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.AllowSlip">
+            <summary>
+            Slip status
+            </summary>
+        </member>
+        <member name="P:NXOpen.GearCoupling.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetMasterForce(System.Double)">
+            <summary>
+            Get master force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Master force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetMasterForce">
+            <summary>
+            Get master force during simulation
+            </summary>
+            <returns>Master force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetMasterTorque(System.Double)">
+            <summary>
+            Get master torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Master torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetMasterTorque">
+            <summary>
+            Get master torque during simulation
+            </summary>
+            <returns>Master torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetSlaveForce(System.Double)">
+            <summary>
+            Get slave force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Slave force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetSlaveForce">
+            <summary>
+            Get slave force during simulation
+            </summary>
+            <returns>Slave force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetSlaveTorque(System.Double)">
+            <summary>
+            Get slave torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Slave torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.GearCoupling.GetSlaveTorque">
+            <summary>
+            Get slave torque during simulation
+            </summary>
+            <returns>Slave torque during simulation</returns>
+        </member>
+        <member name="T:NXOpen.CamCoupling">
+            <exclude/>
+            <summary>
+            Represent cam which specifies motion of two axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.MasterAxis">
+            <summary>
+            Master axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.SlaveAxis">
+            <summary>
+            Slave axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.Position">
+            <summary>
+            Master axis joint offset
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.Correction">
+            <summary>
+            Correction of slave axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.AllowSlip">
+            <summary>
+            Slip status
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.MasterScale">
+            <summary>
+            Master axis scale
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.SlaveScale">
+            <summary>
+            Slave axis scale
+            </summary>
+        </member>
+        <member name="P:NXOpen.CamCoupling.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetMasterForce(System.Double)">
+            <summary>
+            Get master force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Master force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetMasterForce">
+            <summary>
+            Get master force during simulation
+            </summary>
+            <returns>Master force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetMasterTorque(System.Double)">
+            <summary>
+            Get master torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Master torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetMasterTorque">
+            <summary>
+            Get master torque during simulation
+            </summary>
+            <returns>Master torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetSlaveForce(System.Double)">
+            <summary>
+            Get slave force during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Slave force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetSlaveForce">
+            <summary>
+            Get slave force during simulation
+            </summary>
+            <returns>Slave force during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetSlaveTorque(System.Double)">
+            <summary>
+            Get slave torque during simulation
+            This method has been deprecated.
+            </summary>
+            <param name="stepSize">Step size during simulation</param>
+            <returns>Slave torque during simulation</returns>
+        </member>
+        <member name="M:NXOpen.CamCoupling.GetSlaveTorque">
+            <summary>
+            Get slave torque during simulation
+            </summary>
+            <returns>Slave torque during simulation</returns>
+        </member>
+        <member name="T:NXOpen.ElecCamCoupling">
+            <exclude/>
+            <summary>
+            Applies the values from the electronic cam to the axis control over time.
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.InitialTime">
+            <summary>
+             InitialTime for ElecCamCoupling with an master type of time 
+             </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.ValueOffset">
+            <summary>
+             Value of offset for ElecCamCoupling with a master type of time. 
+             </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.SlaveControl">
+            <summary>
+            Slave axis control
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.MasterOffset">
+            <summary>
+            Master axis offset
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.SlaveOffset">
+            <summary>
+            Slave axis offset
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.MasterScale">
+            <summary>
+            Master axis scale
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.SlaveScale">
+            <summary>
+            Slave axis scale
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.MasterAxis">
+            <summary>
+            Master axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.MasterSignal">
+            <summary>
+            Master signal 
+            </summary>
+        </member>
+        <member name="P:NXOpen.ElecCamCoupling.MasterVirtualAxis">
+            <summary>
+            Master virtual axis 
+            </summary>
+        </member>
+        <member name="T:NXOpen.PreventCollision">
+            <exclude/>
+            <summary>
+            Represent prevent collision which specifies a collision pair does not collide
+            </summary>
+        </member>
+        <member name="P:NXOpen.PreventCollision.Body1">
+            <summary>
+            First body of specified collision pair
+            </summary>
+        </member>
+        <member name="P:NXOpen.PreventCollision.Body2">
+            <summary>
+            Second body of specified collision pair
+            </summary>
+        </member>
+        <member name="P:NXOpen.PreventCollision.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ChangeMaterial">
+            <exclude/>
+            <summary>
+            Represent change material which modifies material between two collisions
+            </summary>
+        </member>
+        <member name="P:NXOpen.ChangeMaterial.Body1">
+            <summary>
+            First body of two collisions
+            </summary>
+        </member>
+        <member name="P:NXOpen.ChangeMaterial.Body2">
+            <summary>
+            Second body of two collisions
+            </summary>
+        </member>
+        <member name="P:NXOpen.ChangeMaterial.Material">
+            <summary>
+            Specified collision material for two collisions
+            </summary>
+        </member>
+        <member name="P:NXOpen.ChangeMaterial.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ComponentPart">
+            <exclude/>
+            <summary>
+            Represent a group which contains a set of physics objects
+            </summary>
+        </member>
+        <member name="M:NXOpen.ComponentPart.Copy">
+            <summary>
+            Generate a copy of ComponentPart object
+            </summary>
+            <returns>A copy of component part object</returns>
+        </member>
+        <member name="M:NXOpen.ComponentPart.ActivateAll(System.Boolean)">
+            <summary>
+            Activate/Deactivate all physics object in this component part
+            </summary>
+            <param name="bActive"></param>
+        </member>
+        <member name="P:NXOpen.ComponentPart.NumParts">
+            <summary>
+            Total number of physics object in this component part
+            </summary>
+        </member>
+        <member name="P:NXOpen.ComponentPart.Parts">
+            <summary>
+            Physics objects in component part
+            </summary>
+        </member>
+        <member name="T:NXOpen.SourceBehavior">
+            <exclude/>
+            <summary>
+            Represent source behavior which specifies objects that can be copied in simulation
+            </summary>
+        </member>
+        <member name="P:NXOpen.SourceBehavior.InstanceIndex">
+            <summary>
+            Instance number
+            </summary>
+        </member>
+        <member name="P:NXOpen.SourceBehavior.PositionEnabledStatus">
+            <summary>
+            Position enabled status
+            True  - single selection case (single rigid body)
+            False - multiple or component selection case (not supported)
+            </summary>
+        </member>
+        <member name="M:NXOpen.SourceBehavior.GetInstancePosition(System.Int32,System.Int32@)">
+            <summary>
+            Get instance position
+            Output  :  status  - The result status of get instance position.
+                                 -1 - multiple or component selection case (not supported)
+                                  0 - single selection case with result success (single rigid body)
+                                  1 - single selection case with result failed (single rigid body)
+            </summary>
+        </member>
+        <member name="P:NXOpen.SourceBehavior.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.SinkBehavior">
+            <exclude/>
+            <summary>
+            Represent sink behavior which specifies objects that can delete copy of specified object source
+            </summary>
+        </member>
+        <member name="P:NXOpen.SinkBehavior.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Transformer">
+            <exclude/>
+            <summary>
+            Represent transformer behavior which specifies objects that can transform copy of specified object source to another.
+            </summary>
+        </member>
+        <member name="P:NXOpen.Transformer.Body">
+            <summary>
+            Body transforming to
+            </summary>
+        </member>
+        <member name="P:NXOpen.Transformer.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.Transformer.ExecuteOnce">
+            <summary>
+            Execute Once
+            </summary>
+        </member>
+        <member name="T:NXOpen.TransmitterEntry">
+            <exclude/>
+            <summary>
+            Represent an entry of transmitter which can send copy of specified object source or rigid body to a specific exit.
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterEntry.Port">
+            <summary>
+            Transmit Port
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterEntry.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterEntry.ExecuteOnce">
+            <summary>
+            Execute Once
+            </summary>
+        </member>
+        <member name="T:NXOpen.TransmitterExit">
+            <exclude/>
+            <summary>
+            Represent an exit of transmitter which can receive rigid body sending by a specific entry.
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterExit.Position">
+            <summary>
+            Position of Exit
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterExit.Orientation">
+            <summary>
+            Orientation of exiting rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterExit.Body">
+            <summary>
+            Referencing Body
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterExit.Port">
+            <summary>
+            Transmit Port
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransmitterExit.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.TableBase">
+            <exclude/>
+            <summary>
+            Represent motion profile and cam profile
+            </summary>
+        </member>
+        <member name="T:NXOpen.GraphControl">
+            <exclude/>
+            <summary>Merged GraphControl runtime object to ElecCamCoupling .</summary>
+            <remarks>
+            <para>Created in NX8.5.0</para>
+            <para> Deprecated in NX12.0.1. Please use <see cref="T:NXOpen.ElecCamCoupling"> ElecCamCoupling </see> instead.</para> 
+            </remarks>
+        </member>
+        <member name="T:NXOpen.ExternalConnection">
+            <exclude/>
+            <summary>
+            Represent external connection
+            </summary>
+        </member>
+        <member name="T:NXOpen.Signal">
+            <exclude/>
+            <summary>
+            Represent signal which is included in SignalAdapter
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.Type">
+            <summary>
+            Type of signal which is defined in BaseTypeDefs
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.IntValue">
+            <summary>
+            Value of signal when type is RTPROP_INT
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.FloatValue">
+            <summary>
+            Value of signal when type is RTPROP_FLOAT
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.BoolValue">
+            <summary>
+            Value of signal when type is RTPROP_BOOL
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.StringValue">
+            <summary>
+            Value of signal when type is RTPROP_STRING
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.BoolValues">
+            <summary>
+            Array value of signal when type is RTPROP_BOOL_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.IntValues">
+            <summary>
+            Array value of signal when type is RTPROP_INT_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.FloatValues">
+            <summary>
+            Array value of signal when type is RTPROP_FLOAT_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.StringValues">
+            <summary>
+            Array value of signal when type is RTPROP_STRING_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.Adapter">
+            <summary>
+            Adapter of signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.Signal.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.SignalAdapter">
+            <exclude/>
+            <summary>
+            Represent signal adapter which includes some signals, parameters and formulas
+            </summary>
+        </member>
+        <member name="P:NXOpen.SignalAdapter.Signals">
+            <summary>
+            Signals in signal adapter
+            </summary>
+        </member>
+        <member name="P:NXOpen.SignalAdapter.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.MCDSignal">
+            <exclude/>
+            <summary>
+            Represent signal which is created globally.
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.Type">
+            <summary>
+            Type of signal which is defined in BaseTypeDefs
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.IntValue">
+            <summary>
+            Value of signal when type is RTPROP_INT
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.FloatValue">
+            <summary>
+            Value of signal when type is RTPROP_FLOAT
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.BoolValue">
+            <summary>
+            Value of signal when type is RTPROP_BOOL
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.StringValue">
+            <summary>
+            Value of signal when type is RTPROP_STRING
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.BoolValues">
+            <summary>
+            Array value of signal when type is RTPROP_BOOL_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.IntValues">
+            <summary>
+            Array value of signal when type is RTPROP_INT_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.FloatValues">
+            <summary>
+            Array value of signal when type is RTPROP_FLOAT_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.StringValues">
+            <summary>
+            Array value of signal when type is RTPROP_STRING_ARRAY
+            </summary>
+        </member>
+        <member name="P:NXOpen.MCDSignal.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Parameter">
+            <exclude/>
+            <summary>
+            Represent user defined parameter which is included in ProxyObject or RuntimeParameters
+            </summary>
+        </member>
+        <member name="T:NXOpen.ProxyObject">
+            <exclude/>
+            <summary>
+            Represent proxy object which includes some user defined parameters
+            </summary>
+        </member>
+        <member name="M:NXOpen.ProxyObject.GetNumParameters">
+            <summary>
+            Get number of parameters included in proxy object
+            </summary>
+        </member>
+        <member name="M:NXOpen.ProxyObject.GetParameter(System.Int32)">
+            <summary>
+            Get parameter included in proxy object
+            </summary>
+            <param name="nProp">Index of parameter</param>
+        </member>
+        <member name="M:NXOpen.ProxyObject.SetParameter(System.Int32,NXOpen.Parameter)">
+            <summary>
+            Set parameter to proxy object
+            </summary>
+            <param name="nProp">Index of parameter</param>
+            <param name="value">Value of parameter</param>
+        </member>
+        <member name="T:NXOpen.RuntimeParameters">
+            <exclude/>
+            <summary>
+            Represent runtime parameters which includes some user defined parameters
+            </summary>
+        </member>
+        <member name="M:NXOpen.RuntimeParameters.GetNumParameters">
+            <summary>
+            Get number of parameters included in runtime parameters
+            </summary>
+        </member>
+        <member name="M:NXOpen.RuntimeParameters.GetParameter(System.Int32)">
+            <summary>
+            Get parameter included in runtime parameters
+            </summary>
+            <param name="nProp">Index of parameter</param>
+        </member>
+        <member name="M:NXOpen.RuntimeParameters.SetParameter(System.Int32,NXOpen.Parameter)">
+            <summary>
+            Set parameter to runtime parameters
+            </summary>
+            <param name="nProp">Index of parameter</param>
+            <param name="value">Value of parameter</param>
+        </member>
+        <member name="T:NXOpen.VirtualAxis">
+            <exclude/>
+            <summary>
+            Represent virtual axis which is a virtual joint without base and attachment
+            </summary>
+        </member>
+        <member name="P:NXOpen.VirtualAxis.Direction">
+            <summary>
+            Virtual aixs direction
+            </summary>
+        </member>
+        <member name="P:NXOpen.VirtualAxis.Position">
+            <summary>
+            Initial position
+            </summary>
+        </member>
+        <member name="P:NXOpen.VirtualAxis.Speed">
+            <summary>
+            Virtual axis speed
+            </summary>
+        </member>
+        <member name="P:NXOpen.VirtualAxis.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ReadWriteDeviceObject">
+            <exclude/>
+            <summary>
+            Represent ReadWriteDeviceObject
+            </summary>
+        </member>
+        <member name="P:NXOpen.ReadWriteDeviceObject.DeviceType">
+            <summary>
+            Property for DeviceType
+            </summary>
+        </member>
+        <member name="P:NXOpen.ReadWriteDeviceObject.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.ReadWriteDeviceObject.Offset">
+            <summary>
+            Property for Offset
+            </summary>
+        </member>
+        <member name="P:NXOpen.ReadWriteDeviceObject.Length">
+            <summary>
+            Property for Length
+            </summary>
+        </member>
+        <member name="M:NXOpen.ReadWriteDeviceObject.GetNumProperty">
+            <summary>
+            Get number of tag form property.
+            </summary>
+        </member>
+        <member name="M:NXOpen.ReadWriteDeviceObject.GetProperty(System.Int32)">
+            <summary>
+            Get tag form property
+            </summary>
+            <param name="nProp">Index of property</param>
+        </member>
+        <member name="M:NXOpen.ReadWriteDeviceObject.SetProperty(System.Int32,NXOpen.Parameter)">
+            <summary>
+            Set tag form property
+            </summary>
+            <param name="nProp">Index of property</param>
+            <param name="value">Value of property</param>
+        </member>
+        <member name="T:NXOpen.DisplayChanger">
+            <exclude/>
+            <summary>
+            Represent DisplayChanger
+            </summary>
+        </member>
+        <member name="P:NXOpen.DisplayChanger.ExecuteMode">
+            <summary>
+            Property for DisplayChanger
+            </summary>
+        </member>
+        <member name="P:NXOpen.DisplayChanger.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Gripper">
+            <exclude/>
+            <summary>
+            Base class for all types of gripper
+            </summary>
+        </member>
+        <member name="T:NXOpen.LinearGripper">
+            <exclude/>
+            <summary>
+            Represent gripper with linear finger type
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.Grip">
+            <summary>
+            Start action to grip
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.Release">
+            <summary>
+            Start action to release
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.IsOpened">
+            <summary>
+            Is gripper in opened status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.IsClosed">
+            <summary>
+            Is gripper in closed status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.StopGrippingAction">
+            <summary>
+            Action to stop gripping
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.GrippedObject">
+            <summary>
+            Gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.HasGrippedObject">
+            <summary>
+            Has gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.FingerPosition">
+            <summary>
+            Current finger position
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.Speed">
+            <summary>
+            Finger speed
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.MaxPosition">
+            <summary>
+            Finger max position
+            </summary>
+        </member>
+        <member name="P:NXOpen.LinearGripper.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.AngularGripper">
+            <exclude/>
+            <summary>
+            Represent gripper with angular finger type
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.Grip">
+            <summary>
+            Start action to grip
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.Release">
+            <summary>
+            Start action to release
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.IsOpened">
+            <summary>
+            Is gripper in opened status
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.IsClosed">
+            <summary>
+            Is gripper in closed status
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.StopGrippingAction">
+            <summary>
+            Action to stop gripping
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.GrippedObject">
+            <summary>
+            Gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.HasGrippedObject">
+            <summary>
+            Has gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.FingerPosition">
+            <summary>
+            Current finger position
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.Speed">
+            <summary>
+            Finger speed
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.MaxPosition">
+            <summary>
+            Finger max position
+            </summary>
+        </member>
+        <member name="P:NXOpen.AngularGripper.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.VacuumGripper">
+            <exclude/>
+            <summary>
+            Represent gripper with vacuum type
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.Grip">
+            <summary>
+            Start action to grip
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.Release">
+            <summary>
+            Start action to release
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.Duration">
+            <summary>
+            Vacuum action duration
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.GrippedObject">
+            <summary>
+            Gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.HasGrippedObject">
+            <summary>
+            Has gripped object
+            </summary>
+        </member>
+        <member name="P:NXOpen.VacuumGripper.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ExpressionBlock">
+            <exclude/>
+            <summary>
+            Represent expression block which is created globally.
+            </summary>
+        </member>
+        <member name="M:NXOpen.ExpressionBlock.GetNumSlots">
+            <summary>
+            Get number of slots.
+            </summary>
+        </member>
+        <member name="M:NXOpen.ExpressionBlock.GetSlot(System.Int32)">
+            <summary>
+            Get slot
+            </summary>
+            <param name="nProp">Index of slot</param>
+        </member>
+        <member name="M:NXOpen.ExpressionBlock.SetSlot(System.Int32,NXOpen.Parameter)">
+            <summary>
+            Set slot
+            </summary>
+            <param name="nProp">Index of slot</param>
+            <param name="value">Value of slot</param>
+        </member>
+        <member name="T:NXOpen.PathConstraintJoint">
+            <exclude/>
+            <summary>
+            Represent Path Constraint Joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PathConstraintJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.PathConstraintJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.TagForm">
+            <exclude/>
+            <summary>
+            Represent TagForm object.
+            </summary>
+        </member>
+        <member name="M:NXOpen.TagForm.GetNumParameters">
+            <summary>
+            Get number of parameters included in runtime parameters
+            </summary>
+        </member>
+        <member name="M:NXOpen.TagForm.GetParameter(System.Int32)">
+            <summary>
+            Get parameter included in runtime parameters
+            </summary>
+            <param name="nProp">Index of parameter</param>
+        </member>
+        <member name="T:NXOpen.RuntimeNC">
+            <exclude/>
+            <summary>
+            Represent RuntimeNC
+            </summary>
+        </member>
+        <member name="T:NXOpen.DistanceSensor">
+            <exclude/>
+            <summary>
+            Represent DistanceSensor
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Triggered">
+            <summary>
+            Property for Triggered
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Angle">
+            <summary>
+            Property for Angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Color">
+            <summary>
+            Property for Color
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Transparency">
+            <summary>
+            Property for Transparency
+            </summary>
+        </member>
+        <member name="P:NXOpen.DistanceSensor.Reflectivity">
+            <summary>
+            Property for Reflectivity
+            </summary>
+        </member>
+        <member name="T:NXOpen.LaserScanner">
+            <exclude/>
+            <summary>
+            Represent LaserScanner
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.Triggered">
+            <summary>
+            Triggered status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.DistanceString">
+            <summary>
+            Property for all distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.NumBeams">
+            <summary>
+            Total number of beams
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.Distances">
+            <summary>
+            Property for all distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LaserScanner.Angles">
+            <summary>
+            Property for all angle
+            </summary>
+        </member>
+        <member name="T:NXOpen.LightCurtain">
+            <exclude/>
+            <summary>
+            Represent LightCurtain
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.Triggered">
+            <summary>
+            Triggered status
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.DistanceString">
+            <summary>
+            Property for all distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.NumBeams">
+            <summary>
+            Total number of beams
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.Distances">
+            <summary>
+            Property for all distance
+            </summary>
+        </member>
+        <member name="P:NXOpen.LightCurtain.Angles">
+            <summary>
+            Property for all angle
+            </summary>
+        </member>
+        <member name="T:NXOpen.PositionSensor">
+            <exclude/>
+            <summary>
+            Represent PositionSensor
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionSensor.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.PositionSensor.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.VelocitySensor">
+            <exclude/>
+            <summary>
+            Represent VelocitySensor
+            </summary>
+        </member>
+        <member name="P:NXOpen.VelocitySensor.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.VelocitySensor.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.GenericSensor">
+            <exclude/>
+            <summary>
+            Represent GenericSensor
+            </summary>
+        </member>
+        <member name="P:NXOpen.GenericSensor.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.GenericSensor.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.LimitSwitch">
+            <exclude/>
+            <summary>
+            Represent LimitSwitch
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitSwitch.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.LimitSwitch.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Relay">
+            <exclude/>
+            <summary>
+            Represent Relay
+            </summary>
+        </member>
+        <member name="P:NXOpen.Relay.Signal">
+            <summary>
+            Property for Signal
+            </summary>
+        </member>
+        <member name="P:NXOpen.Relay.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Inclinometer">
+            <exclude/>
+            <summary>
+            Represent Inclinometer
+            </summary>
+        </member>
+        <member name="P:NXOpen.Inclinometer.Angle">
+            <summary>
+            Angle of Inclinometer
+            </summary>
+        </member>
+        <member name="P:NXOpen.Inclinometer.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Accelerometer">
+            <exclude/>
+            <summary>
+            Represent Accelerometer
+            </summary>
+        </member>
+        <member name="P:NXOpen.Accelerometer.Linear_Accelerometer">
+            <summary>
+            Linear accelerometer of Accelerometer
+            </summary>
+        </member>
+        <member name="P:NXOpen.Accelerometer.Angular_Accelerometer">
+            <summary>
+            Angular accelerometer of Accelerometer
+            </summary>
+        </member>
+        <member name="P:NXOpen.Accelerometer.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.ScrewJoint">
+            <exclude/>
+            <summary>
+            Represent ScrewJoint along a rotatable linear axis so that they can rotate and move in a fixed ratio.
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Anchor">
+            <summary>
+            Anchor point of screw axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Axis">
+            <summary>
+            Screw axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.LinearPosition">
+            <summary>
+            Linear position
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.AngularPosition">
+            <summary>
+            Angular position
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.MultiTurnsAngle">
+            <summary>
+            Multi turns angle
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="P:NXOpen.ScrewJoint.Ratio">
+            <summary>
+            Get ratio from ScrewJoint
+            </summary>
+            <returns>The ratio value</returns>
+        </member>
+        <member name="T:NXOpen.PlanarJoint">
+            <exclude/>
+            <summary>
+            Represent joint object to limit the attachment movement on the plane of base
+            </summary>
+        </member>
+        <member name="P:NXOpen.PlanarJoint.Attach">
+            <summary>
+            Attachment rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.PlanarJoint.Base">
+            <summary>
+            Base rigid body
+            </summary>
+        </member>
+        <member name="P:NXOpen.PlanarJoint.Axis">
+            <summary>
+            Slide axis
+            </summary>
+        </member>
+        <member name="P:NXOpen.PlanarJoint.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.RackPinion">
+            <summary>
+            Represent gear which specifies two axis moves with a fixed ratio
+            </summary>
+        </member>
+        <member name="P:NXOpen.RackPinion.MasterAxis">
+            <summary>
+            Master axis joint of RackPinion
+            </summary>
+        </member>
+        <member name="P:NXOpen.RackPinion.SlaveAxis">
+            <summary>
+            Slave axis joint of RackPinion
+            </summary>
+        </member>
+        <member name="P:NXOpen.RackPinion.AllowSlip">
+            <summary>
+            Slip status
+            </summary>
+        </member>
+        <member name="P:NXOpen.RackPinion.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Operation">
+            <exclude/>
+            <summary>
+            Represent RuntimeNC
+            </summary>
+        </member>
+        <member name="T:NXOpen.PneumaticCylinder">
+            <exclude/>
+            <summary>
+            Represents Pneumatic Cylinder
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticCylinder.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticCylinder.PressureA">
+            <summary>
+            pressure of base chamber
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticCylinder.PressureB">
+            <summary>
+            pressure of leading chamber
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticCylinder.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.HydraulicCylinder">
+            <exclude/>
+            <summary>
+            Represents Hydraulic Cylinder
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicCylinder.Axis">
+            <summary>
+            Attached axis joint
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicCylinder.PressureA">
+            <summary>
+            pressure of base chamber
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicCylinder.PressureB">
+            <summary>
+            pressure of leading chamber
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicCylinder.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.PneumaticValve">
+            <exclude/>
+            <summary>
+            Represents Pneumatic Valve
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticValve.SupplyPressure">
+            <summary>
+            pressure of supply lead
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticValve.ExhaustPressure">
+            <summary>
+            pressure of exhaust lead
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticValve.ControlIn">
+            <summary>
+            value of controlling input
+            </summary>
+        </member>
+        <member name="P:NXOpen.PneumaticValve.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.HydraulicValve">
+            <exclude/>
+            <summary>
+            Represents Hydraulic Valve
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicValve.SupplyPressure">
+            <summary>
+            pressure of supply lead
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicValve.ExhaustPressure">
+            <summary>
+            pressure of exhaust lead
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicValve.ControlIn">
+            <summary>
+            value of controlling input
+            </summary>
+        </member>
+        <member name="P:NXOpen.HydraulicValve.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.InverseKinematics">
+            <exclude/>
+            <summary>
+            Represent Inverse Kinematics Object
+            </summary>
+        </member>
+        <member name="P:NXOpen.InverseKinematics.Effector">
+            <summary>
+            The End Effector
+            </summary>
+        </member>
+        <member name="P:NXOpen.InverseKinematics.Position">
+            <summary>
+            Target Position
+            </summary>
+        </member>
+        <member name="P:NXOpen.InverseKinematics.Orientation">
+            <summary>
+            Target Orientation
+            </summary>
+        </member>
+        <member name="P:NXOpen.InverseKinematics.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.PulleysBeltChain">
+            <exclude/>
+            <summary>
+            Represent pulleys and belt chain which specifies multiple axes moves with a fixed ratio
+            </summary>
+        </member>
+        <member name="P:NXOpen.PulleysBeltChain.Active">
+            <summary>
+            Active status of Pulleys and belt chain
+            </summary>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetNumPulleys">
+            <summary>
+            the number of pulleys defined in Pulleys and belt chain
+            </summary>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetMasterFlag(System.Int32)">
+            <summary>
+            Master flag status of a pulley defined in Pulleys and belt chain
+            </summary>
+            <param name="pulleyIndex">the index of pulleys defined in Pulleys and belt chain, started from 0, its value can be 0, 1, 2, 3, ..., ( the number of pulleys in chain - 1) </param>
+            <returns>'true' meaning the specified pulley is master pulley; 'false' meaning it's slave pulley.</returns>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetRotaryAxis(System.Int32)">
+            <summary>
+            rotary axis joint of a pulley defined in Pulleys and belt chain
+            </summary>
+            <param name="pulleyIndex">the index of pulleys defined in Pulleys and belt chain, started from 0, its value can be 0, 1, 2, 3, ..., ( the number of pulleys in chain - 1) </param>
+            <returns>the rotary axis of the specified pulley</returns>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetTransmisionRatio(System.Int32)">
+            <summary>
+            rotary axis transmision ratio of a pulley defined in Pulleys and belt chain
+            </summary>
+            <param name="pulleyIndex">the index of pulleys defined in Pulleys and belt chain, started from 0, its value can be 0, 1, 2, 3, ..., ( the number of pulleys in chain - 1) </param>
+            <returns>the double value of transmission ratio of the specified pulley compared to the master pulley rotary axis</returns>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetPulleyForce(System.Int32)">
+            <summary>
+            Get the force of a pulley defined in in Pulleys and belt chain during simulation.
+            This method has been deprecated.  //QLF:TODO??
+            </summary>
+            <param name="pulleyIndex">the index of pulleys defined in Pulleys and belt chain, started from 0, its value can be 0, 1, 2, 3, ..., ( the number of pulleys in chain - 1) </param>
+            <returns>the force of the specified pulley during simulation</returns>
+        </member>
+        <member name="M:NXOpen.PulleysBeltChain.GetPulleyTorque(System.Int32)">
+            <summary>
+            Get the torque of a pulley defined in in Pulleys and belt chain during simulation.
+            This method has been deprecated.  //QLF:TODO??
+            </summary>
+            <param name="pulleyIndex">the index of pulleys defined in Pulleys and belt chain, started from 0, its value can be 0, 1, 2, 3, ..., ( the number of pulleys in chain - 1) </param>
+            <returns>the torque of the specified pulley during simulation</returns>
+        </member>
+        <member name="T:NXOpen.BondZone">
+            <exclude/>
+            <summary>
+            Represent Bond Zone Object
+            </summary>
+        </member>
+        <member name="F:NXOpen.BondZone.BondAction.Collision">
+            <summary>  Bond when collision happens  </summary>
+        </member>
+        <member name="F:NXOpen.BondZone.BondAction.UserDefined">
+            <summary>  Bond user specified  </summary>
+        </member>
+        <member name="P:NXOpen.BondZone.Triggered">
+            <summary>
+            Indicates whether this zone detects other objects.
+            </summary>
+        </member>
+        <member name="P:NXOpen.BondZone.Bonding">
+            <summary>
+            Indicates whether it is bonding objects.
+            </summary>
+        </member>
+        <member name="P:NXOpen.BondZone.ActionMode">
+            <summary>
+            Action Mode
+            </summary>
+        </member>
+        <member name="P:NXOpen.BondZone.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="M:NXOpen.BondZone.UpdateBond">
+            <summary>
+            Evaluate the detected Collision Bodies and separate them from the bonded bodies.
+            </summary>
+        </member>
+        <member name="M:NXOpen.BondZone.UpdateBond(NXOpen.RigidBody[]@)">
+            <summary>
+            Evaluate the detected Collision Bodies and separate them from the bonded bodies.
+            Obtain the bonded or single rigid bodies and the count.
+            </summary>
+        </member>
+        <member name="T:NXOpen.AlignBody">
+            <exclude/>
+            <summary>
+            Represent Align Body Object
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.AssociatedBody">
+            <summary>
+            The Associated Body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Point">
+            <summary>
+            Point Position
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Proximity">
+            <summary>
+            The Proximity
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Detection">
+            <summary>
+            The detected Align Body
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Detected">
+            <summary>
+            Detected status
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Role">
+            <summary>
+            Role
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Category">
+            <summary>
+            Category
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.EnableBond">
+            <summary>
+            Enable bond
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Bond">
+            <summary>
+            Bond
+            </summary>
+        </member>
+        <member name="P:NXOpen.AlignBody.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.DynamicObjectInstantiation">
+            <exclude/>
+            <summary>
+            Represent Dynamic Object Instantiation Object
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.ToolToFind">
+            <summary>
+            Tool to find
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.Find">
+            <summary>
+            Find
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.FindFinished">
+            <summary>
+            Find finished
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.ToolAtChannel">
+            <summary>
+            Tool at channel
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.ToolAtMagazine">
+            <summary>
+            Tool at magazine
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.ToolAtPocket">
+            <summary>
+            Tool at pocket
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.OperatingChannel">
+            <summary>
+            The channel that the detacting is working for
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.OperatingMagazine">
+            <summary>
+            The magazine that the detacting is working for
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.OperatingPocket">
+            <summary>
+            The pocket that the detacting is working for
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromMagazine">
+            <summary>
+            Detach tool from magazine
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromMagazineFinished">
+            <summary>
+            Detach tool from magazine finished
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.OperatingToolChangerPocket">
+            <summary>
+            The tool changer pocket that the detacting is working for
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromToolChanger">
+            <summary>
+            Detach tool from tool changer
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromToolChangerFinished">
+            <summary>
+            Detach tool from tool changer finished
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.OperatingSpindlePocket">
+            <summary>
+            The spindle pocket that the detacting is working for
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromSpindle">
+            <summary>
+            Detach tool from spindle
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.DetachToolFromSpindleFinished">
+            <summary>
+            Detach tool from spindle finished
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicObjectInstantiation.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.Tracer">
+            <exclude/>
+            <summary>
+            Represent Tracer Object
+            </summary>
+        </member>
+        <member name="P:NXOpen.Tracer.Active">
+            <summary>
+            Active status
+            </summary>
+        </member>
+        <member name="T:NXOpen.DynamicMaterial">
+            <exclude/>
+            <summary>
+            Represent DynamicMaterial
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.Active">
+            <summary>
+            Active status for Box type
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.CylinderActive">
+            <summary>
+            Active status for Cylinder type
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.UserDefinedActive">
+            <summary>
+            Active status for User Defined type
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.Type">
+            <summary>
+            Material Shape Type
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.BoxXLength">
+            <summary>
+            Box Shape X length
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.BoxYLength">
+            <summary>
+            Box Shape Y length
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.BoxZLength">
+            <summary>
+            Box Shape Z length
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.CylinderHeight">
+            <summary>
+            Cylinder Shape Height
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.CylinderRadius">
+            <summary>
+            Cylinder Shape Radius
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterial.Offset">
+            <summary>
+            User Defined or Along Guide offset
+            </summary>
+        </member>
+        <member name="T:NXOpen.DynamicMaterialCutter">
+            <exclude/>
+            <summary>
+            Represent DynamicMaterialCutter
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.Active">
+            <summary>
+            Active status for Size Cutter
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.CutterOffset">
+            <summary>
+            Size Cutter Offset
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.CutterWidth">
+            <summary>
+            Size Cutter Width
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.CutterAction">
+            <summary>
+            Size Cutter Action
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.ToolCutterActive">
+            <summary>
+            Tool Cutter Active
+            </summary>
+        </member>
+        <member name="P:NXOpen.DynamicMaterialCutter.ToolCutterAction">
+            <summary>
+            Tool Cutter Action
+            </summary>
+        </member>
+        <member name="T:NXOpen.Tag">
+            <summary>
+            A tag used to identify an object within NX.
+            </summary>
+        </member>
+        <member name="F:NXOpen.Tag.Null">
+            <summary>
+            Null is a unique tag value that does not identity any object.
+            </summary>
+        </member>
+        <member name="T:NXOpen.TaggedObject">
+            <summary>
+            An object which has a Tag.
+            </summary>
+        </member>
+        <member name="P:NXOpen.TaggedObject.Tag">
+            <summary>
+            Returns the tag of this object.
+            </summary>
+            <remarks>The tag of the object is an identifier for the object.
+            It is used when calling methods of
+            classes in the NXOpen.UF namespace.
+            </remarks>
+        </member>
+        <member name="M:NXOpen.TaggedObject.initialize">
+            <exclude/>
+            <summary>
+            Initialize the object. 
+            </summary>
+        </member>
+        <member name="M:NXOpen.TaggedObject.ToString">
+            <summary>
+            Returns a String that represents the current Object. 
+            </summary>
+            <returns>A String that represents the current Object. </returns>
+        </member>
+        <member name="M:NXOpen.TaggedObject.PrintTestData(System.String)">
+            <exclude/>
+            <summary>
+            This is an internal method for testing purposes that should not be called.
+            </summary>
+            <param name="variableName"></param>
+        </member>
+        <member name="M:NXOpen.TaggedObject.PrintTestData(System.String,System.Int32)">
+            <exclude/>
+            <summary>
+            This is an internal method for testing purposes that should not be called.
+            </summary>
+            <param name="variableName"></param>
+            <param name="lineNumber"></param>
+        </member>
+        <member name="T:NXOpen.TaggedObjectCollection">
+            <summary>
+            A base class for all NXOpen tagged object collections
+            </summary>
+        </member>
+        <member name="M:NXOpen.TaggedObjectCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>An IEnumerator object that can be used to iterate through the collection. </returns>
+        </member>
+        <member name="M:NXOpen.TaggedObjectCollection.EnumerateMoveNext(NXOpen.Tag@,System.Byte[])">
+            <summary>
+            Advances the enumerator to the next element of the collection. 
+            </summary>
+            <param name="currentTag">current tag</param>
+            <param name="state">state</param>
+            <returns></returns>
+        </member>
+        <member name="M:NXOpen.TaggedObjectCollection.initialize">
+            <exclude/>
+            <summary>
+            Initialize the object. 
+            </summary>
+        </member>
+        <member name="T:NXOpen.TransientObject">
+            <summary>
+            A base class for all NXOpen transient objects
+            </summary>
+        </member>
+        <member name="P:NXOpen.TransientObject.Handle">
+            <summary>
+            Handle of the internal object represented by this object.
+            </summary>
+            <remarks>This property should not be used by automation programs.</remarks>
+        </member>
+        <member name="M:NXOpen.TransientObject.Dispose">
+            <summary>
+            Frees the object from memory.  
+            </summary>
+            <remarks>After this method is called, it is illegal to use the object.
+            This method is automatically called when the object is 
+            deleted by the garbage collector.  
+            </remarks>
+        </member>
+        <member name="M:NXOpen.TransientObject.FreeResource">
+            <summary>
+            Frees the object from memory. 
+            </summary>
+        </member>
+        <member name="M:NXOpen.TransientObject.ToString">
+            <summary>
+            Returns a String that represents the current Object.
+            </summary>
+        </member>
+        <member name="M:NXOpen.TransientObject.PrintTestData(System.String)">
+            <exclude/>
+        </member>
+        <member name="M:NXOpen.TransientObject.PrintTestData(System.String,System.Int32)">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.VectorArithmetic.Vector3">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.VectorArithmetic.Matrix3">
+            <exclude/>
+        </member>
+        <member name="T:NXOpen.VectorArithmetic.Quaternion">
+            <exclude/>
+        </member>
+        <member name="T:NXOpenUI.FormUtilities">
+            <summary>
+            Provides utility methods for applications using Windows Forms running in NX.
+            </summary>
+        </member>
+        <member name="M:NXOpenUI.FormUtilities.GetNXIcon">
+            <summary>Gets the icon used by NX. </summary>    
+        </member>
+        <member name="M:NXOpenUI.FormUtilities.SetApplicationIcon(System.Windows.Forms.Form)">
+            <summary>Sets the icon for the supplied form the same as the icon used by NX. </summary>    
+        </member>
+        <member name="M:NXOpenUI.FormUtilities.GetDefaultParentWindowHandle">
+            <summary>Gets the parent window handle of the main application window. </summary>  
+        </member>
+        <member name="M:NXOpenUI.FormUtilities.ReparentForm(System.Windows.Forms.Form)">
+            <summary>Set the parent for the form window of the NXOpen application. </summary>
+        </member>
+        <member name="T:NXOpenUI.NXInputBox">
+            <summary>
+            Provides static methods for creating simple text or numeric entry dialogs using Windows Forms controls.
+            </summary>
+        </member>
+        <member name="T:NXOpenUI.NXInputBox.NXInputBoxForm">
+            <summary>
+            Represents the Windows Forms controls for the NXInputBox.
+            </summary>
+        </member>
+        <member name="F:NXOpenUI.NXInputBox.NXInputBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.NXInputBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.NXInputBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputString(System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the string the user enters. </summary>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputString(System.String,System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the string the user enters. </summary>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputString(System.String,System.String,System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the string the user enters. </summary>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+            <param name="initialText">Initial text to use as default text in the text entry box.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputNumber(System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the number the user enters. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputNumber(System.String,System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the number the user enters. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputNumber(System.String,System.String,System.String)">
+            <summary>Displays a simple text entry dialog to the user and returns the number the user enters. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+            <param name="initialText">Initial text to use as default text in the text entry box.
+            <para>This initial text should form a valid double number.</para></param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.GetInputNumber(System.String,System.String,System.Double)">
+            <summary>Displays a simple text entry dialog to the user and returns the number the user enters. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+            <param name="initialNumber">Initial double to use as a default number in the text entry box.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.ParseInputNumber(System.String,System.String,System.String,System.Globalization.NumberStyles,System.IFormatProvider,System.Double@)">
+            <summary>Displays a simple text entry dialog to the user, parses the string the user enters, and 
+            if it is a valid number, sets result to the value the user entered and returns true. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+            <param name="initialText">Initial text to use as default text in the text entry box.
+            <para>This initial text should form a valid double number.</para></param>  
+            <param name="style">The permitted format of the input number defined as a combination of one or more 
+            System.Globalization.NumberStyles constants.</param>  
+            <param name="provider">A format provider that defines the valid culture-specific format for the input number.</param>  
+            <param name="result">An out parameter containing the parsed number input by the user. If the 
+            method returns true, result contains a valid double number.</param>  
+        </member>
+        <member name="M:NXOpenUI.NXInputBox.ParseInputNumber(System.String,System.String,System.Double,System.Globalization.NumberStyles,System.IFormatProvider,System.Double@)">
+            <summary>Displays a simple text entry dialog to the user and returns the string the user enters. </summary>  
+            <remarks><para>Throws a FormatException if the input text does not form a valid number.</para>
+            <para>Throws an OverflowException if the input text is outside the valid range for doubles.</para></remarks>  
+            <param name="prompt">Prompt string to the user for the text entry box.</param>  
+            <param name="caption">Caption string for the window title to the text entry dialog.</param>  
+            <param name="initialNumber">Initial double to use as a default number in the text entry box.</param>  
+            <param name="style">The permitted format of the input number defined as a combination of one or more 
+            System.Globalization.NumberStyles constants.</param>  
+            <param name="provider">A format provider that defines the valid culture-specific format for the input number.</param>  
+            <param name="result">An out parameter containing the parsed number input by the user. If the 
+            method returns true, result contains a valid double number.</param>  
+        </member>
+    </members>
+</doc>

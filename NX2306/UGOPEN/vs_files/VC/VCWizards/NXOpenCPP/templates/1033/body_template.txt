@@ -1,0 +1,35 @@
+{
+    try
+    {
+		// Create NXOpen C++ class instance
+		[!output MAIN_CLASS_NAME] *the[!output MAIN_CLASS_NAME];
+		the[!output MAIN_CLASS_NAME] = new [!output MAIN_CLASS_NAME]();
+		the[!output MAIN_CLASS_NAME]->do_it();
+		delete the[!output MAIN_CLASS_NAME];
+	}
+    catch (const NXException& e1)
+    {
+[!if DLL_APPLICATION]
+		UI::GetUI()->NXMessageBox()->Show("NXException", NXOpen::NXMessageBox::DialogTypeError, e1.Message());
+[!else]
+		cerr << "NXException: " <<  e1.ErrorCode() << endl;
+		cerr << e1.Message() << endl;
+[!endif]
+    }
+	catch (const exception& e2)
+    {
+[!if DLL_APPLICATION]
+		UI::GetUI()->NXMessageBox()->Show("Exception", NXOpen::NXMessageBox::DialogTypeError, e2.what());
+[!else]
+		cerr << "Exception: " <<  e2.what() << endl;
+[!endif]
+    }
+	catch (...)
+    {
+[!if DLL_APPLICATION]
+		UI::GetUI()->NXMessageBox()->Show("Exception", NXOpen::NXMessageBox::DialogTypeError, "Unknown Exception.");
+[!else]
+		cerr << "Unknown Exception: " << endl;
+[!endif]
+    }
+}

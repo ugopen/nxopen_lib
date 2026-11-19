@@ -1,0 +1,7 @@
+# Sample Criteria file for tet. meshing
+
+#     Criterion     --  --    Ideal    
+
+3   aspect ratio      0   0    10.00     
+10  jacobian          0   0    10.00     
+11  tet collapse      0   0    100.00    

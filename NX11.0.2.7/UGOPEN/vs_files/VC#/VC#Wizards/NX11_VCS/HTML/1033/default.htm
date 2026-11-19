@@ -1,0 +1,628 @@
+<!-- (c) 2001 Microsoft Corporation -->
+<HTML DIR="ltr">
+	<HEAD>
+		<TITLE>NX11 Open C# Wizard</TITLE>
+		<META NAME="vs_targetSchema" CONTENT="http://schemas.microsoft.com/intellisense/ie5">
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+		<STYLE TYPE="text/css">@import url();
+		</STYLE>
+		<SCRIPT>
+		var strURL = window.external.FindSymbol("PRODUCT_INSTALLATION_DIR");
+	    strURL += window.external.FindSymbol("MSVS_WIZARD_FOLDER") + "/"+ window.external.FindSymbol("WIZARD_NAME")+"/";
+		// Do NOT use GetHostLocale - only english is supported - hardcode to 1033
+		// strURL += window.external.GetHostLocale();
+		strURL += "1033";
+		strURL += "/NewStyles.css";
+		document.styleSheets(0).imports(0).href = strURL;
+		</SCRIPT>
+		<SYMBOL NAME="TEST" TYPE="text" VALUE="TEST2"></SYMBOL>
+		<SYMBOL NAME="DOCUMENT_FIRST_LOAD" TYPE="checkbox" VALUE="true"></SYMBOL>
+		<SYMBOL NAME="BODY_TEMPLATE" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="SAFE_PROJECT_NAME" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="LIB_NAME" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="APP_CLASS" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="APP_BASE_CLASS" TYPE="text" VALUE="CWinApp"></SYMBOL>
+		<SYMBOL NAME="SOURCE_FILTER" TYPE="text" VALUE="cpp;c;cxx"></SYMBOL>
+		<SYMBOL NAME="INCLUDE_FILTER" TYPE="text" VALUE="h;hpp;hxx"></SYMBOL>
+		<SYMBOL NAME="RESOURCE_FILTER" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="DLL_APPLICATION" TYPE="checkbox" VALUE="true"></SYMBOL>
+		<SYMBOL NAME="EXE_APPLICATION" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="CXX_LANGUAGE" TYPE="checkbox" VALUE="TRUE"></SYMBOL>
+		<SYMBOL NAME="OPENPP_CALLS" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="C_LANGUAGE" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="STARTUP_ENTRY_POINT" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="MAIN_ENTRY_POINT" TYPE="checkbox" VALUE="true"></SYMBOL>
+		<SYMBOL NAME="USER_EXITS" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="USER_EXITS_LIST" TYPE="select-multiple"></SYMBOL>
+		<SYMBOL NAME="TEST_VAR_0" TYPE="text" VALUE="This is the first string"></SYMBOL>
+		<SYMBOL NAME="TEST_VAR_1" TYPE="text" VALUE="This is the second string"></SYMBOL>
+		<SYMBOL NAME="TEST_VAR_2" TYPE="text" VALUE="This is the third string"></SYMBOL>
+		<SYMBOL NAME="TEST_VAR_3" TYPE="text" VALUE="This is the fourth string"></SYMBOL>
+		<SYMBOL NAME="TEST_VAR_4" TYPE="text" VALUE="This is the fifth string"></SYMBOL>
+		<SYMBOL NAME="NUM_LOOP" TYPE="select-one" VALUE="4"></SYMBOL>
+		<SYMBOL NAME="STARTUP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Automatically (ufsta)"></SYMBOL>
+		<SYMBOL NAME="MAIN_ENTRY_POINT_OPTION" TYPE="option" VALUE="User call (ufusr)"></SYMBOL>
+		<SYMBOL NAME="UFGET_ENTRY_POINT_OPTION" TYPE="option" VALUE="Open Part (ufget)"></SYMBOL>
+		<SYMBOL NAME="UFCRE_ENTRY_POINT_OPTION" TYPE="option" VALUE="New Part (ufcre)"></SYMBOL>
+		<SYMBOL NAME="UFPUT_ENTRY_POINT_OPTION" TYPE="option" VALUE="Save Part (ufput)"></SYMBOL>
+		<SYMBOL NAME="UFSVAS_ENTRY_POINT_OPTION" TYPE="option" VALUE="Save Part As (ufsvas)"></SYMBOL>
+		<SYMBOL NAME="UFMRG_ENTRY_POINT_OPTION" TYPE="option" VALUE="Import Part (ufmrg)"></SYMBOL>
+		<SYMBOL NAME="UFGRP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Execute GRIP Program (ufgrp)"></SYMBOL>
+		<SYMBOL NAME="UFRCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Add Existing Part (ufrcp)"></SYMBOL>
+		<SYMBOL NAME="UFFCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Export Part (uffcp)"></SYMBOL>
+		<SYMBOL NAME="UFUSD_ENTRY_POINT_OPTION" TYPE="option" VALUE="Component Where-Used (ufusd)"></SYMBOL>
+		<SYMBOL NAME="UFPLT_ENTRY_POINT_OPTION" TYPE="option" VALUE="Plot File (ufplt)"></SYMBOL>
+		<SYMBOL NAME="UF2DA_ENTRY_POINT_OPTION" TYPE="option" VALUE="2D Analysis Using Curves (uf2da)"></SYMBOL>
+		<SYMBOL NAME="UFUDS_ENTRY_POINT_OPTION" TYPE="option" VALUE="User Defined Symbols (ufuds)"></SYMBOL>
+		<SYMBOL NAME="UFCLSO_ENTRY_POINT_OPTION" TYPE="option" VALUE="Open CLSF (ufclso)"></SYMBOL>
+		<SYMBOL NAME="UFCLSS_ENTRY_POINT_OPTION" TYPE="option" VALUE="Save CLSF (ufclss)"></SYMBOL>
+		<SYMBOL NAME="UFCLSR_ENTRY_POINT_OPTION" TYPE="option" VALUE="Rename CLSF (ufclsr)"></SYMBOL>
+		<SYMBOL NAME="UFCLG_ENTRY_POINT_OPTION" TYPE="option" VALUE="Generate CLF (ufclg)"></SYMBOL>
+		<SYMBOL NAME="UFPOST_ENTRY_POINT_OPTION" TYPE="option" VALUE="Postprocess CLSF (ufpost)"></SYMBOL>
+		<SYMBOL NAME="UFCCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Create Component (ufccp)"></SYMBOL>
+		<SYMBOL NAME="UFCDP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Change Displayed Part (ufcdp)"></SYMBOL>
+		<SYMBOL NAME="UFCWP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Change Work Part (ufcwp)"></SYMBOL>
+		<SYMBOL NAME="UFDCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Remove Component (ufdcp)"></SYMBOL>
+		<SYMBOL NAME="UFMCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Reposition Component (ufmcp)"></SYMBOL>
+		<SYMBOL NAME="UFSCPO_ENTRY_POINT_OPTION" TYPE="option" VALUE="Substitute Component Out (ufscpo)"></SYMBOL>
+		<SYMBOL NAME="UFSCPI_ENTRY_POINT_OPTION" TYPE="option" VALUE="Substitute Component In (ufscpi)"></SYMBOL>
+		<SYMBOL NAME="UFRRS_ENTRY_POINT_OPTION" TYPE="option" VALUE="Replace Reference Set (ufrrs)"></SYMBOL>
+		<SYMBOL NAME="UFNCP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Rename Component (ufncp)"></SYMBOL>
+		<SYMBOL NAME="UFGEN_ENTRY_POINT_OPTION" TYPE="option" VALUE="Access Genius Library Management System (ufgen)"></SYMBOL>
+		<SYMBOL NAME="UFGRPD_ENTRY_POINT_OPTION" TYPE="option" VALUE="Execute Debug GRIP (ufgrpd)"></SYMBOL>
+		<SYMBOL NAME="UFUFUN_ENTRY_POINT_OPTION" TYPE="option" VALUE="Execute UG/Open API (ufufun)"></SYMBOL>
+		<SYMBOL NAME="UFSPOP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Open Spreadsheet (ufspop)"></SYMBOL>
+		<SYMBOL NAME="UFSPCL_ENTRY_POINT_OPTION" TYPE="option" VALUE="Close Spreadsheet (ufspcl)"></SYMBOL>
+		<SYMBOL NAME="UFSPUP_ENTRY_POINT_OPTION" TYPE="option" VALUE="Update Spreadsheet (ufspup)"></SYMBOL>
+		<SYMBOL NAME="UFSPUF_ENTRY_POINT_OPTION" TYPE="option" VALUE="Finish Updating Spreadsheet (ufspuf)"></SYMBOL>
+		<SYMBOL NAME="UDOP_ENTRY_POINT_OPTION" TYPE="option" VALUE="CAM User Defined Operation (udop)"></SYMBOL>
+		<SYMBOL NAME="DPUD_ENTRY_POINT_OPTION" TYPE="option" VALUE="CAM User Defined Drive Path (dpud)"></SYMBOL>
+		<SYMBOL NAME="UFNOPR_ENTRY_POINT_OPTION" TYPE="option" VALUE="CAM New Operation (ufnopr)"></SYMBOL>
+		<SYMBOL NAME="UFCAMS_ENTRY_POINT_OPTION" TYPE="option" VALUE="CAM Startup (ufcams)"></SYMBOL>
+		<SYMBOL NAME="UNLOAD_UG_TERMINATE" TYPE="checkbox" VALUE="true"></SYMBOL>
+		<SYMBOL NAME="UNLOAD_IMMEDIATELY" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="UNLOAD_SEL_DIALOG" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="MRU_SIZE" TYPE="select-one" VALUE="4"></SYMBOL>
+		<SYMBOL NAME="DLL_TYPE_EXTENSION" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="AUTOMATION" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="SOCKETS" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="LIBID_REGISTRY_FORMAT" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="LIBID_STATIC_CONST_GUID_FORMAT" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="RES_PATH" TYPE="text" VALUE="res"></SYMBOL>
+		<SYMBOL NAME="START_RES" TYPE="num" VALUE="1000"></SYMBOL>
+		<SYMBOL NAME="MFC_PATH" TYPE="text" VALUE=""></SYMBOL>
+		<SYMBOL NAME="YEAR" TYPE="text"></SYMBOL>
+		<SYMBOL NAME="CHECKBOX_NXOPEN_UF" TYPE="checkbox" VALUE="false"></SYMBOL>
+		<SYMBOL NAME="CHECKBOX_NXOPEN_UI" TYPE="checkbox" VALUE="false"></SYMBOL>
+	</HEAD>
+	<BODY BGCOLOR="#c0c0c0" TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" ONLOAD="InitDocument(document);" ONKEYDOWN="if (!bValidating) OnKey();" ONKEYPRESS="if (!bValidating) OnPress();">
+		<TABLE CLASS="ONE" HEIGHT="100%" WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+			<COL CLASS="LinkPane">
+			<COL>
+			<!--OPEN OF INTRODUCTORY INFORMATION TABLE//-->
+			<TR VALIGN="TOP">
+				<TD HEIGHT="79" WIDTH="100%" COLSPAN="2">
+					<TABLE CLASS="TWO" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<COL WIDTH="12">
+						<COL>
+						<COL WIDTH="12">
+						<TR>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD CLASS="IMAGE" VALIGN="BOTTOM" WIDTH="110" ROWSPAN="2">
+								<DIV CLASS="SMALLA" ID="Layer0">
+									<IMG CLASS="SMALLEST" SRC="../../images/small_nx_icon.gif" WIDTH="63" HEIGHT="63" ALT="" BORDER="0">
+								</DIV>
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="12" WIDTH="6" ROWSPAN="2">
+								&nbsp;
+							</TD>
+						</TR>
+						<TR>
+							<TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+								&nbsp;
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="65">
+								<H4 CLASS="HEAD" ID="HEAD">Welcome to the NX11 Open C# Wizard</H4>
+								<P CLASS="SUBHEAD" ID="SUBHEAD">'This wizard generates an NX11 Open C# external or 
+									dynamic link library application project with the properties you specify.'</P>
+							</TD>
+							<TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+								&nbsp;
+							</TD>
+						</TR>
+						<TR>
+							<TD VALIGN="TOP" CLASS="RULE" COLSPAN="5" HEIGHT="2">
+								<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+									<TR VALIGN="TOP">
+										<TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"></TD>
+										<TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"></TD>
+									</TR>
+								</TABLE>
+							</TD>
+						</TR>
+					</TABLE>
+				</TD>
+			</TR>
+			<!--CLOSE OF INTRODUCTORY INFORMATION TABLE//-->
+			<!--OPEN OF NAVIGATION, CONTENT, AND BUTTON TABLES//-->
+			<TR VALIGN="TOP">
+				<TD CLASS="Three" VALIGN="TOP" HEIGHT="100%" WIDTH="100%">
+					<TABLE CLASS="fixedSize" HEIGHT="100%" WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<TR VALIGN="TOP">
+							<!--Maybe use this <TD> tag instead of the next one...
+			   <TD CLASS="threeCustom" VALIGN="top" STYLE="BACKGROUND-IMAGE:    url('../../images/NX8_Open_Background.gif')"> -->
+							<TD CLASS="threeCustom" VALIGN="TOP">
+								<!--OPEN OF NAVIGATION TABLE//-->
+								<TABLE CLASS="THREE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL>
+									<COL WIDTH="1">
+									<TR>
+										<TD VALIGN="TOP" COLSPAN="3" HEIGHT="12">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="100%">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP" HEIGHT="100%">
+											<!--OPEN OF NAVIGATIONAL LINKS//-->
+											<DIV CLASS="LINKSELECTED">
+												<SPAN CLASS="VERTLINE1"><IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+												</SPAN><SPAN CLASS="HORILINE1">
+													<TABLE WIDTH="167" HEIGHT="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+														<TR VALIGN="TOP">
+															<TD CLASS="DOTTEDLINE" HEIGHT="1">
+															</TD>
+														</TR>
+														<TR VALIGN="TOP">
+															<TD HEIGHT="100%">
+																<IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="28" ALT="" BORDER="0">
+															</TD>
+														</TR>
+														<TR VALIGN="TOP">
+															<TD CLASS="DOTTEDLINE" HEIGHT="1">
+															</TD>
+														</TR>
+													</TABLE>
+												</SPAN>
+												<TABLE WIDTH="160" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXTSELECTED">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN ID="Default" TITLE="Examine an overview of selections.">Overview</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<DIV CLASS="LINK">
+												<TABLE WIDTH="100%" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN CLASS="ACTIVELINK" ID="AppSettings" TITLE="Specify the type and features of the application." onClick="Next(document, 'AppSettings.htm');" TABINDEX="1">
+																Application Settings</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<DIV CLASS="LINK">
+												<TABLE WIDTH="100%" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+													<TR VALIGN="MIDDLE">
+														<TD WIDTH="100%">
+															<SPAN CLASS="ACTIVELINK" ID="EntryPoints" TITLE="Specify the entry points of the DLL.." onClick="Next(document, 'EntryPoints.htm');" TABINDEX="2">
+																Entry Points</SPAN>
+														</TD>
+														<TD WIDTH="4">
+															<IMG SRC="../../images/spacer.gif" HEIGHT="1" WIDTH="4">
+														</TD>
+													</TR>
+												</TABLE>
+											</DIV>
+											<!--CLOSE OF NAVIGATIONAL LINKS//-->
+										</TD>
+										<TD WIDTH="1">
+											<DIV CLASS="VERTLINE">
+												<IMG SRC="../../images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+											</DIV>
+										</TD>
+									</TR>
+								</TABLE>
+							</TD>
+						</TR>
+					</TABLE>
+					<!--CLOSE OF NAVIGATION TABLE//-->
+				</TD>
+				<TD VALIGN="TOP" HEIGHT="100%">
+					<!--OPEN OF CONTENT AND BUTTON TABLE//-->
+					<TABLE CLASS="ONE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+						<COL WIDTH="100%">
+						<TR VALIGN="TOP">
+							<TD HEIGHT="100%">
+								<!--OPEN OF CONTENT//-->
+								<TABLE CLASS="CONTENT" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL WIDTH="398">
+									<COL WIDTH="12">
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="12" COLSPAN="3">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" WIDTH="12">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP">
+											<SPAN CLASS="ItemTextTop" ID="PROJECT_SETTINGS_SPAN">These are the current project 
+												settings:</SPAN>
+											<UL>
+												<LI CLASS="LIST">
+													<SPAN CLASS="SideBtnHidden" ID="APPTYPE" TITLE=""><LABEL FOR="APPTYPE"></LABEL></SPAN>
+												</LI>
+												<LI CLASS="LIST">
+													<SPAN CLASS="SideBtnHidden" ID="ENTRYPOINTS" TITLE=""><LABEL FOR="ENTRYPOINTS"></LABEL>
+													</SPAN>
+												</LI>
+												<LI CLASS="LIST">
+													<SPAN CLASS="SideBtnHidden" ID="UNLOADOPTION" TITLE=""><LABEL FOR="UNLOADOPTION"></LABEL>
+													</SPAN>
+												</LI>
+											</UL>
+											<SPAN CLASS="ItemText" ID="FinishText">Click <B>Finish</B> from any window to 
+												accept the current settings.</SPAN>
+											<P CLASS="ElementSpacer2">&nbsp;</P>
+											<SPAN CLASS="ItemText" ID="README_REMINDER" TITLE="">After you create the project, 
+												see the project's readme.txt file for information about the project features 
+												and files that are generated.</SPAN>
+										</TD>
+										<TD VALIGN="TOP" WIDTH="12">
+											&nbsp;
+										</TD>
+									</TR>
+								</TABLE>
+								<!--CLOSE OF CONTENT//-->
+							</TD>
+						</TR>
+						<TR VALIGN="BOTTOM">
+							<TD HEIGHT="48">
+								<!--OPEN OF BUTTON HTML//-->
+								<TABLE HEIGHT="48" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+									<COL WIDTH="12">
+									<COL>
+									<COL WIDTH="75">
+									<COL WIDTH="4">
+									<COL WIDTH="75">
+									<COL WIDTH="4">
+									<COL WIDTH="75">
+									<COL WIDTH="12">
+									<TR>
+										<TD VALIGN="TOP" CLASS="RULE" COLSPAN="8" HEIGHT="2">
+											<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+												<TR VALIGN="TOP">
+													<TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"></TD>
+													<TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"></TD>
+												</TR>
+											</TABLE>
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="11" COLSPAN="8">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+											&nbsp;
+										</TD>
+										<TD VALIGN="TOP" HEIGHT="23">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<BUTTON CLASS="BUTTONS" ID="FinishBtn" ACCESSKEY="F" onClick="OnFinish(document);">F</U>inish</BUTTON>
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="4">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<BUTTON CLASS="BUTTONS" ID="CancelBtn" onClick="window.external.Finish(document, 'cancel');">
+												Cancel</BUTTON>
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="4">
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+											<!-- Disable Help Button for now
+		  				<BUTTON CLASS="BUTTONS" ID="HelpBtn" onClick="window.external.OnHelp('vc.appwiz.custom.overview');">Help</BUTTON> -->
+											&nbsp;
+										</TD>
+										<TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+											&nbsp;
+										</TD>
+									</TR>
+									<TR>
+										<TD VALIGN="TOP" HEIGHT="12" COLSPAN="8">
+											&nbsp;
+										</TD>
+									</TR>
+								</TABLE>
+								<!--CLOSE OF BUTTON HTML//-->
+							</TD>
+						</TR>
+					</TABLE>
+					<!--CLOSE OF NAVIGATION, CONTENT, AND BUTTON TABLES//-->
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</HTML>
+<SCRIPT LANGUAGE="JSCRIPT">
+
+/*var tab_array = new Array();
+tab_array[0] = Default;
+tab_array[1] = AppSettings;
+tab_array[2] = EntryPoints;*/
+
+var viewedOnce = 0;
+
+function InitDocument(document)
+{
+	setDirection();
+
+	if (window.external.FindSymbol("DOCUMENT_FIRST_LOAD"))
+	{
+		var L_WizardDialogTitle_Text = "NX11 Open C# Wizard";
+		window.external.AddSymbol("WIZARD_DIALOG_TITLE", L_WizardDialogTitle_Text);
+		var strProjName = window.external.FindSymbol("PROJECT_NAME");
+		var coll = document.all.tags("SYMBOL");
+		var numSymbols = coll.length;
+		for (i = 0; i < numSymbols; i++)
+		{
+			var obj = coll(i);
+			if (typeof(obj.VALUE) == "undefined")
+			{
+				obj.VALUE = getval(obj, strProjName);
+			}
+		}
+
+		window.external.SetDefaults(document);
+		CreateGuids();
+
+               //NextBtn.focus();
+               //BackBtn.disabled = true;
+
+                window.external.AddSymbol("DOCUMENT_FIRST_LOAD", false);
+	}
+        else
+        {
+            FinishBtn.focus();
+        }
+
+	// Do we need this?  It resets the parameter values.
+        // window.external.Load(document);
+
+	InitControls();
+}
+
+function CreateGuids()
+{
+	var strGuid = window.external.CreateGuid();
+	var strVal = window.external.FormatGuid(strGuid, 0);
+	window.external.AddSymbol("LIBID_REGISTRY_FORMAT", strVal);
+	strVal = window.external.FormatGuid(strGuid, 2);
+	window.external.AddSymbol("LIBID_STATIC_CONST_GUID_FORMAT", strVal);
+}
+
+function InitControls()
+{
+	var appType = "a dynamically loaded library";
+	if (window.external.FindSymbol("EXE_APPLICATION"))
+        {
+		appType = "an external application";
+        }
+
+    APPTYPE.innerText = "Create " + appType ;
+
+	ENTRYPOINTS.parentNode.style.display = 'none';
+	UNLOADOPTION.parentNode.style.display = 'none';
+	if (window.external.FindSymbol("DLL_APPLICATION"))
+	{
+            var entryPoints = "DLL entry points:";
+            var coll = document.all.tags("SYMBOL");
+            var numSymbols = coll.length;
+            for (i = 0; i < numSymbols; i++)
+            {
+                var name = coll[i].NAME;
+                if (name.match("_ENTRY_POINT_OPTION"))
+                {
+                    name = name.replace("_OPTION","");
+                    if (window.external.FindSymbol(name))
+                    {
+                        name = name.replace("_ENTRY_POINT","");
+                        entryPoints += " " + name;
+                    }
+                }
+            }
+
+            // if (window.external.FindSymbol("USER_EXITS"))
+            // {
+                // if(window.external.FindSymbol("UFGET_ENTRY_POINT"))
+                // {
+                    // entryPoints += " --> ufget";
+                // }
+                // else
+                // {
+                    // entryPoints += " --> BOOOOOO";
+                // }
+            // }
+
+            ENTRYPOINTS.innerText = entryPoints;
+            ENTRYPOINTS.parentNode.style.display = 'block';
+
+            if (window.external.FindSymbol("UNLOAD_UG_TERMINATE"))
+                unloadOption = "DLL unloads when NX terminates";
+            else if (window.external.FindSymbol("UNLOAD_IMMEDIATELY"))
+                unloadOption = "DLL unloads when the application completes";
+            else if (window.external.FindSymbol("UNLOAD_SEL_DIALOG"))
+                unloadOption = "DLL unloads via the unload dialog";
+
+            UNLOADOPTION.innerText = unloadOption;
+            UNLOADOPTION.parentNode.style.display = 'block';
+	}
+
+	EntryPoints.parentNode.style.display = 'none';
+	if (window.external.FindSymbol("DLL_APPLICATION"))
+        {
+            EntryPoints.parentNode.style.display = 'block';
+        }
+}
+
+
+function Next(document, linkto)
+{
+    //LoadPage(document, "AppSettings.htm");
+    window.external.Next(document, linkto);
+}
+
+function PreviousPage(document)
+{
+    var target = "AppSettings.htm";
+    if (window.external.FindSymbol("DLL_APPLICATION"))
+    {
+        target = "EntryPoints.htm";
+    }
+    LoadPage(document, target);
+}
+
+function LoadPage(document, linkto)
+{
+	window.external.Next(document, linkto);
+}
+
+function OnFinish(document)
+{
+   OnWizFinish(document);
+}
+
+function getval(obj, strProjName)
+{
+	var SymbolValue = "";
+	switch(obj.NAME)
+	{
+		case "SAFE_PROJECT_NAME":
+			SymbolValue	= CreateSafeName(strProjName);
+			break;
+		case  "LIB_NAME":
+			{
+				var strSafeLibName = CreateSafeName(strProjName);
+				for (n=0;n<10;n++)
+				{
+					if (strSafeLibName.substr(0,1) == n.toString())
+						strSafeLibName = "My" + strSafeLibName;
+				}
+				SymbolValue = strSafeLibName;
+			}
+			break;
+		case  "APP_CLASS":
+			{
+				var strSafeProjName = CreateSafeName(strProjName);
+				SymbolValue = "C" + strSafeProjName + "App";
+			}
+			break;
+		case  "SOURCE_FILTER":
+			SymbolValue = "cpp;c;cxx;def;odl;idl;hpj;bat;asm";
+			break;
+		case  "INCLUDE_FILTER":
+			SymbolValue = "h;hpp;hxx;hm;inl;inc";
+			break;
+		case  "RESOURCE_FILTER":
+			SymbolValue = "rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe";
+			break;
+		case  "CPU":
+			SymbolValue = "i386";
+			break;
+		case  "HOST_CPU":
+			SymbolValue = "X86";
+			break;
+		case  "YEAR":
+			{
+				d = new Date();
+				SymbolValue = d.getFullYear().toString();
+			}
+			break;
+		default:
+			SymbolValue = "";
+			break;
+	}
+	return (SymbolValue);
+}
+
+/******************************************************************************
+ Description: Generates a C++ friendly name
+     strName: The old, unfriendly name
+******************************************************************************/
+function CreateSafeName(strName)
+{
+	try
+	{
+		var nLen = strName.length;
+		var strSafeName = "";
+
+		for (nCntr = 0; nCntr < nLen; nCntr++)
+		{
+			var cChar = strName.charAt(nCntr);
+			if ((cChar >= 'A' && cChar <= 'Z') || (cChar >= 'a' && cChar <= 'z') ||
+                (cChar == '_') || (cChar >= '0' && cChar <= '9'))
+				// valid character, so add it
+				strSafeName += cChar;
+			// otherwize, we skip it
+		}
+		if (strSafeName=="")
+		{
+			// if it's empty, we add My
+			strSafeName = "My";
+		}
+		else if (strSafeName.charAt(0) >= '0' && strSafeName.charAt(0) <= '9')
+		{
+			// if it starts with a digit, we prepend My
+			strSafeName = "My" + strSafeName;
+		}
+		return strSafeName;
+	}
+	catch(e)
+	{
+		throw e;
+	}
+}
+
+
+</SCRIPT>
+
+<SCRIPT ID="INCLUDE_SCRIPT" LANGUAGE="JSCRIPT"></SCRIPT>
+<SCRIPT ID="INCLUDE_COMMON" LANGUAGE="JSCRIPT"></SCRIPT>
+
+<SCRIPT>
+	var strPath = window.external.FindSymbol("PRODUCT_INSTALLATION_DIR");
+	strPath += window.external.FindSymbol("MSVS_WIZARD_FOLDER") + "/"+ window.external.FindSymbol("WIZARD_NAME")+"/";
+	// Do NOT use GetHostLocale - only english is supported - hardcode to 1033
+	// strPath += window.external.GetHostLocale();
+	strPath += "1033";
+	var strScriptPath = strPath + "/Script.js";	
+	var strCommonPath = strPath + "/Common.js";
+	document.scripts("INCLUDE_SCRIPT").src = strScriptPath;
+	document.scripts("INCLUDE_COMMON").src = strCommonPath;
+	
+</SCRIPT>

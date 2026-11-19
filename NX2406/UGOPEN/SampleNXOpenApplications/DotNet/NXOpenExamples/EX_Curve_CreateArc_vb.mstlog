@@ -1,0 +1,11 @@
+Log Entry : 
+--Log entry goes here--
+New Part File Created :- D:\units\pr_5230594\vb_example_project\vb_example_project\bin\EX_Curve_CreateArc.prt
+Creating Arc:-
+Successful
+Querying Arc:-
+arc_center= {0,0,1}
+start_angle= 0
+end_angle= 3
+radius= 2
+End of Log File

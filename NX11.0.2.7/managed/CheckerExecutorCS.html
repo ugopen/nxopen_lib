@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">   
+<title>CheckerExecutor Class</title>
+<link href="NXOpenChecker.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="header">
+<div class="headertitle">
+<div class="title"><a href="#anch00000">CheckerExecutor</a> Class
+</div>
+</div>
+</div>
+
+<table class="summary">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Public Member Functions</h2></td></tr>
+<tr><td align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00001">CheckerExecutor</a> ()</td></tr>
+<tr><td >&#160;</td><td>A constructor method.  <a href="#anch00001">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">CheckerExecutor&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00002">AddPart</a> (string partPath, bool asDisplayPart=false)</td></tr>
+<tr><td >&#160;</td><td>Adds an NX part to be checked.  <a href="#anch00002">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">CheckerExecutor&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00003">AddChecker</a> (string checkerId)</td></tr>
+<tr><td >&#160;</td><td>Adds the checker specified by its unique class id.  <a href="#anch00003">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">CheckerExecutor&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00004">SetParameter</a> (string parameterTitle, Object parameterValue)</td></tr>
+<tr><td >&#160;</td><td>Sets a parameter for the latest CheckerNode.  <a href="#anch00004">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">CheckerExecutor&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00005">SetParameter</a> (string parameterTitle, Object parameterValue, int checkerIndex)</td></tr>
+<tr><td >&#160;</td><td>Sets a parameter for the CheckerNode with the specified checkerIndex.  <a href="#anch00005">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a  href="#anch00006">Commit</a> ()</td></tr>
+<tr><td >&#160;</td><td>Commits the validator to execute the selected checkers against the selected parts.  <a href="#anch00006">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+</table>
+
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr><td align="right" valign="top">static NXOpen.Validate.ValidatorOptions&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00007">GetValidatorOptions</a> ()</td></tr>
+<tr><td >&#160;</td><td>Gets the ValidatorOptions object from the Check-Mate Validator object.  <a href="#anch00007">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+<tr><td align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a href="#anch00008">InitValidatorOptions</a> ()</td></tr>
+<tr><td >&#160;</td><td>Sets the default values for the ValidatorOptions object of the Check-Mate Validator object.  <a href="#anch00008">More...</a><br /></td></tr>
+<tr><td class="seperatorline" colspan="2"></td></tr>
+</table>
+
+<a id="anch00000"></a>
+
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The sealed class CheckerExecutor provides the following properties, methods, and fields to simplify the checker execution script. </p>
+<p>Class Scope: </p><pre class="fragment">Methods:
+    GetValidatorOptions() : NXOpen.Validate.ValidatorOptions
+    InitValidatorOptions() : void
+
+    OpenPartDisplay(string filePath) : void
+</pre><p>Instance Scope: </p><pre class="fragment">Fields:
+    validator : NXOpen.Validate.Validator
+    nCheckerNodes : int
+
+Constructors:
+    CheckerExecutor()
+
+Methods:
+    AddPart(string partPath, bool asDisplayPart = false) : CheckerExecutor
+    AddChecker(string checkerId) : CheckerExecutor
+    SetParameter(string parameterTitle, Object parameterValue) : CheckerExecutor
+    SetParameter(string parameterTitle, Object parameterValue, int checkerIndex) : CheckerExecutor
+    Commit() : void
+
+    Init() : void
+</pre></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="anch00001"></a>
+<h2 class="memtitle">CheckerExecutor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CheckerExecutor.CheckerExecutor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A constructor method. </p>
+
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="anch00003"></a>
+<h2 class="memtitle">AddChecker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CheckerExecutor CheckerExecutor.AddChecker </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>checkerId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the checker specified by its unique class id. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">checkerId</td><td>Specifies a unique class id of the checker.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the current CheckerExecutor object.</dd></dl>
+
+</div>
+</div>
+<a id="anch00002"></a>
+<h2 class="memtitle">AddPart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CheckerExecutor CheckerExecutor.AddPart </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>partPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>asDisplayPart</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an NX part to be checked. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partPath</td><td>Specifies the full path of an NX part file.</td></tr>
+    <tr><td class="paramname">asDisplayPart</td><td>Specifies if the NX part is opened as a display part.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the current CheckerExecutor object.</dd></dl>
+
+</div>
+</div>
+<a id="anch00006"></a>
+<h2 class="memtitle">Commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CheckerExecutor.Commit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Commits the validator to execute the selected checkers against the selected parts. </p>
+
+
+</div>
+</div>
+<a id="anch00007"></a>
+<h2 class="memtitle">GetValidatorOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static NXOpen.Validate.ValidatorOptions CheckerExecutor.GetValidatorOptions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the ValidatorOptions object from the Check-Mate Validator object. </p>
+
+<dl class="section return"><dt>Returns</dt><dd>Returns the ValidatorOptions object of the Check-Mate Validator object.</dd></dl>
+
+</div>
+</div>
+<a id="anch00008"></a>
+<h2 class="memtitle">InitValidatorOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void CheckerExecutor.InitValidatorOptions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the default values for the ValidatorOptions object of the Check-Mate Validator object. </p>
+
+
+</div>
+</div>
+<a id="anch00004"></a>
+<h2 class="memtitle">SetParameter() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CheckerExecutor CheckerExecutor.SetParameter </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>parameterTitle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>parameterValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a parameter for the latest CheckerNode. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameterTitle</td><td>Specifies a unique title of the parameter.</td></tr>
+    <tr><td class="paramname">parameterValue</td><td>Specifies a value of the parameter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the current CheckerExecutor object.</dd></dl>
+
+</div>
+</div>
+<a id="anch00005"></a>
+<h2 class="memtitle">SetParameter() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CheckerExecutor CheckerExecutor.SetParameter </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>parameterTitle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>parameterValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>checkerIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a parameter for the CheckerNode with the specified checkerIndex. </p>
+
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameterTitle</td><td>Specifies a unique title of the parameter.</td></tr>
+    <tr><td class="paramname">parameterValue</td><td>Specifies a value of the parameter.</td></tr>
+    <tr><td class="paramname">checkerIndex</td><td>Specifies an index of the checker.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the current CheckerExecutor object.</dd></dl>
+
+</div>
+</div>
+
+<hr/>
+
+The documentation for this class was generated from the following file:
+<ul>
+  <li>CheckerExecutor.cs</li>
+</ul>
+
+</body>
+</html>

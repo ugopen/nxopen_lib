@@ -1,0 +1,57 @@
+!*=======================================================================
+!
+!        Copyright (c) 1994, 1995, 1996 Siemens Product Lifecycle Management Software Inc.
+!                                 All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding an Internal User Function application
+!   to NX.  This example uses the following three files included
+!   in the NX/Open kit:
+!        ufx_sample_app.c
+!        ufx_add_sample_app_button.men
+!        ufx_sample_app.men
+!
+!   Please see the MenuScript chapter of the NX/Open Programmer's Guide
+!   for a detailed description of this example, the required MenuScript
+!   environment variables and directories, and the correct placement of
+!   the shared library and menu files.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   contained in this C file to allow you create your own application.
+!
+!   The sample callbacks also illustrate the arguments to the callbacks
+!   you will write.
+!
+!   Additional information on MenuScript can be found in:
+!     - the NX/Open MenuScript User Guide
+!     - the NX/Open API Reference Manual
+!     - the NX/Open API Programmer's Manual
+!     - the NX/Open MenuScript Quick Reference Card
+!     - the NX/Open MenuScript Menu File Reference Card
+!
+!   This menu file should be place in your UGII_SITE_DIR or UGII_USER_DIR
+!   startup directory.
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MENU UG_APPLICATION
+
+! ***NOTE button name must match the name you registered for
+! your application in the UF_MB_register_application call 
+
+    APPLICATION_BUTTON SAMPLE_APP
+
+    LABEL Sample Application
+
+    LIBRARIES ufx_sample_app
+
+    MENU_FILES ufx_sample_app.men 
+
+END_OF_MENU 

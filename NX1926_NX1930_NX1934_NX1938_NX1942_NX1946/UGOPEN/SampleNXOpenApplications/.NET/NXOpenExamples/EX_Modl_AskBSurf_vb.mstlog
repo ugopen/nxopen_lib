@@ -1,0 +1,45 @@
+--Log entry goes here--
+New Part File Created :-D:\units\pr_5230594\vb_example_project\vb_example_project\bin\EX_Modl_AskBSurf.prtCreate the b-surface using Modl.CreateBsurf:-Successful
+Query the b-surface using Modl.AskBsurf:-Successful
+Create the Spline-1 using Modl.CreateSpline:-Successful
+Create the Spline-2 using Modl.CreateSpline:-Successful
+Query the Spline using Curve.AskSplineData:-Successful
+Spline Data:-
+Start Param =0
+End Param=1
+Is Rational=0
+Order=4
+Number of Poles=8
+Pole[0,0]= 3
+Pole[0,1]= -2.5
+Pole[0,2]= 2
+Pole[0,3]= 1
+Pole[1,0]= 4
+Pole[1,1]= -2.5
+Pole[1,2]= 1
+Pole[1,3]= 1
+Pole[2,0]= 7
+Pole[2,1]= -2.5
+Pole[2,2]= 1
+Pole[2,3]= 1
+Pole[3,0]= 6
+Pole[3,1]= -2.5
+Pole[3,2]= 3
+Pole[3,3]= 1
+Pole[4,0]= 3
+Pole[4,1]= -2.5
+Pole[4,2]= 3
+Pole[4,3]= 1
+Pole[5,0]= 3
+Pole[5,1]= -2.5
+Pole[5,2]= 2
+Pole[5,3]= 1
+Pole[6,0]= 4
+Pole[6,1]= -2.5
+Pole[6,2]= 1
+Pole[6,3]= 1
+Pole[7,0]= 7
+Pole[7,1]= -2.5
+Pole[7,2]= 1
+Pole[7,3]= 1
+End of Log File

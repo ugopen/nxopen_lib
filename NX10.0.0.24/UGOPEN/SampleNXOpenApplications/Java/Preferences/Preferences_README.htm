@@ -1,0 +1,87 @@
+<html>
+	<head>
+        <title>Preferences</title>
+        <meta http-equiv="Content-Language" content="en-us">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    </head>
+    <body>
+        <DIV class="Section1">
+            <H3>Preferences
+            </H3>
+            <P>This example demonstrates to set the Preferences of Sketch and Work Plane for NX session as per the requirement.Executing this example will create prefs.prt with the specified preferences.&nbsp;</P>
+
+            <h4>Files required</h4>
+            <ol>
+            <li> Preferences.java </li>
+			<li> Preferences_Makefile </li>
+			<li> Preferences_Makefile_win </li>
+			</ol>
+            <h4>How to run the example</h4>
+            <P>Unless noted otherwise, the commands in these instructions must be run from an 
+                NX command prompt.&nbsp; See the general notes of the examples for <A href="../../README.htm#How_to_start_an_NX_command_prompt">
+                    instructions on how to start an NX command prompt</A>.</P>
+            <P>Instructions for Windows: All commands are the same as in Unix except substitute "make" with 
+			"nmake -f Makefile_win".</P>
+
+            <h4>Interactive mode</h4>
+			
+            <OL style="MARGIN-TOP: 0in" type="1">
+                <LI class="MsoNormal" style="mso-list: l3 level1 lfo3; tab-stops: list .5in">
+                    Compile the example with following command:
+                </LI>
+            </OL>
+            <PRE style="MARGIN-LEFT: 0.5in">make</PRE>
+            
+			<OL style="MARGIN-TOP: 0in" type="1" start="2">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+                    Start NX. 
+                </LI>
+            </OL>
+			
+            <OL style="MARGIN-TOP: 0in" type="1" start="3">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					In NX, go to File - Execute - NX Open, select Preferences.jar, and press 
+                Ok. 
+                </LI>
+            </OL>
+					
+			<OL style="MARGIN-TOP: 0in" type="1" start="4">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					This will open the new "prefs.prt" file with the specified Sketch, Grid and Workplane Preferences as mentioned in the "preferences.java" file.
+                </LI>
+            </OL>
+			
+			<OL style="MARGIN-TOP: 0in" type="1" start="5">
+                <LI class="MsoNormal" style="mso-list: l2 level1 lfo6; tab-stops: list .5in">
+					For cross verifying the set preferences.
+					<OL>Go to Preferences->Sketch->Session Settings tab, you can observe the Name Prefixes as follows for Sketch Preferences: 
+								<OL>- Default Name: Prefixes 
+										<ol>- Sketch:  SKT_</ol>
+										<ol>- Vertex:  VRT_</ol>
+										<ol>- Line:    LIN_</ol>
+										<ol>- Arc:     ARC_</ol>
+										<ol>- Conic:   CON_</ol>
+										<ol>- Spline:  SPL_</ol>
+								</OL>
+					</OL>	
+					<OL>Go to Preferences->Grid and Work plane, you can observe the work plane grid type is changed from rectangular to polar.	
+            Also, the following spacing preferences for grid lines are set: 
+							<OL> Grid and Work Plane Preferences:
+								<OL>Radial Spacing-
+										<ol>- Major Grid Spacing:     75.0</ol>
+										<ol>- Minor Lines per Major:	3	</ol>
+										<ol>- Snap Points per Minor:	5	</ol>
+								</OL>
+								<OL>Angular Spacing	
+										<ol>- Major Grid Spacing:     45.0</ol>
+										<ol>- Minor Lines per Major:	4	</ol>	
+										<ol>- Snap Points per Minor:	2	</ol>
+								</OL>
+				 </LI>
+            </OL>
+			
+				</LI>
+            </OL>
+        </DIV>
+    </body>
+</html>

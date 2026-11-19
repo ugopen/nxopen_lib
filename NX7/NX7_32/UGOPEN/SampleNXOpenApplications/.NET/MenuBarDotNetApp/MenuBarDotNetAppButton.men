@@ -1,0 +1,68 @@
+!*=======================================================================
+!
+!        Copyright (c) 2007 Siemens
+!        Unpublished - All rights reserved
+!
+!=========================================================================
+!File Description
+!
+!   This is a an example of adding both VB and C Sharp applications to NX.  
+!   This example uses the following files included in the UGOPEN kit:
+!        MenuBarCSharpApp.cs
+!        MenuBarCSharpApp.men
+!        MenuBarVbApp.vb
+!        MenuBarVbApp.men
+!        MenuBarDotNetAppButton.men
+!
+!   Please see the "Adding Custom Applications to NX" chapter of the
+!   NX Open Programmer's Guide or search the documentation for
+!   "MenuBarDotNetApp" for a detailed description of this example.
+!
+!   These files are intended to provide a template that can be modified
+!   by renaming the files, and renaming the variables and routines 
+!   to allow you create your own application.
+!
+!   Additional information on MenuScript can be found in:
+!     - the MenuScript User's Guide
+!     - the NXOpen Programmer's Guide
+!     - the NX Open for .NET Reference Guide (see MenuBar)
+!     - any other place in the NX documentation that comes up when
+!       you search for "MenuScript" or "MenuBar"
+!
+!    This menu file must be placed in the "startup" directory under a 
+!    directory listed in the file pointed to by the environment variable
+!    in UGII_CUSTOM_DIRECTORY_FILE (i.e. the menu file must not be in
+!    the "application" directory).
+!
+!
+!=========================================================================
+VERSION 120
+
+EDIT UG_GATEWAY_MAIN_MENUBAR
+
+MENU UG_APPLICATION
+
+! ***NOTE button name must match the name you registered for
+! your application in the MenuBarManager()->RegisterApplication call 
+
+    APPLICATION_BUTTON SAMPLE_CSHARP_APP
+
+    LABEL Sample C Sharp Application
+
+    LIBRARIES MenuBarCSharpApp
+
+    MENU_FILES MenuBarCSharpApp.men 
+
+
+! ***NOTE button name must match the name you registered for
+! your application in the MenuBarManager()->RegisterApplication call 
+
+    APPLICATION_BUTTON SAMPLE_VB_APP
+
+    LABEL Sample VB Application
+
+    LIBRARIES MenuBarVbApp
+
+    MENU_FILES MenuBarVbApp.men 
+
+END_OF_MENU 
